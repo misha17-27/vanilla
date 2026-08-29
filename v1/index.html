@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vanilla Cake — Bakıda sifarişlə bento tortlar və cake to go</title>
+<meta name="description" content="Bakıda sifarişlə hazırlanan bento tortlar və cake to go. Təbii inqrediyentlər, günü-gününə çatdırılma. WhatsApp ilə sifariş: +994 55 215 63 43">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍰</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://vanilla.az">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FFF9F4; --cream2:#FBEFE6; --white:#FFFFFF;
+  --choco:#3E2723; --choco-soft:#6D4C41;
+  --rose:#D6537D; --rose-dark:#B93A63; --rose-soft:#F9E0E8; --rose-mist:#FDF0F4;
+  --gold:#C9A227;
+  --radius:22px;
+  --shadow:0 18px 45px -18px rgba(62,39,35,.22);
+  --font-body:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-display:'Cormorant Garamond','Times New Roman',serif;
+  --font-script:'Great Vibes',cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--cream);color:var(--choco);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{max-width:1180px;margin:0 auto;padding:0 22px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;font-weight:700;font-size:15px;transition:.25s;cursor:pointer;border:none;line-height:1}
+.btn-primary{background:var(--rose);color:#fff;box-shadow:0 10px 25px -8px rgba(214,83,125,.55)}
+.btn-primary:hover{background:var(--rose-dark);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--choco);border:1.5px solid rgba(62,39,35,.25)}
+.btn-ghost:hover{border-color:var(--choco);background:#fff}
+.btn svg{width:18px;height:18px;flex:none}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--rose)}
+.eyebrow::before{content:"";width:26px;height:1.5px;background:var(--rose)}
+h1,h2{font-family:var(--font-display);font-weight:600;line-height:1.08;letter-spacing:-.01em}
+h2{font-size:clamp(34px,4.5vw,52px)}
+.section{padding:90px 0}
+.sec-head{max-width:640px;margin-bottom:52px}
+.sec-head p{color:var(--choco-soft);margin-top:14px}
+.center{text-align:center}.center .sec-head{margin-left:auto;margin-right:auto}
+.center .eyebrow::before{display:none}
+/* reveal (hidden state only when JS+IO active) */
+html.anim .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+html.anim .reveal.in{opacity:1;transform:none}
+/* ===== Header ===== */
+.topbar{background:var(--choco);color:#F5E9E0;font-size:13px;padding:8px 0}
+.topbar .container{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topbar a:hover{color:#fff;text-decoration:underline}
+header{position:sticky;top:0;z-index:60;background:rgba(255,249,244,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(62,39,35,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{display:flex;flex-direction:column;line-height:1}
+.logo .script{font-family:var(--font-script);font-size:34px;color:var(--rose)}
+.logo .sub{font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:var(--choco-soft);margin:2px 0 0 4px}
+.menu{display:flex;gap:34px;list-style:none}
+.menu a{font-weight:600;font-size:14.5px;color:var(--choco-soft);transition:.2s}
+.menu a:hover{color:var(--rose)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.burger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{display:block;width:24px;height:2px;background:var(--choco);margin:5px 0;transition:.3s}
+/* ===== Hero ===== */
+.hero{position:relative;overflow:hidden}
+.hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;padding-top:72px;padding-bottom:96px}
+.hero h1{font-size:clamp(44px,5.6vw,74px)}
+.hero h1 em{font-style:italic;color:var(--rose)}
+.hero .lead{margin:22px 0 34px;color:var(--choco-soft);font-size:17.5px;max-width:480px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.trust{display:flex;align-items:center;gap:14px;margin-top:38px;font-size:14px;color:var(--choco-soft)}
+.stars{color:var(--gold);letter-spacing:2px;font-size:15px}
+.hero-art{position:relative}
+.arch{position:relative;border-radius:300px 300px var(--radius) var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/4.7;background:var(--rose-soft)}
+.arch img{width:100%;height:100%;object-fit:cover}
+.chip{position:absolute;background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:12px 18px;font-size:13.5px;font-weight:700;display:flex;align-items:center;gap:10px}
+.chip small{display:block;font-weight:500;color:var(--choco-soft);font-size:12px}
+.chip-1{left:-26px;bottom:70px;animation:float 5s ease-in-out infinite}
+.chip-2{right:-18px;top:56px;animation:float 6s 1s ease-in-out infinite}
+.chip .ico{width:38px;height:38px;border-radius:12px;background:var(--rose-mist);display:grid;place-items:center;font-size:18px}
+@keyframes float{50%{transform:translateY(-10px)}}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;pointer-events:none}
+.blob-1{width:420px;height:420px;background:#FAD8E3;top:-120px;right:-80px}
+.blob-2{width:360px;height:360px;background:#F6E7D7;bottom:-140px;left:-120px}
+/* ===== USP ===== */
+.usp{background:#fff;border-top:1px solid rgba(62,39,35,.06);border-bottom:1px solid rgba(62,39,35,.06)}
+.usp .container{display:grid;grid-template-columns:repeat(4,1fr);gap:34px;padding-top:56px;padding-bottom:56px}
+.usp-item{display:flex;gap:16px;align-items:flex-start}
+.usp-item .ico{flex:none;width:52px;height:52px;border-radius:16px;background:var(--rose-mist);display:grid;place-items:center;color:var(--rose)}
+.usp-item .ico svg{width:24px;height:24px}
+.usp-item h3{font-size:16px;font-weight:800;margin-bottom:4px}
+.usp-item p{font-size:13.5px;color:var(--choco-soft);line-height:1.5}
+/* ===== Products ===== */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.tab{padding:11px 22px;border-radius:999px;border:1.5px solid rgba(62,39,35,.16);background:transparent;font-family:var(--font-body);font-weight:700;font-size:14px;color:var(--choco-soft);cursor:pointer;transition:.2s}
+.tab:hover{border-color:var(--rose);color:var(--rose)}
+.tab.active{background:var(--choco);border-color:var(--choco);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 28px -14px rgba(62,39,35,.16);transition:.3s;position:relative}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.card .ph{position:relative;aspect-ratio:1;overflow:hidden;background:var(--cream2)}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .ph img{transform:scale(1.06)}
+.badge{position:absolute;top:14px;left:14px;background:#fff;color:var(--rose);font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;box-shadow:0 4px 12px rgba(62,39,35,.12)}
+.card .body{padding:18px 20px 22px}
+.card h3{font-size:16px;font-weight:800;margin-bottom:6px}
+.card .price{color:var(--rose);font-weight:800;font-size:15px}
+.card .order{position:absolute;right:16px;bottom:16px;width:42px;height:42px;border-radius:50%;background:var(--rose);color:#fff;display:grid;place-items:center;opacity:0;transform:translateY(8px);transition:.25s;box-shadow:0 8px 18px -6px rgba(214,83,125,.6)}
+.card:hover .order{opacity:1;transform:none}
+.card .order svg{width:19px;height:19px}
+.more-wrap{margin-top:46px}
+/* ===== Steps ===== */
+.steps-band{background:linear-gradient(180deg,var(--rose-mist),var(--cream))}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;counter-reset:st}
+.step{background:#fff;border-radius:var(--radius);padding:36px 30px;box-shadow:0 8px 28px -14px rgba(62,39,35,.14);position:relative}
+.step::before{counter-increment:st;content:counter(st,decimal-leading-zero);font-family:var(--font-display);font-size:54px;font-weight:600;color:var(--rose-soft);position:absolute;top:18px;right:26px;line-height:1}
+.step .ico{width:54px;height:54px;border-radius:16px;background:var(--rose-mist);color:var(--rose);display:grid;place-items:center;margin-bottom:20px}
+.step .ico svg{width:26px;height:26px}
+.step h3{font-size:18px;font-weight:800;margin-bottom:10px}
+.step p{font-size:14.5px;color:var(--choco-soft)}
+/* ===== Flavors ===== */
+.flavors{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.flavor-card{background:#fff;border-radius:var(--radius);padding:34px;box-shadow:0 8px 28px -14px rgba(62,39,35,.14)}
+.flavor-card h3{font-family:var(--font-display);font-size:26px;margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{padding:10px 18px;border-radius:999px;background:var(--rose-mist);color:var(--rose-dark);font-weight:700;font-size:14px}
+.flavor-note{grid-column:1/-1;background:var(--choco);color:#F5E9E0;border-radius:var(--radius);padding:26px 34px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;font-size:15px}
+.flavor-note strong{color:#fff}
+.flavor-note .g{font-size:26px}
+/* ===== About ===== */
+.about .container{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.about-art{position:relative}
+.about-art .frame{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:1;background:var(--cream2)}
+.about-art .frame img{width:100%;height:100%;object-fit:cover}
+.about-art .script-stamp{position:absolute;right:-14px;bottom:-24px;background:var(--rose);color:#fff;font-family:var(--font-script);font-size:28px;padding:16px 28px;border-radius:999px;transform:rotate(-4deg);box-shadow:var(--shadow)}
+.about p{color:var(--choco-soft);margin-top:16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.stat{background:#fff;border-radius:18px;padding:22px 18px;text-align:center;box-shadow:0 8px 28px -16px rgba(62,39,35,.15)}
+.stat b{display:block;font-family:var(--font-display);font-size:36px;color:var(--rose);line-height:1}
+.stat span{font-size:12.5px;color:var(--choco-soft);font-weight:600;display:block;margin-top:6px}
+/* ===== FAQ ===== */
+.faq{max-width:780px;margin:0 auto}
+.faq details{background:#fff;border-radius:18px;box-shadow:0 8px 28px -16px rgba(62,39,35,.13);margin-bottom:14px;overflow:hidden}
+.faq summary{list-style:none;cursor:pointer;padding:22px 26px;font-weight:800;font-size:15.5px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--font-display);font-size:26px;color:var(--rose);transition:.25s;line-height:1}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 26px 22px;color:var(--choco-soft);font-size:14.5px}
+/* ===== Insta ===== */
+.insta{background:linear-gradient(120deg,#3E2723,#5D3A34 55%,#8C4A55)}
+.insta .container{padding-top:74px;padding-bottom:74px;text-align:center;color:#fff}
+.insta .script{font-family:var(--font-script);font-size:clamp(34px,4.5vw,52px);color:#F9C9D8}
+.insta p{color:rgba(255,255,255,.75);max-width:520px;margin:12px auto 30px}
+.btn-light{background:#fff;color:var(--choco)}
+.btn-light:hover{transform:translateY(-2px);box-shadow:0 12px 26px -10px rgba(0,0,0,.5)}
+/* ===== Footer ===== */
+footer{background:var(--choco);color:#CBB4A8;font-size:14px}
+footer .grid-f{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:44px;padding:70px 0 50px}
+footer .logo .script{color:#F9C9D8}
+footer .logo .sub{color:#9C7F72}
+footer h4{color:#fff;font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
+footer ul{list-style:none;display:grid;gap:10px}
+footer a:hover{color:#fff}
+footer .about-f{max-width:280px;margin-top:16px;line-height:1.7}
+.f-contact li{display:flex;gap:10px;align-items:flex-start}
+.f-contact svg{width:17px;height:17px;flex:none;margin-top:3px;color:#F9C9D8}
+.f-bottom{border-top:1px solid rgba(255,255,255,.1);padding:22px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px}
+.socials{display:flex;gap:10px}
+.socials a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;transition:.2s}
+.socials a:hover{background:var(--rose);border-color:var(--rose);color:#fff}
+.socials svg{width:17px;height:17px}
+/* Mobile CTA bar */
+.mob-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;box-shadow:0 -8px 30px rgba(62,39,35,.15);padding:10px 14px calc(10px + env(safe-area-inset-bottom));gap:10px}
+.mob-cta .btn{flex:1;justify-content:center;padding:14px 10px;font-size:14px}
+.wa-green{background:#25D366;color:#fff;box-shadow:0 10px 25px -8px rgba(37,211,102,.5)}
+.wa-green:hover{background:#1EBE5A}
+/* ===== Responsive ===== */
+@media(max-width:1020px){
+  .hero .container{grid-template-columns:1fr;gap:48px;padding-top:48px;padding-bottom:64px}
+  .hero .lead{max-width:100%}
+  .hero-art{max-width:440px;margin:0 auto;width:100%}
+  .usp .container{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr}
+  .about .container{grid-template-columns:1fr;gap:48px}
+  .flavors{grid-template-columns:1fr}
+  footer .grid-f{grid-template-columns:1fr 1fr;gap:34px}
+}
+@media(max-width:640px){
+  .section{padding:64px 0}
+  .topbar .hide-m{display:none}
+  .menu{position:fixed;inset:74px 0 auto 0;background:#fff;flex-direction:column;gap:0;padding:10px 22px 20px;box-shadow:0 24px 40px -20px rgba(62,39,35,.25);transform:translateY(-130%);transition:.35s;z-index:-1}
+  .menu.open{transform:none}
+  .menu a{display:block;padding:13px 0;font-size:16px;border-bottom:1px solid var(--cream2)}
+  .burger{display:block}
+  .nav-cta .btn{display:none}
+  .grid{grid-template-columns:1fr 1fr;gap:14px}
+  .card .body{padding:14px 14px 18px}
+  .card h3{font-size:14px}
+  .chip-1{left:-6px}.chip-2{right:-6px}
+  .usp .container{grid-template-columns:1fr;gap:26px}
+  .mob-cta{display:flex}
+  body{padding-bottom:76px}
+  .card .order{opacity:1;transform:none;width:38px;height:38px}
+}
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="container">
+    <span>🎂 Sifarişlər hər gün <strong>09:00 – 21:00</strong> qəbul olunur</span>
+    <a class="hide-m" href="tel:+994552156343">📞 +994 55 215 63 43</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">
+      <span class="script">Vanilla Cake</span>
+      <span class="sub">bir dadım eşq</span>
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#menyu">Menyu</a></li>
+      <li><a href="#sifaris">Sifariş qaydası</a></li>
+      <li><a href="#dadlar">Dadlar</a></li>
+      <li><a href="#haqqimizda">Haqqımızda</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#elaqe">Əlaqə</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-primary" data-wa href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.2 1.2Z"/></svg>
+        Sifariş et
+      </a>
+      <button class="burger" id="burger" aria-label="Menyu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="container">
+    <div>
+      <span class="eyebrow">Bakıda sifarişlə hazırlanır</span>
+      <h1>Kiçik tortlarda <em>böyük sevgi</em></h1>
+      <p class="lead">Bento tortlar və cake to go — hər biri sıfırdan, təbii inqrediyentlərlə, sizin istəyinizə uyğun bəzədilərək hazırlanır. Öncədən sifariş edin, qalanı bizlik.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" data-wa href="#">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.2 1.2Z"/></svg>
+          WhatsApp ilə sifariş
+        </a>
+        <a class="btn btn-ghost" href="#menyu">Menyuya bax</a>
+      </div>
+      <div class="trust">
+        <span class="stars">★★★★★</span>
+        <span><strong>850+</strong> xoşbəxt müştəri · <strong>1650+</strong> sifariş</span>
+      </div>
+    </div>
+    <div class="hero-art reveal in">
+      <div class="arch">
+        <img src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg" alt="Bantiklı bento tort" width="600" height="600" fetchpriority="high">
+      </div>
+      <div class="chip chip-1"><span class="ico">🍓</span><span>Təbii inqrediyentlər<small>heç bir hazır qarışıq yoxdur</small></span></div>
+      <div class="chip chip-2"><span class="ico">🎁</span><span>Şam + qaşıq<small>hər sifarişə hədiyyə</small></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- USP -->
+<section class="usp">
+  <div class="container">
+    <div class="usp-item reveal">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.5 3.5-7"/></svg></span>
+      <div><h3>Təbii inqrediyentlər</h3><p>Hər krem və biskvit sıfırdan, xam məhsullarla hazırlanır.</p></div>
+    </div>
+    <div class="usp-item reveal">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M8 4.5c-2.4 1.2-4 3.3-4 6 0 .8.1 1.5.4 2.2M16 4.5c2.4 1.2 4 3.3 4 6 0 .8-.1 1.5-.4 2.2"/><path d="M4 15h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2Z"/></svg></span>
+      <div><h3>Sifarişlə hazırlanma</h3><p>Dizayn, yazı və dad — hər şey sizin istəyinizə uyğun.</p></div>
+    </div>
+    <div class="usp-item reveal">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3V6a1 1 0 0 1 1-1h9v12"/><path d="M13 8h4l3 4v5h-2"/><circle cx="7.5" cy="17.5" r="2"/><circle cx="16.5" cy="17.5" r="2"/></svg></span>
+      <div><h3>Sürətli çatdırılma</h3><p>Sifarişiniz gün ərzində ünvanınıza çatdırılır.</p></div>
+    </div>
+    <div class="usp-item reveal">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 6.5 5.5 5.5 0 0 1 21.5 12C19 16.4 12 21 12 21Z"/></svg></span>
+      <div><h3>Məmnuniyyat</h3><p>850+ müştərimizin sevinci bizim ən böyük mükafatımızdır.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="section" id="menyu">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Menyu</span>
+      <h2>Ən sevilən tortlarımız</h2>
+      <p>Bento tortlar 1–2 nəfərlik (350–400 q) və 3–4 nəfərlik (800–900 q) hazırlanır. Cake to go — 2, 4, 6 və ya 8 ədədlik qutularda.</p>
+    </div>
+    <div class="tabs reveal" id="tabs">
+      <button class="tab active" data-f="all">Hamısı</button>
+      <button class="tab" data-f="bento">Bento tort</button>
+      <button class="tab" data-f="ctg">Cake to go</button>
+    </div>
+    <div class="grid" id="pgrid">
+      <div class="card reveal" data-c="bento">
+        <div class="ph"><span class="badge">Hit</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla-1-600x600.jpg" alt="Bento tort Sevgilim" width="600" height="600"></div>
+        <div class="body"><h3>Bento tort Sevgilim</h3><div class="price">25 – 35 ₼</div></div>
+        <a class="order" data-wa data-p="Bento tort Sevgilim" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+      </div>
+      <div class="card reveal" data-c="bento">
+        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg" alt="Bento tort bantik" width="600" height="600"></div>
+        <div class="body"><h3>Bento tort Bantik</h3><div class="price">35 – 60 ₼</div></div>
+        <a class="order" data-wa data-p="Bento tort Bantik" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+      </div>
+      <div class="card reveal" data-c="bento">
+        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_248100673_609196293748610_903340673830523120_n-600x600.jpg" alt="Bento tort Bear" width="600" height="600"></div>
+        <div class="body"><h3>Bento tort Bear</h3><div class="price">25 – 35 ₼</div></div>
+        <a class="order" data-wa data-p="Bento tort Bear" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+      </div>
+      <div class="card reveal" data-c="bento">
+        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla444-600x600.jpg" alt="Bento tort Sweet" width="600" height="600"></div>
+        <div class="body"><h3>Bento tort Sweet</h3><div class="price">25 – 35 ₼</div></div>
+        <a class="order" data-wa data-p="Bento tort Sweet" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+      </div>
+      <div class="card reveal" data-c="bento">
+        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla6-600x600.jpg" alt="Bento tort Love you" width="600" height="600"></div>
+        <div class="body"><h3>Bento tort Love you</h3><div class="price">25 – 35 ₼</div></div>
+        <a class="order" data-wa data-p="Bento tort Love you" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+      </div>
+      <div class="card reveal" data-c="bento">
+        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1722410107_highlight18253086958008641-600x600.jpg" alt="Bento tort Baby 8 months" width="600" height="600"></div>
+        <div class="body"><h3>Bento tort Baby</h3><div class="price">25 – 60 ₼</div></div>
+        <a class="order" data-wa data-p="Bento tort Baby" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+      </div>
+      <div class="card reveal" data-c="ctg">
+        <div class="ph"><span class="badge">Yeni</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977404_3311464938185466334_3523099162-600x600.jpg" alt="Cake to go Love" width="600" height="600"></div>
+        <div class="body"><h3>Cake to go — Love</h3><div class="price">25 – 100 ₼</div></div>
+        <a class="order" data-wa data-p="Cake to go Love" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+      </div>
+      <div class="card reveal" data-c="ctg">
+        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1712262810_3339024920686659731_3523099162-3-600x600.jpg" alt="Cake to go Happy Birthday" width="600" height="600"></div>
+        <div class="body"><h3>Cake to go — Birthday</h3><div class="price">25 – 100 ₼</div></div>
+        <a class="order" data-wa data-p="Cake to go Birthday" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+      </div>
+    </div>
+    <div class="center more-wrap reveal">
+      <a class="btn btn-ghost" href="https://www.instagram.com/vanilla_cake_az/" target="_blank" rel="noopener">120+ tort növü — hamısına bax</a>
+    </div>
+  </div>
+</section>
+
+<!-- Steps -->
+<section class="section steps-band" id="sifaris">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Sifariş qaydası</span>
+      <h2>3 addımda şirin sifariş</h2>
+      <p>Onlayn ödəniş yoxdur — hər şey öncədən razılaşdırılır, ödəniş çatdırılma zamanı və ya kartdan karta.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+        <h3>Tortunu seç</h3>
+        <p>Menyudan və ya İnstagram səhifəmizdən bəyəndiyin dizaynı seç. Öz ideyanı da göndərə bilərsən.</p>
+      </div>
+      <div class="step reveal">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L3 21l1.9-5.6A8.5 8.5 0 1 1 21 11.5Z"/></svg></span>
+        <h3>WhatsApp-a yaz</h3>
+        <p>Tarixi, dadı və tort üzərindəki yazını bildir. Nə qədər tez yazsan, istədiyin tarix bir o qədər mümkün olar.</p>
+      </div>
+      <div class="step reveal">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7 9 18l-5-5"/></svg></span>
+        <h3>Təsdiqlə və həzz al</h3>
+        <p>Sifarişin təyin olunan gündə ünvanına çatdırılır. Şam və qaşıq — bizdən hədiyyə.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Flavors -->
+<section class="section" id="dadlar">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Dadını seç</span>
+      <h2>Biskvit və tərkiblər</h2>
+    </div>
+    <div class="flavors">
+      <div class="flavor-card reveal">
+        <h3>🎂 Biskvit növü</h3>
+        <div class="chips"><span>Red velvet</span><span>Şokoladlı</span><span>Vanilli</span></div>
+      </div>
+      <div class="flavor-card reveal">
+        <h3>🍓 Tərkib</h3>
+        <div class="chips"><span>Çiyələkli konfitür</span><span>Malina konfitür</span><span>Vişnəli</span></div>
+      </div>
+      <div class="flavor-note reveal">
+        <span class="g">🎁</span>
+        <span><strong>Hədiyyə:</strong> hər bento tort sifarişinə 1 ədəd şam və qaşıq bizim tərəfimizdən hədiyyə edilir.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section about" id="haqqimizda">
+  <div class="container">
+    <div class="about-art reveal">
+      <div class="frame">
+        <img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977404_3311464938185466334_3523099162-600x600.jpg" alt="Vanilla Cake — cake to go" width="600" height="600">
+      </div>
+      <div class="script-stamp">bir dadım eşq</div>
+    </div>
+    <div>
+      <span class="eyebrow">Haqqımızda</span>
+      <h2>Sevgi ilə bişirilən hekayə</h2>
+      <p>Vanilla.az — öz işinə sevgi və məsuliyyətlə yanaşan gənc bir xanımın arzusunun nəticəsidir. Heç bir məhsulumuzda «sadəcə su əlavə et» prinsipi ilə işləmirik: hər krem, keks və sous sıfırdan, xam məhsullarla hazırlanır.</p>
+      <p>Biz kəmiyyəti yox, keyfiyyəti əsas götürürük — özəl günlərinizin sevimlisi olacaq şirniyyatlar ərsəyə gətiririk.</p>
+      <div class="stats">
+        <div class="stat"><b data-count="850">0</b><span>xoşbəxt müştəri</span></div>
+        <div class="stat"><b data-count="1650">0</b><span>sifariş</span></div>
+        <div class="stat"><b data-count="120">0</b><span>tort növü</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" style="padding-top:0">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Tez-tez verilən suallar</h2>
+    </div>
+    <div class="faq reveal">
+      <details open>
+        <summary>Sifarişi necə edə bilərəm?</summary>
+        <div class="a">WhatsApp nömrəmizə yazaraq və ya İnstagram səhifəmizdən müraciət edərək sifariş verə bilərsiniz. Nə qədər tez sifariş etsəniz, istədiyiniz tarixə uyğun hazırlamaq bir o qədər mümkün olar.</div>
+      </details>
+      <details>
+        <summary>Ödəniş necə aparılır?</summary>
+        <div class="a">Onlayn ödəniş tələb olunmur — ödənişi çatdırılma zamanı nağd və ya kartdan karta (card to card) edə bilərsiniz.</div>
+      </details>
+      <details>
+        <summary>Bento tort neçə nəfərlikdir?</summary>
+        <div class="a">Bento tortlarımız 1–2 nəfərlik üçün 350–400 qram, 3–4 nəfərlik üçün 800–900 qram nəzərdə tutulur. Klassik tort sifarişi isə minimum 2 kq-dan götürülür.</div>
+      </details>
+      <details>
+        <summary>Tortu necə saxlamalıyam?</summary>
+        <div class="a">Tort mütləq soyuducuda saxlanılmalıdır. Daşıyarkən düz səthə yerləşdirin, yayda kondisionerlə, qışda birbaşa istilik olmadan aparın. 5 saatdan çox saxlanacaqsa, qutuda saxlamaq daha yaxşıdır.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Instagram -->
+<section class="insta">
+  <div class="container">
+    <div class="script reveal">@vanilla_cake_az</div>
+    <p class="reveal">Ən yeni işlərimiz, real sifarişlər və müştəri rəyləri — hər gün İnstagram səhifəmizdə.</p>
+    <a class="btn btn-light reveal" href="https://www.instagram.com/vanilla_cake_az/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg>
+      İnstagramda izlə
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="elaqe">
+  <div class="container">
+    <div class="grid-f">
+      <div>
+        <a class="logo" href="#">
+          <span class="script" style="font-family:var(--font-script);font-size:32px">Vanilla Cake</span>
+          <span class="sub">bir dadım eşq</span>
+        </a>
+        <p class="about-f">Bakıda sifarişlə hazırlanan bento tortlar və cake to go. Təbii inqrediyentlər, əl işi, sevgi ilə.</p>
+      </div>
+      <div>
+        <h4>Menyu</h4>
+        <ul>
+          <li><a href="#menyu">Bento tortlar</a></li>
+          <li><a href="#menyu">Cake to go</a></li>
+          <li><a href="#dadlar">Dadlar</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Şirkət</h4>
+        <ul>
+          <li><a href="#haqqimizda">Haqqımızda</a></li>
+          <li><a href="#sifaris">Sifariş qaydası</a></li>
+          <li><a href="https://www.instagram.com/vanilla_cake_az/" target="_blank" rel="noopener">Rəylər</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Əlaqə</h4>
+        <ul class="f-contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 1.9Z"/></svg><a href="tel:+994552156343">+994 55 215 63 43</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 6 9 7 9-7"/></svg><a href="mailto:info@vanilla.az">info@vanilla.az</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span>Hər gün 09:00 – 21:00</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Vanilla.az — Bütün hüquqlar qorunur</span>
+      <div class="socials">
+        <a href="https://www.instagram.com/vanilla_cake_az/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.facebook.com/vanillacakeaz" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V7a1.5 1.5 0 0 1 1.5-1.5H17V2h-3a4 4 0 0 0-4 4v2.5H7.5V12H10v10h4V12h2.6l.9-3.5H14Z"/></svg></a>
+        <a data-wa href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.2 1.2Z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile CTA -->
+<div class="mob-cta">
+  <a class="btn btn-ghost" href="tel:+994552156343" style="flex:0 0 auto;padding:14px 18px">📞</a>
+  <a class="btn wa-green" data-wa href="#">WhatsApp ilə sifariş et</a>
+</div>
+
+<script>
+// WhatsApp links
+var WA='https://wa.me/994552156343?text=';
+document.querySelectorAll('[data-wa]').forEach(function(a){
+  var p=a.getAttribute('data-p');
+  var msg=p?'Salam! "'+p+'" sifariş etmək istəyirəm.':'Salam! Tort sifariş etmək istəyirəm.';
+  a.href=WA+encodeURIComponent(msg);
+  a.target='_blank';a.rel='noopener';
+});
+// Mobile menu
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+// Tabs filter
+document.getElementById('tabs').addEventListener('click',function(e){
+  var b=e.target.closest('.tab');if(!b)return;
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+  b.classList.add('active');
+  var f=b.getAttribute('data-f');
+  document.querySelectorAll('#pgrid .card').forEach(function(c){
+    c.style.display=(f==='all'||c.getAttribute('data-c')===f)?'':'none';
+  });
+});
+// Reveal on scroll + counters (with no-IO fallback: content stays visible)
+if('IntersectionObserver' in window){
+  document.documentElement.classList.add('anim');
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  var cio=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(!en.isIntersecting)return;cio.unobserve(en.target);
+      var el=en.target,to=+el.getAttribute('data-count'),t0=null;
+      function tick(ts){if(!t0)t0=ts;var k=Math.min((ts-t0)/1200,1);el.textContent=Math.round(to*(1-Math.pow(1-k,3)))+'+';if(k<1)requestAnimationFrame(tick)}
+      requestAnimationFrame(tick);
+    });
+  },{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el)});
+}else{
+  document.querySelectorAll('[data-count]').forEach(function(el){el.textContent=el.getAttribute('data-count')+'+'});
+}
+</script>
+</body>
+</html>
