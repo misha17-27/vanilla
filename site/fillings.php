@@ -36,11 +36,7 @@ $cards = [
         <div class="fil-body">
           <p class="desc"><?= e($t["fld{$k}"]) ?></p>
           <div class="fc-label"><?= e($t['fl_choose']) ?></div>
-          <ul>
-            <?php foreach ($t["fl{$k}_items"] as $item): ?>
-            <li><?= e($item) ?></li>
-            <?php endforeach; ?>
-          </ul>
+          <?php filling_rows($k); ?>
         </div>
       </article>
       <?php endforeach; ?>

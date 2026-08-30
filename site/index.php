@@ -232,11 +232,7 @@ $ctg    = products_of('ctg');
           <div class="fc-sub"><?= e($t["fl{$i}_s"]) ?></div>
         </div>
         <div class="fc-label"><?= e($t['fl_choose']) ?></div>
-        <ul>
-          <?php foreach ($t["fl{$i}_items"] as $item): ?>
-          <li><?= e($item) ?></li>
-          <?php endforeach; ?>
-        </ul>
+        <?php filling_rows($i); ?>
       </div>
       <?php endforeach; ?>
     </div>

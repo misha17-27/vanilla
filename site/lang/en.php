@@ -168,6 +168,13 @@ return [
   'pd_time' => 'We work by pre-order only: every cake is baked for a specific date. Message us in advance on WhatsApp to agree on the day and time. The earlier you order, the easier it is to get your date — especially before holidays.',
   'pd_del' => 'Delivery in Baku: Monday to Friday by courier service from 11:00 to 20:00 or by Bolt Delivery from 11:00 to 22:00; Saturday — 11:00 to 14:00. Sunday — closed. We confirm the delivery details on WhatsApp when you order.',
   'related_h' => 'Similar designs',
+  'opt_size' => 'Size',
+  'opt_sponge' => 'Sponge',
+  'opt_fill' => 'Filling',
+  'sizes_opt_bento' => [['1–2 people · 300–350 g', 25], ['3–4 people · 750–800 g', 35], ['7–8 people · 1200–1500 g', 60]],
+  'sizes_opt_bantik' => [['3–4 people · 750–800 g', 35], ['7–8 people · 1200–1500 g', 60]],
+  'sizes_opt_set' => [['Set of 3 mini bentos', 75], ['Set of 4 mini bentos', 100]],
+  'sizes_opt_ctg' => [['2 pcs × 170–190 g', 25], ['2 pcs × 270–290 g', 30]],
 
   'nav_fillings' => 'Fillings',
   'occ_t' => 'Cakes for every occasion',

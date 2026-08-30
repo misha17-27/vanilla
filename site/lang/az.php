@@ -168,6 +168,13 @@ return [
   'pd_time' => 'Yalnız öncədən sifarişlə işləyirik: hər tort konkret tarix üçün bişirilir. Əvvəlcədən WhatsApp-da yazın — günü və saatı razılaşdıraq. Nə qədər tez sifariş etsəniz, istədiyiniz tarixi tutmaq bir o qədər asan olar, xüsusilə bayramqabağı.',
   'pd_del' => 'Bakı üzrə çatdırılma: bazar ertəsindən cüməyə qədər kuryer xidməti ilə 11:00–20:00 və ya Bolt Delivery ilə 11:00–22:00; şənbə — 11:00–14:00. Bazar günü — istirahət. Çatdırılma detallarını sifariş zamanı WhatsApp-da dəqiqləşdiririk.',
   'related_h' => 'Oxşar dizaynlar',
+  'opt_size' => 'Ölçü',
+  'opt_sponge' => 'Biskvit',
+  'opt_fill' => 'Tərkib',
+  'sizes_opt_bento' => [['1–2 nəfərlik · 300–350 q', 25], ['3–4 nəfərlik · 750–800 q', 35], ['7–8 nəfərlik · 1200–1500 q', 60]],
+  'sizes_opt_bantik' => [['3–4 nəfərlik · 750–800 q', 35], ['7–8 nəfərlik · 1200–1500 q', 60]],
+  'sizes_opt_set' => [['3 mini bentodan ibarət set', 75], ['4 mini bentodan ibarət set', 100]],
+  'sizes_opt_ctg' => [['2 ədəd × 170–190 q', 25], ['2 ədəd × 270–290 q', 30]],
 
   'nav_fillings' => 'Tərkiblər',
   'occ_t' => 'Hər fürsət üçün tortlar',

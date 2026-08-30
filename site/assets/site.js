@@ -9,6 +9,37 @@ if (burger && menu) {
     if (e.target.tagName === 'A') menu.classList.remove('open');
   });
 }
+// Product configurator (size / sponge / filling -> price + WhatsApp message)
+(function () {
+  var cfg = window.PROD_CFG;
+  if (!cfg) return;
+  var sizeSel = document.getElementById('opt-size');
+  var spongeSel = document.getElementById('opt-sponge');
+  var fillSel = document.getElementById('opt-fill');
+  var priceEl = document.getElementById('prod-price');
+  var orderEl = document.getElementById('prod-order');
+  if (!sizeSel || !spongeSel || !fillSel || !priceEl || !orderEl) return;
+
+  function refillFillings() {
+    var items = cfg.sponges[spongeSel.selectedIndex][1];
+    fillSel.innerHTML = items.map(function (i) {
+      return '<option>' + i.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</option>';
+    }).join('');
+  }
+  function update() {
+    var size = cfg.sizes[sizeSel.selectedIndex];
+    priceEl.textContent = size[1] + ' ₼';
+    var msg = cfg.intro
+      + ' ' + cfg.labels.size + ': ' + size[0] + '.'
+      + ' ' + cfg.labels.sponge + ': ' + cfg.sponges[spongeSel.selectedIndex][0] + '.'
+      + ' ' + cfg.labels.fill + ': ' + fillSel.value + '.';
+    orderEl.href = cfg.wa + encodeURIComponent(msg);
+  }
+  sizeSel.addEventListener('change', update);
+  spongeSel.addEventListener('change', function () { refillFillings(); update(); });
+  fillSel.addEventListener('change', update);
+  update();
+})();
 // Product page tabs
 document.querySelectorAll('.tabs-wrap').forEach(function (wrap) {
   wrap.addEventListener('click', function (e) {

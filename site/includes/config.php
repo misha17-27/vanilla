@@ -131,6 +131,36 @@ function product_name(array $p): string
     }
 }
 
+// ===== Fillings photos (порядок = fl{i}_items в lang-файлах) =====
+$FILLING_IMGS = [
+    1 => ['fill-v-banan', 'fill-v-ciyelek', 'fill-v-visne', 'fill-v-malina', 'fill-v-karamel', 'fill-v-karamel-banan', 'fill-v-krem'],
+    2 => ['fill-s-ciyelek', 'fill-s-malina', 'fill-s-visne', 'fill-s-banan', 'fill-s-karamel', 'fill-s-snikers', 'fill-s-krem'],
+    3 => ['fill-r-ciyelek', 'fill-r-visne', 'fill-r-malina'],
+];
+
+function filling_img(int $sponge, int $idx): string
+{
+    global $FILLING_IMGS;
+    $f = $FILLING_IMGS[$sponge][$idx] ?? '';
+    return $f !== '' ? '/assets/img/fillings/' . $f . '.jpg' : '';
+}
+
+// Photo rows list for one sponge
+function filling_rows(int $sponge): void
+{
+    global $t;
+    echo '<div class="fill-rows">';
+    foreach ($t["fl{$sponge}_items"] as $idx => $label) {
+        $img = filling_img($sponge, $idx);
+        echo '<span class="fr">';
+        if ($img !== '') {
+            echo '<img loading="lazy" src="' . e($img) . '" alt="' . e($label) . '" width="480" height="480">';
+        }
+        echo '<i>' . e($label) . '</i></span>';
+    }
+    echo '</div>';
+}
+
 // Render one product card
 function product_card(array $p, bool $lazy = true): void
 {
