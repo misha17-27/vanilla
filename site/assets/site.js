@@ -27,6 +27,9 @@ if (burger && menu) {
     }).join('');
   }
   var designUrl = '';
+  var selDate = null;
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  function fmtDate(d) { return pad2(d.getDate()) + '.' + pad2(d.getMonth() + 1) + '.' + d.getFullYear(); }
   function update() {
     var size = cfg.sizes[sizeSel.selectedIndex];
     priceEl.textContent = size[1] + ' ₼';
@@ -34,6 +37,7 @@ if (burger && menu) {
       + ' ' + cfg.labels.size + ': ' + size[0] + '.'
       + ' ' + cfg.labels.sponge + ': ' + cfg.sponges[spongeSel.selectedIndex][0] + '.'
       + ' ' + cfg.labels.fill + ': ' + fillSel.value + '.';
+    if (selDate) msg += ' ' + cfg.labels.date + ': ' + fmtDate(selDate) + '.';
     if (designUrl) msg += ' ' + cfg.design + ': ' + designUrl;
     orderEl.href = cfg.wa + encodeURIComponent(msg);
   }
@@ -41,6 +45,61 @@ if (burger && menu) {
   spongeSel.addEventListener('change', function () { refillFillings(); update(); });
   fillSel.addEventListener('change', update);
   update();
+
+  // Календарь желаемой даты (воскресенья — выходной — недоступны)
+  var dateBtn = document.getElementById('opt-date');
+  var dateVal = document.getElementById('date-val');
+  var cal = document.getElementById('cal');
+  var calTitle = document.getElementById('cal-title');
+  var calGrid = document.getElementById('cal-grid');
+  var calPrev = document.getElementById('cal-prev');
+  var calNext = document.getElementById('cal-next');
+  if (dateBtn && cal) {
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var minD = new Date(today); minD.setDate(minD.getDate() + 1);
+    var maxD = new Date(today); maxD.setDate(maxD.getDate() + 60);
+    var view = new Date(minD.getFullYear(), minD.getMonth(), 1);
+    var mFmt = new Intl.DateTimeFormat(cfg.locale, { month: 'long', year: 'numeric' });
+    var wdFmt = new Intl.DateTimeFormat(cfg.locale, { weekday: 'short' });
+    function mIdx(d) { return d.getFullYear() * 12 + d.getMonth(); }
+    function renderCal() {
+      calTitle.textContent = mFmt.format(view);
+      var html = '';
+      for (var w = 0; w < 7; w++) { // 2024-01-01 — понедельник
+        html += '<span class="cal-wd' + (w === 6 ? ' sun' : '') + '">' + wdFmt.format(new Date(2024, 0, 1 + w)) + '</span>';
+      }
+      var startIdx = (new Date(view.getFullYear(), view.getMonth(), 1).getDay() + 6) % 7;
+      for (var b = 0; b < startIdx; b++) html += '<span></span>';
+      var dim = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+      for (var d = 1; d <= dim; d++) {
+        var dt = new Date(view.getFullYear(), view.getMonth(), d);
+        var dis = dt < minD || dt > maxD || dt.getDay() === 0;
+        var sel = selDate && dt.getTime() === selDate.getTime();
+        html += '<button type="button" class="cal-day' + (dis ? ' dis' : '') + (sel ? ' sel' : '') + '" data-d="' + d + '"' + (dis ? ' disabled' : '') + '>' + d + '</button>';
+      }
+      calGrid.innerHTML = html;
+      calPrev.disabled = mIdx(view) <= mIdx(minD);
+      calNext.disabled = mIdx(view) >= mIdx(maxD);
+    }
+    calGrid.addEventListener('click', function (e) {
+      var b = e.target.closest('.cal-day');
+      if (!b || b.disabled) return;
+      selDate = new Date(view.getFullYear(), view.getMonth(), +b.getAttribute('data-d'));
+      dateVal.textContent = fmtDate(selDate);
+      dateVal.classList.add('has');
+      cal.hidden = true;
+      update();
+    });
+    calPrev.addEventListener('click', function () { view.setMonth(view.getMonth() - 1); renderCal(); });
+    calNext.addEventListener('click', function () { view.setMonth(view.getMonth() + 1); renderCal(); });
+    dateBtn.addEventListener('click', function () {
+      cal.hidden = !cal.hidden;
+      if (!cal.hidden) renderCal();
+    });
+    document.addEventListener('click', function (e) {
+      if (!cal.hidden && !cal.contains(e.target) && !dateBtn.contains(e.target)) cal.hidden = true;
+    });
+  }
 
   // «Отправьте свой дизайн» — загрузка фото
   var upInput = document.getElementById('up-input');

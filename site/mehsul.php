@@ -89,6 +89,24 @@ require __DIR__ . '/includes/header.php';
               <?php endforeach; ?>
             </select>
           </div>
+          <div class="opt-row">
+            <label><?= e($t['opt_date']) ?></label>
+            <div class="date-wrap">
+              <button type="button" class="date-btn" id="opt-date">
+                <span id="date-val"><?= e($t['date_ph']) ?></span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="17" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+              </button>
+              <div class="cal" id="cal" hidden>
+                <div class="cal-head">
+                  <button type="button" id="cal-prev" aria-label="Prev">‹</button>
+                  <b id="cal-title"></b>
+                  <button type="button" id="cal-next" aria-label="Next">›</button>
+                </div>
+                <div class="cal-grid" id="cal-grid"></div>
+                <div class="cal-note"><?= e($t['date_note']) ?></div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="up-box" id="up-box">
@@ -174,7 +192,8 @@ require __DIR__ . '/includes/header.php';
 <script>
 window.PROD_CFG = <?= json_encode([
     'intro'   => sprintf($t['wa_msg_p'], $name),
-    'labels'  => ['size' => $t['opt_size'], 'sponge' => $t['opt_sponge'], 'fill' => $t['opt_fill']],
+    'labels'  => ['size' => $t['opt_size'], 'sponge' => $t['opt_sponge'], 'fill' => $t['opt_fill'], 'date' => $t['opt_date']],
+    'locale'  => $lang,
     'sizes'   => $sizeOpts,
     'sponges' => [
         [$t['fl1_t'], $t['fl1_items']],

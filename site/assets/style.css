@@ -316,6 +316,26 @@ a.contact-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .fr{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink)}
 .fr img{flex:none;width:52px;height:52px;border-radius:50%;object-fit:cover;border:2.5px solid #fff;box-shadow:var(--shadow-s)}
 .fr i{font-style:normal}
+/* Date picker */
+.date-wrap{position:relative}
+.date-btn{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:#fff;font-family:var(--sans);font-size:14px;color:var(--text);cursor:pointer;text-align:left;transition:.2s}
+.date-btn:hover{border-color:rgba(22,82,127,.4)}
+.date-btn svg{flex:none;width:17px;height:17px;color:var(--navy)}
+#date-val.has{color:var(--ink);font-weight:600}
+.cal{position:absolute;z-index:40;top:calc(100% + 8px);left:0;width:296px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:16px}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cal-head b{font-family:var(--sans);font-size:13.5px;font-weight:700;color:var(--navy);text-transform:capitalize}
+.cal-head button{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--navy);font-size:16px;line-height:1;cursor:pointer;transition:.2s}
+.cal-head button:hover:not(:disabled){border-color:var(--pink);color:var(--pink)}
+.cal-head button:disabled{opacity:.3;cursor:default}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-wd{font-size:10px;font-weight:700;letter-spacing:.04em;color:var(--text);text-transform:uppercase;text-align:center;padding:4px 0 6px}
+.cal-wd.sun{color:#C4344C;opacity:.65}
+.cal-day{aspect-ratio:1;border:none;background:none;border-radius:50%;font-family:var(--sans);font-size:13px;color:var(--ink);cursor:pointer;transition:.15s;padding:0}
+.cal-day:hover:not(.dis){background:var(--pink-mist);color:var(--pink-deep)}
+.cal-day.dis{color:#C9D2DA;cursor:default}
+.cal-day.sel{background:var(--pink);color:#fff;font-weight:700}
+.cal-note{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:11px;color:var(--text);text-align:center;line-height:1.5}
 /* Upload your design */
 .up-box{margin-top:16px;max-width:440px}
 .up-idle{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#fff;border:1.5px dashed rgba(22,82,127,.35);border-radius:14px;padding:14px 16px;cursor:pointer;font-family:var(--sans);transition:.2s}
