@@ -15,8 +15,8 @@ $ctg    = products_of('ctg');
 $heroSlides = [
     ['eye' => $t['hero_eyebrow'], 'title' => $t['hero_h'],  'lead' => $t['hero_lead'], 'url' => '/bolme/bento-tort/',        'btn' => $t['hero_cta2'],     'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg', 'h1' => true],
     ['eye' => $t['bantik_h'],     'title' => $t['hs2_t'],   'lead' => $t['hs2_d'],     'url' => '/bolme/bento-tort/#bantik', 'btn' => $t['btn_all_bento'], 'img' => '/assets/img/bantik-blush.jpg'],
-    ['eye' => $t['sets_h'],       'title' => $t['hs3_t'],   'lead' => $t['hs3_d'],     'url' => '/bolme/bento-tort/#sets',   'btn' => $t['btn_all_bento'], 'img' => '/assets/img/set-pinky.jpg'],
-    ['eye' => $t['sec_ctg_t'],    'title' => $t['hs4_t'],   'lead' => $t['hs4_d'],     'url' => '/bolme/cake-to-go/',        'btn' => $t['btn_all_ctg'],   'img' => '/assets/img/ctg-love.jpg'],
+    ['eye' => $t['sets_h'],       'title' => $t['hs3_t'],   'lead' => $t['hs3_d'],     'url' => '/bolme/bento-tort/#sets',   'btn' => $t['btn_all_bento'], 'img' => '/assets/img/set-white.jpg'],
+    ['eye' => $t['sec_ctg_t'],    'title' => $t['hs4_t'],   'lead' => $t['hs4_d'],     'url' => '/bolme/cake-to-go/',        'btn' => $t['btn_all_ctg'],   'img' => '/assets/img/ctg-minimal.jpg'],
 ];
 ?>
 <section class="hero">
