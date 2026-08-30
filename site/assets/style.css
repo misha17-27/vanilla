@@ -95,7 +95,7 @@ html.anim .reveal.in{opacity:1;transform:none}
 .trust .stars{color:var(--gold);letter-spacing:3px;font-size:14px}
 .trust strong{color:var(--navy)}
 .hero-art{position:relative}
-.hero-ph{border-radius:280px 280px var(--radius) var(--radius);overflow:hidden;border:10px solid #fff;box-shadow:var(--shadow);aspect-ratio:4/4.8;background:var(--pink-mist)}
+.hero-ph{border-radius:36px;overflow:hidden;border:10px solid #fff;box-shadow:var(--shadow);aspect-ratio:1;background:var(--pink-mist)}
 .hero-ph img{width:100%;height:100%;object-fit:cover}
 .hero-badge{position:absolute;left:-26px;bottom:52px;background:#fff;border-radius:16px;box-shadow:var(--shadow-s);padding:16px 22px;display:flex;gap:14px;align-items:center;max-width:270px}
 .hero-badge .dot{flex:none;width:44px;height:44px;border-radius:50%;background:var(--pink-mist);display:grid;place-items:center;color:var(--pink)}
