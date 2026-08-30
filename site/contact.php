@@ -20,6 +20,7 @@ require __DIR__ . '/includes/header.php';
 
 <section class="catalog">
   <div class="container">
+    <div class="contact-layout">
     <div class="contact-grid">
       <a class="contact-card wa reveal" href="<?= e(wa_link()) ?>" target="_blank" rel="noopener">
         <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.2 1.2Z"/></svg></span>
@@ -65,6 +66,33 @@ require __DIR__ . '/includes/header.php';
           <span class="val" style="font-size:14.5px"><?= e($t['delivery_d']) ?></span>
         </span>
       </div>
+      <a class="contact-card reveal" href="<?= MAP_URL ?>" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+        <span>
+          <h3><?= e($t['contact_addr']) ?></h3>
+          <span class="val"><?= e($t['contact_addr_v']) ?></span>
+          <small><?= e($t['contact_map']) ?></small>
+        </span>
+      </a>
+    </div>
+
+    <div class="contact-map reveal">
+      <iframe src="https://maps.google.com/maps?q=<?= MAP_LAT ?>,<?= MAP_LNG ?>&z=16&hl=<?= e($lang) ?>&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Vanilla — Google Maps"></iframe>
+      <a class="map-open" href="<?= MAP_URL ?>" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        <?= e($t['contact_map']) ?>
+      </a>
+      <div class="map-routes">
+        <a href="https://www.google.com/maps/dir/?api=1&destination=<?= MAP_LAT ?>,<?= MAP_LNG ?>" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-8-8 18-2.5-7.5L3 11Z"/></svg>
+          <?= e($t['contact_route']) ?> · Google
+        </a>
+        <a href="https://waze.com/ul?ll=<?= MAP_LAT ?>,<?= MAP_LNG ?>&navigate=yes" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-8-8 18-2.5-7.5L3 11Z"/></svg>
+          <?= e($t['contact_route']) ?> · Waze
+        </a>
+      </div>
+    </div>
     </div>
 
     <div class="contact-note reveal">

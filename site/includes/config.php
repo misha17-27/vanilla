@@ -21,6 +21,9 @@ const EMAIL         = 'info@vanilla.az';
 const IG_URL        = 'https://www.instagram.com/vanilla_cake_az/';
 const IG_HANDLE     = '@vanilla_cake_az';
 const FB_URL        = 'https://www.facebook.com/vanillacakeaz';
+const MAP_URL       = 'https://www.google.com/maps/place/Vanilla/@40.4196217,49.8047583,17z/data=!3m1!4b1!4m6!3m5!1s0x40308751a035afbd:0xb1a83ee0808b7a8d!8m2!3d40.4196217!4d49.8073332!16s%2Fg%2F11rnpg56rn';
+const MAP_LAT       = '40.4196217';
+const MAP_LNG       = '49.8073332';
 const CANON_HOST    = 'https://vanilla.az'; // production domain for canonical/sitemap
 
 function e(string $s): string

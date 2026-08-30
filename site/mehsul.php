@@ -73,20 +73,23 @@ require __DIR__ . '/includes/header.php';
             </select>
           </div>
           <div class="opt-row">
-            <label for="opt-sponge"><?= e($t['opt_sponge']) ?></label>
-            <select id="opt-sponge">
-              <?php foreach ([1, 2, 3] as $i): ?>
-              <option value="<?= $i ?>"><?= e($t["fl{$i}_t"]) ?></option>
-              <?php endforeach; ?>
-            </select>
+            <label><?= e($t['opt_sponge']) ?> · <?= e($t['opt_fill']) ?></label>
+            <div class="duo">
+              <select id="opt-sponge">
+                <?php foreach ([1, 2, 3] as $i): ?>
+                <option value="<?= $i ?>"><?= e($t["fl{$i}_t"]) ?></option>
+                <?php endforeach; ?>
+              </select>
+              <select id="opt-fill">
+                <?php foreach ($t['fl1_items'] as $item): ?>
+                <option><?= e($item) ?></option>
+                <?php endforeach; ?>
+              </select>
+            </div>
           </div>
           <div class="opt-row">
-            <label for="opt-fill"><?= e($t['opt_fill']) ?></label>
-            <select id="opt-fill">
-              <?php foreach ($t['fl1_items'] as $item): ?>
-              <option><?= e($item) ?></option>
-              <?php endforeach; ?>
-            </select>
+            <label for="f-text"><?= e($t['f_text']) ?></label>
+            <input class="txt" type="text" id="f-text" placeholder="<?= e($t['f_text_ph']) ?>" maxlength="80">
           </div>
         </div>
 
@@ -195,28 +198,27 @@ require __DIR__ . '/includes/header.php';
         </select>
       </div>
       <div class="opt-row">
-        <label><?= e($t['opt_date']) ?></label>
-        <div class="date-wrap">
-          <button type="button" class="date-btn" id="opt-date">
-            <span id="date-val"><?= e($t['date_ph']) ?></span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="17" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
-          </button>
-          <div class="cal" id="cal" hidden>
-            <div class="cal-head">
-              <button type="button" id="cal-prev" aria-label="Prev">‹</button>
-              <b id="cal-title"></b>
-              <button type="button" id="cal-next" aria-label="Next">›</button>
+        <label><?= e($t['opt_date']) ?> · <?= e($t['opt_time']) ?></label>
+        <div class="duo">
+          <div class="date-wrap">
+            <button type="button" class="date-btn" id="opt-date">
+              <span id="date-val"><?= e($t['date_ph']) ?></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="17" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+            </button>
+            <div class="cal" id="cal" hidden>
+              <div class="cal-head">
+                <button type="button" id="cal-prev" aria-label="Prev">‹</button>
+                <b id="cal-title"></b>
+                <button type="button" id="cal-next" aria-label="Next">›</button>
+              </div>
+              <div class="cal-grid" id="cal-grid"></div>
+              <div class="cal-note"><?= e($t['date_note']) ?></div>
             </div>
-            <div class="cal-grid" id="cal-grid"></div>
-            <div class="cal-note"><?= e($t['date_note']) ?></div>
           </div>
+          <select id="opt-time">
+            <option value=""><?= e($t['time_ph']) ?></option>
+          </select>
         </div>
-      </div>
-      <div class="opt-row">
-        <label for="opt-time"><?= e($t['opt_time']) ?></label>
-        <select id="opt-time">
-          <option value=""><?= e($t['time_ph']) ?></option>
-        </select>
       </div>
       <div class="opt-row" id="row-address">
         <label for="f-address"><?= e($t['f_address']) ?></label>
@@ -256,7 +258,7 @@ window.PROD_CFG = <?= json_encode([
     'intro'   => sprintf($t['wa_msg_p'], $name),
     'labels'  => [
         'size' => $t['opt_size'], 'sponge' => $t['opt_sponge'], 'fill' => $t['opt_fill'],
-        'date' => $t['opt_date'], 'time' => $t['opt_time'], 'dl' => $t['opt_dl'],
+        'date' => $t['opt_date'], 'time' => $t['opt_time'], 'dl' => $t['opt_dl'], 'text' => $t['f_text'],
         'address' => $t['f_address'], 'name' => $t['f_name'], 'phone' => $t['f_phone'],
         'recipient' => $t['f_recipient'],
     ],

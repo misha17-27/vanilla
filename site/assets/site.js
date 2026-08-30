@@ -42,6 +42,7 @@ if (burger && menu) {
   var rowRphone = document.getElementById('row-rphone');
   var fRname = document.getElementById('f-rname');
   var fRphone = document.getElementById('f-rphone');
+  var fText = document.getElementById('f-text');
   function pad2(n) { return (n < 10 ? '0' : '') + n; }
   function fmtDate(d) { return pad2(d.getDate()) + '.' + pad2(d.getMonth() + 1) + '.' + d.getFullYear(); }
   // Слоты времени: будни/по умолчанию 11:00–20:00, суббота — только 11:00–14:00
@@ -70,6 +71,8 @@ if (burger && menu) {
       cfg.labels.sponge + ': ' + cfg.sponges[spongeSel.selectedIndex][0],
       cfg.labels.fill + ': ' + fillSel.value
     ];
+    var lettering = fText ? fText.value.replace(/[\u0000-\u001F\u007F]/g, ' ').trim() : '';
+    if (lettering) lines.push(cfg.labels.text + ': ' + lettering);
     if (selDate) lines.push(cfg.labels.date + ': ' + fmtDate(selDate));
     if (timeSel.value) lines.push(cfg.labels.time + ': ' + timeSel.value);
     lines.push(cfg.labels.dl + ': ' + dlSel.options[dlSel.selectedIndex].textContent);
@@ -103,8 +106,8 @@ if (burger && menu) {
   dlSel.addEventListener('change', function () { toggleFields(); update(); });
   timeSel.addEventListener('change', update);
   fOther.addEventListener('change', function () { toggleFields(); update(); });
-  [fAddress, fName, fPhone, fRname, fRphone].forEach(function (inp) {
-    inp.addEventListener('input', update);
+  [fAddress, fName, fPhone, fRname, fRphone, fText].forEach(function (inp) {
+    if (inp) inp.addEventListener('input', update);
   });
   refreshSlots();
   toggleFields();
