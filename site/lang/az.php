@@ -105,6 +105,8 @@ return [
   'stat2' => 'tamamlanmış sifariş',
   'stat3' => 'tort dizaynı',
 
+  'ig_fab_t' => 'İnstagramda daha çox tort',
+  'ig_fab_d' => 'Bütün çeşid — sifarişi elə orada da rəsmiləşdirə bilərsiniz',
   'ig_d' => 'Ən yeni işlərimiz və dizaynlarımız — hər gün İnstagram səhifəmizdə.',
   'ig_btn' => 'İnstagrama bax',
 
@@ -197,7 +199,10 @@ return [
   'time_ph' => 'Vaxtı seçin',
   'opt_dl' => 'Təhvil',
   'dl_courier' => 'Kuryerlə çatdırılma',
+  'dl_bolt' => 'Bolt Delivery',
   'dl_pickup' => 'Özün götür',
+  'dl_bolt_note' => 'Bolt kuryerini bizim ünvana siz özünüz çağırırsınız (kuryeri biz sifariş etmirik). Tort təhvilə hazır olanda WhatsApp-da xəbər verəcəyik.',
+  'dl_bolt_addr' => 'Ünvanımız Google Maps-da',
   'f_address' => 'Ünvan',
   'f_address_ph' => 'Küçə, ev, mənzil',
   'f_name' => 'Ad',

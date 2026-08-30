@@ -56,8 +56,10 @@ if (burger && menu) {
     }
     timeSel.innerHTML = html;
   }
+  var boltNote = document.getElementById('bolt-note');
   function toggleFields() {
     rowAddress.hidden = dlSel.value !== 'courier';
+    if (boltNote) boltNote.hidden = dlSel.value !== 'bolt';
     var other = fOther.checked;
     rowRname.hidden = !other;
     rowRphone.hidden = !other;

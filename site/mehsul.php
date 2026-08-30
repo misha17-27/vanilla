@@ -194,8 +194,13 @@ require __DIR__ . '/includes/header.php';
         <label for="opt-dl"><?= e($t['opt_dl']) ?></label>
         <select id="opt-dl">
           <option value="courier"><?= e($t['dl_courier']) ?></option>
+          <option value="bolt"><?= e($t['dl_bolt']) ?></option>
           <option value="pickup"><?= e($t['dl_pickup']) ?></option>
         </select>
+      </div>
+      <div class="bolt-note" id="bolt-note" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+        <span><?= e($t['dl_bolt_note']) ?> <a href="<?= MAP_URL ?>" target="_blank" rel="noopener"><?= e($t['dl_bolt_addr']) ?></a></span>
       </div>
       <div class="opt-row">
         <label><?= e($t['opt_date']) ?> · <?= e($t['opt_time']) ?></label>

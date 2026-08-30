@@ -105,6 +105,8 @@ return [
   'stat2' => 'completed orders',
   'stat3' => 'cake designs',
 
+  'ig_fab_t' => 'More cakes on Instagram',
+  'ig_fab_d' => 'See the full range — you can order right there too',
   'ig_d' => 'Fresh work and new designs — every day on our Instagram.',
   'ig_btn' => 'See our Instagram',
 
@@ -197,7 +199,10 @@ return [
   'time_ph' => 'Pick a time',
   'opt_dl' => 'Receiving',
   'dl_courier' => 'Courier delivery',
+  'dl_bolt' => 'Bolt Delivery',
   'dl_pickup' => 'Pickup',
+  'dl_bolt_note' => 'You order the Bolt courier to our address yourself (we do not book the courier). We will message you on WhatsApp when the cake is ready for handover.',
+  'dl_bolt_addr' => 'Our address on Google Maps',
   'f_address' => 'Address',
   'f_address_ph' => 'Street, building, apartment',
   'f_name' => 'Name',
