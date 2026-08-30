@@ -18,7 +18,10 @@ if (burger && menu) {
   var fillSel = document.getElementById('opt-fill');
   var priceEl = document.getElementById('prod-price');
   var orderEl = document.getElementById('prod-order');
-  if (!sizeSel || !spongeSel || !fillSel || !priceEl || !orderEl) return;
+  var modal = document.getElementById('order-modal');
+  var modalSend = document.getElementById('modal-send');
+  var modalSum = document.getElementById('modal-sum-line');
+  if (!sizeSel || !spongeSel || !fillSel || !priceEl || !orderEl || !modal) return;
 
   function refillFillings() {
     var items = cfg.sponges[spongeSel.selectedIndex][1];
@@ -78,8 +81,22 @@ if (burger && menu) {
     }
     lines.push(cfg.linkLbl + ': ' + cfg.purl);
     if (designUrl) lines.push(cfg.design + ': ' + designUrl);
-    orderEl.href = cfg.wa + encodeURIComponent(lines.join('\n'));
+    modalSend.href = cfg.wa + encodeURIComponent(lines.join('\n'));
+    modalSum.textContent = size[0] + ' · ' + size[1] + ' ₼';
   }
+  // Попап оформления заказа
+  function openModal() {
+    modal.hidden = false;
+    document.documentElement.classList.add('no-scroll');
+  }
+  function closeModal() {
+    modal.hidden = true;
+    document.documentElement.classList.remove('no-scroll');
+  }
+  orderEl.addEventListener('click', function () { update(); openModal(); });
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
   sizeSel.addEventListener('change', update);
   spongeSel.addEventListener('change', function () { refillFillings(); update(); });
   fillSel.addEventListener('change', update);
@@ -103,7 +120,8 @@ if (burger && menu) {
   var calNext = document.getElementById('cal-next');
   if (dateBtn && cal) {
     var today = new Date(); today.setHours(0, 0, 0, 0);
-    var minD = new Date(today); minD.setDate(minD.getDate() + 1);
+    // Минимум 1 полный день на подготовку: сегодня заказ — завтра нельзя, ближайшая дата — послезавтра
+    var minD = new Date(today); minD.setDate(minD.getDate() + 2);
     var maxD = new Date(today); maxD.setDate(maxD.getDate() + 60);
     var view = new Date(minD.getFullYear(), minD.getMonth(), 1);
     var mFmt = new Intl.DateTimeFormat(cfg.locale, { month: 'long', year: 'numeric' });
