@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vanilla Cake — Bakıda sifarişlə bento tortlar və cake to go</title>
-<meta name="description" content="Bakıda sifarişlə hazırlanan bento tortlar və cake to go. Təbii inqrediyentlər, günü-gününə çatdırılma. WhatsApp ilə sifariş: +994 55 215 63 43">
+<title>Vanilla Cake — бенто-торты и cake to go на заказ в Баку</title>
+<meta name="description" content="Бенто-торты и cake to go на заказ в Баку. Натуральные ингредиенты, доставка в день события. Заказ в WhatsApp: +994 55 215 63 43">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍰</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,14 +51,17 @@ html.anim .reveal.in{opacity:1;transform:none}
 .topbar .container{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .topbar a:hover{color:#fff;text-decoration:underline}
 header{position:sticky;top:0;z-index:60;background:rgba(255,249,244,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(62,39,35,.08)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:12px}
 .logo{display:flex;flex-direction:column;line-height:1}
 .logo .script{font-family:var(--font-script);font-size:34px;color:var(--rose)}
 .logo .sub{font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:var(--choco-soft);margin:2px 0 0 4px}
 .menu{display:flex;gap:34px;list-style:none}
 .menu a{font-weight:600;font-size:14.5px;color:var(--choco-soft);transition:.2s}
 .menu a:hover{color:var(--rose)}
-.nav-cta{display:flex;align-items:center;gap:14px}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.lang{display:flex;gap:3px;background:#fff;border:1.5px solid rgba(62,39,35,.14);border-radius:999px;padding:3px}
+.lang button{border:none;background:transparent;padding:6px 10px;border-radius:999px;font-weight:800;font-size:12px;color:var(--choco-soft);cursor:pointer;font-family:var(--font-body);transition:.2s}
+.lang button.active{background:var(--choco);color:#fff}
 .burger{display:none;background:none;border:none;cursor:pointer;padding:8px}
 .burger span{display:block;width:24px;height:2px;background:var(--choco);margin:5px 0;transition:.3s}
 /* ===== Hero ===== */
@@ -101,7 +104,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,249,244,.92);backdro
 .card .ph{position:relative;aspect-ratio:1;overflow:hidden;background:var(--cream2)}
 .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .card:hover .ph img{transform:scale(1.06)}
-.badge{position:absolute;top:14px;left:14px;background:#fff;color:var(--rose);font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;box-shadow:0 4px 12px rgba(62,39,35,.12)}
+.badge{position:absolute;top:14px;left:14px;background:#fff;color:var(--rose);font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;box-shadow:0 4px 12px rgba(62,39,35,.12);z-index:1}
 .card .body{padding:18px 20px 22px}
 .card h3{font-size:16px;font-weight:800;margin-bottom:6px}
 .card .price{color:var(--rose);font-weight:800;font-size:15px}
@@ -194,6 +197,8 @@ footer .about-f{max-width:280px;margin-top:16px;line-height:1.7}
   .menu a{display:block;padding:13px 0;font-size:16px;border-bottom:1px solid var(--cream2)}
   .burger{display:block}
   .nav-cta .btn{display:none}
+  .logo .script{font-size:28px}
+  .lang button{padding:5px 8px;font-size:11px}
   .grid{grid-template-columns:1fr 1fr;gap:14px}
   .card .body{padding:14px 14px 18px}
   .card h3{font-size:14px}
@@ -210,7 +215,7 @@ footer .about-f{max-width:280px;margin-top:16px;line-height:1.7}
 <!-- Top bar -->
 <div class="topbar">
   <div class="container">
-    <span>🎂 Sifarişlər hər gün <strong>09:00 – 21:00</strong> qəbul olunur</span>
+    <span data-i18n="tb1">🎂 Приём заказов ежедневно <strong>09:00 – 21:00</strong></span>
     <a class="hide-m" href="tel:+994552156343">📞 +994 55 215 63 43</a>
   </div>
 </div>
@@ -223,19 +228,24 @@ footer .about-f{max-width:280px;margin-top:16px;line-height:1.7}
       <span class="sub">bir dadım eşq</span>
     </a>
     <ul class="menu" id="menu">
-      <li><a href="#menyu">Menyu</a></li>
-      <li><a href="#sifaris">Sifariş qaydası</a></li>
-      <li><a href="#dadlar">Dadlar</a></li>
-      <li><a href="#haqqimizda">Haqqımızda</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#elaqe">Əlaqə</a></li>
+      <li><a href="#menyu" data-i18n="n1">Меню</a></li>
+      <li><a href="#sifaris" data-i18n="n2">Как заказать</a></li>
+      <li><a href="#dadlar" data-i18n="n3">Вкусы</a></li>
+      <li><a href="#haqqimizda" data-i18n="n4">О нас</a></li>
+      <li><a href="#faq" data-i18n="n5">FAQ</a></li>
+      <li><a href="#elaqe" data-i18n="n6">Контакты</a></li>
     </ul>
     <div class="nav-cta">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-l="ru" class="active">RU</button>
+        <button data-l="az">AZ</button>
+        <button data-l="en">EN</button>
+      </div>
       <a class="btn btn-primary" data-wa href="#">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.2 1.2Z"/></svg>
-        Sifariş et
+        <span data-i18n="n_cta">Заказать</span>
       </a>
-      <button class="burger" id="burger" aria-label="Menyu">
+      <button class="burger" id="burger" aria-label="Меню">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -248,27 +258,27 @@ footer .about-f{max-width:280px;margin-top:16px;line-height:1.7}
   <div class="blob blob-2"></div>
   <div class="container">
     <div>
-      <span class="eyebrow">Bakıda sifarişlə hazırlanır</span>
-      <h1>Kiçik tortlarda <em>böyük sevgi</em></h1>
-      <p class="lead">Bento tortlar və cake to go — hər biri sıfırdan, təbii inqrediyentlərlə, sizin istəyinizə uyğun bəzədilərək hazırlanır. Öncədən sifariş edin, qalanı bizlik.</p>
+      <span class="eyebrow" data-i18n="h_eye">Готовим на заказ в Баку</span>
+      <h1 data-i18n="h_t">Маленькие торты — <em>большая любовь</em></h1>
+      <p class="lead" data-i18n="h_lead">Бенто-торты и cake to go — каждый готовится с нуля, из натуральных ингредиентов, под ваше событие. Закажите заранее — остальное мы возьмём на себя.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" data-wa href="#">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.2 1.2Z"/></svg>
-          WhatsApp ilə sifariş
+          <span data-i18n="h_c1">Заказать в WhatsApp</span>
         </a>
-        <a class="btn btn-ghost" href="#menyu">Menyuya bax</a>
+        <a class="btn btn-ghost" href="#menyu" data-i18n="h_c2">Смотреть меню</a>
       </div>
       <div class="trust">
         <span class="stars">★★★★★</span>
-        <span><strong>850+</strong> xoşbəxt müştəri · <strong>1650+</strong> sifariş</span>
+        <span data-i18n="h_trust"><strong>850+</strong> счастливых клиентов · <strong>1650+</strong> заказов</span>
       </div>
     </div>
     <div class="hero-art reveal in">
       <div class="arch">
-        <img src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg" alt="Bantiklı bento tort" width="600" height="600" fetchpriority="high">
+        <img src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg" alt="Бенто-торт с бантиком" width="600" height="600" fetchpriority="high">
       </div>
-      <div class="chip chip-1"><span class="ico">🍓</span><span>Təbii inqrediyentlər<small>heç bir hazır qarışıq yoxdur</small></span></div>
-      <div class="chip chip-2"><span class="ico">🎁</span><span>Şam + qaşıq<small>hər sifarişə hədiyyə</small></span></div>
+      <div class="chip chip-1"><span class="ico">🍓</span><span data-i18n="chip1">Натуральные ингредиенты<small>никаких готовых смесей</small></span></div>
+      <div class="chip chip-2"><span class="ico">🎁</span><span data-i18n="chip2">Свеча + ложка<small>подарок к каждому заказу</small></span></div>
     </div>
   </div>
 </section>
@@ -278,19 +288,19 @@ footer .about-f{max-width:280px;margin-top:16px;line-height:1.7}
   <div class="container">
     <div class="usp-item reveal">
       <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.5 3.5-7"/></svg></span>
-      <div><h3>Təbii inqrediyentlər</h3><p>Hər krem və biskvit sıfırdan, xam məhsullarla hazırlanır.</p></div>
+      <div><h3 data-i18n="u1t">Натуральные ингредиенты</h3><p data-i18n="u1d">Каждый крем и бисквит готовим с нуля, из свежих продуктов.</p></div>
     </div>
     <div class="usp-item reveal">
       <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M8 4.5c-2.4 1.2-4 3.3-4 6 0 .8.1 1.5.4 2.2M16 4.5c2.4 1.2 4 3.3 4 6 0 .8-.1 1.5-.4 2.2"/><path d="M4 15h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2Z"/></svg></span>
-      <div><h3>Sifarişlə hazırlanma</h3><p>Dizayn, yazı və dad — hər şey sizin istəyinizə uyğun.</p></div>
+      <div><h3 data-i18n="u2t">Готовим на заказ</h3><p data-i18n="u2d">Дизайн, надпись и вкус — всё под ваше событие.</p></div>
     </div>
     <div class="usp-item reveal">
       <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3V6a1 1 0 0 1 1-1h9v12"/><path d="M13 8h4l3 4v5h-2"/><circle cx="7.5" cy="17.5" r="2"/><circle cx="16.5" cy="17.5" r="2"/></svg></span>
-      <div><h3>Sürətli çatdırılma</h3><p>Sifarişiniz gün ərzində ünvanınıza çatdırılır.</p></div>
+      <div><h3 data-i18n="u3t">Быстрая доставка</h3><p data-i18n="u3d">Привезём заказ по Баку в день события.</p></div>
     </div>
     <div class="usp-item reveal">
       <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 6.5 5.5 5.5 0 0 1 21.5 12C19 16.4 12 21 12 21Z"/></svg></span>
-      <div><h3>Məmnuniyyat</h3><p>850+ müştərimizin sevinci bizim ən böyük mükafatımızdır.</p></div>
+      <div><h3 data-i18n="u4t">Довольные клиенты</h3><p data-i18n="u4d">Радость 850+ клиентов — наша главная награда.</p></div>
     </div>
   </div>
 </section>
@@ -299,59 +309,59 @@ footer .about-f{max-width:280px;margin-top:16px;line-height:1.7}
 <section class="section" id="menyu">
   <div class="container">
     <div class="sec-head reveal">
-      <span class="eyebrow">Menyu</span>
-      <h2>Ən sevilən tortlarımız</h2>
-      <p>Bento tortlar 1–2 nəfərlik (350–400 q) və 3–4 nəfərlik (800–900 q) hazırlanır. Cake to go — 2, 4, 6 və ya 8 ədədlik qutularda.</p>
+      <span class="eyebrow" data-i18n="m_eye">Меню</span>
+      <h2 data-i18n="m_t">Наши любимые торты</h2>
+      <p data-i18n="m_d">Бенто-торты — на 1–2 персоны (350–400 г) или 3–4 персоны (800–900 г). Cake to go — в коробках по 2, 4, 6 или 8 шт.</p>
     </div>
     <div class="tabs reveal" id="tabs">
-      <button class="tab active" data-f="all">Hamısı</button>
-      <button class="tab" data-f="bento">Bento tort</button>
-      <button class="tab" data-f="ctg">Cake to go</button>
+      <button class="tab active" data-f="all" data-i18n="tab_all">Все</button>
+      <button class="tab" data-f="bento" data-i18n="tab_b">Бенто-торты</button>
+      <button class="tab" data-f="ctg" data-i18n="tab_c">Cake to go</button>
     </div>
     <div class="grid" id="pgrid">
       <div class="card reveal" data-c="bento">
-        <div class="ph"><span class="badge">Hit</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla-1-600x600.jpg" alt="Bento tort Sevgilim" width="600" height="600"></div>
-        <div class="body"><h3>Bento tort Sevgilim</h3><div class="price">25 – 35 ₼</div></div>
-        <a class="order" data-wa data-p="Bento tort Sevgilim" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+        <div class="ph"><span class="badge" data-i18n="badge_hit">Хит</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla-1-600x600.jpg" alt="Бенто-торт Sevgilim" width="600" height="600"></div>
+        <div class="body"><h3 data-i18n="p1">Бенто-торт Sevgilim</h3><div class="price">25 – 35 ₼</div></div>
+        <a class="order" data-wa data-p="Bento tort Sevgilim" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
       </div>
       <div class="card reveal" data-c="bento">
-        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg" alt="Bento tort bantik" width="600" height="600"></div>
-        <div class="body"><h3>Bento tort Bantik</h3><div class="price">35 – 60 ₼</div></div>
-        <a class="order" data-wa data-p="Bento tort Bantik" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg" alt="Бенто-торт с бантиком" width="600" height="600"></div>
+        <div class="body"><h3 data-i18n="p2">Бенто-торт Bantik</h3><div class="price">35 – 60 ₼</div></div>
+        <a class="order" data-wa data-p="Bento tort Bantik" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
       </div>
       <div class="card reveal" data-c="bento">
-        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_248100673_609196293748610_903340673830523120_n-600x600.jpg" alt="Bento tort Bear" width="600" height="600"></div>
-        <div class="body"><h3>Bento tort Bear</h3><div class="price">25 – 35 ₼</div></div>
-        <a class="order" data-wa data-p="Bento tort Bear" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_248100673_609196293748610_903340673830523120_n-600x600.jpg" alt="Бенто-торт Bear" width="600" height="600"></div>
+        <div class="body"><h3 data-i18n="p3">Бенто-торт Bear</h3><div class="price">25 – 35 ₼</div></div>
+        <a class="order" data-wa data-p="Bento tort Bear" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
       </div>
       <div class="card reveal" data-c="bento">
-        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla444-600x600.jpg" alt="Bento tort Sweet" width="600" height="600"></div>
-        <div class="body"><h3>Bento tort Sweet</h3><div class="price">25 – 35 ₼</div></div>
-        <a class="order" data-wa data-p="Bento tort Sweet" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla444-600x600.jpg" alt="Бенто-торт Sweet" width="600" height="600"></div>
+        <div class="body"><h3 data-i18n="p4">Бенто-торт Sweet</h3><div class="price">25 – 35 ₼</div></div>
+        <a class="order" data-wa data-p="Bento tort Sweet" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
       </div>
       <div class="card reveal" data-c="bento">
-        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla6-600x600.jpg" alt="Bento tort Love you" width="600" height="600"></div>
-        <div class="body"><h3>Bento tort Love you</h3><div class="price">25 – 35 ₼</div></div>
-        <a class="order" data-wa data-p="Bento tort Love you" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla6-600x600.jpg" alt="Бенто-торт Love you" width="600" height="600"></div>
+        <div class="body"><h3 data-i18n="p5">Бенто-торт Love you</h3><div class="price">25 – 35 ₼</div></div>
+        <a class="order" data-wa data-p="Bento tort Love you" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
       </div>
       <div class="card reveal" data-c="bento">
-        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1722410107_highlight18253086958008641-600x600.jpg" alt="Bento tort Baby 8 months" width="600" height="600"></div>
-        <div class="body"><h3>Bento tort Baby</h3><div class="price">25 – 60 ₼</div></div>
-        <a class="order" data-wa data-p="Bento tort Baby" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1722410107_highlight18253086958008641-600x600.jpg" alt="Бенто-торт Baby" width="600" height="600"></div>
+        <div class="body"><h3 data-i18n="p6">Бенто-торт Baby</h3><div class="price">25 – 60 ₼</div></div>
+        <a class="order" data-wa data-p="Bento tort Baby" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
       </div>
       <div class="card reveal" data-c="ctg">
-        <div class="ph"><span class="badge">Yeni</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977404_3311464938185466334_3523099162-600x600.jpg" alt="Cake to go Love" width="600" height="600"></div>
-        <div class="body"><h3>Cake to go — Love</h3><div class="price">25 – 100 ₼</div></div>
-        <a class="order" data-wa data-p="Cake to go Love" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+        <div class="ph"><span class="badge" data-i18n="badge_new">Новинка</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977404_3311464938185466334_3523099162-600x600.jpg" alt="Cake to go Love" width="600" height="600"></div>
+        <div class="body"><h3 data-i18n="p7">Cake to go — Love</h3><div class="price">25 – 100 ₼</div></div>
+        <a class="order" data-wa data-p="Cake to go Love" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
       </div>
       <div class="card reveal" data-c="ctg">
-        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1712262810_3339024920686659731_3523099162-3-600x600.jpg" alt="Cake to go Happy Birthday" width="600" height="600"></div>
-        <div class="body"><h3>Cake to go — Birthday</h3><div class="price">25 – 100 ₼</div></div>
-        <a class="order" data-wa data-p="Cake to go Birthday" href="#" aria-label="Sifariş et"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+        <div class="ph"><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1712262810_3339024920686659731_3523099162-3-600x600.jpg" alt="Cake to go Birthday" width="600" height="600"></div>
+        <div class="body"><h3 data-i18n="p8">Cake to go — Birthday</h3><div class="price">25 – 100 ₼</div></div>
+        <a class="order" data-wa data-p="Cake to go Birthday" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a>
       </div>
     </div>
     <div class="center more-wrap reveal">
-      <a class="btn btn-ghost" href="https://www.instagram.com/vanilla_cake_az/" target="_blank" rel="noopener">120+ tort növü — hamısına bax</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/vanilla_cake_az/" target="_blank" rel="noopener" data-i18n="more1">120+ видов тортов — смотреть все</a>
     </div>
   </div>
 </section>
@@ -360,25 +370,25 @@ footer .about-f{max-width:280px;margin-top:16px;line-height:1.7}
 <section class="section steps-band" id="sifaris">
   <div class="container">
     <div class="sec-head center reveal">
-      <span class="eyebrow">Sifariş qaydası</span>
-      <h2>3 addımda şirin sifariş</h2>
-      <p>Onlayn ödəniş yoxdur — hər şey öncədən razılaşdırılır, ödəniş çatdırılma zamanı və ya kartdan karta.</p>
+      <span class="eyebrow" data-i18n="s_eye">Как заказать</span>
+      <h2 data-i18n="s_t">3 шага до сладкого</h2>
+      <p data-i18n="s_d">Онлайн-оплаты нет — всё обсуждаем заранее, оплата при доставке или переводом на карту.</p>
     </div>
     <div class="steps">
       <div class="step reveal">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
-        <h3>Tortunu seç</h3>
-        <p>Menyudan və ya İnstagram səhifəmizdən bəyəndiyin dizaynı seç. Öz ideyanı da göndərə bilərsən.</p>
+        <h3 data-i18n="s1t">Выберите торт</h3>
+        <p data-i18n="s1d">В меню или в нашем Instagram. Можно прислать и свою идею — сделаем по фото.</p>
       </div>
       <div class="step reveal">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L3 21l1.9-5.6A8.5 8.5 0 1 1 21 11.5Z"/></svg></span>
-        <h3>WhatsApp-a yaz</h3>
-        <p>Tarixi, dadı və tort üzərindəki yazını bildir. Nə qədər tez yazsan, istədiyin tarix bir o qədər mümkün olar.</p>
+        <h3 data-i18n="s2t">Напишите в WhatsApp</h3>
+        <p data-i18n="s2d">Дата, вкус и надпись на торте. Чем раньше напишете — тем проще получить нужную дату.</p>
       </div>
       <div class="step reveal">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7 9 18l-5-5"/></svg></span>
-        <h3>Təsdiqlə və həzz al</h3>
-        <p>Sifarişin təyin olunan gündə ünvanına çatdırılır. Şam və qaşıq — bizdən hədiyyə.</p>
+        <h3 data-i18n="s3t">Подтвердите и наслаждайтесь</h3>
+        <p data-i18n="s3d">Доставим в назначенный день. Свеча и ложка — в подарок от нас.</p>
       </div>
     </div>
   </div>
@@ -388,21 +398,21 @@ footer .about-f{max-width:280px;margin-top:16px;line-height:1.7}
 <section class="section" id="dadlar">
   <div class="container">
     <div class="sec-head reveal">
-      <span class="eyebrow">Dadını seç</span>
-      <h2>Biskvit və tərkiblər</h2>
+      <span class="eyebrow" data-i18n="f_eye">Выберите вкус</span>
+      <h2 data-i18n="f_t">Бисквиты и начинки</h2>
     </div>
     <div class="flavors">
       <div class="flavor-card reveal">
-        <h3>🎂 Biskvit növü</h3>
-        <div class="chips"><span>Red velvet</span><span>Şokoladlı</span><span>Vanilli</span></div>
+        <h3 data-i18n="f_b">🎂 Бисквит</h3>
+        <div class="chips"><span data-i18n="fb1">Red velvet</span><span data-i18n="fb2">Шоколадный</span><span data-i18n="fb3">Ванильный</span></div>
       </div>
       <div class="flavor-card reveal">
-        <h3>🍓 Tərkib</h3>
-        <div class="chips"><span>Çiyələkli konfitür</span><span>Malina konfitür</span><span>Vişnəli</span></div>
+        <h3 data-i18n="f_i">🍓 Начинка</h3>
+        <div class="chips"><span data-i18n="fi1">Клубничный конфитюр</span><span data-i18n="fi2">Малиновый конфитюр</span><span data-i18n="fi3">Вишнёвая</span></div>
       </div>
       <div class="flavor-note reveal">
         <span class="g">🎁</span>
-        <span><strong>Hədiyyə:</strong> hər bento tort sifarişinə 1 ədəd şam və qaşıq bizim tərəfimizdən hədiyyə edilir.</span>
+        <span data-i18n="f_note"><strong>Подарок:</strong> к каждому бенто-торту — свеча и ложка от нас.</span>
       </div>
     </div>
   </div>
@@ -418,14 +428,14 @@ footer .about-f{max-width:280px;margin-top:16px;line-height:1.7}
       <div class="script-stamp">bir dadım eşq</div>
     </div>
     <div>
-      <span class="eyebrow">Haqqımızda</span>
-      <h2>Sevgi ilə bişirilən hekayə</h2>
-      <p>Vanilla.az — öz işinə sevgi və məsuliyyətlə yanaşan gənc bir xanımın arzusunun nəticəsidir. Heç bir məhsulumuzda «sadəcə su əlavə et» prinsipi ilə işləmirik: hər krem, keks və sous sıfırdan, xam məhsullarla hazırlanır.</p>
-      <p>Biz kəmiyyəti yox, keyfiyyəti əsas götürürük — özəl günlərinizin sevimlisi olacaq şirniyyatlar ərsəyə gətiririk.</p>
+      <span class="eyebrow" data-i18n="a_eye">О нас</span>
+      <h2 data-i18n="a_t">История, испечённая с любовью</h2>
+      <p data-i18n="a_p1">Vanilla.az — мечта молодого кондитера, которая вкладывает в своё дело любовь и ответственность. У нас нет принципа «просто добавь воды»: каждый крем, корж и соус готовится с нуля, из свежих продуктов.</p>
+      <p data-i18n="a_p2">Мы выбираем качество, а не количество — создаём десерты, которые становятся любимцами ваших праздников.</p>
       <div class="stats">
-        <div class="stat"><b data-count="850">0</b><span>xoşbəxt müştəri</span></div>
-        <div class="stat"><b data-count="1650">0</b><span>sifariş</span></div>
-        <div class="stat"><b data-count="120">0</b><span>tort növü</span></div>
+        <div class="stat"><b data-count="850">0</b><span data-i18n="st1">счастливых клиентов</span></div>
+        <div class="stat"><b data-count="1650">0</b><span data-i18n="st2">заказов</span></div>
+        <div class="stat"><b data-count="120">0</b><span data-i18n="st3">видов тортов</span></div>
       </div>
     </div>
   </div>
@@ -436,24 +446,24 @@ footer .about-f{max-width:280px;margin-top:16px;line-height:1.7}
   <div class="container">
     <div class="sec-head center reveal">
       <span class="eyebrow">FAQ</span>
-      <h2>Tez-tez verilən suallar</h2>
+      <h2 data-i18n="q_t">Частые вопросы</h2>
     </div>
     <div class="faq reveal">
       <details open>
-        <summary>Sifarişi necə edə bilərəm?</summary>
-        <div class="a">WhatsApp nömrəmizə yazaraq və ya İnstagram səhifəmizdən müraciət edərək sifariş verə bilərsiniz. Nə qədər tez sifariş etsəniz, istədiyiniz tarixə uyğun hazırlamaq bir o qədər mümkün olar.</div>
+        <summary data-i18n="q1">Как сделать заказ?</summary>
+        <div class="a" data-i18n="qa1">Напишите нам в WhatsApp или в Instagram. Чем раньше оформите заказ, тем проще получить нужную дату.</div>
       </details>
       <details>
-        <summary>Ödəniş necə aparılır?</summary>
-        <div class="a">Onlayn ödəniş tələb olunmur — ödənişi çatdırılma zamanı nağd və ya kartdan karta (card to card) edə bilərsiniz.</div>
+        <summary data-i18n="q2">Как проходит оплата?</summary>
+        <div class="a" data-i18n="qa2">Онлайн-оплата не нужна — оплатите при доставке наличными или переводом с карты на карту.</div>
       </details>
       <details>
-        <summary>Bento tort neçə nəfərlikdir?</summary>
-        <div class="a">Bento tortlarımız 1–2 nəfərlik üçün 350–400 qram, 3–4 nəfərlik üçün 800–900 qram nəzərdə tutulur. Klassik tort sifarişi isə minimum 2 kq-dan götürülür.</div>
+        <summary data-i18n="q3">На сколько человек бенто-торт?</summary>
+        <div class="a" data-i18n="qa3">Бенто-торт на 1–2 персоны — 350–400 г, на 3–4 персоны — 800–900 г. Классические торты — от 2 кг.</div>
       </details>
       <details>
-        <summary>Tortu necə saxlamalıyam?</summary>
-        <div class="a">Tort mütləq soyuducuda saxlanılmalıdır. Daşıyarkən düz səthə yerləşdirin, yayda kondisionerlə, qışda birbaşa istilik olmadan aparın. 5 saatdan çox saxlanacaqsa, qutuda saxlamaq daha yaxşıdır.</div>
+        <summary data-i18n="q4">Как хранить торт?</summary>
+        <div class="a" data-i18n="qa4">Обязательно в холодильнике. Перевозите на ровной поверхности, летом — в машине с кондиционером. Если торт простоит больше 5 часов — лучше держать его в коробке.</div>
       </details>
     </div>
   </div>
@@ -463,10 +473,10 @@ footer .about-f{max-width:280px;margin-top:16px;line-height:1.7}
 <section class="insta">
   <div class="container">
     <div class="script reveal">@vanilla_cake_az</div>
-    <p class="reveal">Ən yeni işlərimiz, real sifarişlər və müştəri rəyləri — hər gün İnstagram səhifəmizdə.</p>
+    <p class="reveal" data-i18n="ig_d">Свежие работы, реальные заказы и отзывы клиентов — каждый день в нашем Instagram.</p>
     <a class="btn btn-light reveal" href="https://www.instagram.com/vanilla_cake_az/" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg>
-      İnstagramda izlə
+      <span data-i18n="ig_btn">Подписаться в Instagram</span>
     </a>
   </div>
 </section>
@@ -480,36 +490,36 @@ footer .about-f{max-width:280px;margin-top:16px;line-height:1.7}
           <span class="script" style="font-family:var(--font-script);font-size:32px">Vanilla Cake</span>
           <span class="sub">bir dadım eşq</span>
         </a>
-        <p class="about-f">Bakıda sifarişlə hazırlanan bento tortlar və cake to go. Təbii inqrediyentlər, əl işi, sevgi ilə.</p>
+        <p class="about-f" data-i18n="ft_desc">Бенто-торты и cake to go на заказ в Баку. Натуральные ингредиенты, ручная работа, с любовью.</p>
       </div>
       <div>
-        <h4>Menyu</h4>
+        <h4 data-i18n="ft_h1">Меню</h4>
         <ul>
-          <li><a href="#menyu">Bento tortlar</a></li>
-          <li><a href="#menyu">Cake to go</a></li>
-          <li><a href="#dadlar">Dadlar</a></li>
+          <li><a href="#menyu" data-i18n="ft_l1">Бенто-торты</a></li>
+          <li><a href="#menyu" data-i18n="ft_l2">Cake to go</a></li>
+          <li><a href="#dadlar" data-i18n="ft_l3">Вкусы</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
       <div>
-        <h4>Şirkət</h4>
+        <h4 data-i18n="ft_h2">Компания</h4>
         <ul>
-          <li><a href="#haqqimizda">Haqqımızda</a></li>
-          <li><a href="#sifaris">Sifariş qaydası</a></li>
-          <li><a href="https://www.instagram.com/vanilla_cake_az/" target="_blank" rel="noopener">Rəylər</a></li>
+          <li><a href="#haqqimizda" data-i18n="ft_c1">О нас</a></li>
+          <li><a href="#sifaris" data-i18n="ft_c2">Как заказать</a></li>
+          <li><a href="https://www.instagram.com/vanilla_cake_az/" target="_blank" rel="noopener" data-i18n="ft_c3">Отзывы</a></li>
         </ul>
       </div>
       <div>
-        <h4>Əlaqə</h4>
+        <h4 data-i18n="ft_h3">Контакты</h4>
         <ul class="f-contact">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 1.9Z"/></svg><a href="tel:+994552156343">+994 55 215 63 43</a></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 6 9 7 9-7"/></svg><a href="mailto:info@vanilla.az">info@vanilla.az</a></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span>Hər gün 09:00 – 21:00</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span data-i18n="ft_hours">Ежедневно 09:00 – 21:00</span></li>
         </ul>
       </div>
     </div>
     <div class="f-bottom">
-      <span>© 2026 Vanilla.az — Bütün hüquqlar qorunur</span>
+      <span data-i18n="ft_copy">© 2026 Vanilla.az — Все права защищены</span>
       <div class="socials">
         <a href="https://www.instagram.com/vanilla_cake_az/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg></a>
         <a href="https://www.facebook.com/vanillacakeaz" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V7a1.5 1.5 0 0 1 1.5-1.5H17V2h-3a4 4 0 0 0-4 4v2.5H7.5V12H10v10h4V12h2.6l.9-3.5H14Z"/></svg></a>
@@ -522,23 +532,152 @@ footer .about-f{max-width:280px;margin-top:16px;line-height:1.7}
 <!-- Mobile CTA -->
 <div class="mob-cta">
   <a class="btn btn-ghost" href="tel:+994552156343" style="flex:0 0 auto;padding:14px 18px">📞</a>
-  <a class="btn wa-green" data-wa href="#">WhatsApp ilə sifariş et</a>
+  <a class="btn wa-green" data-wa href="#" data-i18n="mc_wa">Заказать в WhatsApp</a>
 </div>
 
 <script>
-// WhatsApp links
-var WA='https://wa.me/994552156343?text=';
-document.querySelectorAll('[data-wa]').forEach(function(a){
-  var p=a.getAttribute('data-p');
-  var msg=p?'Salam! "'+p+'" sifariş etmək istəyirəm.':'Salam! Tort sifariş etmək istəyirəm.';
-  a.href=WA+encodeURIComponent(msg);
-  a.target='_blank';a.rel='noopener';
+// ===== i18n =====
+var TITLES={
+  ru:'Vanilla Cake — бенто-торты и cake to go на заказ в Баку',
+  az:'Vanilla Cake — Bakıda sifarişlə bento tortlar və cake to go',
+  en:'Vanilla Cake — custom bento cakes & cake to go in Baku'
+};
+var WA_MSG={
+  ru:['Здравствуйте! Хочу заказать торт.','Здравствуйте! Хочу заказать «{p}».'],
+  az:['Salam! Tort sifariş etmək istəyirəm.','Salam! "{p}" sifariş etmək istəyirəm.'],
+  en:['Hello! I would like to order a cake.','Hello! I would like to order "{p}".']
+};
+var I18N={
+az:{
+  tb1:'🎂 Sifarişlər hər gün <strong>09:00 – 21:00</strong> qəbul olunur',
+  n1:'Menyu',n2:'Sifariş qaydası',n3:'Dadlar',n4:'Haqqımızda',n5:'FAQ',n6:'Əlaqə',n_cta:'Sifariş et',
+  h_eye:'Bakıda sifarişlə hazırlanır',
+  h_t:'Kiçik tortlarda <em>böyük sevgi</em>',
+  h_lead:'Bento tortlar və cake to go — hər biri sıfırdan, təbii inqrediyentlərlə, sizin istəyinizə uyğun bəzədilərək hazırlanır. Öncədən sifariş edin, qalanı bizlik.',
+  h_c1:'WhatsApp ilə sifariş',h_c2:'Menyuya bax',
+  h_trust:'<strong>850+</strong> xoşbəxt müştəri · <strong>1650+</strong> sifariş',
+  chip1:'Təbii inqrediyentlər<small>heç bir hazır qarışıq yoxdur</small>',
+  chip2:'Şam + qaşıq<small>hər sifarişə hədiyyə</small>',
+  u1t:'Təbii inqrediyentlər',u1d:'Hər krem və biskvit sıfırdan, xam məhsullarla hazırlanır.',
+  u2t:'Sifarişlə hazırlanma',u2d:'Dizayn, yazı və dad — hər şey sizin istəyinizə uyğun.',
+  u3t:'Sürətli çatdırılma',u3d:'Sifarişiniz gün ərzində ünvanınıza çatdırılır.',
+  u4t:'Məmnuniyyat',u4d:'850+ müştərimizin sevinci bizim ən böyük mükafatımızdır.',
+  m_eye:'Menyu',m_t:'Ən sevilən tortlarımız',
+  m_d:'Bento tortlar 1–2 nəfərlik (350–400 q) və 3–4 nəfərlik (800–900 q) hazırlanır. Cake to go — 2, 4, 6 və ya 8 ədədlik qutularda.',
+  tab_all:'Hamısı',tab_b:'Bento tort',tab_c:'Cake to go',
+  badge_hit:'Hit',badge_new:'Yeni',
+  p1:'Bento tort Sevgilim',p2:'Bento tort Bantik',p3:'Bento tort Bear',p4:'Bento tort Sweet',p5:'Bento tort Love you',p6:'Bento tort Baby',p7:'Cake to go — Love',p8:'Cake to go — Birthday',
+  more1:'120+ tort növü — hamısına bax',
+  s_eye:'Sifariş qaydası',s_t:'3 addımda şirin sifariş',
+  s_d:'Onlayn ödəniş yoxdur — hər şey öncədən razılaşdırılır, ödəniş çatdırılma zamanı və ya kartdan karta.',
+  s1t:'Tortunu seç',s1d:'Menyudan və ya İnstagram səhifəmizdən bəyəndiyin dizaynı seç. Öz ideyanı da göndərə bilərsən.',
+  s2t:'WhatsApp-a yaz',s2d:'Tarixi, dadı və tort üzərindəki yazını bildir. Nə qədər tez yazsan, istədiyin tarix bir o qədər mümkün olar.',
+  s3t:'Təsdiqlə və həzz al',s3d:'Sifarişin təyin olunan gündə ünvanına çatdırılır. Şam və qaşıq — bizdən hədiyyə.',
+  f_eye:'Dadını seç',f_t:'Biskvit və tərkiblər',
+  f_b:'🎂 Biskvit növü',f_i:'🍓 Tərkib',
+  fb1:'Red velvet',fb2:'Şokoladlı',fb3:'Vanilli',
+  fi1:'Çiyələkli konfitür',fi2:'Malina konfitür',fi3:'Vişnəli',
+  f_note:'<strong>Hədiyyə:</strong> hər bento tort sifarişinə 1 ədəd şam və qaşıq bizim tərəfimizdən hədiyyə edilir.',
+  a_eye:'Haqqımızda',a_t:'Sevgi ilə bişirilən hekayə',
+  a_p1:'Vanilla.az — öz işinə sevgi və məsuliyyətlə yanaşan gənc bir xanımın arzusunun nəticəsidir. Heç bir məhsulumuzda «sadəcə su əlavə et» prinsipi ilə işləmirik: hər krem, keks və sous sıfırdan, xam məhsullarla hazırlanır.',
+  a_p2:'Biz kəmiyyəti yox, keyfiyyəti əsas götürürük — özəl günlərinizin sevimlisi olacaq şirniyyatlar ərsəyə gətiririk.',
+  st1:'xoşbəxt müştəri',st2:'sifariş',st3:'tort növü',
+  q_t:'Tez-tez verilən suallar',
+  q1:'Sifarişi necə edə bilərəm?',qa1:'WhatsApp nömrəmizə yazaraq və ya İnstagram səhifəmizdən müraciət edərək sifariş verə bilərsiniz. Nə qədər tez sifariş etsəniz, istədiyiniz tarixə uyğun hazırlamaq bir o qədər mümkün olar.',
+  q2:'Ödəniş necə aparılır?',qa2:'Onlayn ödəniş tələb olunmur — ödənişi çatdırılma zamanı nağd və ya kartdan karta (card to card) edə bilərsiniz.',
+  q3:'Bento tort neçə nəfərlikdir?',qa3:'Bento tortlarımız 1–2 nəfərlik üçün 350–400 qram, 3–4 nəfərlik üçün 800–900 qram nəzərdə tutulur. Klassik tort sifarişi isə minimum 2 kq-dan götürülür.',
+  q4:'Tortu necə saxlamalıyam?',qa4:'Tort mütləq soyuducuda saxlanılmalıdır. Daşıyarkən düz səthə yerləşdirin, yayda kondisionerlə, qışda birbaşa istilik olmadan aparın. 5 saatdan çox saxlanacaqsa, qutuda saxlamaq daha yaxşıdır.',
+  ig_d:'Ən yeni işlərimiz, real sifarişlər və müştəri rəyləri — hər gün İnstagram səhifəmizdə.',
+  ig_btn:'İnstagramda izlə',
+  ft_desc:'Bakıda sifarişlə hazırlanan bento tortlar və cake to go. Təbii inqrediyentlər, əl işi, sevgi ilə.',
+  ft_h1:'Menyu',ft_l1:'Bento tortlar',ft_l2:'Cake to go',ft_l3:'Dadlar',
+  ft_h2:'Şirkət',ft_c1:'Haqqımızda',ft_c2:'Sifariş qaydası',ft_c3:'Rəylər',
+  ft_h3:'Əlaqə',ft_hours:'Hər gün 09:00 – 21:00',
+  ft_copy:'© 2026 Vanilla.az — Bütün hüquqlar qorunur',
+  mc_wa:'WhatsApp ilə sifariş et'
+},
+en:{
+  tb1:'🎂 Orders accepted daily <strong>09:00 – 21:00</strong>',
+  n1:'Menu',n2:'How to order',n3:'Flavors',n4:'About',n5:'FAQ',n6:'Contact',n_cta:'Order now',
+  h_eye:'Made to order in Baku',
+  h_t:'Little cakes, <em>big love</em>',
+  h_lead:'Bento cakes and cake to go — each made from scratch with natural ingredients, designed for your occasion. Pre-order in advance and leave the rest to us.',
+  h_c1:'Order on WhatsApp',h_c2:'View menu',
+  h_trust:'<strong>850+</strong> happy clients · <strong>1650+</strong> orders',
+  chip1:'Natural ingredients<small>no ready-made mixes</small>',
+  chip2:'Candle + spoon<small>free with every order</small>',
+  u1t:'Natural ingredients',u1d:'Every cream and sponge is made from scratch with fresh products.',
+  u2t:'Made to order',u2d:'Design, lettering and flavor — everything fits your occasion.',
+  u3t:'Fast delivery',u3d:'We deliver across Baku on the day of your event.',
+  u4t:'Happy clients',u4d:'The joy of 850+ clients is our greatest reward.',
+  m_eye:'Menu',m_t:'Our best-loved cakes',
+  m_d:'Bento cakes serve 1–2 (350–400 g) or 3–4 people (800–900 g). Cake to go comes in boxes of 2, 4, 6 or 8.',
+  tab_all:'All',tab_b:'Bento cakes',tab_c:'Cake to go',
+  badge_hit:'Hit',badge_new:'New',
+  p1:'Bento cake Sevgilim',p2:'Bento cake Bantik',p3:'Bento cake Bear',p4:'Bento cake Sweet',p5:'Bento cake Love you',p6:'Bento cake Baby',p7:'Cake to go — Love',p8:'Cake to go — Birthday',
+  more1:'120+ cake designs — see them all',
+  s_eye:'How to order',s_t:'3 steps to something sweet',
+  s_d:'No online payment — we agree on everything in advance; pay on delivery or by card transfer.',
+  s1t:'Pick your cake',s1d:'From the menu or our Instagram. You can also send your own idea — we will make it from a photo.',
+  s2t:'Message us on WhatsApp',s2d:'Date, flavor and the text on the cake. The earlier you write, the easier it is to get your date.',
+  s3t:'Confirm and enjoy',s3d:'We deliver on the agreed day. A candle and a spoon come as a gift.',
+  f_eye:'Pick your flavor',f_t:'Sponges and fillings',
+  f_b:'🎂 Sponge',f_i:'🍓 Filling',
+  fb1:'Red velvet',fb2:'Chocolate',fb3:'Vanilla',
+  fi1:'Strawberry confiture',fi2:'Raspberry confiture',fi3:'Cherry',
+  f_note:'<strong>Gift:</strong> every bento cake comes with a candle and a spoon from us.',
+  a_eye:'About us',a_t:'A story baked with love',
+  a_p1:'Vanilla.az is the dream of a young pastry chef who puts love and care into her work. There is no “just add water” here: every cream, sponge and sauce is made from scratch with fresh products.',
+  a_p2:'We choose quality over quantity — creating desserts that become the favorites of your celebrations.',
+  st1:'happy clients',st2:'orders',st3:'cake designs',
+  q_t:'Frequently asked questions',
+  q1:'How do I place an order?',qa1:'Message us on WhatsApp or Instagram. The earlier you order, the easier it is to get the date you want.',
+  q2:'How does payment work?',qa2:'No online payment needed — pay on delivery in cash or by card-to-card transfer.',
+  q3:'How many people does a bento cake serve?',qa3:'A bento cake for 1–2 people is 350–400 g, for 3–4 people — 800–900 g. Classic cakes start from 2 kg.',
+  q4:'How should I store the cake?',qa4:'Always in the fridge. Transport it on a flat surface; in summer use air conditioning in the car. If the cake will stand for more than 5 hours, keep it in its box.',
+  ig_d:'Fresh work, real orders and client reviews — every day on our Instagram.',
+  ig_btn:'Follow on Instagram',
+  ft_desc:'Custom bento cakes and cake to go in Baku. Natural ingredients, handmade, with love.',
+  ft_h1:'Menu',ft_l1:'Bento cakes',ft_l2:'Cake to go',ft_l3:'Flavors',
+  ft_h2:'Company',ft_c1:'About us',ft_c2:'How to order',ft_c3:'Reviews',
+  ft_h3:'Contact',ft_hours:'Daily 09:00 – 21:00',
+  ft_copy:'© 2026 Vanilla.az — All rights reserved',
+  mc_wa:'Order on WhatsApp'
+}
+};
+var ruCache={};
+document.querySelectorAll('[data-i18n]').forEach(function(el){ruCache[el.getAttribute('data-i18n')]=el.innerHTML});
+var curLang='ru';
+function applyWA(l){
+  document.querySelectorAll('[data-wa]').forEach(function(a){
+    var p=a.getAttribute('data-p');
+    var t=p?WA_MSG[l][1].replace('{p}',p):WA_MSG[l][0];
+    a.href='https://wa.me/994552156343?text='+encodeURIComponent(t);
+    a.target='_blank';a.rel='noopener';
+  });
+}
+function setLang(l){
+  curLang=l;
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k=el.getAttribute('data-i18n');
+    var v=(l==='ru')?ruCache[k]:((I18N[l]&&I18N[l][k]!==undefined)?I18N[l][k]:ruCache[k]);
+    el.innerHTML=v;
+  });
+  document.title=TITLES[l]||TITLES.ru;
+  document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-l')===l)});
+  applyWA(l);
+  try{localStorage.setItem('vanilla_lang',l)}catch(e){}
+}
+document.querySelectorAll('.lang').forEach(function(w){
+  w.addEventListener('click',function(e){var b=e.target.closest('button');if(b)setLang(b.getAttribute('data-l'))});
 });
-// Mobile menu
+var saved='ru';try{saved=localStorage.getItem('vanilla_lang')||'ru'}catch(e){}
+if(saved!=='ru'&&I18N[saved])setLang(saved);else applyWA('ru');
+// ===== UI =====
 var burger=document.getElementById('burger'),menu=document.getElementById('menu');
 burger.addEventListener('click',function(){menu.classList.toggle('open')});
 menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
-// Tabs filter
 document.getElementById('tabs').addEventListener('click',function(e){
   var b=e.target.closest('.tab');if(!b)return;
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});

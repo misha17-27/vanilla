@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vanilla.az — выбор дизайна главной страницы</title>
+<title>Vanilla.az — новый сайт</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍰</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +13,15 @@
 body{font-family:'Manrope',system-ui,sans-serif;background:#171310;color:#F3EDE7;min-height:100vh;padding:56px 24px}
 .wrap{max-width:1200px;margin:0 auto}
 h1{font-size:clamp(28px,4vw,44px);font-weight:800}
-.sub{color:#A79A8D;margin:12px 0 44px;max-width:640px;line-height:1.6}
+.sub{color:#A79A8D;margin:12px 0 36px;max-width:680px;line-height:1.6}
+.main-card{display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;background:linear-gradient(120deg,#16527F,#1E5F8E);border-radius:20px;padding:38px 40px;margin-bottom:44px}
+.main-card h2{font-size:26px}
+.main-card p{color:rgba(255,255,255,.75);margin-top:8px;max-width:560px;font-size:14.5px;line-height:1.6}
+.main-card .go{background:#FD4680;color:#fff;font-weight:800;font-size:15px;padding:15px 30px;border-radius:99px;text-decoration:none;transition:.2s;white-space:nowrap}
+.main-card .go:hover{background:#E02D68}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 @media(max-width:960px){.grid{grid-template-columns:1fr}}
+h3.archive{font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:#A79A8D;margin-bottom:20px}
 .card{background:#221C17;border:1px solid rgba(243,237,231,.1);border-radius:20px;overflow:hidden;transition:.25s;display:flex;flex-direction:column}
 .card:hover{transform:translateY(-6px);border-color:rgba(243,237,231,.3)}
 .prev{aspect-ratio:16/11;overflow:hidden;position:relative;background:#0F0C0A}
@@ -31,33 +37,43 @@ p{color:#A79A8D;font-size:14px;line-height:1.6;flex:1}
 </head>
 <body>
 <div class="wrap">
-  <h1>🍰 Vanilla.az — новый дизайн</h1>
-  <p class="sub">Три варианта главной страницы для магазина бенто-тортов. Все страницы лёгкие (без фреймворков), адаптивные, на азербайджанском, с заказом через WhatsApp. Кликните, чтобы открыть в полном размере.</p>
+  <h1>🍰 Vanilla.az — новый сайт</h1>
+  <p class="sub">Актуальная версия — многостраничный PHP-сайт в фирменных цветах Vanilla (розовый + тёмно-синий + пастель), русский язык основной, переключение на AZ/EN. Ниже — архив трёх первых концептов главной страницы.</p>
+
+  <div class="main-card">
+    <div>
+      <h2>✨ Актуальный дизайн — PHP-сайт</h2>
+      <p>Главная, каталоги «Бенто-торты» и «Cake to go», «Начинки», «О нас», FAQ, «Контакты». Логотип и фирменные цвета vanilla.az, заказ через WhatsApp, секция «Одно сообщение — один торт». Запуск: <code>php -S localhost:8123</code> в корне репозитория.</p>
+    </div>
+    <a class="go" href="site/index.php">Открыть сайт →</a>
+  </div>
+
+  <h3 class="archive">Архив — первые концепты</h3>
   <div class="grid">
     <div class="card v1">
       <div class="prev"><iframe src="v1/index.html" loading="lazy" title="V1" tabindex="-1"></iframe></div>
       <div class="body">
-        <span class="num">Вариант 01</span>
+        <span class="num">Концепт 01</span>
         <h2>Крем — нежный премиум</h2>
-        <p>Кремово-розовая палитра, элегантная серифная типографика, арочные фото, воздушные карточки. Классика кондитерской в современном исполнении.</p>
+        <p>Кремово-розовая палитра, серифная типографика, арочные фото. Лёг в основу актуального дизайна.</p>
         <a class="open" href="v1/index.html">Открыть →</a>
       </div>
     </div>
     <div class="card v2">
       <div class="prev"><iframe src="v2/index.html" loading="lazy" title="V2" tabindex="-1"></iframe></div>
       <div class="body">
-        <span class="num">Вариант 02</span>
-        <h2>Шоколад — смелый editorial</h2>
-        <p>Тёмная шоколадно-карамельная тема, крупная типографика, бегущая строка, горизонтальная витрина. Стиль модной студии десертов.</p>
+        <span class="num">Концепт 02</span>
+        <h2>Шоколад — editorial</h2>
+        <p>Тёмная шоколадно-карамельная тема, крупная типографика, бегущая строка.</p>
         <a class="open" href="v2/index.html">Открыть →</a>
       </div>
     </div>
     <div class="card v3">
       <div class="prev"><iframe src="v3/index.html" loading="lazy" title="V3" tabindex="-1"></iframe></div>
       <div class="body">
-        <span class="num">Вариант 03</span>
-        <h2>Cute — игривый бенто-стиль</h2>
-        <p>Тёплая ванильная база, стикеры, полароиды, чат-диалог WhatsApp как инструкция заказа. Молодёжный instagram-вайб корейских бенто-кондитерских.</p>
+        <span class="num">Концепт 03</span>
+        <h2>Cute — игривый стиль</h2>
+        <p>Стикеры, полароиды, WhatsApp-чат как инструкция заказа — чат перешёл в актуальный дизайн.</p>
         <a class="open" href="v3/index.html">Открыть →</a>
       </div>
     </div>

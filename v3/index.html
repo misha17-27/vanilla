@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vanilla Cake — Kiçik tort, böyük sevinc! 🍰</title>
-<meta name="description" content="Bakıda ən şirin bento tortlar və cake to go — sifarişlə, təbii inqrediyentlərlə. WhatsApp: +994 55 215 63 43">
+<title>Vanilla Cake — маленький торт, большая радость! 🍰</title>
+<meta name="description" content="Самые милые бенто-торты и cake to go в Баку — на заказ, из натуральных ингредиентов. WhatsApp: +994 55 215 63 43">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧁</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,12 +46,16 @@ html.anim .reveal.in{opacity:1;transform:none}
 .sub{color:var(--ink-soft);font-weight:600}
 /* Header */
 header{position:sticky;top:0;z-index:60;background:rgba(255,246,234,.94);backdrop-filter:blur(10px);border-bottom:var(--b)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:14px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:10px}
 .logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:22px}
 .logo .m{width:42px;height:42px;background:var(--pink-soft);border:var(--b);border-radius:14px;display:grid;place-items:center;font-size:22px;transform:rotate(-6deg)}
 .menu{display:flex;gap:26px;list-style:none}
 .menu a{font-weight:800;font-size:14.5px;color:var(--ink-soft);transition:.15s}
 .menu a:hover{color:var(--pink-deep)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.lang{display:flex;gap:3px;background:var(--card);border:var(--b);border-radius:999px;padding:3px;box-shadow:var(--shadow-s)}
+.lang button{border:none;background:transparent;padding:5px 9px;border-radius:999px;font-family:var(--display);font-weight:800;font-size:12px;color:var(--ink-soft);cursor:pointer;transition:.15s}
+.lang button.active{background:var(--pink);color:#fff}
 .burger{display:none;background:var(--card);border:var(--b);border-radius:12px;box-shadow:var(--shadow-s);cursor:pointer;padding:9px 11px}
 .burger span{display:block;width:20px;height:2.5px;background:var(--ink);margin:4px 0;border-radius:2px}
 /* Hero */
@@ -178,7 +182,9 @@ footer .desc{color:var(--ink-soft);font-size:14.5px;max-width:280px;margin-top:1
   .menu.open{transform:none;opacity:1}
   .menu a{display:block;padding:13px 0;font-size:16px}
   .burger{display:block}
-  .nav > .btn{display:none}
+  .nav-right > .btn{display:none}
+  .logo{font-size:18px}
+  .lang button{padding:4px 7px;font-size:11px}
   .grid{grid-template-columns:1fr 1fr;gap:14px}
   .card .body{padding:12px 14px 14px}
   .card h3{font-size:14px}
@@ -200,17 +206,24 @@ footer .desc{color:var(--ink-soft);font-size:14.5px;max-width:280px;margin-top:1
   <div class="container nav">
     <a class="logo" href="#"><span class="m">🧁</span>Vanilla Cake</a>
     <ul class="menu" id="menu">
-      <li><a href="#menyu">Menyu</a></li>
-      <li><a href="#olcu">Ölçülər</a></li>
-      <li><a href="#sifaris">Necə sifariş?</a></li>
-      <li><a href="#dadlar">Dadlar</a></li>
+      <li><a href="#menyu" data-i18n="n1">Меню</a></li>
+      <li><a href="#olcu" data-i18n="n2">Размеры</a></li>
+      <li><a href="#sifaris" data-i18n="n3">Как заказать?</a></li>
+      <li><a href="#dadlar" data-i18n="n4">Вкусы</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a class="btn btn-pink" data-wa href="#">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.2 1.2Z"/></svg>
-      Sifariş et
-    </a>
-    <button class="burger" id="burger" aria-label="Menyu"><span></span><span></span><span></span></button>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-l="ru" class="active">RU</button>
+        <button data-l="az">AZ</button>
+        <button data-l="en">EN</button>
+      </div>
+      <a class="btn btn-pink" data-wa href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.2 1.2Z"/></svg>
+        <span data-i18n="n_cta">Заказать</span>
+      </a>
+      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -221,31 +234,31 @@ footer .desc{color:var(--ink-soft);font-size:14.5px;max-width:280px;margin-top:1
   <span class="spr spr-3">✨</span>
   <span class="spr spr-4">🍒</span>
   <div class="container">
-    <span class="tag">📍 Bakı · sifarişlə hazırlanır · çatdırılma var</span>
-    <h1>Kiçik tort,<br><span class="hl">böyük sevinc!<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 9 Q 50 2 100 7 T 198 5" fill="none" stroke="#FFC94D" stroke-width="5" stroke-linecap="round"/></svg></span></h1>
-    <p class="lead">Bento tortlar və cake to go — hər biri sənin üçün, sənin sözlərinlə, sıfırdan bişirilir. Sadəcə WhatsApp-a yaz, qalanı şirin tərəfimizdən! 🍰</p>
+    <span class="tag" data-i18n="h_tag">📍 Баку · готовим на заказ · есть доставка</span>
+    <h1 data-i18n="h_t">Маленький торт,<br><span class="hl">большая радость!<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 9 Q 50 2 100 7 T 198 5" fill="none" stroke="#FFC94D" stroke-width="5" stroke-linecap="round"/></svg></span></h1>
+    <p class="lead" data-i18n="h_lead">Бенто-торты и cake to go — печём с нуля, для вас и с вашими словами. Просто напишите в WhatsApp — сладкое мы берём на себя! 🍰</p>
     <div class="hero-ctas">
       <a class="btn btn-pink" data-wa href="#">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.2 1.2Z"/></svg>
-        WhatsApp-la sifariş
+        <span data-i18n="h_c1">Заказать в WhatsApp</span>
       </a>
-      <a class="btn btn-butter" href="#menyu">🍰 Menyuya bax</a>
+      <a class="btn btn-butter" href="#menyu" data-i18n="h_c2">🍰 Смотреть меню</a>
     </div>
     <div class="polaroids">
       <div class="pol reveal in">
-        <span class="stk p">Hit! 💖</span>
-        <img src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg" alt="Bento tort Bantik" width="600" height="600" fetchpriority="high">
-        <div class="cap">Bento Bantik 🎀</div>
+        <span class="stk p" data-i18n="ps1">Хит! 💖</span>
+        <img src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg" alt="Бенто-торт Bantik" width="600" height="600" fetchpriority="high">
+        <div class="cap" data-i18n="pc1">Бенто Bantik 🎀</div>
       </div>
       <div class="pol reveal in">
-        <span class="stk">Sevimli 🌟</span>
-        <img src="https://vanilla.az/wp-content/uploads/2021/11/vanilla-1-600x600.jpg" alt="Bento tort Sevgilim" width="600" height="600">
-        <div class="cap">Bento Sevgilim 💌</div>
+        <span class="stk" data-i18n="ps2">Любимец 🌟</span>
+        <img src="https://vanilla.az/wp-content/uploads/2021/11/vanilla-1-600x600.jpg" alt="Бенто-торт Sevgilim" width="600" height="600">
+        <div class="cap" data-i18n="pc2">Бенто Sevgilim 💌</div>
       </div>
       <div class="pol reveal in">
-        <span class="stk m">Yeni ✨</span>
+        <span class="stk m" data-i18n="ps3">Новинка ✨</span>
         <img src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977404_3311464938185466334_3523099162-600x600.jpg" alt="Cake to go" width="600" height="600">
-        <div class="cap">Cake to go 🥡</div>
+        <div class="cap" data-i18n="pc3">Cake to go 🥡</div>
       </div>
     </div>
   </div>
@@ -253,9 +266,9 @@ footer .desc{color:var(--ink-soft);font-size:14.5px;max-width:280px;margin-top:1
 
 <!-- Ticker -->
 <div class="ticker" aria-hidden="true">
-  <div class="track">
-    <span>🎂 Bento tort</span><span>🥡 Cake to go</span><span>🍓 Təbii inqrediyentlər</span><span>🚗 Çatdırılma</span><span>🎁 Şam + qaşıq hədiyyə</span><span>💝 Bir dadım — eşq</span>
-    <span>🎂 Bento tort</span><span>🥡 Cake to go</span><span>🍓 Təbii inqrediyentlər</span><span>🚗 Çatdırılma</span><span>🎁 Şam + qaşıq hədiyyə</span><span>💝 Bir dadım — eşq</span>
+  <div class="track" data-i18n="mq">
+    <span>🎂 Бенто-торты</span><span>🥡 Cake to go</span><span>🍓 Натуральные ингредиенты</span><span>🚗 Доставка</span><span>🎁 Свеча + ложка в подарок</span><span>💝 Bir dadım — eşq</span>
+    <span>🎂 Бенто-торты</span><span>🥡 Cake to go</span><span>🍓 Натуральные ингредиенты</span><span>🚗 Доставка</span><span>🎁 Свеча + ложка в подарок</span><span>💝 Bir dadım — eşq</span>
   </div>
 </div>
 
@@ -263,46 +276,46 @@ footer .desc{color:var(--ink-soft);font-size:14.5px;max-width:280px;margin-top:1
 <section class="section" id="menyu">
   <div class="container">
     <div class="center" style="margin-bottom:48px">
-      <span class="tag">🍰 Menyu</span>
-      <h2 style="margin-top:16px">Şirin vitrinimiz</h2>
-      <p class="sub" style="max-width:520px;margin:10px auto 0">İstədiyin dizaynı seç və ya öz ideyanı göndər — hamısını hazırlaya bilirik!</p>
+      <span class="tag" data-i18n="m_tag">🍰 Меню</span>
+      <h2 style="margin-top:16px" data-i18n="m_t">Наша сладкая витрина</h2>
+      <p class="sub" style="max-width:520px;margin:10px auto 0" data-i18n="m_d">Выберите дизайн или пришлите свою идею — сделаем любую!</p>
     </div>
     <div class="grid">
       <div class="card reveal">
-        <div class="ph"><span class="stick">Hit 💖</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla-1-600x600.jpg" alt="Bento tort Sevgilim" width="600" height="600"></div>
-        <div class="body"><h3>Bento Sevgilim</h3><div class="row"><span class="pr">25–35 ₼</span><a class="go" data-wa data-p="Bento tort Sevgilim" href="#" aria-label="Sifariş"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
+        <div class="ph"><span class="stick" data-i18n="stk1">Хит 💖</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla-1-600x600.jpg" alt="Бенто-торт Sevgilim" width="600" height="600"></div>
+        <div class="body"><h3 data-i18n="g1">Бенто Sevgilim</h3><div class="row"><span class="pr">25–35 ₼</span><a class="go" data-wa data-p="Bento tort Sevgilim" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
       </div>
       <div class="card reveal">
-        <div class="ph"><span class="stick y">Bantik 🎀</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg" alt="Bento tort Bantik" width="600" height="600"></div>
-        <div class="body"><h3>Bento Bantik</h3><div class="row"><span class="pr">35–60 ₼</span><a class="go" data-wa data-p="Bento tort Bantik" href="#" aria-label="Sifariş"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
+        <div class="ph"><span class="stick y" data-i18n="stk2">Бантик 🎀</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg" alt="Бенто-торт Bantik" width="600" height="600"></div>
+        <div class="body"><h3 data-i18n="g2">Бенто Bantik</h3><div class="row"><span class="pr">35–60 ₼</span><a class="go" data-wa data-p="Bento tort Bantik" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
       </div>
       <div class="card reveal">
-        <div class="ph"><span class="stick g">Cute 🧸</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_248100673_609196293748610_903340673830523120_n-600x600.jpg" alt="Bento tort Bear" width="600" height="600"></div>
-        <div class="body"><h3>Bento Bear</h3><div class="row"><span class="pr">25–35 ₼</span><a class="go" data-wa data-p="Bento tort Bear" href="#" aria-label="Sifariş"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
+        <div class="ph"><span class="stick g" data-i18n="stk3">Cute 🧸</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_248100673_609196293748610_903340673830523120_n-600x600.jpg" alt="Бенто-торт Bear" width="600" height="600"></div>
+        <div class="body"><h3 data-i18n="g3">Бенто Bear</h3><div class="row"><span class="pr">25–35 ₼</span><a class="go" data-wa data-p="Bento tort Bear" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
       </div>
       <div class="card reveal">
-        <div class="ph"><span class="stick">Baby 👶</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1722410107_highlight18253086958008641-600x600.jpg" alt="Bento tort Baby" width="600" height="600"></div>
-        <div class="body"><h3>Bento Baby</h3><div class="row"><span class="pr">25–60 ₼</span><a class="go" data-wa data-p="Bento tort Baby" href="#" aria-label="Sifariş"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
+        <div class="ph"><span class="stick" data-i18n="stk4">Baby 👶</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1722410107_highlight18253086958008641-600x600.jpg" alt="Бенто-торт Baby" width="600" height="600"></div>
+        <div class="body"><h3 data-i18n="g4">Бенто Baby</h3><div class="row"><span class="pr">25–60 ₼</span><a class="go" data-wa data-p="Bento tort Baby" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
       </div>
       <div class="card reveal">
-        <div class="ph"><span class="stick y">2-4-6-8 🥡</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977404_3311464938185466334_3523099162-600x600.jpg" alt="Cake to go Love" width="600" height="600"></div>
-        <div class="body"><h3>Cake to go — Love</h3><div class="row"><span class="pr">25–100 ₼</span><a class="go" data-wa data-p="Cake to go Love" href="#" aria-label="Sifariş"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
+        <div class="ph"><span class="stick y" data-i18n="stk5">2-4-6-8 🥡</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977404_3311464938185466334_3523099162-600x600.jpg" alt="Cake to go Love" width="600" height="600"></div>
+        <div class="body"><h3>Cake to go — Love</h3><div class="row"><span class="pr">25–100 ₼</span><a class="go" data-wa data-p="Cake to go Love" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
       </div>
       <div class="card reveal">
-        <div class="ph"><span class="stick">Party 🎉</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1712262810_3339024920686659731_3523099162-3-600x600.jpg" alt="Cake to go Birthday" width="600" height="600"></div>
-        <div class="body"><h3>Cake to go — Birthday</h3><div class="row"><span class="pr">25–100 ₼</span><a class="go" data-wa data-p="Cake to go Birthday" href="#" aria-label="Sifariş"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
+        <div class="ph"><span class="stick" data-i18n="stk6">Party 🎉</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1712262810_3339024920686659731_3523099162-3-600x600.jpg" alt="Cake to go Birthday" width="600" height="600"></div>
+        <div class="body"><h3>Cake to go — Birthday</h3><div class="row"><span class="pr">25–100 ₼</span><a class="go" data-wa data-p="Cake to go Birthday" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
       </div>
       <div class="card reveal">
-        <div class="ph"><span class="stick g">Sweet 🍬</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla444-600x600.jpg" alt="Bento tort Sweet" width="600" height="600"></div>
-        <div class="body"><h3>Bento Sweet</h3><div class="row"><span class="pr">25–35 ₼</span><a class="go" data-wa data-p="Bento tort Sweet" href="#" aria-label="Sifariş"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
+        <div class="ph"><span class="stick g" data-i18n="stk7">Sweet 🍬</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla444-600x600.jpg" alt="Бенто-торт Sweet" width="600" height="600"></div>
+        <div class="body"><h3 data-i18n="g7">Бенто Sweet</h3><div class="row"><span class="pr">25–35 ₼</span><a class="go" data-wa data-p="Bento tort Sweet" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
       </div>
       <div class="card reveal">
-        <div class="ph"><span class="stick">Love 💌</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla6-600x600.jpg" alt="Bento tort Love you" width="600" height="600"></div>
-        <div class="body"><h3>Bento Love you</h3><div class="row"><span class="pr">25–35 ₼</span><a class="go" data-wa data-p="Bento tort Love you" href="#" aria-label="Sifariş"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
+        <div class="ph"><span class="stick" data-i18n="stk8">Love 💌</span><img loading="lazy" src="https://vanilla.az/wp-content/uploads/2021/11/vanilla6-600x600.jpg" alt="Бенто-торт Love you" width="600" height="600"></div>
+        <div class="body"><h3 data-i18n="g8">Бенто Love you</h3><div class="row"><span class="pr">25–35 ₼</span><a class="go" data-wa data-p="Bento tort Love you" href="#" aria-label="Заказать"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></a></div></div>
       </div>
     </div>
     <div class="center" style="margin-top:44px">
-      <a class="btn" href="https://www.instagram.com/vanilla_cake_az/" target="_blank" rel="noopener">📸 120+ dizayn İnstagramda</a>
+      <a class="btn" href="https://www.instagram.com/vanilla_cake_az/" target="_blank" rel="noopener" data-i18n="m_more">📸 120+ дизайнов в Instagram</a>
     </div>
   </div>
 </section>
@@ -311,26 +324,26 @@ footer .desc{color:var(--ink-soft);font-size:14.5px;max-width:280px;margin-top:1
 <section class="section" id="olcu" style="padding-top:0">
   <div class="container">
     <div class="center" style="margin-bottom:44px">
-      <span class="tag">📏 Ölçülər</span>
-      <h2 style="margin-top:16px">Neçə nəfərsiniz?</h2>
+      <span class="tag" data-i18n="sz_tag">📏 Размеры</span>
+      <h2 style="margin-top:16px" data-i18n="sz_t">Сколько вас?</h2>
     </div>
     <div class="sizes">
       <div class="size-card pink reveal">
         <span class="em">🍰</span>
-        <h3>Mini bento</h3>
-        <div class="g">350–400 q</div>
-        <p>1–2 nəfər üçün ideal — özünə və ya sevdiyinə kiçik sürpriz</p>
+        <h3 data-i18n="sz1t">Мини-бенто</h3>
+        <div class="g">350–400 г</div>
+        <p data-i18n="sz1d">Идеален для 1–2 человек — маленький сюрприз себе или любимым</p>
       </div>
       <div class="size-card mint reveal">
         <span class="em">🎂</span>
-        <h3>Böyük bento</h3>
-        <div class="g">800–900 q</div>
-        <p>3–4 nəfər üçün — kiçik qeyd etmələrin ulduzu</p>
+        <h3 data-i18n="sz2t">Большой бенто</h3>
+        <div class="g">800–900 г</div>
+        <p data-i18n="sz2d">Для 3–4 человек — звезда небольшого праздника</p>
       </div>
     </div>
     <div class="gift-note reveal">
       <span class="em">🎁</span>
-      <span>Hər sifarişə <b>şam və qaşıq hədiyyə</b> — qutunu açan kimi bayrama hazır!</span>
+      <span data-i18n="gift">К каждому заказу — <b>свеча и ложка в подарок</b>: открыли коробку — и праздник готов!</span>
     </div>
   </div>
 </section>
@@ -341,25 +354,25 @@ footer .desc{color:var(--ink-soft);font-size:14.5px;max-width:280px;margin-top:1
     <div class="phone reveal">
       <div class="bar">
         <span class="av">🧁</span>
-        <div><b>Vanilla Cake</b><small>● onlayn</small></div>
+        <div><b>Vanilla Cake</b><small data-i18n="ch_on">● онлайн</small></div>
       </div>
-      <div class="bub me">Salam! Şənbə üçün bento tort istəyirəm 🥺🎂</div>
-      <div class="bub shop">Salam! Əlbəttə 💕 Hansı dizayn xoşunuza gəlir? Menyudan seçə və ya öz şəklinizi göndərə bilərsiniz</div>
-      <div class="bub me">Bantiklı olsun! Üzərində «Ad günün mübarək Aysel» yazsın 🎀</div>
-      <div class="bub shop">Hazırdır! Şənbə saat 15:00-da ünvanınızda 🚗✨ Şam və qaşıq bizdən hədiyyə 🎁</div>
+      <div class="bub me" data-i18n="cb1">Здравствуйте! Хочу бенто-торт на субботу 🥺🎂</div>
+      <div class="bub shop" data-i18n="cb2">Здравствуйте! Конечно 💕 Какой дизайн вам нравится? Можно выбрать из меню или прислать свою картинку</div>
+      <div class="bub me" data-i18n="cb3">Пусть будет с бантиком! И надпись «С днём рождения, Айсель» 🎀</div>
+      <div class="bub shop" data-i18n="cb4">Готово! В субботу к 15:00 будет у вас 🚗✨ Свеча и ложка — от нас в подарок 🎁</div>
     </div>
     <div class="chat-side">
-      <span class="tag">💬 Sifariş qaydası</span>
-      <h2 style="margin-top:16px">Bir mesaj — bir tort</h2>
-      <p class="sub">Onlayn ödəniş, mürəkkəb formalar yoxdur. Hər şey adi söhbət kimi asan:</p>
+      <span class="tag" data-i18n="ch_tag">💬 Как заказать</span>
+      <h2 style="margin-top:16px" data-i18n="ch_t">Одно сообщение — один торт</h2>
+      <p class="sub" data-i18n="ch_d">Без онлайн-оплат и сложных форм. Всё просто, как обычная переписка:</p>
       <ul class="chat-list">
-        <li><span class="n">1</span><div><b>Dizaynı seç</b><p>Menyudan, İnstagramdan və ya öz ideyandan</p></div></li>
-        <li><span class="n">2</span><div><b>WhatsApp-a yaz</b><p>Tarix + yazı + dad. Nə qədər tez, bir o qədər yaxşı</p></div></li>
-        <li><span class="n">3</span><div><b>Qəbul et və sevin</b><p>Ödəniş çatdırılanda və ya kartdan karta</p></div></li>
+        <li><span class="n">1</span><div><b data-i18n="cl1t">Выберите дизайн</b><p data-i18n="cl1d">Из меню, Instagram или ваша собственная идея</p></div></li>
+        <li><span class="n">2</span><div><b data-i18n="cl2t">Напишите в WhatsApp</b><p data-i18n="cl2d">Дата + надпись + вкус. Чем раньше, тем лучше</p></div></li>
+        <li><span class="n">3</span><div><b data-i18n="cl3t">Получите и радуйтесь</b><p data-i18n="cl3d">Оплата при доставке или переводом на карту</p></div></li>
       </ul>
       <a class="btn btn-pink" data-wa href="#" style="margin-top:28px">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.2 1.2Z"/></svg>
-        Sən də belə yaz!
+        <span data-i18n="ch_btn">Напишите и вы!</span>
       </a>
     </div>
   </div>
@@ -368,20 +381,20 @@ footer .desc{color:var(--ink-soft);font-size:14.5px;max-width:280px;margin-top:1
 <!-- Flavors -->
 <section class="section" id="dadlar">
   <div class="container center">
-    <span class="tag">😋 Dadlar</span>
-    <h2 style="margin:16px 0 36px">Hansını dadmaq istəyirsən?</h2>
+    <span class="tag" data-i18n="fl_tag">😋 Вкусы</span>
+    <h2 style="margin:16px 0 36px" data-i18n="fl_t">Что будете пробовать?</h2>
     <div class="flav reveal">
       <span class="p">❤️ Red velvet</span>
-      <span class="y">🍫 Şokoladlı</span>
-      <span class="m">🌼 Vanilli</span>
-      <span class="p">🍓 Çiyələkli konfitür</span>
-      <span class="m">🫐 Malina konfitür</span>
-      <span class="y">🍒 Vişnəli</span>
+      <span class="y" data-i18n="fl2">🍫 Шоколадный</span>
+      <span class="m" data-i18n="fl3">🌼 Ванильный</span>
+      <span class="p" data-i18n="fl4">🍓 Клубничный конфитюр</span>
+      <span class="m" data-i18n="fl5">🫐 Малиновый конфитюр</span>
+      <span class="y" data-i18n="fl6">🍒 Вишнёвый</span>
     </div>
     <div class="stats" style="margin-top:64px">
-      <div class="stat reveal"><b>850+</b><span>xoşbəxt müştəri</span></div>
-      <div class="stat reveal"><b>1650+</b><span>şirin sifariş</span></div>
-      <div class="stat reveal"><b>120+</b><span>tort dizaynı</span></div>
+      <div class="stat reveal"><b>850+</b><span data-i18n="st1">счастливых клиентов</span></div>
+      <div class="stat reveal"><b>1650+</b><span data-i18n="st2">сладких заказов</span></div>
+      <div class="stat reveal"><b>120+</b><span data-i18n="st3">дизайнов тортов</span></div>
     </div>
   </div>
 </section>
@@ -391,24 +404,24 @@ footer .desc{color:var(--ink-soft);font-size:14.5px;max-width:280px;margin-top:1
   <div class="container">
     <div class="center" style="margin-bottom:40px">
       <span class="tag">❓ FAQ</span>
-      <h2 style="margin-top:16px">Maraqlıdır?</h2>
+      <h2 style="margin-top:16px" data-i18n="fq_t">Интересно?</h2>
     </div>
     <div class="faq reveal">
       <details open>
-        <summary>Sifarişi nə vaxt verməliyəm? <span class="ic">+</span></summary>
-        <div class="a">Nə qədər tez, bir o qədər yaxşı! Sifarişlər hər gün 09:00–21:00 qəbul olunur. Erkən yazsan, istədiyin tarixi tutmaq asan olur.</div>
+        <summary><span data-i18n="q1">Когда лучше заказывать?</span> <span class="ic">+</span></summary>
+        <div class="a" data-i18n="qa1">Чем раньше — тем лучше! Заказы принимаем ежедневно 09:00–21:00. Напишете заранее — получите нужную дату.</div>
       </details>
       <details>
-        <summary>Ödəniş necə olur? <span class="ic">+</span></summary>
-        <div class="a">Onlayn ödəniş yoxdur — çatdırılma zamanı nağd və ya kartdan karta (card to card). Rahat və sadə!</div>
+        <summary><span data-i18n="q2">Как оплатить?</span> <span class="ic">+</span></summary>
+        <div class="a" data-i18n="qa2">Онлайн-оплаты нет — при доставке наличными или переводом с карты на карту. Просто и удобно!</div>
       </details>
       <details>
-        <summary>Öz dizaynımı göndərə bilərəm? <span class="ic">+</span></summary>
-        <div class="a">Əlbəttə! İstədiyin şəkli WhatsApp-a göndər — sənin üçün hazırlayaq. Yazı, rəng, fiqur — hamısı sənin istəyinlə.</div>
+        <summary><span data-i18n="q3">Можно свой дизайн?</span> <span class="ic">+</span></summary>
+        <div class="a" data-i18n="qa3">Конечно! Пришлите картинку в WhatsApp — сделаем для вас. Надпись, цвет, фигурки — всё по вашему желанию.</div>
       </details>
       <details>
-        <summary>Tortu necə saxlamalıyam? <span class="ic">+</span></summary>
-        <div class="a">Mütləq soyuducuda! Daşıyarkən düz səthə qoy, yayda kondisionerlə apar. 5 saatdan çox qalacaqsa, qutuda saxla.</div>
+        <summary><span data-i18n="q4">Как хранить торт?</span> <span class="ic">+</span></summary>
+        <div class="a" data-i18n="qa4">Только в холодильнике! Перевозите на ровной поверхности, летом — в машине с кондиционером. Если дольше 5 часов — храните в коробке.</div>
       </details>
     </div>
   </div>
@@ -419,8 +432,8 @@ footer .desc{color:var(--ink-soft);font-size:14.5px;max-width:280px;margin-top:1
   <div class="container">
     <div class="cta-card reveal">
       <div class="dots"></div>
-      <h2>Bu gün bir az şirinlik? 🍰</h2>
-      <p>Yaz bizə — 5 dəqiqəyə sifarişini rəsmiləşdirək. Bir dadım — eşq!</p>
+      <h2 data-i18n="cta_t">Немного сладкого сегодня? 🍰</h2>
+      <p data-i18n="cta_d">Напишите нам — оформим заказ за 5 минут. Bir dadım — eşq!</p>
       <a class="btn btn-butter" data-wa href="#" style="position:relative">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.2 1.2Z"/></svg>
         +994 55 215 63 43
@@ -435,28 +448,28 @@ footer .desc{color:var(--ink-soft);font-size:14.5px;max-width:280px;margin-top:1
     <div class="f-grid">
       <div>
         <a class="logo" href="#"><span class="m">🧁</span>Vanilla Cake</a>
-        <p class="desc">Bakıda sifarişlə hazırlanan bento tortlar və cake to go. Bir dadım — eşq! 💝</p>
+        <p class="desc" data-i18n="ft_desc">Бенто-торты и cake to go на заказ в Баку. Bir dadım — eşq! 💝</p>
       </div>
       <div>
-        <h4>Səhifələr</h4>
+        <h4 data-i18n="ft_h1">Страницы</h4>
         <ul>
-          <li><a href="#menyu">Menyu</a></li>
-          <li><a href="#sifaris">Sifariş qaydası</a></li>
+          <li><a href="#menyu" data-i18n="ft_l1">Меню</a></li>
+          <li><a href="#sifaris" data-i18n="ft_l2">Как заказать</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li><a href="https://www.instagram.com/vanilla_cake_az/" target="_blank" rel="noopener">Rəylər</a></li>
+          <li><a href="https://www.instagram.com/vanilla_cake_az/" target="_blank" rel="noopener" data-i18n="ft_l3">Отзывы</a></li>
         </ul>
       </div>
       <div>
-        <h4>Əlaqə</h4>
+        <h4 data-i18n="ft_h2">Контакты</h4>
         <ul>
           <li><a href="tel:+994552156343">📞 +994 55 215 63 43</a></li>
           <li><a href="mailto:info@vanilla.az">✉️ info@vanilla.az</a></li>
-          <li>🕘 Hər gün 09:00 – 21:00</li>
+          <li data-i18n="ft_hours">🕘 Ежедневно 09:00 – 21:00</li>
         </ul>
       </div>
     </div>
     <div class="f-bottom">
-      <span>© 2026 Vanilla.az — sevgi ilə bişirilib 💕</span>
+      <span data-i18n="ft_copy">© 2026 Vanilla.az — испечено с любовью 💕</span>
       <div class="socials">
         <a href="https://www.instagram.com/vanilla_cake_az/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg></a>
         <a href="https://www.facebook.com/vanillacakeaz" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V7a1.5 1.5 0 0 1 1.5-1.5H17V2h-3a4 4 0 0 0-4 4v2.5H7.5V12H10v10h4V12h2.6l.9-3.5H14Z"/></svg></a>
@@ -469,16 +482,139 @@ footer .desc{color:var(--ink-soft);font-size:14.5px;max-width:280px;margin-top:1
 <!-- Mobile CTA -->
 <div class="mob-cta">
   <a class="btn" href="tel:+994552156343" style="flex:0 0 auto">📞</a>
-  <a class="btn wa-g" data-wa href="#">WhatsApp-la sifariş et 🍰</a>
+  <a class="btn wa-g" data-wa href="#" data-i18n="mc_wa">Заказать в WhatsApp 🍰</a>
 </div>
 
 <script>
-var WA='https://wa.me/994552156343?text=';
-document.querySelectorAll('[data-wa]').forEach(function(a){
-  var p=a.getAttribute('data-p');
-  var msg=p?'Salam! "'+p+'" sifariş etmək istəyirəm. 🎂':'Salam! Tort sifariş etmək istəyirəm. 🎂';
-  a.href=WA+encodeURIComponent(msg);a.target='_blank';a.rel='noopener';
+var TITLES={
+  ru:'Vanilla Cake — маленький торт, большая радость! 🍰',
+  az:'Vanilla Cake — Kiçik tort, böyük sevinc! 🍰',
+  en:'Vanilla Cake — little cake, big joy! 🍰'
+};
+var WA_MSG={
+  ru:['Здравствуйте! Хочу заказать торт. 🎂','Здравствуйте! Хочу заказать «{p}». 🎂'],
+  az:['Salam! Tort sifariş etmək istəyirəm. 🎂','Salam! "{p}" sifariş etmək istəyirəm. 🎂'],
+  en:['Hello! I would like to order a cake. 🎂','Hello! I would like to order "{p}". 🎂']
+};
+var I18N={
+az:{
+  n1:'Menyu',n2:'Ölçülər',n3:'Necə sifariş?',n4:'Dadlar',n_cta:'Sifariş et',
+  h_tag:'📍 Bakı · sifarişlə hazırlanır · çatdırılma var',
+  h_t:'Kiçik tort,<br><span class="hl">böyük sevinc!<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 9 Q 50 2 100 7 T 198 5" fill="none" stroke="#FFC94D" stroke-width="5" stroke-linecap="round"/></svg></span>',
+  h_lead:'Bento tortlar və cake to go — hər biri sənin üçün, sənin sözlərinlə, sıfırdan bişirilir. Sadəcə WhatsApp-a yaz, qalanı şirin tərəfimizdən! 🍰',
+  h_c1:'WhatsApp-la sifariş',h_c2:'🍰 Menyuya bax',
+  ps1:'Hit! 💖',ps2:'Sevimli 🌟',ps3:'Yeni ✨',
+  pc1:'Bento Bantik 🎀',pc2:'Bento Sevgilim 💌',pc3:'Cake to go 🥡',
+  mq:'<span>🎂 Bento tort</span><span>🥡 Cake to go</span><span>🍓 Təbii inqrediyentlər</span><span>🚗 Çatdırılma</span><span>🎁 Şam + qaşıq hədiyyə</span><span>💝 Bir dadım — eşq</span><span>🎂 Bento tort</span><span>🥡 Cake to go</span><span>🍓 Təbii inqrediyentlər</span><span>🚗 Çatdırılma</span><span>🎁 Şam + qaşıq hədiyyə</span><span>💝 Bir dadım — eşq</span>',
+  m_tag:'🍰 Menyu',m_t:'Şirin vitrinimiz',
+  m_d:'İstədiyin dizaynı seç və ya öz ideyanı göndər — hamısını hazırlaya bilirik!',
+  stk1:'Hit 💖',stk2:'Bantik 🎀',stk3:'Cute 🧸',stk4:'Baby 👶',stk5:'2-4-6-8 🥡',stk6:'Party 🎉',stk7:'Sweet 🍬',stk8:'Love 💌',
+  g1:'Bento Sevgilim',g2:'Bento Bantik',g3:'Bento Bear',g4:'Bento Baby',g7:'Bento Sweet',g8:'Bento Love you',
+  m_more:'📸 120+ dizayn İnstagramda',
+  sz_tag:'📏 Ölçülər',sz_t:'Neçə nəfərsiniz?',
+  sz1t:'Mini bento',sz1d:'1–2 nəfər üçün ideal — özünə və ya sevdiyinə kiçik sürpriz',
+  sz2t:'Böyük bento',sz2d:'3–4 nəfər üçün — kiçik qeyd etmələrin ulduzu',
+  gift:'Hər sifarişə <b>şam və qaşıq hədiyyə</b> — qutunu açan kimi bayrama hazır!',
+  ch_on:'● onlayn',
+  cb1:'Salam! Şənbə üçün bento tort istəyirəm 🥺🎂',
+  cb2:'Salam! Əlbəttə 💕 Hansı dizayn xoşunuza gəlir? Menyudan seçə və ya öz şəklinizi göndərə bilərsiniz',
+  cb3:'Bantiklı olsun! Üzərində «Ad günün mübarək, Aysel» yazsın 🎀',
+  cb4:'Hazırdır! Şənbə saat 15:00-da ünvanınızda 🚗✨ Şam və qaşıq bizdən hədiyyə 🎁',
+  ch_tag:'💬 Sifariş qaydası',ch_t:'Bir mesaj — bir tort',
+  ch_d:'Onlayn ödəniş, mürəkkəb formalar yoxdur. Hər şey adi söhbət kimi asan:',
+  cl1t:'Dizaynı seç',cl1d:'Menyudan, İnstagramdan və ya öz ideyandan',
+  cl2t:'WhatsApp-a yaz',cl2d:'Tarix + yazı + dad. Nə qədər tez, bir o qədər yaxşı',
+  cl3t:'Qəbul et və sevin',cl3d:'Ödəniş çatdırılanda və ya kartdan karta',
+  ch_btn:'Sən də belə yaz!',
+  fl_tag:'😋 Dadlar',fl_t:'Hansını dadmaq istəyirsən?',
+  fl2:'🍫 Şokoladlı',fl3:'🌼 Vanilli',fl4:'🍓 Çiyələkli konfitür',fl5:'🫐 Malina konfitür',fl6:'🍒 Vişnəli',
+  st1:'xoşbəxt müştəri',st2:'şirin sifariş',st3:'tort dizaynı',
+  fq_t:'Maraqlıdır?',
+  q1:'Sifarişi nə vaxt verməliyəm?',qa1:'Nə qədər tez, bir o qədər yaxşı! Sifarişlər hər gün 09:00–21:00 qəbul olunur. Erkən yazsan, istədiyin tarixi tutmaq asan olur.',
+  q2:'Ödəniş necə olur?',qa2:'Onlayn ödəniş yoxdur — çatdırılma zamanı nağd və ya kartdan karta (card to card). Rahat və sadə!',
+  q3:'Öz dizaynımı göndərə bilərəm?',qa3:'Əlbəttə! İstədiyin şəkli WhatsApp-a göndər — sənin üçün hazırlayaq. Yazı, rəng, fiqur — hamısı sənin istəyinlə.',
+  q4:'Tortu necə saxlamalıyam?',qa4:'Mütləq soyuducuda! Daşıyarkən düz səthə qoy, yayda kondisionerlə apar. 5 saatdan çox qalacaqsa, qutuda saxla.',
+  cta_t:'Bu gün bir az şirinlik? 🍰',
+  cta_d:'Yaz bizə — 5 dəqiqəyə sifarişini rəsmiləşdirək. Bir dadım — eşq!',
+  ft_desc:'Bakıda sifarişlə hazırlanan bento tortlar və cake to go. Bir dadım — eşq! 💝',
+  ft_h1:'Səhifələr',ft_l1:'Menyu',ft_l2:'Sifariş qaydası',ft_l3:'Rəylər',
+  ft_h2:'Əlaqə',ft_hours:'🕘 Hər gün 09:00 – 21:00',
+  ft_copy:'© 2026 Vanilla.az — sevgi ilə bişirilib 💕',
+  mc_wa:'WhatsApp-la sifariş et 🍰'
+},
+en:{
+  n1:'Menu',n2:'Sizes',n3:'How to order?',n4:'Flavors',n_cta:'Order now',
+  h_tag:'📍 Baku · made to order · delivery available',
+  h_t:'Little cake,<br><span class="hl">big joy!<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 9 Q 50 2 100 7 T 198 5" fill="none" stroke="#FFC94D" stroke-width="5" stroke-linecap="round"/></svg></span>',
+  h_lead:'Bento cakes and cake to go — baked from scratch, for you and with your words. Just message us on WhatsApp — we take care of the sweet part! 🍰',
+  h_c1:'Order on WhatsApp',h_c2:'🍰 View menu',
+  ps1:'Hit! 💖',ps2:'Favorite 🌟',ps3:'New ✨',
+  pc1:'Bento Bantik 🎀',pc2:'Bento Sevgilim 💌',pc3:'Cake to go 🥡',
+  mq:'<span>🎂 Bento cakes</span><span>🥡 Cake to go</span><span>🍓 Natural ingredients</span><span>🚗 Delivery</span><span>🎁 Candle + spoon gift</span><span>💝 Bir dadım — eşq</span><span>🎂 Bento cakes</span><span>🥡 Cake to go</span><span>🍓 Natural ingredients</span><span>🚗 Delivery</span><span>🎁 Candle + spoon gift</span><span>💝 Bir dadım — eşq</span>',
+  m_tag:'🍰 Menu',m_t:'Our sweet counter',
+  m_d:'Pick a design or send your own idea — we can make any of them!',
+  stk1:'Hit 💖',stk2:'Bow 🎀',stk3:'Cute 🧸',stk4:'Baby 👶',stk5:'2-4-6-8 🥡',stk6:'Party 🎉',stk7:'Sweet 🍬',stk8:'Love 💌',
+  g1:'Bento Sevgilim',g2:'Bento Bantik',g3:'Bento Bear',g4:'Bento Baby',g7:'Bento Sweet',g8:'Bento Love you',
+  m_more:'📸 120+ designs on Instagram',
+  sz_tag:'📏 Sizes',sz_t:'How many of you?',
+  sz1t:'Mini bento',sz1d:'Perfect for 1–2 people — a little surprise for yourself or a loved one',
+  sz2t:'Big bento',sz2d:'For 3–4 people — the star of a small celebration',
+  gift:'Every order comes with a <b>free candle and spoon</b> — open the box and the party is ready!',
+  ch_on:'● online',
+  cb1:'Hi! I want a bento cake for Saturday 🥺🎂',
+  cb2:'Hi! Of course 💕 Which design do you like? Pick from the menu or send your own picture',
+  cb3:'The one with the bow! With “Happy birthday, Aysel” on it 🎀',
+  cb4:'Done! It will be at your door Saturday by 15:00 🚗✨ Candle and spoon are our gift 🎁',
+  ch_tag:'💬 How to order',ch_t:'One message — one cake',
+  ch_d:'No online payments, no complicated forms. As easy as a regular chat:',
+  cl1t:'Pick a design',cl1d:'From the menu, Instagram or your own idea',
+  cl2t:'Message us on WhatsApp',cl2d:'Date + lettering + flavor. The earlier, the better',
+  cl3t:'Receive and enjoy',cl3d:'Pay on delivery or by card-to-card transfer',
+  ch_btn:'Message us too!',
+  fl_tag:'😋 Flavors',fl_t:'What will you try?',
+  fl2:'🍫 Chocolate',fl3:'🌼 Vanilla',fl4:'🍓 Strawberry confiture',fl5:'🫐 Raspberry confiture',fl6:'🍒 Cherry',
+  st1:'happy clients',st2:'sweet orders',st3:'cake designs',
+  fq_t:'Curious?',
+  q1:'When should I order?',qa1:'The earlier the better! Orders are accepted daily 09:00–21:00. Write in advance to get the date you want.',
+  q2:'How do I pay?',qa2:'No online payment — pay on delivery in cash or by card-to-card transfer. Simple and easy!',
+  q3:'Can I send my own design?',qa3:'Of course! Send a picture on WhatsApp and we will make it for you. Lettering, colors, figures — all as you wish.',
+  q4:'How should I store the cake?',qa4:'In the fridge only! Transport on a flat surface, in summer with air conditioning. If longer than 5 hours — keep it in the box.',
+  cta_t:'Something sweet today? 🍰',
+  cta_d:'Message us — we will arrange your order in 5 minutes. Bir dadım — eşq!',
+  ft_desc:'Custom bento cakes and cake to go in Baku. Bir dadım — eşq! 💝',
+  ft_h1:'Pages',ft_l1:'Menu',ft_l2:'How to order',ft_l3:'Reviews',
+  ft_h2:'Contact',ft_hours:'🕘 Daily 09:00 – 21:00',
+  ft_copy:'© 2026 Vanilla.az — baked with love 💕',
+  mc_wa:'Order on WhatsApp 🍰'
+}
+};
+var ruCache={};
+document.querySelectorAll('[data-i18n]').forEach(function(el){ruCache[el.getAttribute('data-i18n')]=el.innerHTML});
+function applyWA(l){
+  document.querySelectorAll('[data-wa]').forEach(function(a){
+    var p=a.getAttribute('data-p');
+    var t=p?WA_MSG[l][1].replace('{p}',p):WA_MSG[l][0];
+    a.href='https://wa.me/994552156343?text='+encodeURIComponent(t);
+    a.target='_blank';a.rel='noopener';
+  });
+}
+function setLang(l){
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k=el.getAttribute('data-i18n');
+    var v=(l==='ru')?ruCache[k]:((I18N[l]&&I18N[l][k]!==undefined)?I18N[l][k]:ruCache[k]);
+    el.innerHTML=v;
+  });
+  document.title=TITLES[l]||TITLES.ru;
+  document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-l')===l)});
+  applyWA(l);
+  try{localStorage.setItem('vanilla_lang',l)}catch(e){}
+}
+document.querySelectorAll('.lang').forEach(function(w){
+  w.addEventListener('click',function(e){var b=e.target.closest('button');if(b)setLang(b.getAttribute('data-l'))});
 });
+var saved='ru';try{saved=localStorage.getItem('vanilla_lang')||'ru'}catch(e){}
+if(saved!=='ru'&&I18N[saved])setLang(saved);else applyWA('ru');
 var burger=document.getElementById('burger'),menu=document.getElementById('menu');
 burger.addEventListener('click',function(){menu.classList.toggle('open')});
 menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
