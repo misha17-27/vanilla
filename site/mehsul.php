@@ -31,8 +31,7 @@ $catMap = [
 [$catUrl, $catLabel, $navSlug] = $catMap[$prod['type']];
 $page = $navSlug;
 
-$weightKey = 'pd_w_' . $prod['type'];
-$sizeOpts  = $t['sizes_opt_' . $prod['type']];
+$sizeOpts = $t['sizes_opt_' . $prod['type']];
 
 // похожие: тот же тип, без текущего
 $related = array_values(array_filter(products_of($prod['type']), fn($p) => $p['slug'] !== $slug));
@@ -90,6 +89,13 @@ require __DIR__ . '/includes/header.php';
             </select>
           </div>
           <div class="opt-row">
+            <label for="opt-dl"><?= e($t['opt_dl']) ?></label>
+            <select id="opt-dl">
+              <option value="courier"><?= e($t['dl_courier']) ?></option>
+              <option value="pickup"><?= e($t['dl_pickup']) ?></option>
+            </select>
+          </div>
+          <div class="opt-row">
             <label><?= e($t['opt_date']) ?></label>
             <div class="date-wrap">
               <button type="button" class="date-btn" id="opt-date">
@@ -106,6 +112,36 @@ require __DIR__ . '/includes/header.php';
                 <div class="cal-note"><?= e($t['date_note']) ?></div>
               </div>
             </div>
+          </div>
+          <div class="opt-row">
+            <label for="opt-time"><?= e($t['opt_time']) ?></label>
+            <select id="opt-time">
+              <option value=""><?= e($t['time_ph']) ?></option>
+            </select>
+          </div>
+          <div class="opt-row" id="row-address">
+            <label for="f-address"><?= e($t['f_address']) ?></label>
+            <input class="txt" type="text" id="f-address" placeholder="<?= e($t['f_address_ph']) ?>" maxlength="120">
+          </div>
+          <div class="opt-row">
+            <label for="f-name"><?= e($t['f_name']) ?></label>
+            <input class="txt" type="text" id="f-name" placeholder="<?= e($t['f_name_ph']) ?>" maxlength="60">
+          </div>
+          <div class="opt-row">
+            <label for="f-phone"><?= e($t['f_phone']) ?></label>
+            <input class="txt" type="tel" id="f-phone" placeholder="<?= e($t['f_phone_ph']) ?>" maxlength="30">
+          </div>
+          <label class="chk">
+            <input type="checkbox" id="f-other">
+            <span><?= e($t['f_other']) ?></span>
+          </label>
+          <div class="opt-row" id="row-rname" hidden>
+            <label for="f-rname"><?= e($t['f_recipient']) ?></label>
+            <input class="txt" type="text" id="f-rname" placeholder="<?= e($t['f_rname_ph']) ?>" maxlength="60">
+          </div>
+          <div class="opt-row" id="row-rphone" hidden>
+            <label for="f-rphone"><?= e($t['f_phone']) ?></label>
+            <input class="txt" type="tel" id="f-rphone" placeholder="<?= e($t['f_rphone_ph']) ?>" maxlength="30">
           </div>
         </div>
 
@@ -153,7 +189,14 @@ require __DIR__ . '/includes/header.php';
       <section class="pd-sec">
         <h3><?= e($t['tab_desc']) ?></h3>
         <p><?= e($t['pd_desc']) ?></p>
-        <p class="tp-strong"><?= e($t[$weightKey]) ?></p>
+        <ul class="tp-sizes">
+          <?php foreach ($sizeOpts as $o): ?>
+          <li><span><?= e($o[0]) ?></span><b><?= e($o[1]) ?> ₼</b></li>
+          <?php endforeach; ?>
+        </ul>
+        <?php if ($prod['type'] === 'ctg'): ?>
+        <p class="tp-strong" style="margin-top:14px"><?= e($t['sizes_ctg_note']) ?></p>
+        <?php endif; ?>
       </section>
       <section class="pd-sec">
         <h3><?= e($t['tab_fill']) ?></h3>
@@ -192,7 +235,12 @@ require __DIR__ . '/includes/header.php';
 <script>
 window.PROD_CFG = <?= json_encode([
     'intro'   => sprintf($t['wa_msg_p'], $name),
-    'labels'  => ['size' => $t['opt_size'], 'sponge' => $t['opt_sponge'], 'fill' => $t['opt_fill'], 'date' => $t['opt_date']],
+    'labels'  => [
+        'size' => $t['opt_size'], 'sponge' => $t['opt_sponge'], 'fill' => $t['opt_fill'],
+        'date' => $t['opt_date'], 'time' => $t['opt_time'], 'dl' => $t['opt_dl'],
+        'address' => $t['f_address'], 'name' => $t['f_name'], 'phone' => $t['f_phone'],
+        'recipient' => $t['f_recipient'],
+    ],
     'locale'  => $lang,
     'sizes'   => $sizeOpts,
     'sponges' => [

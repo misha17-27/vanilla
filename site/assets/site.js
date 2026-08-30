@@ -28,8 +28,36 @@ if (burger && menu) {
   }
   var designUrl = '';
   var selDate = null;
+  var dlSel = document.getElementById('opt-dl');
+  var timeSel = document.getElementById('opt-time');
+  var rowAddress = document.getElementById('row-address');
+  var fAddress = document.getElementById('f-address');
+  var fName = document.getElementById('f-name');
+  var fPhone = document.getElementById('f-phone');
+  var fOther = document.getElementById('f-other');
+  var rowRname = document.getElementById('row-rname');
+  var rowRphone = document.getElementById('row-rphone');
+  var fRname = document.getElementById('f-rname');
+  var fRphone = document.getElementById('f-rphone');
   function pad2(n) { return (n < 10 ? '0' : '') + n; }
   function fmtDate(d) { return pad2(d.getDate()) + '.' + pad2(d.getMonth() + 1) + '.' + d.getFullYear(); }
+  // Слоты времени: будни/по умолчанию 11:00–20:00, суббота — только 11:00–14:00
+  function refreshSlots() {
+    var lastStart = (selDate && selDate.getDay() === 6) ? 13 : 19;
+    var cur = timeSel.value;
+    var html = '<option value="">' + timeSel.options[0].textContent + '</option>';
+    for (var h = 11; h <= lastStart; h++) {
+      var v = h + ':00–' + (h + 1) + ':00';
+      html += '<option' + (v === cur ? ' selected' : '') + '>' + v + '</option>';
+    }
+    timeSel.innerHTML = html;
+  }
+  function toggleFields() {
+    rowAddress.hidden = dlSel.value !== 'courier';
+    var other = fOther.checked;
+    rowRname.hidden = !other;
+    rowRphone.hidden = !other;
+  }
   function update() {
     var size = cfg.sizes[sizeSel.selectedIndex];
     priceEl.textContent = size[1] + ' ₼';
@@ -40,6 +68,14 @@ if (burger && menu) {
       cfg.labels.fill + ': ' + fillSel.value
     ];
     if (selDate) lines.push(cfg.labels.date + ': ' + fmtDate(selDate));
+    if (timeSel.value) lines.push(cfg.labels.time + ': ' + timeSel.value);
+    lines.push(cfg.labels.dl + ': ' + dlSel.options[dlSel.selectedIndex].textContent);
+    if (dlSel.value === 'courier' && fAddress.value.trim()) lines.push(cfg.labels.address + ': ' + fAddress.value.trim());
+    if (fName.value.trim()) lines.push(cfg.labels.name + ': ' + fName.value.trim());
+    if (fPhone.value.trim()) lines.push(cfg.labels.phone + ': ' + fPhone.value.trim());
+    if (fOther.checked && (fRname.value.trim() || fRphone.value.trim())) {
+      lines.push(cfg.labels.recipient + ': ' + [fRname.value.trim(), fRphone.value.trim()].filter(Boolean).join(', '));
+    }
     lines.push(cfg.linkLbl + ': ' + cfg.purl);
     if (designUrl) lines.push(cfg.design + ': ' + designUrl);
     orderEl.href = cfg.wa + encodeURIComponent(lines.join('\n'));
@@ -47,6 +83,14 @@ if (burger && menu) {
   sizeSel.addEventListener('change', update);
   spongeSel.addEventListener('change', function () { refillFillings(); update(); });
   fillSel.addEventListener('change', update);
+  dlSel.addEventListener('change', function () { toggleFields(); update(); });
+  timeSel.addEventListener('change', update);
+  fOther.addEventListener('change', function () { toggleFields(); update(); });
+  [fAddress, fName, fPhone, fRname, fRphone].forEach(function (inp) {
+    inp.addEventListener('input', update);
+  });
+  refreshSlots();
+  toggleFields();
   update();
 
   // Календарь желаемой даты (воскресенья — выходной — недоступны)
@@ -91,6 +135,7 @@ if (burger && menu) {
       dateVal.textContent = fmtDate(selDate);
       dateVal.classList.add('has');
       cal.hidden = true;
+      refreshSlots();
       update();
     });
     calPrev.addEventListener('click', function () { view.setMonth(view.getMonth() - 1); renderCal(); });
