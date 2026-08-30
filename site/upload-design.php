@@ -89,4 +89,8 @@ imagedestroy($dst);
 $rl['n'] = ($rl['n'] ?? 0) + 1;
 @file_put_contents($rlFile, json_encode($rl));
 
-echo json_encode(['ok' => true, 'url' => '/uploads/designs/' . $name]);
+// Абсолютная ссылка по хосту запроса: на проде это https://vanilla.az/uploads/... —
+// WhatsApp сделает её кликабельной (IP-адреса вроде 127.0.0.1 WhatsApp ссылками не считает).
+$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$host   = $_SERVER['HTTP_HOST'] ?? 'vanilla.az';
+echo json_encode(['ok' => true, 'url' => $scheme . '://' . $host . '/uploads/designs/' . $name]);

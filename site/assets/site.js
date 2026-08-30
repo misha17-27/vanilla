@@ -140,7 +140,7 @@ if (burger && menu) {
         .then(function (r) { return r.json(); })
         .then(function (res) {
           if (res && res.ok && res.url) {
-            designUrl = location.origin + res.url;
+            designUrl = res.url.indexOf('http') === 0 ? res.url : location.origin + res.url;
             upThumb.src = URL.createObjectURL(f);
             upState('done');
             update();
