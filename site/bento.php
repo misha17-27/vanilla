@@ -1,18 +1,18 @@
 <?php
 $page = 'bento';
 require __DIR__ . '/includes/config.php';
-$page_title = $t['bento_title'];
-$page_meta  = $t['bento_meta'];
+$page_title = seo_title('bento', $t['bento_title']);
+$page_meta  = seo_desc('bento', $t['bento_meta']);
 require __DIR__ . '/includes/header.php';
-$bento  = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'bento'));
-$bantik = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'bantik'));
-$sets   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'set'));
+$bento  = products_of('bento');
+$bantik = products_of('bantik');
+$sets   = products_of('set');
 ?>
 
 <section class="page-hero">
   <div class="container">
     <div class="crumbs">
-      <a href="index.php"><?= e($t['breadcrumb_home']) ?></a>
+      <a href="/"><?= e($t['breadcrumb_home']) ?></a>
       <span class="sep">/</span>
       <span><?= e($t['nav_bento']) ?></span>
     </div>
@@ -63,7 +63,7 @@ $sets   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'set'));
         <div class="size-row"><span class="w"><?= e($t['fl3_t']) ?></span><span class="dots"></span><span class="c" style="color:var(--navy)"><?= e($t['fl3_s']) ?></span></div>
         <div class="size-note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-          <span><?= e($t['fl_d']) ?> <a href="fillings.php" style="color:var(--pink);font-weight:600"><?= e($t['nav_fillings']) ?> →</a></span>
+          <span><?= e($t['fl_d']) ?> <a href="/terkibler/" style="color:var(--pink);font-weight:600"><?= e($t['nav_fillings']) ?> →</a></span>
         </div>
       </div>
     </div>

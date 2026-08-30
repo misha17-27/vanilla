@@ -1,11 +1,13 @@
 <?php
 $page = 'index';
 require __DIR__ . '/includes/config.php';
-$page_title = $t['home_title'];
-$page_meta  = $t['home_meta'];
+$page_title = seo_title('home', $t['home_title']);
+$page_meta  = seo_desc('home', $t['home_meta']);
 require __DIR__ . '/includes/header.php';
-$bento = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'bento'));
-$ctg   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'ctg'));
+$bento  = products_of('bento');
+$bantik = products_of('bantik');
+$sets   = products_of('set');
+$ctg    = products_of('ctg');
 ?>
 
 <!-- Hero -->
@@ -20,7 +22,7 @@ $ctg   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'ctg'));
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.2 1.2Z"/></svg>
           <?= e($t['btn_wa']) ?>
         </a>
-        <a class="btn btn-ghost" href="bento.php"><?= e($t['hero_cta2']) ?></a>
+        <a class="btn btn-ghost" href="/bolme/bento-tort/"><?= e($t['hero_cta2']) ?></a>
       </div>
       <div class="trust">
         <span class="stars">★★★★★</span>
@@ -74,7 +76,7 @@ $ctg   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'ctg'));
       <p><?= e($t['occ_d']) ?></p>
     </div>
     <div class="occasions reveal">
-      <a class="occ" href="bento.php#bantik">
+      <a class="occ" href="/bolme/bento-tort/#bantik">
         <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.2"/><path d="M10.5 11 4 7.5a1.8 1.8 0 0 0-2.6 1.9L3 15l7-2.5M13.5 11 20 7.5a1.8 1.8 0 0 1 2.6 1.9L21 15l-7-2.5M10 13.5 6.5 20M14 13.5 17.5 20"/></svg></span>
         <span><?= e($t['occ1']) ?></span>
       </a>
@@ -98,7 +100,7 @@ $ctg   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'ctg'));
         <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 3.5 4.5H13l3.5 4.5H14l3.5 4.5h-11L10 12H7.5L11 7.5H8.5L12 3ZM12 16.5V21"/></svg></span>
         <span><?= e($t['occ6']) ?></span>
       </a>
-      <a class="occ" href="bento.php#sets">
+      <a class="occ" href="/bolme/bento-tort/#sets">
         <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="14" width="16" height="6" rx="2"/><rect x="6" y="9" width="12" height="5" rx="2"/><rect x="8" y="4" width="8" height="5" rx="2"/></svg></span>
         <span><?= e($t['occ7']) ?></span>
       </a>
@@ -119,10 +121,47 @@ $ctg   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'ctg'));
         <h2><?= e($t['sec_bento_t']) ?></h2>
         <p><?= e($t['sec_bento_d']) ?></p>
       </div>
-      <a class="btn btn-ghost" href="bento.php"><?= e($t['btn_all_bento']) ?></a>
+      <a class="btn btn-ghost" href="/bolme/bento-tort/"><?= e($t['btn_all_bento']) ?></a>
     </div>
     <div class="pgrid">
-      <?php foreach (array_slice($bento, 0, 4) as $p) product_card($p); ?>
+      <?php foreach (array_slice($bento, 0, 16) as $p) product_card($p); ?>
+    </div>
+    <div class="center sec-cta">
+      <a class="btn btn-ghost" href="/bolme/bento-tort/"><?= e($t['btn_all_bento']) ?></a>
+    </div>
+  </div>
+</section>
+
+<!-- Bantik preview -->
+<section class="section">
+  <div class="container">
+    <div class="head-row">
+      <div class="sec-head">
+        <span class="eyebrow">Vanilla</span>
+        <h2><?= e($t['bantik_h']) ?></h2>
+        <p><?= e($t['bantik_d']) ?></p>
+      </div>
+      <a class="btn btn-ghost" href="/bolme/bento-tort/#bantik"><?= e($t['btn_all_bento']) ?></a>
+    </div>
+    <div class="pgrid">
+      <?php foreach (array_slice($bantik, 0, 4) as $p) product_card($p); ?>
+    </div>
+  </div>
+</section>
+
+<!-- Sets preview -->
+<section class="section band-cream">
+  <div class="container">
+    <div class="head-row">
+      <div class="sec-head">
+        <span class="eyebrow">Vanilla</span>
+        <h2><?= e($t['sets_h']) ?></h2>
+        <p><?= e($t['sets_d']) ?></p>
+      </div>
+      <a class="btn btn-ghost" href="/bolme/bento-tort/#sets"><?= e($t['btn_all_bento']) ?></a>
+    </div>
+    <div class="pgrid">
+      <?php foreach (array_slice($sets, 0, 4) as $p) product_card($p); ?>
     </div>
   </div>
 </section>
@@ -136,10 +175,13 @@ $ctg   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'ctg'));
         <h2><?= e($t['sec_ctg_t']) ?></h2>
         <p><?= e($t['sec_ctg_d']) ?></p>
       </div>
-      <a class="btn btn-ghost" href="cake-to-go.php"><?= e($t['btn_all_ctg']) ?></a>
+      <a class="btn btn-ghost" href="/bolme/cake-to-go/"><?= e($t['btn_all_ctg']) ?></a>
     </div>
     <div class="pgrid">
-      <?php foreach (array_slice($ctg, 0, 4) as $p) product_card($p); ?>
+      <?php foreach (array_slice($ctg, 0, 16) as $p) product_card($p); ?>
+    </div>
+    <div class="center sec-cta">
+      <a class="btn btn-ghost" href="/bolme/cake-to-go/"><?= e($t['btn_all_ctg']) ?></a>
     </div>
   </div>
 </section>
@@ -199,7 +241,7 @@ $ctg   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'ctg'));
       <?php endforeach; ?>
     </div>
     <div class="center sec-cta">
-      <a class="btn btn-ghost" href="fillings.php"><?= e($t['nav_fillings']) ?> →</a>
+      <a class="btn btn-ghost" href="/terkibler/"><?= e($t['nav_fillings']) ?> →</a>
     </div>
   </div>
 </section>
@@ -255,7 +297,7 @@ $ctg   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'ctg'));
         <div class="stat"><b>1650+</b><span><?= e($t['stat2']) ?></span></div>
         <div class="stat"><b>120+</b><span><?= e($t['stat3']) ?></span></div>
       </div>
-      <a class="btn btn-ghost" href="about.php"><?= e($t['about_btn']) ?></a>
+      <a class="btn btn-ghost" href="/haqqimizda/"><?= e($t['about_btn']) ?></a>
     </div>
   </div>
 </section>

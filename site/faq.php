@@ -1,8 +1,8 @@
 <?php
 $page = 'faq';
 require __DIR__ . '/includes/config.php';
-$page_title = $t['faq_title'];
-$page_meta  = $t['faq_meta'];
+$page_title = seo_title('faq', $t['faq_title']);
+$page_meta  = seo_desc('faq', $t['faq_meta']);
 require __DIR__ . '/includes/header.php';
 $items = ['f1', 'f2', 'f7', 'f3', 'f4', 'f5', 'f6'];
 ?>
@@ -10,7 +10,7 @@ $items = ['f1', 'f2', 'f7', 'f3', 'f4', 'f5', 'f6'];
 <section class="page-hero">
   <div class="container">
     <div class="crumbs">
-      <a href="index.php"><?= e($t['breadcrumb_home']) ?></a>
+      <a href="/"><?= e($t['breadcrumb_home']) ?></a>
       <span class="sep">/</span>
       <span><?= e($t['nav_faq']) ?></span>
     </div>

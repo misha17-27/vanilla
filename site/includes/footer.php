@@ -2,7 +2,7 @@
   <div class="container">
     <div class="f-grid">
       <div class="f-brand">
-        <img src="assets/logo.svg" alt="Vanilla Cake" width="170" height="38">
+        <img src="/assets/logo.svg" alt="Vanilla Cake" width="170" height="38">
         <p><?= e($t['footer_desc']) ?></p>
         <div class="socials">
           <a href="<?= IG_URL ?>" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg></a>
@@ -13,17 +13,19 @@
       <div>
         <h4><?= e($t['footer_menu']) ?></h4>
         <ul>
-          <li><a href="bento.php"><?= e($t['nav_bento']) ?></a></li>
-          <li><a href="cake-to-go.php"><?= e($t['nav_ctg']) ?></a></li>
-          <li><a href="fillings.php"><?= e($t['nav_fillings']) ?></a></li>
+          <li><a href="/bolme/bento-tort/"><?= e($t['nav_bento']) ?></a></li>
+          <li><a href="/bolme/bento-tort/#bantik"><?= e($t['bantik_h']) ?></a></li>
+          <li><a href="/bolme/bento-tort/#sets"><?= e($t['sets_h']) ?></a></li>
+          <li><a href="/bolme/cake-to-go/"><?= e($t['nav_ctg']) ?></a></li>
+          <li><a href="/terkibler/"><?= e($t['nav_fillings']) ?></a></li>
         </ul>
       </div>
       <div>
         <h4><?= e($t['footer_pages']) ?></h4>
         <ul>
-          <li><a href="about.php"><?= e($t['nav_about']) ?></a></li>
-          <li><a href="faq.php"><?= e($t['nav_faq']) ?></a></li>
-          <li><a href="contact.php"><?= e($t['nav_contact']) ?></a></li>
+          <li><a href="/haqqimizda/"><?= e($t['nav_about']) ?></a></li>
+          <li><a href="/faq/"><?= e($t['nav_faq']) ?></a></li>
+          <li><a href="/elaqe/"><?= e($t['nav_contact']) ?></a></li>
         </ul>
       </div>
       <div>
@@ -50,6 +52,6 @@
   <a class="btn btn-wa" href="<?= e(wa_link()) ?>" target="_blank" rel="noopener"><?= e($t['btn_wa']) ?></a>
 </div>
 
-<script src="assets/site.js" defer></script>
+<script src="/assets/site.js" defer></script>
 </body>
 </html>

@@ -9,22 +9,26 @@
 **Запуск локально:**
 
 ```bash
-php -S localhost:8123
+php -S localhost:8123 -t site site/router.php
 ```
 
-и открыть `http://localhost:8123/site/index.php`.
+и открыть `http://localhost:8123/`. На хостинге с Apache содержимое `site/` кладётся в корень домена — `.htaccess` уже настроен.
 
-**Страницы:**
+**URL-структура повторяет vanilla.az (WordPress) — SEO-позиции сохраняются:**
 
-| Страница | Файл |
-|---|---|
-| Главная | `site/index.php` |
-| Бенто-торты (каталог) | `site/bento.php` |
-| Cake to go (каталог) | `site/cake-to-go.php` |
-| Начинки (3 бисквита) | `site/fillings.php` |
-| О нас | `site/about.php` |
-| FAQ | `site/faq.php` |
-| Контакты | `site/contact.php` |
+| Страница | URL | Файл |
+|---|---|---|
+| Главная | `/` | `site/index.php` |
+| Бенто-торты (все 105) | `/bolme/bento-tort/` | `site/bento.php` |
+| Cake to go | `/bolme/cake-to-go/` | `site/cake-to-go.php` |
+| Начинки | `/terkibler/` | `site/fillings.php` |
+| О нас | `/haqqimizda/` | `site/about.php` |
+| FAQ | `/faq/` | `site/faq.php` |
+| Контакты | `/elaqe/` | `site/contact.php` |
+| Товар (111 шт.) | `/mehsul/{slug}/` | `site/mehsul.php` |
+| Sitemap | `/sitemap.xml` | `site/sitemap.php` |
+
+**SEO:** title и description каждой страницы (включая все 111 товаров) сняты с текущего vanilla.az и лежат в `site/data/catalog.json` и `site/data/seo.json`. Canonical указывает на `https://vanilla.az`. Старые WP-адреса (`/tortlar/`, `/biskvit/*`, `/my-account/` и т.д.) отдают 301-редиректы. Товарные страницы: фото, цена (реальная из WooCommerce), кнопка WhatsApp и табы «Описание / Начинки / Срок изготовления / Доставка».
 
 **Мультиязычность:** русский — основной, AZ и EN — переключатель в шапке (`?lang=`, хранится в сессии). Тексты — в `site/lang/{ru,az,en}.php`.
 

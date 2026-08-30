@@ -1,15 +1,17 @@
 <?php
-// Expects: $page (slug for nav highlight), $page_title, $page_meta
+// Expects: $page (slug for nav highlight), $page_title, $page_meta; optional $og_image
 require_once __DIR__ . '/config.php';
 $nav = [
-    'index'    => ['index.php',       $t['nav_home']],
-    'bento'    => ['bento.php',       $t['nav_bento']],
-    'ctg'      => ['cake-to-go.php',  $t['nav_ctg']],
-    'fillings' => ['fillings.php',    $t['nav_fillings']],
-    'about'    => ['about.php',       $t['nav_about']],
-    'faq'      => ['faq.php',         $t['nav_faq']],
-    'contact'  => ['contact.php',     $t['nav_contact']],
+    'index'    => ['/',                    $t['nav_home']],
+    'bento'    => ['/bolme/bento-tort/',   $t['nav_bento']],
+    'ctg'      => ['/bolme/cake-to-go/',   $t['nav_ctg']],
+    'fillings' => ['/terkibler/',          $t['nav_fillings']],
+    'about'    => ['/haqqimizda/',         $t['nav_about']],
+    'faq'      => ['/faq/',                $t['nav_faq']],
+    'contact'  => ['/elaqe/',              $t['nav_contact']],
 ];
+$canonical = CANON_HOST . current_path();
+$og_image  = $og_image ?? (CANON_HOST . '/assets/logo.svg');
 ?><!DOCTYPE html>
 <html lang="<?= e($lang) ?>">
 <head>
@@ -17,12 +19,18 @@ $nav = [
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= e($page_title) ?></title>
 <meta name="description" content="<?= e($page_meta) ?>">
+<link rel="canonical" href="<?= e($canonical) ?>">
+<meta property="og:type" content="website">
+<meta property="og:title" content="<?= e($page_title) ?>">
+<meta property="og:description" content="<?= e($page_meta) ?>">
+<meta property="og:url" content="<?= e($canonical) ?>">
+<meta property="og:image" content="<?= e($og_image) ?>">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍰</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://vanilla.az">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
 
@@ -35,13 +43,13 @@ $nav = [
 
 <header class="site-header">
   <div class="container nav">
-    <a class="logo" href="index.php">
-      <img src="assets/logo.svg" alt="Vanilla Cake" width="180" height="40">
+    <a class="logo" href="/">
+      <img src="/assets/logo.svg" alt="Vanilla Cake" width="180" height="40">
     </a>
     <nav>
       <ul class="menu" id="menu">
         <?php foreach ($nav as $slug => [$href, $label]): ?>
-        <li><a href="<?= $href ?>" class="<?= $slug === $page ? 'active' : '' ?>"><?= e($label) ?></a></li>
+        <li><a href="<?= $href ?>" class="<?= $slug === ($page ?? '') ? 'active' : '' ?>"><?= e($label) ?></a></li>
         <?php endforeach; ?>
       </ul>
     </nav>

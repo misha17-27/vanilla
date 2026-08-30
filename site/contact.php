@@ -1,15 +1,15 @@
 <?php
 $page = 'contact';
 require __DIR__ . '/includes/config.php';
-$page_title = $t['contact_title'];
-$page_meta  = $t['contact_meta'];
+$page_title = seo_title('contact', $t['contact_title']);
+$page_meta  = seo_desc('contact', $t['contact_meta']);
 require __DIR__ . '/includes/header.php';
 ?>
 
 <section class="page-hero">
   <div class="container">
     <div class="crumbs">
-      <a href="index.php"><?= e($t['breadcrumb_home']) ?></a>
+      <a href="/"><?= e($t['breadcrumb_home']) ?></a>
       <span class="sep">/</span>
       <span><?= e($t['nav_contact']) ?></span>
     </div>
