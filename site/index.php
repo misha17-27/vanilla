@@ -144,7 +144,7 @@ $ctg    = products_of('ctg');
       <a class="btn btn-ghost" href="/bolme/bento-tort/#bantik"><?= e($t['btn_all_bento']) ?></a>
     </div>
     <div class="pgrid">
-      <?php foreach (array_slice($bantik, 0, 4) as $p) product_card($p); ?>
+      <?php foreach (array_slice($bantik, 0, 8) as $p) product_card($p); ?>
     </div>
   </div>
 </section>
@@ -161,7 +161,7 @@ $ctg    = products_of('ctg');
       <a class="btn btn-ghost" href="/bolme/bento-tort/#sets"><?= e($t['btn_all_bento']) ?></a>
     </div>
     <div class="pgrid">
-      <?php foreach (array_slice($sets, 0, 4) as $p) product_card($p); ?>
+      <?php foreach (array_slice($sets, 0, 8) as $p) product_card($p); ?>
     </div>
   </div>
 </section>
@@ -313,7 +313,7 @@ $ctg    = products_of('ctg');
     <div class="ig-grid reveal">
       <?php foreach ($ig['posts'] as $p): ?>
       <a class="ig-tile" href="<?= e($p['url']) ?>" target="_blank" rel="noopener" aria-label="Instagram">
-        <img loading="lazy" src="<?= e($p['img']) ?>" alt="Vanilla Cake — Instagram" width="480" height="480">
+        <img loading="lazy" src="<?= e(asset($p['img'])) ?>" alt="Vanilla Cake — Instagram" width="480" height="480">
         <span class="ov"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg></span>
       </a>
       <?php endforeach; ?>

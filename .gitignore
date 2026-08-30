@@ -4,3 +4,7 @@ desktop.ini
 *.log
 Bento-set/*.mp4
 bento-bantik/*.mp4
+site/uploads/designs/*
+!site/uploads/designs/.htaccess
+site/uploads/ratelimit/*
+!site/uploads/ratelimit/.htaccess

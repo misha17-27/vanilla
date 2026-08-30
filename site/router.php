@@ -5,6 +5,12 @@
 
 $uri  = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
 
+// Служебные каталоги и скрытые файлы наружу не отдаём
+if (preg_match('#^/(uploads/ratelimit/|data/|includes/|lang/)#', $uri) || str_contains($uri, '/.')) {
+    http_response_code(404);
+    exit;
+}
+
 // Под php -S: существующие файлы отдаёт сам сервер
 if (php_sapi_name() === 'cli-server') {
     $file = __DIR__ . $uri;

@@ -19,7 +19,7 @@ $name = product_name($prod);
 // SEO — как на vanilla.az; для новых дизайнов генерируем в том же стиле
 $page_title = trim($prod['seo_title'] ?? '') !== '' ? $prod['seo_title'] : $prod['title'] . ' - Vanilla.az';
 $page_meta  = trim($prod['seo_desc'] ?? '') !== '' ? $prod['seo_desc'] : $t['home_meta'];
-$og_image   = $prod['img'];
+$og_image   = str_starts_with($prod['img'], 'http') ? $prod['img'] : CANON_HOST . $prod['img'];
 
 // категория для крошек и раздела «похожие»
 $catMap = [
@@ -89,6 +89,27 @@ require __DIR__ . '/includes/header.php';
               <?php endforeach; ?>
             </select>
           </div>
+        </div>
+
+        <div class="up-box" id="up-box">
+          <input type="file" id="up-input" accept="image/jpeg,image/png,image/webp" hidden>
+          <button type="button" class="up-idle" id="up-idle">
+            <span class="up-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/><circle cx="12" cy="13" r="3.6"/></svg>
+            </span>
+            <span class="up-txt">
+              <b><?= e($t['up_t']) ?></b>
+              <small><?= e($t['up_d']) ?></small>
+              <small class="up-hint"><?= e($t['up_hint']) ?></small>
+            </span>
+          </button>
+          <div class="up-load" id="up-load" hidden><span class="up-spin"></span><?= e($t['up_loading']) ?></div>
+          <div class="up-done" id="up-done" hidden>
+            <img id="up-thumb" alt="" width="56" height="56">
+            <span class="up-txt"><b><?= e($t['up_ok']) ?></b><small><?= e($t['up_ok_d']) ?></small></span>
+            <button type="button" class="up-remove" id="up-remove" aria-label="<?= e($t['up_remove']) ?>">×</button>
+          </div>
+          <div class="up-err" id="up-err" hidden></div>
         </div>
 
         <div class="prod-ctas">
@@ -163,6 +184,15 @@ window.PROD_CFG = <?= json_encode([
         [$t['fl3_t'], $t['fl3_items']],
     ],
     'wa'      => 'https://wa.me/' . WA_NUMBER . '?text=',
+    'upload'  => '/upload-design.php',
+    'csrf'    => $_SESSION['csrf'],
+    'design'  => $t['wa_design'],
+    'errors'  => [
+        'type'    => $t['up_e_type'],
+        'size'    => $t['up_e_size'],
+        'rate'    => $t['up_e_rate'],
+        'generic' => $t['up_e_generic'],
+    ],
 ], JSON_UNESCAPED_UNICODE) ?>;
 </script>
 

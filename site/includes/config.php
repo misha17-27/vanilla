@@ -8,6 +8,11 @@ if (isset($_GET['lang']) && in_array($_GET['lang'], $LANGS, true)) {
 $lang = $_SESSION['lang'] ?? 'ru';
 $t = require __DIR__ . "/../lang/$lang.php";
 
+// CSRF-токен для форм (загрузка дизайна и т.п.)
+if (empty($_SESSION['csrf'])) {
+    $_SESSION['csrf'] = bin2hex(random_bytes(16));
+}
+
 // ===== Contacts =====
 const PHONE_DISPLAY = '+994 55 215 63 43';
 const PHONE_TEL     = '+994552156343';
@@ -21,6 +26,12 @@ const CANON_HOST    = 'https://vanilla.az'; // production domain for canonical/s
 function e(string $s): string
 {
     return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
+}
+
+// Локальные пути к ассетам делаем корневыми (важно для страниц вида /mehsul/slug/)
+function asset(string $p): string
+{
+    return preg_match('#^(https?:)?//#', $p) ? $p : '/' . ltrim($p, '/');
 }
 
 // WhatsApp link with prefilled message (optionally for a specific product)
@@ -91,6 +102,7 @@ foreach ($PRODUCTS as &$pp) {
     if (isset($IMG_OVERRIDES[$pp['slug']])) {
         $pp['img'] = $IMG_OVERRIDES[$pp['slug']];
     }
+    $pp['img'] = asset($pp['img']);
 }
 unset($pp);
 
