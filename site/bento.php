@@ -4,7 +4,9 @@ require __DIR__ . '/includes/config.php';
 $page_title = $t['bento_title'];
 $page_meta  = $t['bento_meta'];
 require __DIR__ . '/includes/header.php';
-$bento = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'bento'));
+$bento  = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'bento'));
+$bantik = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'bantik'));
+$sets   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'set'));
 ?>
 
 <section class="page-hero">
@@ -25,6 +27,24 @@ $bento = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'bento'))
       <?php foreach ($bento as $i => $p) product_card($p, $i > 3); ?>
     </div>
 
+    <div class="sec-head" id="bantik" style="margin-top:84px">
+      <span class="eyebrow">Vanilla</span>
+      <h2><?= e($t['bantik_h']) ?></h2>
+      <p><?= e($t['bantik_d']) ?></p>
+    </div>
+    <div class="pgrid">
+      <?php foreach ($bantik as $p) product_card($p); ?>
+    </div>
+
+    <div class="sec-head" id="sets" style="margin-top:84px">
+      <span class="eyebrow">Vanilla</span>
+      <h2><?= e($t['sets_h']) ?></h2>
+      <p><?= e($t['sets_d']) ?></p>
+    </div>
+    <div class="pgrid">
+      <?php foreach ($sets as $p) product_card($p); ?>
+    </div>
+
     <div class="sizes-wrap" style="margin-top:64px">
       <div class="size-card reveal">
         <h3><?= e($t['sizes_bento_h']) ?></h3>
@@ -32,6 +52,8 @@ $bento = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'bento'))
         <div class="size-row"><span class="w"><?= e($t['size_b1_w']) ?></span><span class="p"><?= e($t['size_b1_p']) ?></span><span class="dots"></span><span class="c"><?= e($t['size_b1_c']) ?></span></div>
         <div class="size-row"><span class="w"><?= e($t['size_b2_w']) ?></span><span class="p"><?= e($t['size_b2_p']) ?></span><span class="dots"></span><span class="c"><?= e($t['size_b2_c']) ?></span></div>
         <div class="size-row"><span class="w"><?= e($t['size_b3_w']) ?></span><span class="p"><?= e($t['size_b3_p']) ?></span><span class="dots"></span><span class="c"><?= e($t['size_b3_c']) ?></span></div>
+        <div class="size-row"><span class="w"><?= e($t['size_bk_w']) ?></span><span class="p"><?= e($t['size_bk_p']) ?></span><span class="dots"></span><span class="c"><?= e($t['size_bk_c']) ?></span></div>
+        <div class="size-row"><span class="w"><?= e($t['size_st_w']) ?></span><span class="p"><?= e($t['size_st_p']) ?></span><span class="dots"></span><span class="c"><?= e($t['size_st_c']) ?></span></div>
       </div>
       <div class="size-card reveal">
         <h3><?= e($t['fl_t']) ?></h3>

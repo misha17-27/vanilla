@@ -37,26 +37,37 @@ function e(string $s): string
 }
 
 // ===== Products =====
-// type: bento | ctg; base: design name (shown after the localized type word for bento)
+// type: bento | bantik | set | ctg; base: design name; count: pieces (sets only)
 $PRODUCTS = [
-    ['type' => 'bento', 'base' => 'Sevgilim',             'price' => '25 – 60 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2021/11/vanilla-1-600x600.jpg'],
-    ['type' => 'bento', 'base' => 'Bantik',               'price' => '35 – 60 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg'],
-    ['type' => 'bento', 'base' => 'Bear',                 'price' => '25 – 60 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_248100673_609196293748610_903340673830523120_n-600x600.jpg'],
-    ['type' => 'bento', 'base' => 'Sweet',                'price' => '25 – 60 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2021/11/vanilla444-600x600.jpg'],
-    ['type' => 'bento', 'base' => 'Love you',             'price' => '25 – 60 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2021/11/vanilla6-600x600.jpg'],
-    ['type' => 'bento', 'base' => 'Baby',                 'price' => '25 – 60 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1722410107_highlight18253086958008641-600x600.jpg'],
-    ['type' => 'bento', 'base' => 'Thank you with love',  'price' => '25 – 60 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2021/11/vanilla232323-600x600.jpg'],
-    ['type' => 'bento', 'base' => 'Goat',                 'price' => '25 – 60 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2021/11/vanillajklo-600x600.jpg'],
-    ['type' => 'bento', 'base' => 'Happy Birthday',       'price' => '25 – 100 ₼', 'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1736874480_highlight18024996170312909-600x600.jpg'],
-    ['type' => 'ctg',   'base' => 'Love',                 'price' => '25 – 30 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977404_3311464938185466334_3523099162-600x600.jpg'],
-    ['type' => 'ctg',   'base' => 'Happy birthday',       'price' => '25 – 30 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1712262810_3339024920686659731_3523099162-3-600x600.jpg'],
-    ['type' => 'ctg',   'base' => 'School',               'price' => '25 – 30 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1663699781_2931648705222181408_3523099162-600x600.jpg'],
+    ['type' => 'bento',  'base' => 'Sevgilim',            'price' => '25 – 60 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2021/11/vanilla-1-600x600.jpg'],
+    ['type' => 'bento',  'base' => 'Bear',                'price' => '25 – 60 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_248100673_609196293748610_903340673830523120_n-600x600.jpg'],
+    ['type' => 'bento',  'base' => 'Sweet',               'price' => '25 – 60 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2021/11/vanilla444-600x600.jpg'],
+    ['type' => 'bento',  'base' => 'Love you',            'price' => '25 – 60 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2021/11/vanilla6-600x600.jpg'],
+    ['type' => 'bento',  'base' => 'Baby',                'price' => '25 – 60 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1722410107_highlight18253086958008641-600x600.jpg'],
+    ['type' => 'bento',  'base' => 'Thank you with love', 'price' => '25 – 60 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2021/11/vanilla232323-600x600.jpg'],
+    ['type' => 'bento',  'base' => 'Goat',                'price' => '25 – 60 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2021/11/vanillajklo-600x600.jpg'],
+    ['type' => 'bantik', 'base' => 'Noir',                'price' => '35 – 60 ₼',  'img' => 'assets/img/bantik-noir.jpg'],
+    ['type' => 'bantik', 'base' => 'Blush',               'price' => '35 – 60 ₼',  'img' => 'assets/img/bantik-blush.jpg'],
+    ['type' => 'bantik', 'base' => 'Rose',                'price' => '35 – 60 ₼',  'img' => 'assets/img/bantik-rose.jpg'],
+    ['type' => 'bantik', 'base' => 'Ivory',               'price' => '35 – 60 ₼',  'img' => 'assets/img/bantik-ivory.jpg'],
+    ['type' => 'set',    'base' => 'Pinky',               'price' => '100 ₼', 'count' => 4, 'img' => 'assets/img/set-pinky.jpg'],
+    ['type' => 'set',    'base' => 'Classic',             'price' => '100 ₼', 'count' => 4, 'img' => 'assets/img/set-white.jpg'],
+    ['type' => 'set',    'base' => 'Kids',                'price' => '100 ₼', 'count' => 4, 'img' => 'assets/img/set-kids.jpg'],
+    ['type' => 'set',    'base' => 'Sky',                 'price' => '75 ₼',  'count' => 3, 'img' => 'assets/img/set-blue.jpg'],
+    ['type' => 'ctg',    'base' => 'Love',                'price' => '25 – 30 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977404_3311464938185466334_3523099162-600x600.jpg'],
+    ['type' => 'ctg',    'base' => 'Happy birthday',      'price' => '25 – 30 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1712262810_3339024920686659731_3523099162-3-600x600.jpg'],
+    ['type' => 'ctg',    'base' => 'School',              'price' => '25 – 30 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1663699781_2931648705222181408_3523099162-600x600.jpg'],
 ];
 
 function product_name(array $p): string
 {
     global $t;
-    return $p['type'] === 'bento' ? $t['p_bento'] . ' «' . $p['base'] . '»' : 'Cake to go — ' . $p['base'];
+    switch ($p['type']) {
+        case 'bento':  return $t['p_bento'] . ' «' . $p['base'] . '»';
+        case 'bantik': return $t['p_bantik'] . ' «' . $p['base'] . '»';
+        case 'set':    return $t['p_set'] . ' «' . $p['base'] . '» · ' . $p['count'] . ' ' . $t['pcs'];
+        default:       return 'Cake to go — ' . $p['base'];
+    }
 }
 
 // Render one product card

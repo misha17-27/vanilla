@@ -74,7 +74,7 @@ $ctg   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'ctg'));
       <p><?= e($t['occ_d']) ?></p>
     </div>
     <div class="occasions reveal">
-      <a class="occ" href="<?= IG_URL ?>" target="_blank" rel="noopener">
+      <a class="occ" href="bento.php#bantik">
         <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.2"/><path d="M10.5 11 4 7.5a1.8 1.8 0 0 0-2.6 1.9L3 15l7-2.5M13.5 11 20 7.5a1.8 1.8 0 0 1 2.6 1.9L21 15l-7-2.5M10 13.5 6.5 20M14 13.5 17.5 20"/></svg></span>
         <span><?= e($t['occ1']) ?></span>
       </a>
@@ -98,7 +98,7 @@ $ctg   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'ctg'));
         <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 3.5 4.5H13l3.5 4.5H14l3.5 4.5h-11L10 12H7.5L11 7.5H8.5L12 3ZM12 16.5V21"/></svg></span>
         <span><?= e($t['occ6']) ?></span>
       </a>
-      <a class="occ" href="<?= IG_URL ?>" target="_blank" rel="noopener">
+      <a class="occ" href="bento.php#sets">
         <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="14" width="16" height="6" rx="2"/><rect x="6" y="9" width="12" height="5" rx="2"/><rect x="8" y="4" width="8" height="5" rx="2"/></svg></span>
         <span><?= e($t['occ7']) ?></span>
       </a>
@@ -158,6 +158,8 @@ $ctg   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'ctg'));
         <div class="size-row"><span class="w"><?= e($t['size_b1_w']) ?></span><span class="p"><?= e($t['size_b1_p']) ?></span><span class="dots"></span><span class="c"><?= e($t['size_b1_c']) ?></span></div>
         <div class="size-row"><span class="w"><?= e($t['size_b2_w']) ?></span><span class="p"><?= e($t['size_b2_p']) ?></span><span class="dots"></span><span class="c"><?= e($t['size_b2_c']) ?></span></div>
         <div class="size-row"><span class="w"><?= e($t['size_b3_w']) ?></span><span class="p"><?= e($t['size_b3_p']) ?></span><span class="dots"></span><span class="c"><?= e($t['size_b3_c']) ?></span></div>
+        <div class="size-row"><span class="w"><?= e($t['size_bk_w']) ?></span><span class="p"><?= e($t['size_bk_p']) ?></span><span class="dots"></span><span class="c"><?= e($t['size_bk_c']) ?></span></div>
+        <div class="size-row"><span class="w"><?= e($t['size_st_w']) ?></span><span class="p"><?= e($t['size_st_p']) ?></span><span class="dots"></span><span class="c"><?= e($t['size_st_c']) ?></span></div>
       </div>
       <div class="size-card reveal">
         <h3><?= e($t['sizes_ctg_h']) ?></h3>
