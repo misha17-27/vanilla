@@ -10,38 +10,67 @@ $sets   = products_of('set');
 $ctg    = products_of('ctg');
 ?>
 
-<!-- Hero -->
+<!-- Hero slider: по слайду на категорию -->
+<?php
+$heroSlides = [
+    ['eye' => $t['hero_eyebrow'], 'title' => $t['hero_h'],  'lead' => $t['hero_lead'], 'url' => '/bolme/bento-tort/',        'btn' => $t['hero_cta2'],     'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg', 'h1' => true],
+    ['eye' => $t['bantik_h'],     'title' => $t['hs2_t'],   'lead' => $t['hs2_d'],     'url' => '/bolme/bento-tort/#bantik', 'btn' => $t['btn_all_bento'], 'img' => '/assets/img/bantik-blush.jpg'],
+    ['eye' => $t['sets_h'],       'title' => $t['hs3_t'],   'lead' => $t['hs3_d'],     'url' => '/bolme/bento-tort/#sets',   'btn' => $t['btn_all_bento'], 'img' => '/assets/img/set-pinky.jpg'],
+    ['eye' => $t['sec_ctg_t'],    'title' => $t['hs4_t'],   'lead' => $t['hs4_d'],     'url' => '/bolme/cake-to-go/',        'btn' => $t['btn_all_ctg'],   'img' => '/assets/img/ctg-love.jpg'],
+];
+?>
 <section class="hero">
-  <div class="container">
-    <div>
-      <span class="eyebrow"><?= e($t['hero_eyebrow']) ?></span>
-      <h1 style="margin-top:18px"><?= $t['hero_h'] ?></h1>
-      <p class="lead"><?= e($t['hero_lead']) ?></p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="<?= e(wa_link()) ?>" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.2 1.2Z"/></svg>
-          <?= e($t['btn_wa']) ?>
-        </a>
-        <a class="btn btn-ghost" href="/bolme/bento-tort/"><?= e($t['hero_cta2']) ?></a>
-      </div>
-      <div class="trust">
-        <span class="stars">★★★★★</span>
-        <span><?= $t['hero_trust'] ?></span>
+  <div class="hero-track" id="hero-track">
+    <?php foreach ($heroSlides as $si => $s): ?>
+    <div class="hslide<?= $si === 0 ? ' on' : '' ?>">
+      <div class="container">
+        <div>
+          <span class="eyebrow"><?= e($s['eye']) ?></span>
+          <?php if (!empty($s['h1'])): ?>
+          <h1 class="hero-title" style="margin-top:18px"><?= $s['title'] ?></h1>
+          <?php else: ?>
+          <div class="hero-title" style="margin-top:18px"><?= $s['title'] ?></div>
+          <?php endif; ?>
+          <p class="lead"><?= e($s['lead']) ?></p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="<?= e(wa_link()) ?>" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.2 1.2Z"/></svg>
+              <?= e($t['btn_wa']) ?>
+            </a>
+            <a class="btn btn-ghost" href="<?= e($s['url']) ?>"><?= e($s['btn']) ?></a>
+          </div>
+          <div class="trust">
+            <span class="stars">★★★★★</span>
+            <span><?= $t['hero_trust'] ?></span>
+          </div>
+        </div>
+        <div class="hero-art">
+          <div class="hero-deco d1"></div>
+          <div class="hero-deco d2"></div>
+          <div class="hero-ph">
+            <img src="<?= e($s['img']) ?>" alt="<?= e($s['eye']) ?>" width="600" height="600" <?= $si === 0 ? 'fetchpriority="high"' : 'loading="lazy"' ?>>
+          </div>
+          <div class="hero-badge">
+            <span class="dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="17" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+            </span>
+            <span><b><?= e($t['hero_badge_t']) ?></b><small><?= e($t['hero_badge_d']) ?></small></span>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="hero-art">
-      <div class="hero-deco d1"></div>
-      <div class="hero-deco d2"></div>
-      <div class="hero-ph">
-        <img src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg" alt="Vanilla Cake — bento" width="600" height="600" fetchpriority="high">
-      </div>
-      <div class="hero-badge">
-        <span class="dot">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="17" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
-        </span>
-        <span><b><?= e($t['hero_badge_t']) ?></b><small><?= e($t['hero_badge_d']) ?></small></span>
-      </div>
-    </div>
+    <?php endforeach; ?>
+  </div>
+  <button class="hero-nav prev" id="hero-prev" aria-label="Prev">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg>
+  </button>
+  <button class="hero-nav next" id="hero-next" aria-label="Next">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+  </button>
+  <div class="hero-dots" id="hero-dots">
+    <?php foreach ($heroSlides as $si => $s): ?>
+    <button<?= $si === 0 ? ' class="on"' : '' ?> aria-label="<?= $si + 1 ?>"></button>
+    <?php endforeach; ?>
   </div>
 </section>
 

@@ -130,19 +130,15 @@ require __DIR__ . '/includes/header.php';
       </div>
     </div>
 
-    <!-- Tabs -->
-    <div class="tabs-wrap reveal">
-      <div class="tabs-nav" role="tablist">
-        <button class="tab-btn active" data-tab="desc"><?= e($t['tab_desc']) ?></button>
-        <button class="tab-btn" data-tab="fill"><?= e($t['tab_fill']) ?></button>
-        <button class="tab-btn" data-tab="time"><?= e($t['tab_time']) ?></button>
-        <button class="tab-btn" data-tab="del"><?= e($t['tab_del']) ?></button>
-      </div>
-      <div class="tab-panel active" data-panel="desc">
+    <!-- Информация о товаре: вертикальные открытые секции -->
+    <div class="pd-secs reveal">
+      <section class="pd-sec">
+        <h3><?= e($t['tab_desc']) ?></h3>
         <p><?= e($t['pd_desc']) ?></p>
         <p class="tp-strong"><?= e($t[$weightKey]) ?></p>
-      </div>
-      <div class="tab-panel" data-panel="fill">
+      </section>
+      <section class="pd-sec">
+        <h3><?= e($t['tab_fill']) ?></h3>
         <div class="tp-fill-grid">
           <?php foreach ([1, 2, 3] as $i): ?>
           <div class="tp-fill">
@@ -152,13 +148,15 @@ require __DIR__ . '/includes/header.php';
           <?php endforeach; ?>
         </div>
         <p style="margin-top:20px"><?= e($t['fl_d']) ?> <a class="tp-link" href="/terkibler/"><?= e($t['nav_fillings']) ?> →</a></p>
-      </div>
-      <div class="tab-panel" data-panel="time">
+      </section>
+      <section class="pd-sec">
+        <h3><?= e($t['tab_time']) ?></h3>
         <p><?= e($t['pd_time']) ?></p>
-      </div>
-      <div class="tab-panel" data-panel="del">
+      </section>
+      <section class="pd-sec">
+        <h3><?= e($t['tab_del']) ?></h3>
         <p><?= e($t['pd_del']) ?></p>
-      </div>
+      </section>
     </div>
 
     <?php if ($related): ?>

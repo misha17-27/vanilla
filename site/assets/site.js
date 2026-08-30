@@ -90,16 +90,32 @@ if (burger && menu) {
     });
   }
 })();
-// Product page tabs
-document.querySelectorAll('.tabs-wrap').forEach(function (wrap) {
-  wrap.addEventListener('click', function (e) {
-    var btn = e.target.closest('.tab-btn');
-    if (!btn) return;
-    var key = btn.getAttribute('data-tab');
-    wrap.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.toggle('active', b === btn); });
-    wrap.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.toggle('active', p.getAttribute('data-panel') === key); });
+// Hero slider (по слайду на категорию)
+(function () {
+  var track = document.getElementById('hero-track');
+  if (!track) return;
+  var slides = [].slice.call(track.children);
+  var dots = [].slice.call(document.querySelectorAll('#hero-dots button'));
+  var i = 0, timer = null;
+  function go(n) {
+    i = (n + slides.length) % slides.length;
+    slides.forEach(function (s, k) { s.classList.toggle('on', k === i); });
+    dots.forEach(function (d, k) { d.classList.toggle('on', k === i); });
+  }
+  function start() { stop(); timer = setInterval(function () { go(i + 1); }, 5500); }
+  function stop() { if (timer) clearInterval(timer); timer = null; }
+  dots.forEach(function (d, k) {
+    d.addEventListener('click', function () { go(k); start(); });
   });
-});
+  var prev = document.getElementById('hero-prev');
+  var next = document.getElementById('hero-next');
+  if (prev) prev.addEventListener('click', function () { go(i - 1); start(); });
+  if (next) next.addEventListener('click', function () { go(i + 1); start(); });
+  var hero = document.querySelector('.hero');
+  hero.addEventListener('mouseenter', stop);
+  hero.addEventListener('mouseleave', start);
+  start();
+})();
 // Reveal on scroll (content stays visible when IO is unavailable)
 if ('IntersectionObserver' in window) {
   document.documentElement.classList.add('anim');

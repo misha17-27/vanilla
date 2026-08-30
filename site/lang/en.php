@@ -36,6 +36,12 @@ return [
   'hero_trust' => '<strong>850+</strong> happy clients · <strong>1650+</strong> completed orders',
   'hero_badge_t' => 'Pre-order only',
   'hero_badge_d' => 'book your date in advance',
+  'hs2_t' => 'Classics with satin <em>bows</em>',
+  'hs2_d' => 'Bow bento cakes for 3–4 or 7–8 people — cream and ribbon colors matched to your occasion.',
+  'hs3_t' => 'Bento sets for <em>the whole party</em>',
+  'hs3_d' => '3 or 4 mini bentos in one box — each guest gets their own design and lettering.',
+  'hs4_t' => 'Cake to go — a party <em>to take along</em>',
+  'hs4_d' => 'Mini cakes in a cup with a wooden spoon and a candle — easy to take away or gift.',
 
   'u1t' => 'Natural ingredients',
   'u1d' => 'Every sponge and cream is made from scratch with fresh products.',

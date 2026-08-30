@@ -36,6 +36,12 @@ return [
   'hero_trust' => '<strong>850+</strong> xoşbəxt müştəri · <strong>1650+</strong> tamamlanmış sifariş',
   'hero_badge_t' => 'Yalnız öncədən sifarişlə',
   'hero_badge_d' => 'tarixinizi əvvəlcədən tutun',
+  'hs2_t' => 'Atlas <em>bantlı</em> zərif klassika',
+  'hs2_d' => 'Bento bantiklər 3–4 və ya 7–8 nəfərlik — krem və lent rəngini gününüzə uyğun seçək.',
+  'hs3_t' => 'Bütün şirkət üçün <em>bento setlər</em>',
+  'hs3_d' => 'Bir qutuda 3 və ya 4 mini bento — hər qonağa öz dizaynı və öz yazısı.',
+  'hs4_t' => 'Cake to go — bayram <em>özünlə</em>',
+  'hs4_d' => 'Stəkanda mini tortlar taxta qaşıq və şamla — özünlə götürmək və ya hədiyyə etmək rahatdır.',
 
   'u1t' => 'Təbii inqrediyentlər',
   'u1d' => 'Hər biskvit və krem sıfırdan, təzə məhsullarla hazırlanır.',
