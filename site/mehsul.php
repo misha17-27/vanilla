@@ -201,6 +201,8 @@ window.PROD_CFG = <?= json_encode([
         [$t['fl3_t'], $t['fl3_items']],
     ],
     'wa'      => 'https://wa.me/' . WA_NUMBER . '?text=',
+    'purl'    => CANON_HOST . product_url($prod),
+    'linkLbl' => $t['wa_link_lbl'],
     'upload'  => '/upload-design.php',
     'csrf'    => $_SESSION['csrf'],
     'design'  => $t['wa_design'],

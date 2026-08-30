@@ -186,6 +186,7 @@ return [
   'up_e_rate' => 'Too many uploads — please try again later',
   'up_e_generic' => 'Could not upload the photo — please try again',
   'wa_design' => 'My design',
+  'wa_link_lbl' => 'Cake',
   'opt_size' => 'Size',
   'opt_sponge' => 'Sponge',
   'opt_fill' => 'Filling',

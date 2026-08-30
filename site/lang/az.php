@@ -186,6 +186,7 @@ return [
   'up_e_rate' => 'Həddindən çox yükləmə — bir azdan yenidən cəhd edin',
   'up_e_generic' => 'Şəkli yükləmək alınmadı — yenidən cəhd edin',
   'wa_design' => 'Mənim dizaynım',
+  'wa_link_lbl' => 'Tort',
   'opt_size' => 'Ölçü',
   'opt_sponge' => 'Biskvit',
   'opt_fill' => 'Tərkib',

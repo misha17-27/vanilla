@@ -34,11 +34,15 @@ function asset(string $p): string
     return preg_match('#^(https?:)?//#', $p) ? $p : '/' . ltrim($p, '/');
 }
 
-// WhatsApp link with prefilled message (optionally for a specific product)
-function wa_link(?string $product = null): string
+// WhatsApp link with prefilled message (optionally for a specific product).
+// $url — ссылка на страницу товара: WhatsApp показывает по ней превью с фото (og:image).
+function wa_link(?string $product = null, ?string $url = null): string
 {
     global $t;
     $msg = $product ? sprintf($t['wa_msg_p'], $product) : $t['wa_msg'];
+    if ($url !== null) {
+        $msg .= "\n" . $t['wa_link_lbl'] . ': ' . $url;
+    }
     return 'https://wa.me/' . WA_NUMBER . '?text=' . rawurlencode($msg);
 }
 
@@ -178,6 +182,7 @@ function product_card(array $p, bool $lazy = true): void
 {
     $name = product_name($p);
     $url  = product_url($p);
+    $wa   = wa_link($name, CANON_HOST . $url);
     $loading = $lazy ? 'loading="lazy"' : 'fetchpriority="high"';
     echo '<article class="pcard reveal">
       <a class="pcard-ph" href="' . e($url) . '" aria-label="' . e($name) . '">
@@ -187,7 +192,7 @@ function product_card(array $p, bool $lazy = true): void
         <h3><a href="' . e($url) . '">' . e($name) . '</a></h3>
         <div class="pcard-row">
           <span class="price">' . e($p['price']) . '</span>
-          <a class="pcard-wa" href="' . e(wa_link($name)) . '" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <a class="pcard-wa" href="' . e($wa) . '" target="_blank" rel="noopener" aria-label="WhatsApp">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.2 1.2Z"/></svg>
           </a>
         </div>

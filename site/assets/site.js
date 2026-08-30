@@ -33,13 +33,16 @@ if (burger && menu) {
   function update() {
     var size = cfg.sizes[sizeSel.selectedIndex];
     priceEl.textContent = size[1] + ' ₼';
-    var msg = cfg.intro
-      + ' ' + cfg.labels.size + ': ' + size[0] + '.'
-      + ' ' + cfg.labels.sponge + ': ' + cfg.sponges[spongeSel.selectedIndex][0] + '.'
-      + ' ' + cfg.labels.fill + ': ' + fillSel.value + '.';
-    if (selDate) msg += ' ' + cfg.labels.date + ': ' + fmtDate(selDate) + '.';
-    if (designUrl) msg += ' ' + cfg.design + ': ' + designUrl;
-    orderEl.href = cfg.wa + encodeURIComponent(msg);
+    var lines = [
+      cfg.intro,
+      cfg.labels.size + ': ' + size[0],
+      cfg.labels.sponge + ': ' + cfg.sponges[spongeSel.selectedIndex][0],
+      cfg.labels.fill + ': ' + fillSel.value
+    ];
+    if (selDate) lines.push(cfg.labels.date + ': ' + fmtDate(selDate));
+    lines.push(cfg.linkLbl + ': ' + cfg.purl);
+    if (designUrl) lines.push(cfg.design + ': ' + designUrl);
+    orderEl.href = cfg.wa + encodeURIComponent(lines.join('\n'));
   }
   sizeSel.addEventListener('change', update);
   spongeSel.addEventListener('change', function () { refillFillings(); update(); });

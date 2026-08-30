@@ -52,9 +52,9 @@ html.anim .reveal.in{opacity:1;transform:none}
 .btn-wa{background:#25D366;color:#fff;box-shadow:0 12px 28px -10px rgba(37,211,102,.5)}
 .btn-wa:hover{background:#1EBE5A}
 /* ===== Topbar & Header ===== */
-.topbar{background:var(--navy);color:#DCEAF6;font-size:12.5px;padding:9px 0;letter-spacing:.02em}
+.topbar{background:var(--pink-soft);color:#B32856;font-size:12.5px;padding:9px 0;letter-spacing:.02em;font-weight:600}
 .topbar .container{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.topbar a{font-weight:600;color:#fff}
+.topbar a{font-weight:700;color:#9E1F4B}
 .topbar a:hover{text-decoration:underline}
 .site-header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;height:82px}
