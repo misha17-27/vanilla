@@ -345,6 +345,7 @@ html.no-scroll{overflow:hidden}
 .modal-body{display:grid;gap:12px}
 .modal-send{width:100%;margin-top:18px}
 .modal-note{margin-top:12px;font-size:12px;color:var(--text);text-align:center;line-height:1.5}
+.modal-note b{display:block;color:var(--navy);font-weight:700;margin-bottom:3px}
 @media(max-width:640px){
   .modal{padding:22px 18px 18px}
   .modal .opt-row{grid-template-columns:1fr;gap:5px}

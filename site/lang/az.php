@@ -210,6 +210,7 @@ return [
   'f_rphone_ph' => 'Qəbul edənin telefonu',
   'ord_t' => 'Sifarişin rəsmiləşdirilməsi',
   'ord_send' => 'WhatsApp-a göndər',
+  'ord_confirm' => 'Sifariş yalnız WhatsApp-da təsdiqimizdən sonra qəbul edilmiş sayılır.',
   'sizes_opt_bento' => [['1–2 nəfərlik · 300–350 q', 25], ['3–4 nəfərlik · 750–800 q', 35], ['7–8 nəfərlik · 1200–1500 q', 60]],
   'sizes_opt_bantik' => [['3–4 nəfərlik · 750–800 q', 35], ['7–8 nəfərlik · 1200–1500 q', 60]],
   'sizes_opt_set' => [['3 mini bentodan ibarət set', 75], ['4 mini bentodan ibarət set', 100]],
