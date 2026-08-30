@@ -82,7 +82,7 @@ $heroSlides = [
       <div><h3><?= e($t['u1t']) ?></h3><p><?= e($t['u1d']) ?></p></div>
     </div>
     <div class="usp-item reveal">
-      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 15 3.4-8.4a2.1 2.1 0 0 1 3.9 1.6L16 16.5 7.5 21 3 16.5 12 15Z"/><path d="m7.5 21-1.6-4.1"/></svg></span>
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.46.32-.85.73-1.04a4 4 0 0 0-2.14-7.59 5 5 0 0 0-9.18 0 4 4 0 0 0-2.14 7.59c.41.19.73.58.73 1.04V20a1 1 0 0 0 1 1Z"/><path d="M6 17h12"/></svg></span>
       <div><h3><?= e($t['u2t']) ?></h3><p><?= e($t['u2d']) ?></p></div>
     </div>
     <div class="usp-item reveal">
