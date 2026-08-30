@@ -260,18 +260,34 @@ $ctg   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'ctg'));
   </div>
 </section>
 
-<!-- Instagram -->
-<section class="insta">
+<!-- Instagram feed -->
+<?php $ig = json_decode((string)@file_get_contents(__DIR__ . '/data/instagram.json'), true); ?>
+<?php if (!empty($ig['posts'])): ?>
+<section class="section ig-sec">
   <div class="container">
-    <div>
-      <h2><?= IG_HANDLE ?></h2>
+    <div class="ig-head">
+      <span class="ig-glyph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg>
+      </span>
+      <h2 class="ig-handle"><a href="<?= e($ig['profile']) ?>" target="_blank" rel="noopener"><?= e($ig['handle']) ?></a></h2>
       <p><?= e($t['ig_d']) ?></p>
     </div>
-    <a class="btn btn-light" href="<?= IG_URL ?>" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg>
-      <?= e($t['ig_btn']) ?>
-    </a>
+    <div class="ig-grid reveal">
+      <?php foreach ($ig['posts'] as $p): ?>
+      <a class="ig-tile" href="<?= e($p['url']) ?>" target="_blank" rel="noopener" aria-label="Instagram">
+        <img loading="lazy" src="<?= e($p['img']) ?>" alt="Vanilla Cake — Instagram" width="480" height="480">
+        <span class="ov"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg></span>
+      </a>
+      <?php endforeach; ?>
+    </div>
+    <div class="center sec-cta">
+      <a class="btn btn-primary" href="<?= e($ig['profile']) ?>" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg>
+        <?= e($t['ig_btn']) ?>
+      </a>
+    </div>
   </div>
 </section>
+<?php endif; ?>
 
 <?php require __DIR__ . '/includes/footer.php'; ?>
