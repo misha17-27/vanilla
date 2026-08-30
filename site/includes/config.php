@@ -54,9 +54,14 @@ $PRODUCTS = [
     ['type' => 'set',    'base' => 'Classic',             'price' => '100 ₼', 'count' => 4, 'img' => 'assets/img/set-white.jpg'],
     ['type' => 'set',    'base' => 'Kids',                'price' => '100 ₼', 'count' => 4, 'img' => 'assets/img/set-kids.jpg'],
     ['type' => 'set',    'base' => 'Sky',                 'price' => '75 ₼',  'count' => 3, 'img' => 'assets/img/set-blue.jpg'],
-    ['type' => 'ctg',    'base' => 'Love',                'price' => '25 – 30 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977404_3311464938185466334_3523099162-600x600.jpg'],
-    ['type' => 'ctg',    'base' => 'Happy birthday',      'price' => '25 – 30 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1712262810_3339024920686659731_3523099162-3-600x600.jpg'],
-    ['type' => 'ctg',    'base' => 'School',              'price' => '25 – 30 ₼',  'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1663699781_2931648705222181408_3523099162-600x600.jpg'],
+    ['type' => 'ctg',    'base' => 'Love',                'price' => '25 – 30 ₼',  'img' => 'assets/img/ctg-love.jpg'],
+    ['type' => 'ctg',    'base' => 'Minimal',             'price' => '25 – 30 ₼',  'img' => 'assets/img/ctg-minimal.jpg'],
+    ['type' => 'ctg',    'base' => 'Princess',            'price' => '25 – 30 ₼',  'img' => 'assets/img/ctg-princess.jpg'],
+    ['type' => 'ctg',    'base' => 'Daisy',               'price' => '25 – 30 ₼',  'img' => 'assets/img/ctg-daisy.jpg'],
+    ['type' => 'ctg',    'base' => 'Happy birthday',      'price' => '25 – 30 ₼',  'img' => 'assets/img/ctg-birthday.jpg'],
+    ['type' => 'ctg',    'base' => 'Blue',                'price' => '25 – 30 ₼',  'img' => 'assets/img/ctg-blue.jpg'],
+    ['type' => 'ctg',    'base' => 'New Year',            'price' => '25 – 30 ₼',  'img' => 'assets/img/ctg-newyear.jpg'],
+    ['type' => 'ctg',    'base' => 'School',              'price' => '25 – 30 ₼',  'img' => 'assets/img/ctg-school.jpg'],
 ];
 
 function product_name(array $p): string

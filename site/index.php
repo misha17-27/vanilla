@@ -139,7 +139,7 @@ $ctg   = array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === 'ctg'));
       <a class="btn btn-ghost" href="cake-to-go.php"><?= e($t['btn_all_ctg']) ?></a>
     </div>
     <div class="pgrid">
-      <?php foreach ($ctg as $p) product_card($p); ?>
+      <?php foreach (array_slice($ctg, 0, 4) as $p) product_card($p); ?>
     </div>
   </div>
 </section>
