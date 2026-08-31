@@ -429,18 +429,32 @@ html.no-scroll{overflow:hidden}
 .k-box{background:linear-gradient(165deg,#F8F5F0,#ECE7E0);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow-s);padding:min(6vw,52px);display:grid;place-items:center}
 .k-cake{position:relative;width:min(430px,100%);aspect-ratio:1;border-radius:50%;background:var(--cream);box-shadow:inset 0 -16px 36px rgba(0,0,0,.10),inset 0 18px 32px rgba(255,255,255,.55),0 28px 42px -22px rgba(60,45,35,.45);transition:background .3s;overflow:hidden;touch-action:none}
 .k-cake::after{content:"";position:absolute;inset:7px;border-radius:50%;border:2px dashed rgba(0,0,0,.05);pointer-events:none}
-#k-sticker{position:absolute;cursor:grab;user-select:none;-webkit-user-drag:none;filter:drop-shadow(0 3px 5px rgba(0,0,0,.14))}
-#k-sticker:active{cursor:grabbing}
-.k-text{position:absolute;width:84%;transform:translate(-50%,-50%);text-align:center;font-family:'Caveat',cursive;font-weight:700;font-size:clamp(24px,5.5vw,42px);line-height:1.1;word-break:break-word;cursor:grab;user-select:none;touch-action:none}
-.k-text:active{cursor:grabbing}
-.k-text:empty{pointer-events:none}
-.k-hint{margin-top:14px;font-size:12.5px;color:var(--text);text-align:center}
+.k-el{position:absolute;transform:translate(-50%,-50%);cursor:grab;user-select:none;touch-action:none;outline:2px dashed transparent;outline-offset:5px;border-radius:6px}
+.k-el:active{cursor:grabbing}
+.k-el.sel{outline-color:rgba(253,70,128,.65)}
+.k-el-img{-webkit-user-drag:none;filter:drop-shadow(0 3px 5px rgba(0,0,0,.14))}
+.k-el-text{width:80%;text-align:center;font-family:'Caveat',cursive;font-weight:700;line-height:1.1;word-break:break-word}
+.k-el-text:empty{pointer-events:none;outline-color:transparent}
+.k-tools{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 16px;box-shadow:var(--shadow-s)}
+.k-tools-empty{font-size:12.5px;color:var(--text);text-align:center}
+.k-tools-on{display:flex;align-items:center;gap:14px}
+.k-tools-on input[type=range]{flex:1;accent-color:var(--pink)}
+.k-del{border:1px solid #F3C1CB;background:#fff;color:#C4344C;border-radius:999px;padding:7px 15px;font-family:var(--sans);font-size:12.5px;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap}
+.k-del:hover{background:#C4344C;color:#fff;border-color:#C4344C}
+.k-texts{display:grid;gap:9px}
+.k-text-row{display:flex;align-items:center;gap:8px;border-radius:12px;padding:2px;transition:.2s}
+.k-text-row.sel{box-shadow:0 0 0 2px rgba(253,70,128,.25)}
+.k-row-x{flex:none;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--text);font-size:17px;line-height:1;cursor:pointer;transition:.2s}
+.k-row-x:hover{background:var(--pink-mist);color:var(--pink);border-color:var(--pink-soft)}
+.k-add{margin-top:10px;border:1px dashed rgba(22,82,127,.35);background:none;color:var(--navy);border-radius:12px;padding:10px 16px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;transition:.2s;width:100%}
+.k-add:hover{border-color:var(--pink);color:var(--pink);background:var(--pink-mist)}
+.k-hint{margin-top:12px;font-size:12.5px;color:var(--text);text-align:center;line-height:1.5}
 .k-panel{display:grid;gap:20px}
 .k-group{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow-s)}
 .k-lbl{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);margin-bottom:12px}
 .k-lbl-s{font-size:12px;font-weight:600;color:var(--text);white-space:nowrap}
-.k-swatches{display:flex;gap:10px;flex-wrap:wrap}
-.k-sw{width:38px;height:38px;border-radius:50%;border:2px solid #fff;outline:1px solid var(--line);background:var(--c);cursor:pointer;transition:.2s}
+.k-swatches{display:flex;gap:9px;flex-wrap:wrap}
+.k-sw{width:34px;height:34px;border-radius:50%;border:2px solid #fff;outline:1px solid var(--line);background:var(--c);cursor:pointer;transition:.2s}
 .k-sw:hover{transform:scale(1.08)}
 .k-sw.on{outline:2px solid var(--pink);box-shadow:0 0 0 4px rgba(253,70,128,.15)}
 .k-stickers{display:flex;gap:10px;flex-wrap:wrap}

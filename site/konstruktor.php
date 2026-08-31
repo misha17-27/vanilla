@@ -34,9 +34,14 @@ $stickers = [
       <!-- Превью -->
       <div class="k-preview reveal in">
         <div class="k-box">
-          <div class="k-cake" id="k-cake" style="--cream:#FDFBF7">
-            <img id="k-sticker" src="" alt="" hidden draggable="false">
-            <div class="k-text" id="k-text-view"></div>
+          <div class="k-cake" id="k-cake" style="--cream:#FDFBF7"></div>
+        </div>
+        <div class="k-tools" id="k-tools">
+          <div class="k-tools-empty" id="k-tools-empty"><?= e($t['k_sel_none']) ?></div>
+          <div class="k-tools-on" id="k-tools-on" hidden>
+            <span class="k-lbl-s"><?= e($t['k_sel_size']) ?></span>
+            <input type="range" id="k-size" min="20" max="130" value="55">
+            <button type="button" class="k-del" id="k-del"><?= e($t['k_del']) ?></button>
           </div>
         </div>
         <p class="k-hint"><?= e($t['k_hint']) ?></p>
@@ -67,16 +72,13 @@ $stickers = [
             </button>
             <input type="file" id="k-file" accept="image/jpeg,image/png,image/webp" hidden>
           </div>
-          <div class="k-slider" id="k-size-row" hidden>
-            <span class="k-lbl-s"><?= e($t['k_img_size']) ?></span>
-            <input type="range" id="k-size" min="25" max="85" value="55">
-          </div>
         </div>
 
         <div class="k-group">
           <div class="k-lbl"><?= e($t['k_text']) ?></div>
-          <input class="txt" type="text" id="k-text" placeholder="<?= e($t['f_text_ph']) ?>" maxlength="40">
-          <div class="k-lbl" style="margin-top:12px"><?= e($t['k_text_color']) ?></div>
+          <div class="k-texts" id="k-texts"></div>
+          <button type="button" class="k-add" id="k-add-text"><?= e($t['k_add_text']) ?></button>
+          <div class="k-lbl" style="margin-top:16px"><?= e($t['k_text_color']) ?></div>
           <div class="k-swatches" id="k-tcolors">
             <?php foreach ($t['k_tcolors'] as $i => $c): ?>
             <button type="button" class="k-sw<?= $i === 0 ? ' on' : '' ?>" style="--c:<?= e($c[1]) ?>" data-color="<?= e($c[1]) ?>" data-name="<?= e($c[0]) ?>" title="<?= e($c[0]) ?>"></button>
@@ -162,47 +164,211 @@ window.PROD_CFG = <?= json_encode([
         'generic' => $t['up_e_generic'],
     ],
     'creamLbl' => $t['k_cream_lbl'],
+    'textPh'   => $t['k_text_n'],
+    'delLbl'   => $t['k_del'],
 ], JSON_UNESCAPED_UNICODE) ?>;
 
-// ===== Конструктор торта =====
+// ===== Конструктор торта (слои: картинки + надписи) =====
 (function () {
   var cake = document.getElementById('k-cake');
-  var stickerEl = document.getElementById('k-sticker');
-  var textView = document.getElementById('k-text-view');
-  var textInp = document.getElementById('k-text');
   var sizeRange = document.getElementById('k-size');
-  var sizeRow = document.getElementById('k-size-row');
+  var toolsOn = document.getElementById('k-tools-on');
+  var toolsEmpty = document.getElementById('k-tools-empty');
+  var delBtn = document.getElementById('k-del');
   var fileInp = document.getElementById('k-file');
+  var textsBox = document.getElementById('k-texts');
+  var addTextBtn = document.getElementById('k-add-text');
+  var firstCream = document.querySelector('#k-creams .k-sw');
+  var firstTcolor = document.querySelector('#k-tcolors .k-sw');
+
+  var MAX_IMG = 4, MAX_TEXT = 3;
   var state = {
-    cream: PROD_CFG && document.querySelector('#k-creams .k-sw') ? document.querySelector('#k-creams .k-sw').dataset.color : '#FDFBF7',
-    creamName: document.querySelector('#k-creams .k-sw') ? document.querySelector('#k-creams .k-sw').dataset.name : '',
-    src: '', ownFile: null,
-    x: 0, y: -0.15, scale: 0.55,
-    tx: 0, ty: 0.62,
-    text: '', tcolor: document.querySelector('#k-tcolors .k-sw') ? document.querySelector('#k-tcolors .k-sw').dataset.color : '#E0527F',
-    tcolorName: document.querySelector('#k-tcolors .k-sw') ? document.querySelector('#k-tcolors .k-sw').dataset.name : ''
+    cream: firstCream ? firstCream.dataset.color : '#FDFBF7',
+    creamName: firstCream ? firstCream.dataset.name : '',
+    tcolor: firstTcolor ? firstTcolor.dataset.color : '#E0527F',
+    tcolorName: firstTcolor ? firstTcolor.dataset.name : '',
+    items: [],
+    sel: null,
+    seq: 0
   };
-  function apply() {
-    cake.style.setProperty('--cream', state.cream);
-    var d = cake.clientWidth;
-    if (state.src) {
-      stickerEl.src = state.src;
-      stickerEl.hidden = false;
-      var s = state.scale * d;
-      stickerEl.style.width = s + 'px';
-      stickerEl.style.left = (d / 2 + state.x * d / 2 - s / 2) + 'px';
-      stickerEl.style.top = (d / 2 + state.y * d / 2 - s / 2) + 'px';
-      sizeRow.hidden = false;
-    } else {
-      stickerEl.hidden = true;
-      sizeRow.hidden = true;
-    }
-    textView.textContent = state.text;
-    textView.style.color = state.tcolor;
-    textView.style.left = (d / 2 + state.tx * d / 2) + 'px';
-    textView.style.top = (d / 2 + state.ty * d / 2) + 'px';
+
+  function itemsOf(type) {
+    return state.items.filter(function (i) { return i.type === type; });
   }
-  // Свотчи
+  function byId(id) {
+    for (var i = 0; i < state.items.length; i++) if (state.items[i].id === id) return state.items[i];
+    return null;
+  }
+  function selItem() { return state.sel ? byId(state.sel) : null; }
+
+  // ---- Рендер торта ----
+  function render() {
+    cake.style.setProperty('--cream', state.cream);
+    var d = cake.clientWidth || 400;
+    // удаляем узлы исчезнувших элементов
+    [].slice.call(cake.children).forEach(function (node) {
+      if (!byId(node.dataset.id)) node.remove();
+    });
+    state.items.forEach(function (it, idx) {
+      var el = cake.querySelector('[data-id="' + it.id + '"]');
+      if (!el) {
+        el = it.type === 'img' ? new Image() : document.createElement('div');
+        el.className = 'k-el ' + (it.type === 'img' ? 'k-el-img' : 'k-el-text');
+        el.dataset.id = it.id;
+        if (it.type === 'img') { el.draggable = false; el.alt = ''; }
+        cake.appendChild(el);
+        makeDraggable(el, it.id);
+      }
+      el.style.zIndex = idx + 1;
+      el.classList.toggle('sel', state.sel === it.id);
+      if (it.type === 'img') {
+        if (el.getAttribute('src') !== it.src) el.src = it.src;
+        var s = it.size * d;
+        el.style.width = s + 'px';
+        el.style.left = (d / 2 + it.x * d / 2) + 'px';
+        el.style.top = (d / 2 + it.y * d / 2) + 'px';
+      } else {
+        el.textContent = it.text;
+        el.style.color = it.color;
+        el.style.fontSize = (d * 0.086 * it.size) + 'px';
+        el.style.left = (d / 2 + it.x * d / 2) + 'px';
+        el.style.top = (d / 2 + it.y * d / 2) + 'px';
+      }
+    });
+    // панель выбранного
+    var sel = selItem();
+    toolsOn.hidden = !sel;
+    toolsEmpty.hidden = !!sel;
+    if (sel) sizeRange.value = Math.round(sel.size * 100);
+    // кнопка добавления надписи
+    addTextBtn.hidden = itemsOf('text').length >= MAX_TEXT;
+  }
+
+  // ---- Перетаскивание ----
+  function makeDraggable(el, id) {
+    var drag = null;
+    el.addEventListener('pointerdown', function (e) {
+      e.preventDefault();
+      state.sel = id;
+      render();
+      syncTextRows();
+      el.setPointerCapture(e.pointerId);
+      var it = byId(id);
+      drag = { px: e.clientX, py: e.clientY, x: it.x, y: it.y };
+    });
+    el.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var it = byId(id);
+      if (!it) return;
+      var half = cake.clientWidth / 2;
+      it.x = Math.max(-0.92, Math.min(0.92, drag.x + (e.clientX - drag.px) / half));
+      it.y = Math.max(-0.92, Math.min(0.92, drag.y + (e.clientY - drag.py) / half));
+      render();
+    });
+    function stop() { drag = null; }
+    el.addEventListener('pointerup', stop);
+    el.addEventListener('pointercancel', stop);
+  }
+  cake.addEventListener('pointerdown', function (e) {
+    if (e.target === cake) { state.sel = null; render(); }
+  });
+
+  // ---- Картинки ----
+  function addImage(src) {
+    if (itemsOf('img').length >= MAX_IMG) return;
+    var id = 'i' + (++state.seq);
+    var n = itemsOf('img').length;
+    state.items.push({
+      id: id, type: 'img', src: src,
+      x: n === 0 ? 0 : (n % 2 ? -0.3 : 0.3),
+      y: n === 0 ? -0.15 : (n < 2 ? -0.15 : 0.2),
+      size: 0.55
+    });
+    state.sel = id;
+    render();
+  }
+  document.getElementById('k-stickers').addEventListener('click', function (e) {
+    var b = e.target.closest('.k-st');
+    if (!b) return;
+    if (b.id === 'k-own') { fileInp.click(); return; }
+    if (!b.dataset.src) { // «Очистить всё»
+      state.items = itemsOf('text');
+      state.sel = null;
+      render();
+      return;
+    }
+    addImage(b.dataset.src);
+  });
+  fileInp.addEventListener('change', function () {
+    var f = fileInp.files && fileInp.files[0];
+    if (!f) return;
+    if (['image/jpeg', 'image/png', 'image/webp'].indexOf(f.type) === -1 || f.size > 8 * 1024 * 1024) return;
+    addImage(URL.createObjectURL(f));
+    fileInp.value = '';
+  });
+
+  // ---- Надписи ----
+  function addText(initial) {
+    if (itemsOf('text').length >= MAX_TEXT) return null;
+    var id = 't' + (++state.seq);
+    var n = itemsOf('text').length;
+    state.items.push({
+      id: id, type: 'text', text: initial || '',
+      color: state.tcolor, colorName: state.tcolorName,
+      x: 0, y: n === 0 ? 0.62 : 0.62 - 0.22 * n, size: 1
+    });
+    return id;
+  }
+  function syncTextRows() {
+    var texts = itemsOf('text');
+    textsBox.innerHTML = '';
+    texts.forEach(function (it, i) {
+      var row = document.createElement('div');
+      row.className = 'k-text-row' + (state.sel === it.id ? ' sel' : '');
+      var inp = document.createElement('input');
+      inp.className = 'txt';
+      inp.type = 'text';
+      inp.maxLength = 40;
+      inp.value = it.text;
+      inp.placeholder = PROD_CFG.textPh.replace('%d', i + 1);
+      inp.addEventListener('input', function () {
+        it.text = inp.value.replace(/[\u0000-\u001F\u007F]/g, ' ');
+        render();
+      });
+      inp.addEventListener('focus', function () { state.sel = it.id; render(); markRows(); });
+      var x = document.createElement('button');
+      x.type = 'button';
+      x.className = 'k-row-x';
+      x.setAttribute('aria-label', PROD_CFG.delLbl);
+      x.textContent = '×';
+      x.addEventListener('click', function () {
+        state.items = state.items.filter(function (o) { return o.id !== it.id; });
+        if (state.sel === it.id) state.sel = null;
+        render();
+        syncTextRows();
+      });
+      row.appendChild(inp);
+      row.appendChild(x);
+      row.dataset.id = it.id;
+      textsBox.appendChild(row);
+    });
+    render();
+  }
+  function markRows() {
+    [].slice.call(textsBox.children).forEach(function (r) {
+      r.classList.toggle('sel', r.dataset.id === state.sel);
+    });
+  }
+  addTextBtn.addEventListener('click', function () {
+    var id = addText('');
+    if (!id) return;
+    state.sel = id;
+    syncTextRows();
+    var last = textsBox.lastElementChild;
+    if (last) last.querySelector('input').focus();
+  });
+
+  // ---- Свотчи ----
   function swatchGroup(id, cb) {
     var box = document.getElementById(id);
     box.addEventListener('click', function (e) {
@@ -212,58 +378,37 @@ window.PROD_CFG = <?= json_encode([
       cb(b.dataset.color, b.dataset.name);
     });
   }
-  swatchGroup('k-creams', function (c, n) { state.cream = c; state.creamName = n; apply(); });
-  swatchGroup('k-tcolors', function (c, n) { state.tcolor = c; state.tcolorName = n; apply(); });
-  // Стикеры
-  document.getElementById('k-stickers').addEventListener('click', function (e) {
-    var b = e.target.closest('.k-st');
-    if (!b) return;
-    if (b.id === 'k-own') { fileInp.click(); return; }
-    document.querySelectorAll('.k-st').forEach(function (x) { x.classList.toggle('on', x === b); });
-    state.src = b.dataset.src || '';
-    state.ownFile = null;
-    state.x = 0; state.y = -0.15;
-    apply();
+  swatchGroup('k-creams', function (c, n) { state.cream = c; state.creamName = n; render(); });
+  swatchGroup('k-tcolors', function (c, n) {
+    state.tcolor = c; state.tcolorName = n;
+    var sel = selItem();
+    var targets = (sel && sel.type === 'text') ? [sel] : itemsOf('text');
+    targets.forEach(function (it) { it.color = c; it.colorName = n; });
+    render();
   });
-  fileInp.addEventListener('change', function () {
-    var f = fileInp.files && fileInp.files[0];
-    if (!f) return;
-    if (['image/jpeg', 'image/png', 'image/webp'].indexOf(f.type) === -1 || f.size > 8 * 1024 * 1024) return;
-    state.src = URL.createObjectURL(f);
-    state.ownFile = f;
-    state.x = 0; state.y = -0.15;
-    document.querySelectorAll('.k-st').forEach(function (x) { x.classList.toggle('on', x.id === 'k-own'); });
-    apply();
-  });
-  sizeRange.addEventListener('input', function () { state.scale = sizeRange.value / 100; apply(); });
-  textInp.addEventListener('input', function () {
-    state.text = textInp.value.replace(/[\u0000-\u001F\u007F]/g, ' ').slice(0, 40);
-    apply();
-  });
-  // Перетаскивание картинки и надписи
-  function makeDraggable(el, kx, ky) {
-    var drag = null;
-    el.addEventListener('pointerdown', function (e) {
-      e.preventDefault();
-      el.setPointerCapture(e.pointerId);
-      drag = { px: e.clientX, py: e.clientY, x: state[kx], y: state[ky] };
-    });
-    el.addEventListener('pointermove', function (e) {
-      if (!drag) return;
-      var d = cake.clientWidth / 2;
-      state[kx] = Math.max(-0.9, Math.min(0.9, drag.x + (e.clientX - drag.px) / d));
-      state[ky] = Math.max(-0.9, Math.min(0.9, drag.y + (e.clientY - drag.py) / d));
-      apply();
-    });
-    el.addEventListener('pointerup', function () { drag = null; });
-    el.addEventListener('pointercancel', function () { drag = null; });
-  }
-  makeDraggable(stickerEl, 'x', 'y');
-  makeDraggable(textView, 'tx', 'ty');
-  window.addEventListener('resize', apply);
-  apply();
 
-  // Рендер макета в canvas -> загрузка -> ссылка в WhatsApp
+  // ---- Размер и удаление ----
+  sizeRange.addEventListener('input', function () {
+    var sel = selItem();
+    if (!sel) return;
+    sel.size = sizeRange.value / 100;
+    render();
+  });
+  delBtn.addEventListener('click', function () {
+    var sel = selItem();
+    if (!sel) return;
+    state.items = state.items.filter(function (o) { return o.id !== sel.id; });
+    state.sel = null;
+    render();
+    syncTextRows();
+  });
+  window.addEventListener('resize', render);
+
+  // первая пустая надпись
+  addText('');
+  syncTextRows();
+
+  // ---- Рендер макета в canvas -> загрузка -> ссылка в WhatsApp ----
   function loadImg(src) {
     return new Promise(function (res, rej) {
       var im = new Image();
@@ -274,14 +419,13 @@ window.PROD_CFG = <?= json_encode([
   }
   async function renderAndUpload() {
     try {
-      await document.fonts.load('600 80px Caveat');
+      await document.fonts.load('700 80px Caveat');
       var S = 900, R = 400, cx = S / 2, cy = S / 2;
       var cv = document.createElement('canvas');
       cv.width = S; cv.height = S;
       var g = cv.getContext('2d');
       g.fillStyle = '#F3F0EB';
       g.fillRect(0, 0, S, S);
-      // торт
       var grad = g.createRadialGradient(cx - R * 0.3, cy - R * 0.35, R * 0.2, cx, cy, R * 1.05);
       grad.addColorStop(0, 'rgba(255,255,255,0.55)');
       grad.addColorStop(0.55, 'rgba(255,255,255,0)');
@@ -295,40 +439,38 @@ window.PROD_CFG = <?= json_encode([
       g.restore();
       g.fillStyle = grad;
       g.beginPath(); g.arc(cx, cy, R, 0, 7); g.fill();
-      // бортик
       g.strokeStyle = 'rgba(0,0,0,0.06)';
       g.lineWidth = 10;
       g.beginPath(); g.arc(cx, cy, R - 6, 0, 7); g.stroke();
-      // картинка (клип по кругу)
-      if (state.src) {
-        var im = await loadImg(state.src);
-        var s = state.scale * 2 * R;
-        var ix = cx + state.x * R - s / 2;
-        var iy = cy + state.y * R - s / 2;
-        var ratio = im.naturalWidth / im.naturalHeight;
-        var w = s, h = s;
-        if (ratio > 1) h = s / ratio; else w = s * ratio;
-        g.save();
-        g.beginPath(); g.arc(cx, cy, R - 12, 0, 7); g.clip();
-        g.drawImage(im, ix + (s - w) / 2, iy + (s - h) / 2, w, h);
-        g.restore();
-      }
-      // надпись
-      if (state.text) {
-        var fs = 86;
-        g.font = '600 ' + fs + 'px Caveat, cursive';
-        while (g.measureText(state.text).width > R * 1.55 && fs > 30) {
-          fs -= 4;
-          g.font = '600 ' + fs + 'px Caveat, cursive';
+
+      for (var k = 0; k < state.items.length; k++) {
+        var it = state.items[k];
+        if (it.type === 'img') {
+          var im = await loadImg(it.src);
+          var s = it.size * 2 * R;
+          var ratio = im.naturalWidth / im.naturalHeight;
+          var w = s, h = s;
+          if (ratio > 1) h = s / ratio; else w = s * ratio;
+          g.save();
+          g.beginPath(); g.arc(cx, cy, R - 12, 0, 7); g.clip();
+          g.drawImage(im, cx + it.x * R - w / 2, cy + it.y * R - h / 2, w, h);
+          g.restore();
+        } else if (it.text) {
+          var fs = R * 0.215 * it.size;
+          g.font = '700 ' + fs + 'px Caveat, cursive';
+          while (g.measureText(it.text).width > R * 1.6 && fs > 24) {
+            fs -= 3;
+            g.font = '700 ' + fs + 'px Caveat, cursive';
+          }
+          g.fillStyle = it.color;
+          g.textAlign = 'center';
+          g.textBaseline = 'middle';
+          if (String(it.color).toLowerCase() === '#ffffff') {
+            g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowBlur = 6;
+          }
+          g.fillText(it.text, cx + it.x * R, cy + it.y * R);
+          g.shadowBlur = 0;
         }
-        g.fillStyle = state.tcolor;
-        g.textAlign = 'center';
-        g.textBaseline = 'middle';
-        if (state.tcolor.toLowerCase() === '#ffffff') {
-          g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowBlur = 6;
-        }
-        g.fillText(state.text, cx + state.tx * R, cy + state.ty * R);
-        g.shadowBlur = 0;
       }
       var blob = await new Promise(function (r) { cv.toBlob(r, 'image/jpeg', 0.9); });
       var fd = new FormData();
@@ -340,12 +482,13 @@ window.PROD_CFG = <?= json_encode([
       }
     } catch (e) { /* макет не критичен — заказ уйдёт без ссылки */ }
   }
-  // Доп. строки о дизайне в сообщение + рендер при открытии попапа
-  var orderBtn = document.getElementById('prod-order');
-  orderBtn.addEventListener('click', function () {
+
+  document.getElementById('prod-order').addEventListener('click', function () {
     if (window.__setExtras) {
       var extras = [PROD_CFG.creamLbl + ': ' + state.creamName];
-      if (state.text) extras.push(PROD_CFG.labels.text + ': «' + state.text + '» (' + state.tcolorName + ')');
+      itemsOf('text').forEach(function (it) {
+        if (it.text.trim()) extras.push(PROD_CFG.labels.text + ': «' + it.text.trim() + '» (' + (it.colorName || state.tcolorName) + ')');
+      });
       window.__setExtras(extras);
     }
     var send = document.getElementById('modal-send');
