@@ -308,7 +308,7 @@ $heroSlides = [
   <div class="container">
     <div class="about-art reveal">
       <div class="about-ph">
-        <img loading="lazy" src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977404_3311464938185466334_3523099162-600x600.jpg" alt="Vanilla Cake — cake to go" width="600" height="600">
+        <img loading="lazy" src="/assets/img/ctg-princess.jpg" alt="Vanilla Cake — cake to go" width="480" height="480">
       </div>
       <div class="about-stamp">Bir dadım — eşq</div>
     </div>

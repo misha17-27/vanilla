@@ -8,3 +8,5 @@ site/uploads/designs/*
 !site/uploads/designs/.htaccess
 site/uploads/ratelimit/*
 !site/uploads/ratelimit/.htaccess
+site/data/admin.pass
+site/data/backups/

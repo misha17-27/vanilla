@@ -54,9 +54,11 @@ $routes = [
     '/bolme/bento-tort/'   => 'bento.php',
     '/bolme/cake-to-go/'   => 'cake-to-go.php',
     '/terkibler/'          => 'fillings.php',
+    '/konstruktor/'        => 'konstruktor.php',
     '/haqqimizda/'         => 'about.php',
     '/faq/'                => 'faq.php',
     '/elaqe/'              => 'contact.php',
+    '/admin/'              => 'admin.php',
 ];
 
 if (preg_match('#^/bolme/bento-tort/page/\d+/$#', $path)) {

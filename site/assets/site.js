@@ -30,7 +30,10 @@ if (burger && menu) {
     }).join('');
   }
   var designUrl = '';
+  var extraLines = [];
   var selDate = null;
+  window.__setDesign = function (u) { designUrl = u; update(); };
+  window.__setExtras = function (arr) { extraLines = arr || []; update(); };
   var dlSel = document.getElementById('opt-dl');
   var timeSel = document.getElementById('opt-time');
   var rowAddress = document.getElementById('row-address');
@@ -75,6 +78,7 @@ if (burger && menu) {
     ];
     var lettering = fText ? fText.value.replace(/[\u0000-\u001F\u007F]/g, ' ').trim() : '';
     if (lettering) lines.push(cfg.labels.text + ': ' + lettering);
+    extraLines.forEach(function (l) { lines.push(l); });
     if (selDate) lines.push(cfg.labels.date + ': ' + fmtDate(selDate));
     if (timeSel.value) lines.push(cfg.labels.time + ': ' + timeSel.value);
     lines.push(cfg.labels.dl + ': ' + dlSel.options[dlSel.selectedIndex].textContent);

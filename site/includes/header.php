@@ -6,6 +6,7 @@ $nav = [
     'bento'    => ['/bolme/bento-tort/',   $t['nav_bento']],
     'ctg'      => ['/bolme/cake-to-go/',   $t['nav_ctg']],
     'fillings' => ['/terkibler/',          $t['nav_fillings']],
+    'konstr'   => ['/konstruktor/',        $t['nav_konstr']],
     'about'    => ['/haqqimizda/',         $t['nav_about']],
     'faq'      => ['/faq/',                $t['nav_faq']],
     'contact'  => ['/elaqe/',              $t['nav_contact']],

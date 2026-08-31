@@ -38,7 +38,7 @@ h2{font-size:clamp(32px,4.2vw,48px)}
 .sec-head h2{margin-top:14px}
 .sec-head p{margin-top:16px}
 .center{text-align:center}
-.center .sec-head{margin-left:auto;margin-right:auto}
+.center .sec-head,.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
 /* reveal */
 html.anim .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
 html.anim .reveal.in{opacity:1;transform:none}
@@ -325,10 +325,10 @@ a.contact-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .opt-row select{width:100%;padding:13px 40px 13px 15px;border:1px solid var(--line);border-radius:12px;font-family:var(--sans);font-size:14px;color:var(--ink);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316527F' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 13px center/15px;-webkit-appearance:none;appearance:none;cursor:pointer;transition:.2s}
 .opt-row select:hover{border-color:rgba(22,82,127,.4)}
 .opt-row select:focus{outline:none;border-color:var(--pink);box-shadow:0 0 0 3px rgba(253,70,128,.12)}
-.opt-row .txt{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;font-family:var(--sans);font-size:14px;color:var(--ink);background:#fff;transition:.2s}
-.opt-row .txt::placeholder{color:#A6B2BE}
-.opt-row .txt:hover{border-color:rgba(22,82,127,.4)}
-.opt-row .txt:focus{outline:none;border-color:var(--pink);box-shadow:0 0 0 3px rgba(253,70,128,.12)}
+.txt{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;font-family:var(--sans);font-size:14px;color:var(--ink);background:#fff;transition:.2s}
+.txt::placeholder{color:#A6B2BE}
+.txt:hover{border-color:rgba(22,82,127,.4)}
+.txt:focus{outline:none;border-color:var(--pink);box-shadow:0 0 0 3px rgba(253,70,128,.12)}
 .chk{display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600;color:var(--ink);cursor:pointer;padding:2px 0 2px 2px;user-select:none}
 .chk input{width:17px;height:17px;accent-color:var(--pink);cursor:pointer}
 .tp-sizes{margin-top:14px;display:grid;gap:9px;max-width:440px;list-style:none}
@@ -423,9 +423,36 @@ html.no-scroll{overflow:hidden}
 .tp-link{color:var(--pink);font-weight:600}
 .tp-fill-grid{display:grid;gap:26px}
 .tp-fill b{display:block;color:var(--navy);font-size:15px;margin-bottom:2px}
+/* ===== Конструктор торта ===== */
+.k-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:start}
+.k-preview{position:sticky;top:120px}
+.k-box{background:linear-gradient(165deg,#F8F5F0,#ECE7E0);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow-s);padding:min(6vw,52px);display:grid;place-items:center}
+.k-cake{position:relative;width:min(430px,100%);aspect-ratio:1;border-radius:50%;background:var(--cream);box-shadow:inset 0 -16px 36px rgba(0,0,0,.10),inset 0 18px 32px rgba(255,255,255,.55),0 28px 42px -22px rgba(60,45,35,.45);transition:background .3s;overflow:hidden;touch-action:none}
+.k-cake::after{content:"";position:absolute;inset:7px;border-radius:50%;border:2px dashed rgba(0,0,0,.05);pointer-events:none}
+#k-sticker{position:absolute;cursor:grab;user-select:none;-webkit-user-drag:none;filter:drop-shadow(0 3px 5px rgba(0,0,0,.14))}
+#k-sticker:active{cursor:grabbing}
+.k-text{position:absolute;left:8%;right:8%;bottom:12%;text-align:center;font-family:'Caveat',cursive;font-weight:700;font-size:clamp(24px,5.5vw,42px);line-height:1.1;pointer-events:none;word-break:break-word}
+.k-hint{margin-top:14px;font-size:12.5px;color:var(--text);text-align:center}
+.k-panel{display:grid;gap:20px}
+.k-group{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow-s)}
+.k-lbl{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);margin-bottom:12px}
+.k-lbl-s{font-size:12px;font-weight:600;color:var(--text);white-space:nowrap}
+.k-swatches{display:flex;gap:10px;flex-wrap:wrap}
+.k-sw{width:38px;height:38px;border-radius:50%;border:2px solid #fff;outline:1px solid var(--line);background:var(--c);cursor:pointer;transition:.2s}
+.k-sw:hover{transform:scale(1.08)}
+.k-sw.on{outline:2px solid var(--pink);box-shadow:0 0 0 4px rgba(253,70,128,.15)}
+.k-stickers{display:flex;gap:10px;flex-wrap:wrap}
+.k-st{width:62px;height:62px;border-radius:14px;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;transition:.2s;padding:7px}
+.k-st img{max-width:100%;max-height:100%;object-fit:contain}
+.k-st svg{width:22px;height:22px;color:var(--text)}
+.k-st:hover{border-color:var(--pink)}
+.k-st.on{border-color:var(--pink);box-shadow:0 0 0 3px rgba(253,70,128,.14)}
+.k-slider{display:flex;align-items:center;gap:14px;margin-top:14px}
+.k-slider input[type=range]{flex:1;accent-color:var(--pink)}
+.modal-send.busy{opacity:.6;pointer-events:none}
 /* Floating Instagram button */
-.ig-fab{position:fixed;right:14px;top:55%;transform:translateY(-50%);z-index:85;display:flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:10px 15px 10px 10px;max-width:250px;transition:.25s}
-.ig-fab:hover{transform:translateY(-50%) translateX(-4px)}
+.ig-fab{position:fixed;right:14px;bottom:84px;z-index:85;display:flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:10px 15px 10px 10px;max-width:250px;transition:.25s}
+.ig-fab:hover{transform:translateX(-4px)}
 .ig-fab-ico{flex:none;width:46px;height:46px;border-radius:14px;background:linear-gradient(45deg,#F9CE34,#EE2A7B 55%,#6228D7);color:#fff;display:grid;place-items:center;box-shadow:0 10px 22px -10px rgba(238,42,123,.55)}
 .ig-fab-ico svg{width:24px;height:24px}
 .ig-fab-txt b{display:block;font-size:12.5px;font-weight:700;color:var(--navy);line-height:1.3}
@@ -457,6 +484,8 @@ html.no-scroll{overflow:hidden}
   .contact-layout{grid-template-columns:1fr}
   .contact-map{position:static}
   .contact-map iframe{height:340px}
+  .k-layout{grid-template-columns:1fr;gap:32px}
+  .k-preview{position:static}
   .fil-card{grid-template-columns:1fr}
   .fil-visual{padding:38px 34px}
   .ig-grid{grid-template-columns:repeat(4,1fr)}

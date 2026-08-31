@@ -77,38 +77,13 @@ function seo_desc(string $key, string $fallback): string
 }
 
 // ===== Catalog =====
-// Основной каталог снят с vanilla.az (slug, названия, цены, SEO — как в WooCommerce).
-// Дополнительно — новые дизайны с локальными фото (новые URL, на позиции не влияют).
-$CATALOG = json_decode((string)@file_get_contents(__DIR__ . '/../data/catalog.json'), true) ?: ['products' => []];
+// Единый каталог в data/catalog.json (снят с vanilla.az + новые дизайны).
+// Редактируется через админ-панель /admin/.
+const CATALOG_FILE = __DIR__ . '/../data/catalog.json';
+$CATALOG = json_decode((string)@file_get_contents(CATALOG_FILE), true) ?: ['products' => []];
 
-$EXTRAS = [
-    ['slug' => 'bento-tort-bantik-noir',  'title' => 'Bento tort bantik Noir',  'type' => 'bantik', 'price' => '35 – 60 ₼', 'img' => 'assets/img/bantik-noir.jpg'],
-    ['slug' => 'bento-tort-bantik-blush', 'title' => 'Bento tort bantik Blush', 'type' => 'bantik', 'price' => '35 – 60 ₼', 'img' => 'assets/img/bantik-blush.jpg'],
-    ['slug' => 'bento-tort-bantik-rose',  'title' => 'Bento tort bantik Rose',  'type' => 'bantik', 'price' => '35 – 60 ₼', 'img' => 'assets/img/bantik-rose.jpg'],
-    ['slug' => 'bento-tort-bantik-ivory', 'title' => 'Bento tort bantik Ivory', 'type' => 'bantik', 'price' => '35 – 60 ₼', 'img' => 'assets/img/bantik-ivory.jpg'],
-    ['slug' => 'bento-set-pinky',   'title' => 'Bento set Pinky',   'type' => 'set', 'price' => '100 ₼', 'img' => 'assets/img/set-pinky.jpg'],
-    ['slug' => 'bento-set-classic', 'title' => 'Bento set Classic', 'type' => 'set', 'price' => '100 ₼', 'img' => 'assets/img/set-white.jpg'],
-    ['slug' => 'bento-set-kids',    'title' => 'Bento set Kids',    'type' => 'set', 'price' => '100 ₼', 'img' => 'assets/img/set-kids.jpg'],
-    ['slug' => 'bento-set-sky',     'title' => 'Bento set Sky',     'type' => 'set', 'price' => '75 ₼',  'img' => 'assets/img/set-blue.jpg'],
-    ['slug' => 'cake-to-go-minimal',  'title' => 'Cake to go Minimal',  'type' => 'ctg', 'price' => '25 – 30 ₼', 'img' => 'assets/img/ctg-minimal.jpg'],
-    ['slug' => 'cake-to-go-princess', 'title' => 'Cake to go Princess', 'type' => 'ctg', 'price' => '25 – 30 ₼', 'img' => 'assets/img/ctg-princess.jpg'],
-    ['slug' => 'cake-to-go-daisy',    'title' => 'Cake to go Daisy',    'type' => 'ctg', 'price' => '25 – 30 ₼', 'img' => 'assets/img/ctg-daisy.jpg'],
-    ['slug' => 'cake-to-go-blue',     'title' => 'Cake to go Blue',     'type' => 'ctg', 'price' => '25 – 30 ₼', 'img' => 'assets/img/ctg-blue.jpg'],
-    ['slug' => 'cake-to-go-new-year', 'title' => 'Cake to go New Year', 'type' => 'ctg', 'price' => '25 – 30 ₼', 'img' => 'assets/img/ctg-newyear.jpg'],
-];
-
-// Локальные фото для товаров, у которых есть страница на старом сайте
-$IMG_OVERRIDES = [
-    'cake-to-go-love'              => 'assets/img/ctg-love.jpg',
-    'cake-to-go-school-2'          => 'assets/img/ctg-school.jpg',
-    'cake-to-go-happi-birthday-6x' => 'assets/img/ctg-birthday.jpg',
-];
-
-$PRODUCTS = array_merge($EXTRAS, $CATALOG['products']);
+$PRODUCTS = $CATALOG['products'];
 foreach ($PRODUCTS as &$pp) {
-    if (isset($IMG_OVERRIDES[$pp['slug']])) {
-        $pp['img'] = $IMG_OVERRIDES[$pp['slug']];
-    }
     $pp['img'] = asset($pp['img']);
 }
 unset($pp);

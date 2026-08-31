@@ -1,1115 +1,1112 @@
 {
-    "updated":  "2026-08-30",
-    "products":  [
-                     {
-                         "slug":  "bento-tort-first-tooth",
-                         "title":  "Bento tort First tooth",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1724659952_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort First tooth - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-3-months-2",
-                         "title":  "Bento tort Baby 3 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744743495_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 3 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-8-months-4",
-                         "title":  "Bento tort Baby 8 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744647053_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 8 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-8-months-3",
-                         "title":  "Bento tort Baby 8 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744649263_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 8 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-7-months-3",
-                         "title":  "Bento tort Baby 7 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1745168683_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 7 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-7-months-2",
-                         "title":  "Bento tort Baby 7 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1745089127_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 7 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-6-months",
-                         "title":  "Bento tort Baby 6 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1745168334_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 6 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-8-months-2",
-                         "title":  "Bento tort Baby 8 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1745089311_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 8 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-3-years",
-                         "title":  "Bento tort Baby 3 years",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744092822_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 3 years - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-10-months-4",
-                         "title":  "Bento tort Baby 10 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744093059_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 10 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-7-months",
-                         "title":  "Bento tort Baby 7 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744743922_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 7 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-cinnamorol-kuromi",
-                         "title":  "Bento tort Cinnamorol, Kuromi",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744744568_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Cinnamorol, Kuromi - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-1-month-2",
-                         "title":  "Bento tort Baby 1 month",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1722410315_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 1 month - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-4-months",
-                         "title":  "Bento tort Baby 4 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744018627_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 4 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-10-months-3",
-                         "title":  "Bento tort Baby 10 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1722409548_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 10 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-1-year",
-                         "title":  "Bento tort Baby 1 year",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1717340446_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 1 year - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-10-months-2",
-                         "title":  "Bento tort Baby 10 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1722409878_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 10 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-8-months",
-                         "title":  "Bento tort Baby 8 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1722410107_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 8 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-10-months",
-                         "title":  "Bento tort Baby 10 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1741590763_highlight18253086958008641-600x600.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 10 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x-15",
-                         "title":  "Bento tort Happy Birthday 4-X",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940080_highlight18024996170312909-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x-14",
-                         "title":  "Bento tort Happy Birthday 4-X",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940079_highlight18024996170312909-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x-13",
-                         "title":  "Bento tort Happy Birthday 4-X",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940100_highlight18024996170312909-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x-12",
-                         "title":  "Bento tort Happy Birthday 4-X",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940119_highlight18024996170312909-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x-11",
-                         "title":  "Bento tort Happy Birthday 4-X",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940122_highlight18024996170312909-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x-10",
-                         "title":  "Bento tort Happy Birthday 4-X",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940104_highlight18024996170312909-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x-9",
-                         "title":  "Bento tort Happy Birthday 4-X",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940142_highlight18024996170312909-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x-8",
-                         "title":  "Bento tort Happy Birthday 4-X",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940144_highlight18024996170312909-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x-7",
-                         "title":  "Bento tort Happy Birthday 4-X",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940141_highlight18024996170312909-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x-6",
-                         "title":  "Bento tort Happy Birthday 4-X",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940140_highlight18024996170312909-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x-5",
-                         "title":  "Bento tort Happy Birthday 4-X",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940128_highlight18024996170312909-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x-qelyan",
-                         "title":  "Bento tort Happy Birthday 4-X Qelyan",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1745088976_highlight18024996170312909-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X Qelyan - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x-4",
-                         "title":  "Bento tort Happy Birthday 4-X",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1741680753_highlight18024996170312909-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x-3",
-                         "title":  "Bento tort Happy Birthday 4-X Tom and Jerry",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1737548010_highlight18024996170312909-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X Tom and Jerry - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x-2",
-                         "title":  "Bento tort Happy Birthday 4-X",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1736874480_highlight18024996170312909-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-bantik-7",
-                         "title":  "Bento tort bantik",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg",
-                         "price":  "35 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bantik",
-                         "seo_title":  "Bento tort bantik - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
-                     },
-                     {
-                         "slug":  "bento-tort-bantik-6",
-                         "title":  "Bento tort bantik",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637057309_3523099162-5-600x600.jpg",
-                         "price":  "35 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bantik",
-                         "seo_title":  "Bento tort bantik - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
-                     },
-                     {
-                         "slug":  "bento-tort-bantik-woman-s-day",
-                         "title":  "Bento tort bantik Woman’s day",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637045074_3523099162-5-600x600.jpg",
-                         "price":  "35 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bantik",
-                         "seo_title":  "Bento tort bantik Woman\u0027s day - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
-                     },
-                     {
-                         "slug":  "bento-tort-bantik-5",
-                         "title":  "Bento tort bantik",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971628710488_3523099162-2-600x600.jpg",
-                         "price":  "35 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bantik",
-                         "seo_title":  "Bento tort bantik - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
-                     },
-                     {
-                         "slug":  "bento-tort-bantik-heart-2",
-                         "title":  "Bento tort bantik heart",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637092293_3523099162-3-600x600.jpg",
-                         "price":  "35 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bantik",
-                         "seo_title":  "Bento tort bantik heart - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
-                     },
-                     {
-                         "slug":  "bento-tort-bantik-4",
-                         "title":  "Bento tort bantik",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1750777490_highlight18016774778338198-600x600.jpg",
-                         "price":  "35 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bantik",
-                         "seo_title":  "Bento tort bantik - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
-                     },
-                     {
-                         "slug":  "bento-tort-bantik-heart",
-                         "title":  "Bento tort bantik heart",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1737292726_highlight18016774778338198-600x600.jpg",
-                         "price":  "35 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bantik",
-                         "seo_title":  "Bento tort bantik heart - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
-                     },
-                     {
-                         "slug":  "bento-tort-bantik-3",
-                         "title":  "Bento tort bantik",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971838387060_3523099162-3-600x600.jpg",
-                         "price":  "35 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bantik",
-                         "seo_title":  "Bento tort bantik - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
-                     },
-                     {
-                         "slug":  "bento-tort-bantik-2",
-                         "title":  "Bento tort bantik",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971628738736_3523099162-5-600x600.jpg",
-                         "price":  "35 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bantik",
-                         "seo_title":  "Bento tort bantik - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
-                     },
-                     {
-                         "slug":  "bento-tort-bantik",
-                         "title":  "Bento tort bantik",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971855186277_3523099162-6-600x600.jpg",
-                         "price":  "35 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bantik",
-                         "seo_title":  "Bento tort bantik - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-3-months",
-                         "title":  "Bento tort Baby 3 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1750776811_3662103779340671832_3523099162.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 3 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-2-months",
-                         "title":  "Bento tort Baby 2 months",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1748438820_3642491288335526782_3523099162.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 2 months - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-baby-1-month",
-                         "title":  "Bento tort Baby 1 month",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1749298462_3649702487741730472_3523099162.jpg",
-                         "price":  "25 – 60 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby 1 month - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday-4-x",
-                         "title":  "Bento tort Happy Birthday 4-X",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_255597493_323018769196071_1302794150536432701_n-600x600.jpg",
-                         "price":  "100 ₼",
-                         "cat":  "bento",
-                         "type":  "set",
-                         "seo_title":  "Bento tort Happy Birthday 4-X - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
-                     },
-                     {
-                         "slug":  "bento-tort-cat-2",
-                         "title":  "Bento tort Cat",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla-3-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Cat - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-bear-2",
-                         "title":  "Bento tort Bear",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla-4-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Bear - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-hbd-color",
-                         "title":  "Bento tort HBD color",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_248152222_622357905783747_7567435214656239302_n-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort HBD color - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-hbd-my-love-2",
-                         "title":  "Bento tort HBD my Love",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_248067806_1226633924512300_1499167026821851406_n-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort HBD my Love - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-sen-hamidan-yaxsisan",
-                         "title":  "Bento tort Sən hamıdan yaxşısan",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_248515815_891192481598057_377258965838934752_n-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Sən hamıdan yaxşısan - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-vinni-pux",
-                         "title":  "Bento tort Vinni Pux",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_246594701_636805797326577_6924202517739582654_n-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Vinni Pux - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-pig-pepa",
-                         "title":  "Bento tort Pig Pepa",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_246244526_617958402901114_890417978871963644_n-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Pig Pepa - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-cat",
-                         "title":  "Bento tort Cat",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_246042990_400801598347355_2116142036673799258_n-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Cat - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-bear",
-                         "title":  "Bento tort Bear",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_248100673_609196293748610_903340673830523120_n-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Bear - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-chicken",
-                         "title":  "Bento tort chicken",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_250807745_720011029391470_9020883125239650044_n-1-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort chicken - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-goat",
-                         "title":  "Bento tort Goat",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillajklo-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Goat - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-sheep",
-                         "title":  "Bento tort Sheep",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillassa-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Sheep - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-yellow-heart",
-                         "title":  "Bento tort yellow heart",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillahgh-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort yellow heart - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-grass-2",
-                         "title":  "Bento tort Grass",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillaghh-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Grass - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-lion",
-                         "title":  "Bento tort Lion",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillaff-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Lion - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-beqemot",
-                         "title":  "Bento tort Beqemot",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilladfdfd-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Beqemot - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-kreativ-2",
-                         "title":  "Bento tort Kreativ",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilladsdsdnmn-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Kreativ - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-dinosaur",
-                         "title":  "Bento tort Dinosaur",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillaasasasasff-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Dinosaur - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-grass",
-                         "title":  "Bento tort Grass",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillaasasvbv-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Grass - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-kreativ",
-                         "title":  "Bento tort Kreativ",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillaasaf-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Kreativ - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-pink-heart",
-                         "title":  "Bento tort Pink Heart",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillaasas-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Pink Heart - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-hbd-blue",
-                         "title":  "Bento tort HBD blue",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillaaazf-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort HBD blue - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-hbd-green",
-                         "title":  "Bento tort HBD Green",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillaad-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort HBD Green - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-flaminqo",
-                         "title":  "Bento tort Flaminqo",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillaas-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Flaminqo - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-star-wars",
-                         "title":  "Bento tort Star Wars",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillaasas2-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Star Wars - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-brown-dog",
-                         "title":  "Bento tort Brown Dog",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillaaa2-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Brown Dog - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-white-dog",
-                         "title":  "Bento tort White dog",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillaaa-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort White dog - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-sweety-dog",
-                         "title":  "Bento tort Sweety dog",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanillaa454-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Sweety dog - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-mozaika",
-                         "title":  "Bento tort Mozaika",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla121212123-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Mozaika - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-sweet",
-                         "title":  "Bento tort Sweet",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla444-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Sweet - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-thank-you-with-love",
-                         "title":  "Bento tort Thank you with love",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla232323-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Thank you with love - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-hbd-my-man",
-                         "title":  "Bento tort HBD my man",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla1111333-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort HBD my man - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-hbd-heart",
-                         "title":  "Bento tort HBD heart",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla121212-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort HBD heart - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-dog",
-                         "title":  "Bento tort Dog",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla2323-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Dog - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-hello-kitty",
-                         "title":  "Bento tort Hello Kitty",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla5-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Hello Kitty - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-love-you",
-                         "title":  "Bento tort Love you",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla6-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Love you - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-baby",
-                         "title":  "Bento tort Baby",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla7-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Baby - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-our-365-days",
-                         "title":  "Bento tort Our 365 days",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla10-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Our 365 days - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-3rd-anniversary",
-                         "title":  "Bento tort 3rd Anniversary",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla13-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort 3rd Anniversary - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-pig",
-                         "title":  "Bento tort Pig",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla15-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Pig - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-hbd-my-love",
-                         "title":  "Bento tort HBD my love",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort HBD my love - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-sevgilim",
-                         "title":  "Bento tort Sevgilim",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla-1-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort Sevgilim - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-urek-2",
-                         "title":  "Bento tort ürək",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla2-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort ürək - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-hbd",
-                         "title":  "Bento tort HBD",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla4-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort HBD - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-ag-ayi",
-                         "title":  "Bento tort ağ ayı",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/3-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort ağ ayı - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-sevgi",
-                         "title":  "Bento tort sevgi",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/4-1-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort sevgi - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-happy-birthday",
-                         "title":  "Bento tort happy birthday",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/7-1-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort happy birthday - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-urek",
-                         "title":  "Bento tort ürək",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/6-1-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort ürək - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "bento-tort-b-1",
-                         "title":  "Bento tort qalaktika",
-                         "img":  "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_253940845_606800103845359_8247153175577231716_n-600x600.jpg",
-                         "price":  "25 – 35 ₼",
-                         "cat":  "bento",
-                         "type":  "bento",
-                         "seo_title":  "Bento tort qalaktika - Vanilla.az",
-                         "seo_desc":  "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
-                     },
-                     {
-                         "slug":  "cake-to-go-baby-born",
-                         "title":  "Cake to go  – Baby born",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1730700276_3493689600196951435_3523099162-3-600x600.jpg",
-                         "price":  "120 ₼",
-                         "cat":  "ctg",
-                         "type":  "ctg",
-                         "seo_title":  "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
-                         "seo_desc":  "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
-                     },
-                     {
-                         "slug":  "cake-to-go-halloween",
-                         "title":  "Cake to go  – Halloween",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1666630574_2956233986129823485_3523099162-1-600x600.jpg",
-                         "price":  "25 – 100 ₼",
-                         "cat":  "ctg",
-                         "type":  "ctg",
-                         "seo_title":  "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
-                         "seo_desc":  "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
-                     },
-                     {
-                         "slug":  "cake-to-go-flowers",
-                         "title":  "Cake to go  – Flowers",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1663699861_2931649377342808335_3523099162-600x600.jpg",
-                         "price":  "25 – 100 ₼",
-                         "cat":  "ctg",
-                         "type":  "ctg",
-                         "seo_title":  "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
-                         "seo_desc":  "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
-                     },
-                     {
-                         "slug":  "cake-to-go-school-2",
-                         "title":  "Cake to go  – School",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1663699781_2931648705222181408_3523099162-600x600.jpg",
-                         "price":  "25 – 100 ₼",
-                         "cat":  "ctg",
-                         "type":  "ctg",
-                         "seo_title":  "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
-                         "seo_desc":  "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
-                     },
-                     {
-                         "slug":  "cake-to-go-school",
-                         "title":  "Cake to go  – School",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1663699736_2931648334596762857_3523099162-1-600x600.jpg",
-                         "price":  "25 – 100 ₼",
-                         "cat":  "ctg",
-                         "type":  "ctg",
-                         "seo_title":  "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
-                         "seo_desc":  "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
-                     },
-                     {
-                         "slug":  "cake-to-go-new-year",
-                         "title":  "Cake to go  – New year",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1733220399_3514829924055027642_3523099162-600x600.jpg",
-                         "price":  "25 – 100 ₼",
-                         "cat":  "ctg",
-                         "type":  "ctg",
-                         "seo_title":  "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
-                         "seo_desc":  "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
-                     },
-                     {
-                         "slug":  "cake-to-go-congratulations",
-                         "title":  "Cake to go  – Congratulations",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744743265_3611490723729437997_3523099162-1-600x600.jpg",
-                         "price":  "25 – 100 ₼",
-                         "cat":  "ctg",
-                         "type":  "ctg",
-                         "seo_title":  "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
-                         "seo_desc":  "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
-                     },
-                     {
-                         "slug":  "cake-to-go-mini-cake",
-                         "title":  "Cake to go  – Mini cake",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977428_3311465139344316893_3523099162-kopiya-600x600.jpg",
-                         "price":  "25 – 100 ₼",
-                         "cat":  "ctg",
-                         "type":  "ctg",
-                         "seo_title":  "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
-                         "seo_desc":  "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
-                     },
-                     {
-                         "slug":  "cake-to-go-happi-birthday-6x",
-                         "title":  "Cake to go  – Happi birthday 6x",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1712262810_3339024920686659731_3523099162-3-600x600.jpg",
-                         "price":  "25 – 100 ₼",
-                         "cat":  "ctg",
-                         "type":  "ctg",
-                         "seo_title":  "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
-                         "seo_desc":  "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
-                     },
-                     {
-                         "slug":  "cake-to-go-happi-birthday-3",
-                         "title":  "Cake to go  – Happi birthday",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1663700602_2931655597898088714_3523099162-600x600.jpg",
-                         "price":  "25 – 100 ₼",
-                         "cat":  "ctg",
-                         "type":  "ctg",
-                         "seo_title":  "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
-                         "seo_desc":  "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
-                     },
-                     {
-                         "slug":  "cake-to-go-happi-birthday-2",
-                         "title":  "Cake to go  – Happi birthday",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744001155_3605265455041171902_3523099162-600x600.jpg",
-                         "price":  "25 – 100 ₼",
-                         "cat":  "ctg",
-                         "type":  "ctg",
-                         "seo_title":  "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
-                         "seo_desc":  "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
-                     },
-                     {
-                         "slug":  "cake-to-go-hearts",
-                         "title":  "Cake to go  – Hearts",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977438_3311465222064440190_3523099162-600x600.jpg",
-                         "price":  "25 – 100 ₼",
-                         "cat":  "ctg",
-                         "type":  "ctg",
-                         "seo_title":  "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
-                         "seo_desc":  "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
-                     },
-                     {
-                         "slug":  "cake-to-go-happi-birthday",
-                         "title":  "Cake to go  – Happi birthday",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1663700602_2931655597990503842_3523099162-1-600x600.jpg",
-                         "price":  "25 – 100 ₼",
-                         "cat":  "ctg",
-                         "type":  "ctg",
-                         "seo_title":  "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
-                         "seo_desc":  "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
-                     },
-                     {
-                         "slug":  "cake-to-go-love",
-                         "title":  "Cake to go  – Love",
-                         "img":  "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977404_3311464938185466334_3523099162-600x600.jpg",
-                         "price":  "25 – 100 ₼",
-                         "cat":  "ctg",
-                         "type":  "ctg",
-                         "seo_title":  "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
-                         "seo_desc":  "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
-                     }
-                 ]
+    "updated": "2026-08-31",
+    "products": [
+        {
+            "slug": "bento-tort-bantik-noir",
+            "title": "Bento tort bantik Noir",
+            "type": "bantik",
+            "price": "35 – 60 ₼",
+            "img": "/assets/img/bantik-noir.jpg",
+            "seo_title": "Bento tort bantik Noir - Vanilla.az",
+            "seo_desc": ""
+        },
+        {
+            "slug": "bento-tort-bantik-blush",
+            "title": "Bento tort bantik Blush",
+            "type": "bantik",
+            "price": "35 – 60 ₼",
+            "img": "/assets/img/bantik-blush.jpg",
+            "seo_title": "Bento tort bantik Blush - Vanilla.az",
+            "seo_desc": ""
+        },
+        {
+            "slug": "bento-tort-bantik-rose",
+            "title": "Bento tort bantik Rose",
+            "type": "bantik",
+            "price": "35 – 60 ₼",
+            "img": "/assets/img/bantik-rose.jpg",
+            "seo_title": "Bento tort bantik Rose - Vanilla.az",
+            "seo_desc": ""
+        },
+        {
+            "slug": "bento-tort-bantik-ivory",
+            "title": "Bento tort bantik Ivory",
+            "type": "bantik",
+            "price": "35 – 60 ₼",
+            "img": "/assets/img/bantik-ivory.jpg",
+            "seo_title": "Bento tort bantik Ivory - Vanilla.az",
+            "seo_desc": ""
+        },
+        {
+            "slug": "bento-set-pinky",
+            "title": "Bento set Pinky",
+            "type": "set",
+            "price": "100 ₼",
+            "img": "/assets/img/set-pinky.jpg",
+            "seo_title": "Bento set Pinky - Vanilla.az",
+            "seo_desc": ""
+        },
+        {
+            "slug": "bento-set-classic",
+            "title": "Bento set Classic",
+            "type": "set",
+            "price": "100 ₼",
+            "img": "/assets/img/set-white.jpg",
+            "seo_title": "Bento set Classic - Vanilla.az",
+            "seo_desc": ""
+        },
+        {
+            "slug": "bento-set-kids",
+            "title": "Bento set Kids",
+            "type": "set",
+            "price": "100 ₼",
+            "img": "/assets/img/set-kids.jpg",
+            "seo_title": "Bento set Kids - Vanilla.az",
+            "seo_desc": ""
+        },
+        {
+            "slug": "bento-set-sky",
+            "title": "Bento set Sky",
+            "type": "set",
+            "price": "75 ₼",
+            "img": "/assets/img/set-blue.jpg",
+            "seo_title": "Bento set Sky - Vanilla.az",
+            "seo_desc": ""
+        },
+        {
+            "slug": "cake-to-go-minimal",
+            "title": "Cake to go Minimal",
+            "type": "ctg",
+            "price": "25 – 30 ₼",
+            "img": "/assets/img/ctg-minimal.jpg",
+            "seo_title": "Cake to go Minimal - Vanilla.az",
+            "seo_desc": ""
+        },
+        {
+            "slug": "cake-to-go-princess",
+            "title": "Cake to go Princess",
+            "type": "ctg",
+            "price": "25 – 30 ₼",
+            "img": "/assets/img/ctg-princess.jpg",
+            "seo_title": "Cake to go Princess - Vanilla.az",
+            "seo_desc": ""
+        },
+        {
+            "slug": "cake-to-go-daisy",
+            "title": "Cake to go Daisy",
+            "type": "ctg",
+            "price": "25 – 30 ₼",
+            "img": "/assets/img/ctg-daisy.jpg",
+            "seo_title": "Cake to go Daisy - Vanilla.az",
+            "seo_desc": ""
+        },
+        {
+            "slug": "cake-to-go-blue",
+            "title": "Cake to go Blue",
+            "type": "ctg",
+            "price": "25 – 30 ₼",
+            "img": "/assets/img/ctg-blue.jpg",
+            "seo_title": "Cake to go Blue - Vanilla.az",
+            "seo_desc": ""
+        },
+        {
+            "slug": "bento-tort-first-tooth",
+            "title": "Bento tort First tooth",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1724659952_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort First tooth - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-3-months-2",
+            "title": "Bento tort Baby 3 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744743495_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 3 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-8-months-4",
+            "title": "Bento tort Baby 8 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744647053_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 8 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-8-months-3",
+            "title": "Bento tort Baby 8 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744649263_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 8 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-7-months-3",
+            "title": "Bento tort Baby 7 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1745168683_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 7 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-7-months-2",
+            "title": "Bento tort Baby 7 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1745089127_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 7 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-6-months",
+            "title": "Bento tort Baby 6 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1745168334_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 6 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-8-months-2",
+            "title": "Bento tort Baby 8 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1745089311_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 8 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-3-years",
+            "title": "Bento tort Baby 3 years",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744092822_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 3 years - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-10-months-4",
+            "title": "Bento tort Baby 10 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744093059_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 10 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-7-months",
+            "title": "Bento tort Baby 7 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744743922_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 7 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-cinnamorol-kuromi",
+            "title": "Bento tort Cinnamorol, Kuromi",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744744568_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Cinnamorol, Kuromi - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-1-month-2",
+            "title": "Bento tort Baby 1 month",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1722410315_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 1 month - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-4-months",
+            "title": "Bento tort Baby 4 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744018627_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 4 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-10-months-3",
+            "title": "Bento tort Baby 10 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1722409548_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 10 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-1-year",
+            "title": "Bento tort Baby 1 year",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1717340446_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 1 year - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-10-months-2",
+            "title": "Bento tort Baby 10 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1722409878_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 10 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-8-months",
+            "title": "Bento tort Baby 8 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1722410107_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 8 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-10-months",
+            "title": "Bento tort Baby 10 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1741590763_highlight18253086958008641-600x600.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 10 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x-15",
+            "title": "Bento tort Happy Birthday 4-X",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940080_highlight18024996170312909-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x-14",
+            "title": "Bento tort Happy Birthday 4-X",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940079_highlight18024996170312909-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x-13",
+            "title": "Bento tort Happy Birthday 4-X",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940100_highlight18024996170312909-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x-12",
+            "title": "Bento tort Happy Birthday 4-X",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940119_highlight18024996170312909-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x-11",
+            "title": "Bento tort Happy Birthday 4-X",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940122_highlight18024996170312909-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x-10",
+            "title": "Bento tort Happy Birthday 4-X",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940104_highlight18024996170312909-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x-9",
+            "title": "Bento tort Happy Birthday 4-X",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940142_highlight18024996170312909-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x-8",
+            "title": "Bento tort Happy Birthday 4-X",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940144_highlight18024996170312909-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x-7",
+            "title": "Bento tort Happy Birthday 4-X",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940141_highlight18024996170312909-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x-6",
+            "title": "Bento tort Happy Birthday 4-X",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940140_highlight18024996170312909-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x-5",
+            "title": "Bento tort Happy Birthday 4-X",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1713940128_highlight18024996170312909-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x-qelyan",
+            "title": "Bento tort Happy Birthday 4-X Qelyan",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1745088976_highlight18024996170312909-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X Qelyan - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x-4",
+            "title": "Bento tort Happy Birthday 4-X",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1741680753_highlight18024996170312909-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x-3",
+            "title": "Bento tort Happy Birthday 4-X Tom and Jerry",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1737548010_highlight18024996170312909-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X Tom and Jerry - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x-2",
+            "title": "Bento tort Happy Birthday 4-X",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1736874480_highlight18024996170312909-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-bantik-7",
+            "title": "Bento tort bantik",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg",
+            "price": "35 – 60 ₼",
+            "type": "bantik",
+            "seo_title": "Bento tort bantik - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
+        },
+        {
+            "slug": "bento-tort-bantik-6",
+            "title": "Bento tort bantik",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637057309_3523099162-5-600x600.jpg",
+            "price": "35 – 60 ₼",
+            "type": "bantik",
+            "seo_title": "Bento tort bantik - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
+        },
+        {
+            "slug": "bento-tort-bantik-woman-s-day",
+            "title": "Bento tort bantik Woman’s day",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637045074_3523099162-5-600x600.jpg",
+            "price": "35 – 60 ₼",
+            "type": "bantik",
+            "seo_title": "Bento tort bantik Woman's day - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
+        },
+        {
+            "slug": "bento-tort-bantik-5",
+            "title": "Bento tort bantik",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971628710488_3523099162-2-600x600.jpg",
+            "price": "35 – 60 ₼",
+            "type": "bantik",
+            "seo_title": "Bento tort bantik - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
+        },
+        {
+            "slug": "bento-tort-bantik-heart-2",
+            "title": "Bento tort bantik heart",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637092293_3523099162-3-600x600.jpg",
+            "price": "35 – 60 ₼",
+            "type": "bantik",
+            "seo_title": "Bento tort bantik heart - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
+        },
+        {
+            "slug": "bento-tort-bantik-4",
+            "title": "Bento tort bantik",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1750777490_highlight18016774778338198-600x600.jpg",
+            "price": "35 – 60 ₼",
+            "type": "bantik",
+            "seo_title": "Bento tort bantik - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
+        },
+        {
+            "slug": "bento-tort-bantik-heart",
+            "title": "Bento tort bantik heart",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1737292726_highlight18016774778338198-600x600.jpg",
+            "price": "35 – 60 ₼",
+            "type": "bantik",
+            "seo_title": "Bento tort bantik heart - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
+        },
+        {
+            "slug": "bento-tort-bantik-3",
+            "title": "Bento tort bantik",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971838387060_3523099162-3-600x600.jpg",
+            "price": "35 – 60 ₼",
+            "type": "bantik",
+            "seo_title": "Bento tort bantik - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
+        },
+        {
+            "slug": "bento-tort-bantik-2",
+            "title": "Bento tort bantik",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971628738736_3523099162-5-600x600.jpg",
+            "price": "35 – 60 ₼",
+            "type": "bantik",
+            "seo_title": "Bento tort bantik - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
+        },
+        {
+            "slug": "bento-tort-bantik",
+            "title": "Bento tort bantik",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971855186277_3523099162-6-600x600.jpg",
+            "price": "35 – 60 ₼",
+            "type": "bantik",
+            "seo_title": "Bento tort bantik - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 qram nəzərdə tutulur.(Tərkibi seçimi mümkündür). Qeyd ed"
+        },
+        {
+            "slug": "bento-tort-baby-3-months",
+            "title": "Bento tort Baby 3 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1750776811_3662103779340671832_3523099162.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 3 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-2-months",
+            "title": "Bento tort Baby 2 months",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1748438820_3642491288335526782_3523099162.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 2 months - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-baby-1-month",
+            "title": "Bento tort Baby 1 month",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1749298462_3649702487741730472_3523099162.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby 1 month - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. 3– 4 nəfərlik üçün 800 – 900 qram nəzərdə tutulur. 7– 8 nəfərlik üçün 1200 – 1500 q"
+        },
+        {
+            "slug": "bento-tort-happy-birthday-4-x",
+            "title": "Bento tort Happy Birthday 4-X",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_255597493_323018769196071_1302794150536432701_n-600x600.jpg",
+            "price": "100 ₼",
+            "type": "set",
+            "seo_title": "Bento tort Happy Birthday 4-X - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. (Tərkibi seçimi mümkündür). Qeyd edək ki, 1 ədəd şam və qaşıq bizim tərəfimizdən hə"
+        },
+        {
+            "slug": "bento-tort-cat-2",
+            "title": "Bento tort Cat",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla-3-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Cat - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-bear-2",
+            "title": "Bento tort Bear",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla-4-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Bear - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-hbd-color",
+            "title": "Bento tort HBD color",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_248152222_622357905783747_7567435214656239302_n-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort HBD color - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-hbd-my-love-2",
+            "title": "Bento tort HBD my Love",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_248067806_1226633924512300_1499167026821851406_n-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort HBD my Love - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-sen-hamidan-yaxsisan",
+            "title": "Bento tort Sən hamıdan yaxşısan",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_248515815_891192481598057_377258965838934752_n-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Sən hamıdan yaxşısan - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-vinni-pux",
+            "title": "Bento tort Vinni Pux",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_246594701_636805797326577_6924202517739582654_n-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Vinni Pux - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-pig-pepa",
+            "title": "Bento tort Pig Pepa",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_246244526_617958402901114_890417978871963644_n-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Pig Pepa - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-cat",
+            "title": "Bento tort Cat",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_246042990_400801598347355_2116142036673799258_n-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Cat - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-bear",
+            "title": "Bento tort Bear",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_248100673_609196293748610_903340673830523120_n-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Bear - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-chicken",
+            "title": "Bento tort chicken",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_250807745_720011029391470_9020883125239650044_n-1-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort chicken - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-goat",
+            "title": "Bento tort Goat",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillajklo-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Goat - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-sheep",
+            "title": "Bento tort Sheep",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillassa-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Sheep - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-yellow-heart",
+            "title": "Bento tort yellow heart",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillahgh-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort yellow heart - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-grass-2",
+            "title": "Bento tort Grass",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillaghh-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Grass - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-lion",
+            "title": "Bento tort Lion",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillaff-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Lion - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-beqemot",
+            "title": "Bento tort Beqemot",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilladfdfd-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Beqemot - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-kreativ-2",
+            "title": "Bento tort Kreativ",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilladsdsdnmn-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Kreativ - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-dinosaur",
+            "title": "Bento tort Dinosaur",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillaasasasasff-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Dinosaur - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-grass",
+            "title": "Bento tort Grass",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillaasasvbv-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Grass - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-kreativ",
+            "title": "Bento tort Kreativ",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillaasaf-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Kreativ - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-pink-heart",
+            "title": "Bento tort Pink Heart",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillaasas-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Pink Heart - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-hbd-blue",
+            "title": "Bento tort HBD blue",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillaaazf-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort HBD blue - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-hbd-green",
+            "title": "Bento tort HBD Green",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillaad-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort HBD Green - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-flaminqo",
+            "title": "Bento tort Flaminqo",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillaas-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Flaminqo - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-star-wars",
+            "title": "Bento tort Star Wars",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillaasas2-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Star Wars - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-brown-dog",
+            "title": "Bento tort Brown Dog",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillaaa2-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Brown Dog - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-white-dog",
+            "title": "Bento tort White dog",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillaaa-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort White dog - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-sweety-dog",
+            "title": "Bento tort Sweety dog",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanillaa454-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Sweety dog - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-mozaika",
+            "title": "Bento tort Mozaika",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla121212123-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Mozaika - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-sweet",
+            "title": "Bento tort Sweet",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla444-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Sweet - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-thank-you-with-love",
+            "title": "Bento tort Thank you with love",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla232323-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Thank you with love - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-hbd-my-man",
+            "title": "Bento tort HBD my man",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla1111333-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort HBD my man - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-hbd-heart",
+            "title": "Bento tort HBD heart",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla121212-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort HBD heart - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-dog",
+            "title": "Bento tort Dog",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla2323-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Dog - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-hello-kitty",
+            "title": "Bento tort Hello Kitty",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla5-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Hello Kitty - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-love-you",
+            "title": "Bento tort Love you",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla6-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Love you - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-baby",
+            "title": "Bento tort Baby",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla7-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Baby - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-our-365-days",
+            "title": "Bento tort Our 365 days",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla10-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Our 365 days - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-3rd-anniversary",
+            "title": "Bento tort 3rd Anniversary",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla13-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort 3rd Anniversary - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-pig",
+            "title": "Bento tort Pig",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla15-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Pig - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-hbd-my-love",
+            "title": "Bento tort HBD my love",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort HBD my love - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-sevgilim",
+            "title": "Bento tort Sevgilim",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla-1-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort Sevgilim - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-urek-2",
+            "title": "Bento tort ürək",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla2-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort ürək - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-hbd",
+            "title": "Bento tort HBD",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla4-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort HBD - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-ag-ayi",
+            "title": "Bento tort ağ ayı",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/3-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort ağ ayı - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-sevgi",
+            "title": "Bento tort sevgi",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/4-1-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort sevgi - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-happy-birthday",
+            "title": "Bento tort happy birthday",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/7-1-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort happy birthday - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-urek",
+            "title": "Bento tort ürək",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/6-1-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort ürək - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "bento-tort-b-1",
+            "title": "Bento tort qalaktika",
+            "img": "https://vanilla.az/wp-content/uploads/2021/11/vanilla_cake_az_253940845_606800103845359_8247153175577231716_n-600x600.jpg",
+            "price": "25 – 35 ₼",
+            "type": "bento",
+            "seo_title": "Bento tort qalaktika - Vanilla.az",
+            "seo_desc": "Bento tortlarımız 1- 2 nəfərlik üçün isə 350 – 400 qram nəzərdə tutulur. Sadə dizayn sifariş verildiyi zaman qiyməti 20₼ -dır. Kreativ dizaynlarda isə 25₼-d"
+        },
+        {
+            "slug": "cake-to-go-baby-born",
+            "title": "Cake to go  – Baby born",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1730700276_3493689600196951435_3523099162-3-600x600.jpg",
+            "price": "120 ₼",
+            "type": "ctg",
+            "seo_title": "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
+            "seo_desc": "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
+        },
+        {
+            "slug": "cake-to-go-halloween",
+            "title": "Cake to go  – Halloween",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1666630574_2956233986129823485_3523099162-1-600x600.jpg",
+            "price": "25 – 100 ₼",
+            "type": "ctg",
+            "seo_title": "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
+            "seo_desc": "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
+        },
+        {
+            "slug": "cake-to-go-flowers",
+            "title": "Cake to go  – Flowers",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1663699861_2931649377342808335_3523099162-600x600.jpg",
+            "price": "25 – 100 ₼",
+            "type": "ctg",
+            "seo_title": "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
+            "seo_desc": "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
+        },
+        {
+            "slug": "cake-to-go-school-2",
+            "title": "Cake to go  – School",
+            "img": "/assets/img/ctg-school.jpg",
+            "price": "25 – 100 ₼",
+            "type": "ctg",
+            "seo_title": "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
+            "seo_desc": "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
+        },
+        {
+            "slug": "cake-to-go-school",
+            "title": "Cake to go  – School",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1663699736_2931648334596762857_3523099162-1-600x600.jpg",
+            "price": "25 – 100 ₼",
+            "type": "ctg",
+            "seo_title": "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
+            "seo_desc": "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
+        },
+        {
+            "slug": "cake-to-go-new-year",
+            "title": "Cake to go  – New year",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1733220399_3514829924055027642_3523099162-600x600.jpg",
+            "price": "25 – 100 ₼",
+            "type": "ctg",
+            "seo_title": "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
+            "seo_desc": "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
+        },
+        {
+            "slug": "cake-to-go-congratulations",
+            "title": "Cake to go  – Congratulations",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744743265_3611490723729437997_3523099162-1-600x600.jpg",
+            "price": "25 – 100 ₼",
+            "type": "ctg",
+            "seo_title": "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
+            "seo_desc": "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
+        },
+        {
+            "slug": "cake-to-go-mini-cake",
+            "title": "Cake to go  – Mini cake",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977428_3311465139344316893_3523099162-kopiya-600x600.jpg",
+            "price": "25 – 100 ₼",
+            "type": "ctg",
+            "seo_title": "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
+            "seo_desc": "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
+        },
+        {
+            "slug": "cake-to-go-happi-birthday-6x",
+            "title": "Cake to go  – Happi birthday 6x",
+            "img": "/assets/img/ctg-birthday.jpg",
+            "price": "25 – 100 ₼",
+            "type": "ctg",
+            "seo_title": "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
+            "seo_desc": "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
+        },
+        {
+            "slug": "cake-to-go-happi-birthday-3",
+            "title": "Cake to go  – Happi birthday",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1663700602_2931655597898088714_3523099162-600x600.jpg",
+            "price": "25 – 100 ₼",
+            "type": "ctg",
+            "seo_title": "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
+            "seo_desc": "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
+        },
+        {
+            "slug": "cake-to-go-happi-birthday-2",
+            "title": "Cake to go  – Happi birthday",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1744001155_3605265455041171902_3523099162-600x600.jpg",
+            "price": "25 – 100 ₼",
+            "type": "ctg",
+            "seo_title": "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
+            "seo_desc": "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
+        },
+        {
+            "slug": "cake-to-go-hearts",
+            "title": "Cake to go  – Hearts",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1708977438_3311465222064440190_3523099162-600x600.jpg",
+            "price": "25 – 100 ₼",
+            "type": "ctg",
+            "seo_title": "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
+            "seo_desc": "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
+        },
+        {
+            "slug": "cake-to-go-happi-birthday",
+            "title": "Cake to go  – Happi birthday",
+            "img": "https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1663700602_2931655597990503842_3523099162-1-600x600.jpg",
+            "price": "25 – 100 ₼",
+            "type": "ctg",
+            "seo_title": "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
+            "seo_desc": "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
+        },
+        {
+            "slug": "cake-to-go-love",
+            "title": "Cake to go  – Love",
+            "img": "/assets/img/ctg-love.jpg",
+            "price": "25 – 100 ₼",
+            "type": "ctg",
+            "seo_title": "Cake To Go Mini Tortlar – Sifarişlə Hazırlanan Fərdi Tortlar | Vanilla.az",
+            "seo_desc": "Cake To Go mini tort sifarişi – vanil, şokolad və red velvet əsaslı fərdi mini tortlar. Bakı üzrə sifarişlə hazırlanır."
+        }
+    ]
 }
