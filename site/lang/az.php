@@ -242,6 +242,8 @@ return [
   'k_del' => 'Sil',
   'k_text_n' => '%d-ci yazı',
   'wa_photo' => 'Müştəri şəkli',
+  'k_limit_img' => 'Ən çox 3 şəkil əlavə etmək olar',
+  'k_limit_text' => 'Ən çox 3 yazı əlavə etmək olar',
   'k_wa_intro' => 'Salam! Öz dizaynımla tort sifariş etmək istəyirəm.',
   'k_cream_lbl' => 'Krem',
   'k_custom_name' => 'Sizin dizaynınızla tort',

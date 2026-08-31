@@ -35,6 +35,7 @@ $stickers = [
       <div class="k-preview reveal in">
         <div class="k-box">
           <div class="k-cake" id="k-cake" style="--cream:#FDFBF7"></div>
+          <div class="k-toast" id="k-toast" hidden></div>
         </div>
         <div class="k-tools" id="k-tools">
           <div class="k-tools-empty" id="k-tools-empty"><?= e($t['k_sel_none']) ?></div>
@@ -167,6 +168,8 @@ window.PROD_CFG = <?= json_encode([
     'textPh'   => $t['k_text_n'],
     'delLbl'   => $t['k_del'],
     'photoLbl' => $t['wa_photo'],
+    'limitImg' => $t['k_limit_img'],
+    'limitText' => $t['k_limit_text'],
 ], JSON_UNESCAPED_UNICODE) ?>;
 
 // ===== Конструктор торта (слои: картинки + надписи) =====
@@ -183,6 +186,17 @@ window.PROD_CFG = <?= json_encode([
   var firstTcolor = document.querySelector('#k-tcolors .k-sw');
 
   var MAX_IMG = 3, MAX_TEXT = 3;
+  // Размеры считаются в долях диаметра торта. Базовый кегль надписи = 8.6% диаметра.
+  // Пределы подобраны так, чтобы при стандартном превью (~430 px) минимум был
+  // 100 px для картинки и 30 px для надписи.
+  var LIM = {
+    img:  { min: 0.23, max: 1.3 },
+    text: { min: 0.81, max: 2.5 }
+  };
+  function clampSize(it, v) {
+    var l = LIM[it.type === 'img' ? 'img' : 'text'];
+    return Math.max(l.min, Math.min(l.max, v));
+  }
   var state = {
     cream: firstCream ? firstCream.dataset.color : '#FDFBF7',
     creamName: firstCream ? firstCream.dataset.name : '',
@@ -192,6 +206,20 @@ window.PROD_CFG = <?= json_encode([
     sel: null,
     seq: 0
   };
+
+  // Всплывающее уведомление
+  var toastEl = document.getElementById('k-toast');
+  var toastTimer = null;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.hidden = false;
+    toastEl.classList.add('on');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toastEl.classList.remove('on');
+      setTimeout(function () { toastEl.hidden = true; }, 300);
+    }, 3200);
+  }
 
   function itemsOf(type) {
     return state.items.filter(function (i) { return i.type === type; });
@@ -240,7 +268,12 @@ window.PROD_CFG = <?= json_encode([
     var sel = selItem();
     toolsOn.hidden = !sel;
     toolsEmpty.hidden = !!sel;
-    if (sel) sizeRange.value = Math.round(sel.size * 100);
+    if (sel) {
+      var l = LIM[sel.type === 'img' ? 'img' : 'text'];
+      sizeRange.min = Math.round(l.min * 100);
+      sizeRange.max = Math.round(l.max * 100);
+      sizeRange.value = Math.round(sel.size * 100);
+    }
     // кнопка добавления надписи
     addTextBtn.hidden = itemsOf('text').length >= MAX_TEXT;
   }
@@ -276,7 +309,7 @@ window.PROD_CFG = <?= json_encode([
 
   // ---- Картинки ----
   function addImage(src) {
-    if (itemsOf('img').length >= MAX_IMG) return null;
+    if (itemsOf('img').length >= MAX_IMG) { toast(PROD_CFG.limitImg); return null; }
     var id = 'i' + (++state.seq);
     var n = itemsOf('img').length;
     state.items.push({
@@ -318,25 +351,30 @@ window.PROD_CFG = <?= json_encode([
   });
   fileInp.addEventListener('change', function () {
     var f = fileInp.files && fileInp.files[0];
-    if (!f) return;
-    if (['image/jpeg', 'image/png', 'image/webp'].indexOf(f.type) === -1 || f.size > 8 * 1024 * 1024) return;
-    var id = addImage(URL.createObjectURL(f));
     fileInp.value = '';
+    if (!f) return;
+    if (['image/jpeg', 'image/png', 'image/webp'].indexOf(f.type) === -1) { toast(PROD_CFG.errors.type); return; }
+    if (f.size > 8 * 1024 * 1024) { toast(PROD_CFG.errors.size); return; }
+    var id = addImage(URL.createObjectURL(f));
     if (!id) return;
     var it = byId(id);
     it.own = true;
-    it.uploading = uploadFile(f).then(function (url) { it.url = url; return url; });
+    it.uploading = uploadFile(f).then(function (url) {
+      it.url = url;
+      if (!url) toast(PROD_CFG.errors.generic);
+      return url;
+    });
   });
 
   // ---- Надписи ----
-  function addText(initial) {
-    if (itemsOf('text').length >= MAX_TEXT) return null;
+  function addText(initial, silent) {
+    if (itemsOf('text').length >= MAX_TEXT) { if (!silent) toast(PROD_CFG.limitText); return null; }
     var id = 't' + (++state.seq);
     var n = itemsOf('text').length;
     state.items.push({
       id: id, type: 'text', text: initial || '',
       color: state.tcolor, colorName: state.tcolorName,
-      x: 0, y: n === 0 ? 0.62 : 0.62 - 0.22 * n, size: 1
+      x: 0, y: n === 0 ? 0.62 : 0.62 - 0.22 * n, size: 1.1
     });
     return id;
   }
@@ -412,7 +450,7 @@ window.PROD_CFG = <?= json_encode([
   sizeRange.addEventListener('input', function () {
     var sel = selItem();
     if (!sel) return;
-    sel.size = sizeRange.value / 100;
+    sel.size = clampSize(sel, sizeRange.value / 100);
     render();
   });
   delBtn.addEventListener('click', function () {
@@ -477,7 +515,7 @@ window.PROD_CFG = <?= json_encode([
           g.drawImage(im, cx + it.x * R - w / 2, cy + it.y * R - h / 2, w, h);
           g.restore();
         } else if (it.text) {
-          var fs = R * 0.215 * it.size;
+          var fs = R * 0.172 * it.size; // 8.6% диаметра — как в превью
           g.font = '700 ' + fs + 'px Caveat, cursive';
           while (g.measureText(it.text).width > R * 1.6 && fs > 24) {
             fs -= 3;
