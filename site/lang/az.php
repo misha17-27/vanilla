@@ -241,6 +241,7 @@ return [
   'k_sel_none' => 'Tortdakı şəklə və ya yazıya toxunun',
   'k_del' => 'Sil',
   'k_text_n' => '%d-ci yazı',
+  'wa_photo' => 'Müştəri şəkli',
   'k_wa_intro' => 'Salam! Öz dizaynımla tort sifariş etmək istəyirəm.',
   'k_cream_lbl' => 'Krem',
   'k_custom_name' => 'Sizin dizaynınızla tort',

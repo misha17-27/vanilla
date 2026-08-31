@@ -166,6 +166,7 @@ window.PROD_CFG = <?= json_encode([
     'creamLbl' => $t['k_cream_lbl'],
     'textPh'   => $t['k_text_n'],
     'delLbl'   => $t['k_del'],
+    'photoLbl' => $t['wa_photo'],
 ], JSON_UNESCAPED_UNICODE) ?>;
 
 // ===== Конструктор торта (слои: картинки + надписи) =====
@@ -181,7 +182,7 @@ window.PROD_CFG = <?= json_encode([
   var firstCream = document.querySelector('#k-creams .k-sw');
   var firstTcolor = document.querySelector('#k-tcolors .k-sw');
 
-  var MAX_IMG = 4, MAX_TEXT = 3;
+  var MAX_IMG = 3, MAX_TEXT = 3;
   var state = {
     cream: firstCream ? firstCream.dataset.color : '#FDFBF7',
     creamName: firstCream ? firstCream.dataset.name : '',
@@ -275,7 +276,7 @@ window.PROD_CFG = <?= json_encode([
 
   // ---- Картинки ----
   function addImage(src) {
-    if (itemsOf('img').length >= MAX_IMG) return;
+    if (itemsOf('img').length >= MAX_IMG) return null;
     var id = 'i' + (++state.seq);
     var n = itemsOf('img').length;
     state.items.push({
@@ -286,6 +287,22 @@ window.PROD_CFG = <?= json_encode([
     });
     state.sel = id;
     render();
+    return id;
+  }
+  // Загрузка клиентского фото на сервер — ссылка уйдёт в заказ отдельной строкой
+  function uploadFile(file) {
+    var fd = new FormData();
+    fd.append('photo', file);
+    fd.append('csrf', PROD_CFG.csrf);
+    return fetch(PROD_CFG.upload, { method: 'POST', body: fd, credentials: 'same-origin' })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (res && res.ok && res.url) {
+          return res.url.indexOf('http') === 0 ? res.url : location.origin + res.url;
+        }
+        return null;
+      })
+      .catch(function () { return null; });
   }
   document.getElementById('k-stickers').addEventListener('click', function (e) {
     var b = e.target.closest('.k-st');
@@ -303,8 +320,12 @@ window.PROD_CFG = <?= json_encode([
     var f = fileInp.files && fileInp.files[0];
     if (!f) return;
     if (['image/jpeg', 'image/png', 'image/webp'].indexOf(f.type) === -1 || f.size > 8 * 1024 * 1024) return;
-    addImage(URL.createObjectURL(f));
+    var id = addImage(URL.createObjectURL(f));
     fileInp.value = '';
+    if (!id) return;
+    var it = byId(id);
+    it.own = true;
+    it.uploading = uploadFile(f).then(function (url) { it.url = url; return url; });
   });
 
   // ---- Надписи ----
@@ -483,17 +504,28 @@ window.PROD_CFG = <?= json_encode([
     } catch (e) { /* макет не критичен — заказ уйдёт без ссылки */ }
   }
 
+  function buildExtras() {
+    var extras = [PROD_CFG.creamLbl + ': ' + state.creamName];
+    itemsOf('text').forEach(function (it) {
+      if (it.text.trim()) extras.push(PROD_CFG.labels.text + ': «' + it.text.trim() + '» (' + (it.colorName || state.tcolorName) + ')');
+    });
+    // ссылки на фото, которые загрузил клиент — отдельными строками
+    var own = itemsOf('img').filter(function (it) { return it.own; });
+    own.forEach(function (it, i) {
+      if (it.url) extras.push(PROD_CFG.photoLbl + (own.length > 1 ? ' ' + (i + 1) : '') + ': ' + it.url);
+    });
+    if (window.__setExtras) window.__setExtras(extras);
+  }
+
   document.getElementById('prod-order').addEventListener('click', function () {
-    if (window.__setExtras) {
-      var extras = [PROD_CFG.creamLbl + ': ' + state.creamName];
-      itemsOf('text').forEach(function (it) {
-        if (it.text.trim()) extras.push(PROD_CFG.labels.text + ': «' + it.text.trim() + '» (' + (it.colorName || state.tcolorName) + ')');
-      });
-      window.__setExtras(extras);
-    }
+    buildExtras();
     var send = document.getElementById('modal-send');
     send.classList.add('busy');
-    renderAndUpload().then(function () { send.classList.remove('busy'); });
+    var pending = itemsOf('img').filter(function (it) { return it.own && it.uploading; }).map(function (it) { return it.uploading; });
+    Promise.all(pending.concat([renderAndUpload()])).then(function () {
+      buildExtras();
+      send.classList.remove('busy');
+    });
   });
 })();
 </script>

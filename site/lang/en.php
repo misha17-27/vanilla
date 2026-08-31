@@ -241,6 +241,7 @@ return [
   'k_sel_none' => 'Tap a picture or lettering on the cake',
   'k_del' => 'Remove',
   'k_text_n' => 'Lettering %d',
+  'wa_photo' => 'Customer photo',
   'k_wa_intro' => 'Hello! I would like to order a cake with my own design.',
   'k_cream_lbl' => 'Cream',
   'k_custom_name' => 'Cake with your design',
