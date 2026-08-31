@@ -3,7 +3,7 @@
 // Защита: CSRF-токен, лимит по IP, проверка типа по содержимому (finfo + getimagesize)
 // и полное пересжатие через GD — на диск попадает только чистый JPEG со случайным именем.
 declare(strict_types=1);
-session_start();
+require_once __DIR__ . '/includes/config.php'; // сессия, CANON_HOST
 header('Content-Type: application/json; charset=UTF-8');
 header('X-Content-Type-Options: nosniff');
 
@@ -89,8 +89,11 @@ imagedestroy($dst);
 $rl['n'] = ($rl['n'] ?? 0) + 1;
 @file_put_contents($rlFile, json_encode($rl));
 
-// Абсолютная ссылка по хосту запроса: на проде это https://vanilla.az/uploads/... —
-// WhatsApp сделает её кликабельной (IP-адреса вроде 127.0.0.1 WhatsApp ссылками не считает).
+// Абсолютная ссылка на публичный домен: WhatsApp делает кликабельными только
+// доменные адреса (IP вроде 127.0.0.1 остаётся простым текстом), поэтому при
+// локальной разработке ссылка тоже строится на CANON_HOST.
 $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-$host   = $_SERVER['HTTP_HOST'] ?? 'vanilla.az';
-echo json_encode(['ok' => true, 'url' => $scheme . '://' . $host . '/uploads/designs/' . $name]);
+$host   = $_SERVER['HTTP_HOST'] ?? '';
+$isLocal = $host === '' || preg_match('/^(localhost|127\.|\[?::1\]?|192\.168\.|10\.|172\.(1[6-9]|2\d|3[01])\.)/i', $host);
+$base   = $isLocal ? CANON_HOST : $scheme . '://' . $host;
+echo json_encode(['ok' => true, 'url' => $base . '/uploads/designs/' . $name]);
