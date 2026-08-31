@@ -146,6 +146,8 @@ window.PROD_CFG = <?= json_encode([
         'recipient' => $t['f_recipient'],
     ],
     'valFill'  => $t['val_fill'],
+    'mapSearching' => $t['map_searching'],
+    'pointLbl' => $t['wa_point'],
     'valPhone' => $t['val_phone'],
     'locale'  => $lang,
     'sizes'   => $sizeOpts,

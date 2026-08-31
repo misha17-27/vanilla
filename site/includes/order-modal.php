@@ -49,7 +49,13 @@
       </div>
       <div class="opt-row" id="row-address">
         <label for="f-address"><?= e($t['f_address']) ?> <i class="req" title="<?= e($t['req_mark']) ?>">*</i></label>
-        <input class="txt" type="text" id="f-address" placeholder="<?= e($t['f_address_ph']) ?>" maxlength="120" required>
+        <div class="addr-wrap">
+          <input class="txt" type="text" id="f-address" placeholder="<?= e($t['f_address_ph']) ?>" maxlength="160" required>
+          <button type="button" class="map-btn" id="map-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            <?= e($t['map_btn']) ?>
+          </button>
+        </div>
       </div>
       <div class="opt-row">
         <label for="f-name"><?= e($t['f_name']) ?> <i class="req" title="<?= e($t['req_mark']) ?>">*</i></label>
@@ -80,3 +86,26 @@
     <p class="modal-note"><b><?= e($t['ord_confirm']) ?></b><?= e($t['pd_note']) ?></p>
   </div>
 </div>
+
+<!-- Выбор точки доставки на карте -->
+<div class="modal-ov map-ov" id="map-modal" hidden>
+  <div class="map-win" role="dialog" aria-modal="true">
+    <div class="map-head">
+      <b><?= e($t['map_t']) ?></b>
+      <button type="button" class="modal-x" id="map-close" aria-label="Close">×</button>
+    </div>
+    <div class="map-canvas" id="map-canvas"></div>
+    <div class="map-foot">
+      <div class="map-addr" id="map-addr"><?= e($t['map_hint']) ?></div>
+      <div class="map-actions">
+        <button type="button" class="btn btn-ghost" id="map-locate">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="7"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+          <?= e($t['map_locate']) ?>
+        </button>
+        <button type="button" class="btn btn-primary" id="map-apply"><?= e($t['map_apply']) ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="/assets/vendor/leaflet/leaflet.css">
+<script src="/assets/vendor/leaflet/leaflet.js" defer></script>

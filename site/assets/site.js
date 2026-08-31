@@ -32,6 +32,7 @@ if (burger && menu) {
   var designUrl = '';
   var extraLines = [];
   var selDate = null;
+  var pickedPoint = null; // выбранная на карте точка доставки
   window.__setDesign = function (u) { designUrl = u; update(); };
   window.__setExtras = function (arr) { extraLines = arr || []; update(); };
   var dlSel = document.getElementById('opt-dl');
@@ -83,6 +84,9 @@ if (burger && menu) {
     if (timeSel.value) lines.push(cfg.labels.time + ': ' + timeSel.value);
     lines.push(cfg.labels.dl + ': ' + dlSel.options[dlSel.selectedIndex].textContent);
     if (dlSel.value === 'courier' && fAddress.value.trim()) lines.push(cfg.labels.address + ': ' + fAddress.value.trim());
+    if (dlSel.value === 'courier' && pickedPoint) {
+      lines.push(cfg.pointLbl + ': https://maps.google.com/?q=' + pickedPoint.lat + ',' + pickedPoint.lng);
+    }
     if (fName.value.trim()) lines.push(cfg.labels.name + ': ' + fName.value.trim());
     if (fPhone.value.trim()) lines.push(cfg.labels.phone + ': ' + fPhone.value.trim());
     if (fOther.checked && (fRname.value.trim() || fRphone.value.trim())) {
@@ -134,6 +138,74 @@ if (burger && menu) {
       if (errBox && !document.querySelector('.modal .txt.err')) errBox.hidden = true;
     });
   });
+  // ---- Выбор точки доставки на карте (Leaflet + OpenStreetMap) ----
+  var mapModal = document.getElementById('map-modal');
+  var mapBtn = document.getElementById('map-btn');
+  var mapObj = null, mapMarker = null, mapPoint = null, geoTimer = null;
+  function openMap() {
+    if (!window.L) return;
+    mapModal.hidden = false;
+    var start = pickedPoint || { lat: 40.4093, lng: 49.8671 }; // Баку
+    if (!mapObj) {
+      mapObj = L.map('map-canvas', { zoomControl: true }).setView([start.lat, start.lng], pickedPoint ? 17 : 12);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap'
+      }).addTo(mapObj);
+      mapMarker = L.marker([start.lat, start.lng], { draggable: true }).addTo(mapObj);
+      mapMarker.on('dragend', function () { setPoint(mapMarker.getLatLng()); });
+      mapObj.on('click', function (e) { mapMarker.setLatLng(e.latlng); setPoint(e.latlng); });
+    } else {
+      mapObj.setView([start.lat, start.lng], pickedPoint ? 17 : 12);
+      mapMarker.setLatLng([start.lat, start.lng]);
+    }
+    setTimeout(function () { mapObj.invalidateSize(); }, 60);
+  }
+  function closeMap() { mapModal.hidden = true; }
+  // координаты -> адрес (Nominatim), с задержкой чтобы не спамить
+  function setPoint(latlng) {
+    mapPoint = { lat: +latlng.lat.toFixed(6), lng: +latlng.lng.toFixed(6) };
+    var box = document.getElementById('map-addr');
+    box.textContent = cfg.mapSearching;
+    if (geoTimer) clearTimeout(geoTimer);
+    geoTimer = setTimeout(function () {
+      fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=18&accept-language=' + cfg.locale +
+            '&lat=' + mapPoint.lat + '&lon=' + mapPoint.lng)
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          var a = d && d.address ? d.address : null;
+          var parts = a ? [a.road, a.house_number, a.suburb || a.neighbourhood, a.city || a.town || a.village].filter(Boolean) : [];
+          mapPoint.text = parts.length ? parts.join(', ') : (d && d.display_name ? d.display_name : '');
+          box.textContent = mapPoint.text || (mapPoint.lat + ', ' + mapPoint.lng);
+        })
+        .catch(function () { box.textContent = mapPoint.lat + ', ' + mapPoint.lng; });
+    }, 400);
+  }
+  if (mapBtn) {
+    mapBtn.addEventListener('click', openMap);
+    document.getElementById('map-close').addEventListener('click', closeMap);
+    mapModal.addEventListener('click', function (e) { if (e.target === mapModal) closeMap(); });
+    document.getElementById('map-locate').addEventListener('click', function () {
+      if (!navigator.geolocation || !mapObj) return;
+      navigator.geolocation.getCurrentPosition(function (pos) {
+        var ll = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        mapObj.setView([ll.lat, ll.lng], 17);
+        mapMarker.setLatLng([ll.lat, ll.lng]);
+        setPoint(ll);
+      });
+    });
+    document.getElementById('map-apply').addEventListener('click', function () {
+      if (mapPoint) {
+        pickedPoint = mapPoint;
+        if (mapPoint.text && !fAddress.value.trim()) fAddress.value = mapPoint.text;
+        fAddress.classList.remove('err');
+        update();
+      }
+      closeMap();
+    });
+  }
+  window.__mapPoint = function () { return pickedPoint; };
+
   orderEl.addEventListener('click', function () { update(); openModal(); });
   document.getElementById('modal-close').addEventListener('click', closeModal);
   modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
