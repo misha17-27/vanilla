@@ -102,6 +102,38 @@ if (burger && menu) {
     modal.hidden = true;
     document.documentElement.classList.remove('no-scroll');
   }
+  // Проверка обязательных полей: имя, телефон и адрес при доставке курьером
+  var errBox = document.getElementById('modal-err');
+  function digits(s) { return (s.match(/\d/g) || []).length; }
+  function validate() {
+    var bad = [];
+    if (!fName.value.trim()) bad.push(fName);
+    if (digits(fPhone.value) < 7) bad.push(fPhone);
+    if (dlSel.value === 'courier' && !fAddress.value.trim()) bad.push(fAddress);
+    [fName, fPhone, fAddress].forEach(function (inp) {
+      inp.classList.toggle('err', bad.indexOf(inp) > -1);
+    });
+    if (!bad.length) {
+      if (errBox) errBox.hidden = true;
+      return true;
+    }
+    if (errBox) {
+      var onlyPhone = bad.length === 1 && bad[0] === fPhone && fPhone.value.trim();
+      errBox.textContent = onlyPhone ? cfg.valPhone : cfg.valFill;
+      errBox.hidden = false;
+    }
+    bad[0].focus();
+    return false;
+  }
+  modalSend.addEventListener('click', function (e) {
+    if (!validate()) e.preventDefault();
+  });
+  [fName, fPhone, fAddress].forEach(function (inp) {
+    inp.addEventListener('input', function () {
+      if (inp.classList.contains('err')) inp.classList.remove('err');
+      if (errBox && !document.querySelector('.modal .txt.err')) errBox.hidden = true;
+    });
+  });
   orderEl.addEventListener('click', function () { update(); openModal(); });
   document.getElementById('modal-close').addEventListener('click', closeModal);
   modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });

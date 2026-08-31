@@ -145,6 +145,8 @@ window.PROD_CFG = <?= json_encode([
         'address' => $t['f_address'], 'name' => $t['f_name'], 'phone' => $t['f_phone'],
         'recipient' => $t['f_recipient'],
     ],
+    'valFill'  => $t['val_fill'],
+    'valPhone' => $t['val_phone'],
     'locale'  => $lang,
     'sizes'   => $sizeOpts,
     'sponges' => [
