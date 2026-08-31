@@ -235,7 +235,7 @@ return [
   'k_img_size' => 'Picture size',
   'k_text' => 'Lettering on the cake',
   'k_text_color' => 'Lettering color',
-  'k_hint' => 'Tip: you can drag the picture right on the cake.',
+  'k_hint' => 'Tip: you can drag both the picture and the lettering right on the cake.',
   'k_wa_intro' => 'Hello! I would like to order a cake with my own design.',
   'k_cream_lbl' => 'Cream',
   'k_custom_name' => 'Cake with your design',

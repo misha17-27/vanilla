@@ -178,15 +178,16 @@ window.PROD_CFG = <?= json_encode([
     creamName: document.querySelector('#k-creams .k-sw') ? document.querySelector('#k-creams .k-sw').dataset.name : '',
     src: '', ownFile: null,
     x: 0, y: -0.15, scale: 0.55,
+    tx: 0, ty: 0.62,
     text: '', tcolor: document.querySelector('#k-tcolors .k-sw') ? document.querySelector('#k-tcolors .k-sw').dataset.color : '#E0527F',
     tcolorName: document.querySelector('#k-tcolors .k-sw') ? document.querySelector('#k-tcolors .k-sw').dataset.name : ''
   };
   function apply() {
     cake.style.setProperty('--cream', state.cream);
+    var d = cake.clientWidth;
     if (state.src) {
       stickerEl.src = state.src;
       stickerEl.hidden = false;
-      var d = cake.clientWidth;
       var s = state.scale * d;
       stickerEl.style.width = s + 'px';
       stickerEl.style.left = (d / 2 + state.x * d / 2 - s / 2) + 'px';
@@ -198,6 +199,8 @@ window.PROD_CFG = <?= json_encode([
     }
     textView.textContent = state.text;
     textView.style.color = state.tcolor;
+    textView.style.left = (d / 2 + state.tx * d / 2) + 'px';
+    textView.style.top = (d / 2 + state.ty * d / 2) + 'px';
   }
   // Свотчи
   function swatchGroup(id, cb) {
@@ -237,21 +240,26 @@ window.PROD_CFG = <?= json_encode([
     state.text = textInp.value.replace(/[\u0000-\u001F\u007F]/g, ' ').slice(0, 40);
     apply();
   });
-  // Перетаскивание картинки
-  var drag = null;
-  stickerEl.addEventListener('pointerdown', function (e) {
-    e.preventDefault();
-    stickerEl.setPointerCapture(e.pointerId);
-    drag = { px: e.clientX, py: e.clientY, x: state.x, y: state.y };
-  });
-  stickerEl.addEventListener('pointermove', function (e) {
-    if (!drag) return;
-    var d = cake.clientWidth / 2;
-    state.x = Math.max(-0.9, Math.min(0.9, drag.x + (e.clientX - drag.px) / d));
-    state.y = Math.max(-0.9, Math.min(0.9, drag.y + (e.clientY - drag.py) / d));
-    apply();
-  });
-  stickerEl.addEventListener('pointerup', function () { drag = null; });
+  // Перетаскивание картинки и надписи
+  function makeDraggable(el, kx, ky) {
+    var drag = null;
+    el.addEventListener('pointerdown', function (e) {
+      e.preventDefault();
+      el.setPointerCapture(e.pointerId);
+      drag = { px: e.clientX, py: e.clientY, x: state[kx], y: state[ky] };
+    });
+    el.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var d = cake.clientWidth / 2;
+      state[kx] = Math.max(-0.9, Math.min(0.9, drag.x + (e.clientX - drag.px) / d));
+      state[ky] = Math.max(-0.9, Math.min(0.9, drag.y + (e.clientY - drag.py) / d));
+      apply();
+    });
+    el.addEventListener('pointerup', function () { drag = null; });
+    el.addEventListener('pointercancel', function () { drag = null; });
+  }
+  makeDraggable(stickerEl, 'x', 'y');
+  makeDraggable(textView, 'tx', 'ty');
   window.addEventListener('resize', apply);
   apply();
 
@@ -315,10 +323,11 @@ window.PROD_CFG = <?= json_encode([
         }
         g.fillStyle = state.tcolor;
         g.textAlign = 'center';
+        g.textBaseline = 'middle';
         if (state.tcolor.toLowerCase() === '#ffffff') {
           g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowBlur = 6;
         }
-        g.fillText(state.text, cx, cy + R * 0.62);
+        g.fillText(state.text, cx + state.tx * R, cy + state.ty * R);
         g.shadowBlur = 0;
       }
       var blob = await new Promise(function (r) { cv.toBlob(r, 'image/jpeg', 0.9); });

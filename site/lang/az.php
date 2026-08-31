@@ -235,7 +235,7 @@ return [
   'k_img_size' => 'Şəklin ölçüsü',
   'k_text' => 'Tort üzərində yazı',
   'k_text_color' => 'Yazının rəngi',
-  'k_hint' => 'İpucu: şəkli tortun üzərində sürükləmək olar.',
+  'k_hint' => 'İpucu: şəkli və yazını tortun üzərində sürükləmək olar.',
   'k_wa_intro' => 'Salam! Öz dizaynımla tort sifariş etmək istəyirəm.',
   'k_cream_lbl' => 'Krem',
   'k_custom_name' => 'Sizin dizaynınızla tort',
