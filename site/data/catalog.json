@@ -2,6 +2,15 @@
     "updated": "2026-09-01",
     "products": [
         {
+            "slug": "bento-tort-love",
+            "title": "Bento tort Love",
+            "img": "/assets/img/products/bento-tort-love.jpg",
+            "price": "25 – 60 ₼",
+            "type": "bento",
+            "seo_title": "Бенто торт Love - Vanilla.az",
+            "seo_desc": "Бенто торт Love — торт с сердцами на годовщину и признание. Размеры: 300–350 г (1–2 персоны) 25 ₼, 750–800 г (3–4 персоны) 35 ₼, 1200–1500 г (7–8 персон) 60 ₼. Своя надпись, доставка по Баку по предзаказу."
+        },
+        {
             "slug": "bento-tort-bantik-noir",
             "title": "Bento tort bantik Noir",
             "type": "bantik",

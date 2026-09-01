@@ -36,13 +36,37 @@ if ($uri === '/admin' || str_starts_with($uri, '/admin/')) {
 // нормализуем завершающий слэш
 $path = $uri === '/' ? '/' : rtrim($uri, '/') . '/';
 
+// Спам-страницы, оставшиеся от WordPress: убираем из индекса совсем
+if (preg_match('#^/melbet-#i', $path)) {
+    http_response_code(410);
+    header('Content-Type: text/plain; charset=UTF-8');
+    echo "410 Gone";
+    exit;
+}
+
+// Старые карты сайта (sitemap_index.xml и файлы Yoast) — на нашу
+if (preg_match('#^/(sitemap_index|page-sitemap|product-sitemap|product_cat-sitemap|product_tag-sitemap|pa_[a-z]+-sitemap)\.xml$#i', $uri)) {
+    header('Location: /sitemap.xml', true, 301);
+    exit;
+}
+
+// Русская ветка старого сайта: /ru/mehsul/… → /mehsul/…
+if (preg_match('#^/ru(/.*)?$#', $path, $m)) {
+    $rest = $m[1] ?? '/';
+    header('Location: ' . ($rest === '/' ? '/' : $rest) . '?lang=ru', true, 301);
+    exit;
+}
+
 // 301-редиректы со старых WP-адресов, которые мы не переносим
 $redirects = [
-    '/tortlar/'    => '/bolme/bento-tort/',
-    '/video/'      => 'https://www.instagram.com/vanilla_cake_az/',
-    '/my-account/' => '/',
-    '/cart/'       => '/',
-    '/wishlist/'   => '/',
+    '/tortlar/'      => '/bolme/bento-tort/',
+    '/video/'        => 'https://www.instagram.com/vanilla_cake_az/',
+    '/instagram/'    => '/',
+    '/my-account/'   => '/',
+    '/cart/'         => '/',
+    '/checkout/'     => '/',
+    '/track-order/'  => '/',
+    '/wishlist/'     => '/',
 ];
 if (isset($redirects[$path])) {
     header('Location: ' . $redirects[$path], true, 301);
@@ -53,6 +77,27 @@ foreach (['/biskvit/', '/terkib/', '/olcu/'] as $prefix) {
         header('Location: /terkibler/', true, 301);
         exit;
     }
+}
+
+// Метки товаров WooCommerce (/product-tag/…) — в подходящий раздел
+if (preg_match('#^/product-tag/([^/]+)/$#', $path, $m)) {
+    $tagMap = [
+        'mini-tort'    => '/bolme/cake-to-go/',
+        'bento-bantik' => '/bolme/bento-tort/#bantik',
+    ];
+    header('Location: ' . ($tagMap[$m[1]] ?? '/bolme/bento-tort/'), true, 301);
+    exit;
+}
+
+// Подкатегории старого каталога: /bolme/bento-tort/usaq-tortlari/ и т.п.
+if (preg_match('#^/bolme/bento-tort/([^/]+)/$#', $path, $m) && $m[1] !== 'page') {
+    $subMap = ['bento-bantik-tort' => '/bolme/bento-tort/#bantik'];
+    header('Location: ' . ($subMap[$m[1]] ?? '/bolme/bento-tort/'), true, 301);
+    exit;
+}
+if (preg_match('#^/bolme/cake-to-go/[^/]+/$#', $path)) {
+    header('Location: /bolme/cake-to-go/', true, 301);
+    exit;
 }
 
 // маршруты
