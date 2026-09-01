@@ -5,8 +5,24 @@ foreach ($products as $p) if ($p['slug'] === $editSlug) { $edit = $p; break; }
 $showForm = $edit || isset($_GET['add']);
 $filter = (string)($_GET['type'] ?? '');
 $q = trim((string)($_GET['q'] ?? ''));
-$rows = array_filter($products, function ($p) use ($filter, $q) {
+$seoOnly = isset($_GET['seo']);
+
+// SEO товара: есть ли заголовок и описание и не слишком ли они длинные
+function seo_state(array $p): array
+{
+    $t = trim($p['seo_title'] ?? '');
+    $d = trim($p['seo_desc'] ?? '');
+    if ($t === '' || $d === '') return ['no', 'не заполнено'];
+    if (mb_strlen($t) > 60 || mb_strlen($d) > 160) return ['warn', 'длинновато'];
+    return ['ok', mb_strlen($t) . ' / ' . mb_strlen($d)];
+}
+
+$noSeo = 0;
+foreach ($products as $p) if (seo_state($p)[0] === 'no') $noSeo++;
+
+$rows = array_filter($products, function ($p) use ($filter, $q, $seoOnly) {
     if ($filter && $p['type'] !== $filter) return false;
+    if ($seoOnly && seo_state($p)[0] === 'ok') return false;
     if ($q !== '' && mb_stripos($p['title'], $q) === false && mb_stripos($p['slug'], $q) === false) return false;
     return true;
 });
@@ -47,11 +63,18 @@ $rows = array_filter($products, function ($p) use ($filter, $q) {
         <p class="hint">Не меняется — так сохраняются позиции в поиске.</p>
         <?php endif; ?>
 
-        <label for="seo_title">SEO-заголовок <span class="muted">(пусто — автоматически)</span></label>
-        <input type="text" name="seo_title" id="seo_title" value="<?= e($edit['seo_title'] ?? '') ?>">
+        <label for="seo_title">SEO-заголовок <span class="muted">(пусто — автоматически)</span> <i class="cnt" id="cnt-t"></i></label>
+        <input type="text" name="seo_title" id="seo_title" value="<?= e($edit['seo_title'] ?? '') ?>" maxlength="120">
 
-        <label for="seo_desc">SEO-описание</label>
-        <textarea name="seo_desc" id="seo_desc" rows="4"><?= e($edit['seo_desc'] ?? '') ?></textarea>
+        <label for="seo_desc">SEO-описание <i class="cnt" id="cnt-d"></i></label>
+        <textarea name="seo_desc" id="seo_desc" rows="4" maxlength="320"><?= e($edit['seo_desc'] ?? '') ?></textarea>
+
+        <div class="serp">
+          <span class="serp-url"><?= e(rtrim(CANON_HOST, '/')) ?>/mehsul/<?= e($edit['slug'] ?? 'novyy-tort') ?>/</span>
+          <b id="serp-t"></b>
+          <span id="serp-d"></span>
+        </div>
+        <p class="hint">Так карточка выглядит в поиске. Хорошая длина: заголовок до 60 символов, описание 120–160.</p>
       </div>
     </div>
     <div class="form-foot">
@@ -69,6 +92,7 @@ $rows = array_filter($products, function ($p) use ($filter, $q) {
       <?php foreach (type_names() as $k => $v): ?>
       <a href="/admin/products?type=<?= $k ?>" class="chip <?= $filter === $k ? 'on' : '' ?>"><?= $v ?></a>
       <?php endforeach; ?>
+      <a href="/admin/products?seo=1" class="chip <?= $seoOnly ? 'on' : '' ?>">Проверить SEO<?= $noSeo ? ' <i>' . $noSeo . '</i>' : '' ?></a>
     </div>
     <form class="search" method="get">
       <?php if ($filter): ?><input type="hidden" name="type" value="<?= e($filter) ?>"><?php endif; ?>
@@ -77,7 +101,7 @@ $rows = array_filter($products, function ($p) use ($filter, $q) {
   </div>
 
   <table class="grid">
-    <thead><tr><th class="thumb"></th><th>Название</th><th class="hide-s">Тип</th><th class="hide-s">Цена</th><th class="right"></th></tr></thead>
+    <thead><tr><th class="thumb"></th><th>Название</th><th class="hide-s">Тип</th><th class="hide-s">Цена</th><th>SEO</th><th class="right"></th></tr></thead>
     <tbody>
     <?php foreach ($rows as $p): ?>
       <tr>
@@ -88,6 +112,8 @@ $rows = array_filter($products, function ($p) use ($filter, $q) {
         </td>
         <td class="hide-s"><span class="pill <?= e($p['type']) ?>"><?= type_names()[$p["type"]] ?? e($p["type"]) ?></span></td>
         <td class="hide-s"><?= e($p['price']) ?></td>
+        <?php [$st, $hint] = seo_state($p); ?>
+        <td><span class="dot <?= $st === 'ok' ? 'ok' : ($st === 'warn' ? 'warn' : 'no') ?>" title="<?= e($hint) ?>"></span><small><?= e($hint) ?></small></td>
         <td class="right">
           <a class="btn ghost sm" href="/mehsul/<?= e($p['slug']) ?>/" target="_blank" rel="noopener">Открыть</a>
           <a class="btn ghost sm" href="/admin/products?edit=<?= e($p['slug']) ?>">Изменить</a>
@@ -101,8 +127,31 @@ $rows = array_filter($products, function ($p) use ($filter, $q) {
       </tr>
     <?php endforeach; ?>
     <?php if (!$rows): ?>
-      <tr><td colspan="5" class="pad muted">Ничего не найдено.</td></tr>
+      <tr><td colspan="6" class="pad muted">Ничего не найдено.</td></tr>
     <?php endif; ?>
     </tbody>
   </table>
 </div>
+
+<?php if ($showForm): ?>
+<script>
+(function () {
+  var t = document.getElementById('seo_title'), d = document.getElementById('seo_desc');
+  var ct = document.getElementById('cnt-t'), cd = document.getElementById('cnt-d');
+  var st = document.getElementById('serp-t'), sd = document.getElementById('serp-d');
+  var title = document.getElementById('title');
+  function upd() {
+    var tv = t.value.trim() || ((title.value.trim() || 'Название') + ' - Vanilla.az');
+    var dv = d.value.trim();
+    ct.textContent = t.value.length + ' / 60';
+    cd.textContent = dv.length + ' / 160';
+    ct.className = 'cnt' + (t.value.length > 60 ? ' over' : '');
+    cd.className = 'cnt' + (dv.length > 160 ? ' over' : (dv.length && dv.length < 70 ? ' low' : ''));
+    st.textContent = tv.length > 60 ? tv.slice(0, 60) + '…' : tv;
+    sd.textContent = dv ? (dv.length > 160 ? dv.slice(0, 160) + '…' : dv) : 'Описание пустое — Google подставит текст со страницы.';
+  }
+  [t, d, title].forEach(function (el) { if (el) el.addEventListener('input', upd); });
+  upd();
+})();
+</script>
+<?php endif; ?>

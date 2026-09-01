@@ -213,3 +213,15 @@ h3{font-size:.95rem;color:var(--navy);margin:26px 0 4px}
 .txf .mark{font-style:normal;font-size:10px;font-weight:700;color:var(--brand);background:#FFF3F8;padding:1px 7px;border-radius:99px;letter-spacing:.04em}
 .txf textarea{font-size:13.5px;line-height:1.5}
 @media(max-width:900px){.txfields{grid-template-columns:1fr}}
+
+/* ---------- SEO товара ---------- */
+.dot.warn{background:var(--warn)}
+.grid td .dot{vertical-align:middle}
+.grid td .dot + small{display:inline-block;margin:0 0 0 8px;vertical-align:middle}
+.cnt{font-style:normal;font-size:11px;font-weight:700;color:var(--steel);background:#f4f6f9;padding:1px 7px;border-radius:99px;margin-left:6px}
+.cnt.over{background:#fef1f1;color:var(--bad)}
+.cnt.low{background:#fef6e0;color:#8a6100}
+.serp{display:grid;gap:3px;border:1px solid var(--line);border-radius:10px;padding:13px 15px;margin-top:16px;background:#fff}
+.serp-url{font-size:12.5px;color:#0f7b3f}
+.serp b{font-size:16px;color:#1a0dab;font-weight:500;line-height:1.3}
+.serp span:last-child{font-size:13px;color:#4d5156;line-height:1.45}
