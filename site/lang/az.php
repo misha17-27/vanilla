@@ -1,5 +1,6 @@
 <?php
 return [
+  'cat_all' => 'Bütün tortlar',
   'nav_home' => 'Ana səhifə',
   'nav_bento' => 'Bento tortlar',
   'nav_ctg' => 'Cake to go',

@@ -9,6 +9,45 @@ if (burger && menu) {
     if (e.target.tagName === 'A') menu.classList.remove('open');
   });
 }
+// Фильтр каталога по категориям: плитки прячут лишние карточки без перезагрузки
+(function () {
+  var nav = document.querySelector('.cat-nav.is-filter');
+  var grid = document.getElementById('cat-grid');
+  if (!nav || !grid) return;
+  var tiles = [].slice.call(nav.querySelectorAll('.cat-tile'));
+  var cards = [].slice.call(grid.children);
+  var empty = document.getElementById('cat-empty');
+
+  function apply(cat, scroll) {
+    var shown = 0;
+    cards.forEach(function (c) {
+      var ok = !cat || c.dataset.cat === cat;
+      c.hidden = !ok;
+      if (ok) shown++;
+    });
+    tiles.forEach(function (tl) { tl.classList.toggle('on', (tl.dataset.cat || '') === cat); });
+    if (empty) empty.hidden = shown > 0;
+    if (scroll) {
+      var top = nav.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+  }
+
+  nav.addEventListener('click', function (e) {
+    var tile = e.target.closest('.cat-tile');
+    if (!tile || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    e.preventDefault();
+    var cat = tile.dataset.cat || '';
+    history.replaceState(null, '', cat ? '#' + cat : location.pathname);
+    apply(cat, true);
+  });
+
+  // адрес с якорем открывает нужную категорию (в т.ч. старые #bantik и #sets)
+  var hash = location.hash.replace('#', '');
+  if (hash === 'sets') hash = 'set';
+  if (hash && tiles.some(function (tl) { return tl.dataset.cat === hash; })) apply(hash, false);
+})();
+
 // Language dropdown: закрываем по клику мимо и по Esc
 var langBox = document.getElementById('lang');
 if (langBox) {

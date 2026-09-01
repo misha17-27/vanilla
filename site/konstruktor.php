@@ -6,7 +6,6 @@ $page_meta  = seo_desc('konstruktor', $t['k_meta']);
 schema_breadcrumbs([[$t['nav_konstr'], '/konstruktor/']]);
 require __DIR__ . '/includes/header.php';
 ?>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <?php
 $sizeOpts = $t['sizes_opt_bento'];
 $stickers = [
@@ -266,7 +265,7 @@ window.PROD_CFG = <?= json_encode([
       } else {
         el.textContent = it.text;
         el.style.color = it.color;
-        el.style.fontSize = (d * 0.086 * it.size) + 'px';
+        el.style.fontSize = (d * 0.064 * it.size) + 'px';
         el.style.left = (d / 2 + it.x * d / 2) + 'px';
         el.style.top = (d / 2 + it.y * d / 2) + 'px';
       }
@@ -485,7 +484,7 @@ window.PROD_CFG = <?= json_encode([
   }
   async function renderAndUpload() {
     try {
-      await document.fonts.load('700 80px Caveat');
+      await document.fonts.load('800 80px Montserrat');
       var S = 900, R = 400, cx = S / 2, cy = S / 2;
       var cv = document.createElement('canvas');
       cv.width = S; cv.height = S;
@@ -522,11 +521,11 @@ window.PROD_CFG = <?= json_encode([
           g.drawImage(im, cx + it.x * R - w / 2, cy + it.y * R - h / 2, w, h);
           g.restore();
         } else if (it.text) {
-          var fs = R * 0.172 * it.size; // 8.6% диаметра — как в превью
-          g.font = '700 ' + fs + 'px Caveat, cursive';
-          while (g.measureText(it.text).width > R * 1.6 && fs > 24) {
+          var fs = R * 0.128 * it.size; // 6.4% диаметра — как в превью
+          g.font = '800 ' + fs + 'px Montserrat, sans-serif';
+          while (g.measureText(it.text).width > R * 1.6 && fs > 18) {
             fs -= 3;
-            g.font = '700 ' + fs + 'px Caveat, cursive';
+            g.font = '800 ' + fs + 'px Montserrat, sans-serif';
           }
           g.fillStyle = it.color;
           g.textAlign = 'center';

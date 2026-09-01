@@ -4,12 +4,18 @@ require_once __DIR__ . '/includes/config.php';
 $page_title = seo_title('bento', $t['bento_title']);
 $page_meta  = seo_desc('bento', $t['bento_meta']);
 require __DIR__ . '/includes/header.php';
-$bento  = products_of('bento');
-$bantik = products_of('bantik');
-$sets   = products_of('set');
+// раздел показывает все торты бенто-семейства одной сеткой, плитки категорий фильтруют
+$bentoItems = [];
+foreach (categories() as $bKey => $bCat) {
+    if (($bCat['page'] ?? '') === 'ctg') continue;
+    foreach (products_of($bKey) as $bp) {
+        $bp['_cat'] = $bKey;
+        $bentoItems[] = $bp;
+    }
+}
 $page_schema = 'CollectionPage';
 schema_breadcrumbs([[$t['nav_bento'], '/bolme/bento-tort/']]);
-schema_add(schema_item_list(array_merge($bento, $bantik, $sets), $t['bento_h']));
+schema_add(schema_item_list($bentoItems, $t['bento_h']));
 ?>
 
 <section class="page-hero">
@@ -26,27 +32,13 @@ schema_add(schema_item_list(array_merge($bento, $bantik, $sets), $t['bento_h']))
 
 <section class="catalog">
   <div class="container">
-    <?php $catNavActive = 'bento'; require __DIR__ . '/includes/cat-nav.php'; ?>
+    <?php $catNavActive = 'all'; $catNavFilter = true; require __DIR__ . '/includes/cat-nav.php'; ?>
 
-    <div class="pgrid">
-      <?php foreach ($bento as $i => $p) product_card($p, $i > 3); ?>
+    <div class="pgrid" id="cat-grid">
+      <?php foreach ($bentoItems as $i => $p) product_card($p, $i > 3, $p['_cat']); ?>
     </div>
+    <p class="cat-empty" id="cat-empty" hidden><?= e($t['rev_empty']) ?></p>
 
-
-    <?php foreach (own_categories() as $c): $items = products_of($c['key']); if (!$items) continue; ?>
-    <div class="head-row" id="cat-<?= e($c['key']) ?>" style="margin-top:84px">
-      <div class="sec-head">
-        <span class="eyebrow">Vanilla</span>
-        <h2><?= e(cat_name($c['key'])) ?></h2>
-        <?php $cDesc = trim((string)($c['desc_' . $lang] ?? $c['desc'] ?? '')); ?>
-        <?php if ($cDesc !== ''): ?><p><?= e($cDesc) ?></p><?php endif; ?>
-      </div>
-      <a class="btn btn-ghost" href="<?= e(cat_url($c)) ?>"><?= e($t['btn_all_bento']) ?></a>
-    </div>
-    <div class="pgrid">
-      <?php foreach (array_slice($items, 0, 8) as $p) product_card($p); ?>
-    </div>
-    <?php endforeach; ?>
 
     <?php foreach (extra_categories('bento') as $c): $items = products_of($c['key']); if (!$items) continue; ?>
     <div class="sec-head" id="cat-<?= e($c['key']) ?>" style="margin-top:84px">

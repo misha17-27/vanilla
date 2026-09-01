@@ -1,6 +1,7 @@
 <?php
 return [
   // Navigation
+  'cat_all' => 'Все торты',
   'nav_home' => 'Главная',
   'nav_bento' => 'Бенто-торты',
   'nav_ctg' => 'Cake to go',

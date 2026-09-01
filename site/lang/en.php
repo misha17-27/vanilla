@@ -1,5 +1,6 @@
 <?php
 return [
+  'cat_all' => 'All cakes',
   'nav_home' => 'Home',
   'nav_bento' => 'Bento cakes',
   'nav_ctg' => 'Cake to go',

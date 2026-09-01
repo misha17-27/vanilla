@@ -297,13 +297,13 @@ function filling_rows(int $sponge): void
 }
 
 // Render one product card
-function product_card(array $p, bool $lazy = true): void
+function product_card(array $p, bool $lazy = true, ?string $cat = null): void
 {
     $name = product_name($p);
     $url  = product_url($p);
     $wa   = wa_link($name, CANON_HOST . $url);
     $loading = $lazy ? 'loading="lazy"' : 'fetchpriority="high"';
-    echo '<article class="pcard reveal">
+    echo '<article class="pcard reveal"' . ($cat !== null ? ' data-cat="' . e($cat) . '"' : '') . '>
       <a class="pcard-ph" href="' . e($url) . '" aria-label="' . e($name) . '">
         <img ' . $loading . ' src="' . e($p['img']) . '" alt="' . e($name) . '" width="600" height="600">
       </a>
