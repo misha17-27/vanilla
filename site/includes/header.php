@@ -1,14 +1,22 @@
 <?php
 // Expects: $page (slug for nav highlight), $page_title, $page_meta; optional $og_image
 require_once __DIR__ . '/config.php';
+// Подменю «Бенто-торты»: свои категории со своей страницей + бантики и сеты,
+// у каждой — фото первого торта категории
+$firstImg = function (string $type): string {
+    $items = products_of($type);
+    return $items ? asset($items[0]['img']) : '';
+};
+$bentoSub = [];
+foreach (own_categories() as $c) {
+    $bentoSub['cat-' . $c['key']] = [cat_url($c), cat_name($c['key']), $firstImg($c['key'])];
+}
+$bentoSub['bantik'] = ['/bolme/bento-tort/#bantik', $t['bantik_h'], $firstImg('bantik')];
+$bentoSub['sets']   = ['/bolme/bento-tort/#sets',   $t['sets_h'],   $firstImg('set')];
+
 $nav = [
     'index'    => ['/',                    $t['nav_home']],
-    'bento'    => ['/bolme/bento-tort/',   $t['nav_bento']],
-];
-foreach (own_categories() as $c) {
-    $nav['cat-' . $c['key']] = [cat_url($c), cat_name($c['key'])];
-}
-$nav += [
+    'bento'    => ['/bolme/bento-tort/',   $t['nav_bento'], $bentoSub],
     'ctg'      => ['/bolme/cake-to-go/',   $t['nav_ctg']],
     'fillings' => ['/terkibler/',          $t['nav_fillings']],
     'konstr'   => ['/konstruktor/',        $t['nav_konstr']],
@@ -78,8 +86,26 @@ $OG_LOCALE = ['ru' => 'ru_RU', 'az' => 'az_AZ', 'en' => 'en_US'];
     </a>
     <nav>
       <ul class="menu" id="menu">
-        <?php foreach ($nav as $slug => [$href, $label]): ?>
-        <li><a href="<?= $href ?>" class="<?= $slug === ($page ?? '') ? 'active' : '' ?>"><?= e($label) ?></a></li>
+        <?php foreach ($nav as $slug => $item): ?>
+        <?php [$href, $label] = $item; $sub = $item[2] ?? null; ?>
+        <li class="<?= $sub ? 'has-sub' : '' ?>">
+          <a href="<?= $href ?>" class="<?= $slug === ($page ?? '') || ($sub && isset($sub[$page ?? ''])) ? 'active' : '' ?>">
+            <?= e($label) ?>
+            <?php if ($sub): ?><svg class="sub-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg><?php endif; ?>
+          </a>
+          <?php if ($sub): ?>
+          <div class="submenu">
+            <div class="submenu-in">
+              <?php foreach ($sub as $sSlug => [$sHref, $sLabel, $sImg]): ?>
+              <a class="sub-item <?= $sSlug === ($page ?? '') ? 'active' : '' ?>" href="<?= e($sHref) ?>">
+                <?php if ($sImg): ?><img loading="lazy" src="<?= e($sImg) ?>" alt="" width="56" height="56"><?php endif; ?>
+                <span><?= e($sLabel) ?></span>
+              </a>
+              <?php endforeach; ?>
+            </div>
+          </div>
+          <?php endif; ?>
+        </li>
         <?php endforeach; ?>
       </ul>
     </nav>

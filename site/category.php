@@ -46,6 +46,8 @@ require __DIR__ . '/includes/header.php';
 
 <section class="catalog">
   <div class="container">
+    <?php $catNavActive = 'cat-' . $cat['key']; require __DIR__ . '/includes/cat-nav.php'; ?>
+
     <?php if ($items): ?>
     <div class="pgrid">
       <?php foreach ($items as $i => $p) product_card($p, $i > 3); ?>

@@ -26,6 +26,8 @@ schema_add(schema_item_list(array_merge($bento, $bantik, $sets), $t['bento_h']))
 
 <section class="catalog">
   <div class="container">
+    <?php $catNavActive = 'bento'; require __DIR__ . '/includes/cat-nav.php'; ?>
+
     <div class="pgrid">
       <?php foreach ($bento as $i => $p) product_card($p, $i > 3); ?>
     </div>
@@ -47,6 +49,21 @@ schema_add(schema_item_list(array_merge($bento, $bantik, $sets), $t['bento_h']))
     <div class="pgrid">
       <?php foreach ($sets as $p) product_card($p); ?>
     </div>
+
+    <?php foreach (own_categories() as $c): $items = products_of($c['key']); if (!$items) continue; ?>
+    <div class="head-row" id="cat-<?= e($c['key']) ?>" style="margin-top:84px">
+      <div class="sec-head">
+        <span class="eyebrow">Vanilla</span>
+        <h2><?= e(cat_name($c['key'])) ?></h2>
+        <?php $cDesc = trim((string)($c['desc_' . $lang] ?? $c['desc'] ?? '')); ?>
+        <?php if ($cDesc !== ''): ?><p><?= e($cDesc) ?></p><?php endif; ?>
+      </div>
+      <a class="btn btn-ghost" href="<?= e(cat_url($c)) ?>"><?= e($t['btn_all_bento']) ?></a>
+    </div>
+    <div class="pgrid">
+      <?php foreach (array_slice($items, 0, 8) as $p) product_card($p); ?>
+    </div>
+    <?php endforeach; ?>
 
     <?php foreach (extra_categories('bento') as $c): $items = products_of($c['key']); if (!$items) continue; ?>
     <div class="sec-head" id="cat-<?= e($c['key']) ?>" style="margin-top:84px">
