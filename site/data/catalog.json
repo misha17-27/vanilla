@@ -2,6 +2,258 @@
     "updated": "2026-09-01",
     "products": [
         {
+            "slug": "bento-tort-foto-limited-edition",
+            "title": "Bento tort foto Limited Edition",
+            "img": "/assets/img/products/bento-tort-foto-limited-edition.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Limited Edition - Vanilla.az",
+            "seo_desc": "Bento tort foto Limited Edition — öz şəklinizlə bento tort. Krem üzərində yeməli boya ilə çap. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-ureklerle",
+            "title": "Bento tort foto Ürəklərlə",
+            "img": "/assets/img/products/bento-tort-foto-ureklerle.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Ürəklərlə - Vanilla.az",
+            "seo_desc": "Bento tort foto Ürəklərlə — fotolu bento tort Bakıda: şəkli göndərin, üzərinə istədiyiniz yazını əlavə edək. Qiymət 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-foto-to-my-hero",
+            "title": "Bento tort foto To My Hero",
+            "img": "/assets/img/products/bento-tort-foto-to-my-hero.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto To My Hero - Vanilla.az",
+            "seo_desc": "Bento tort foto To My Hero — şəkilli bento tort. Yeməli çap, biskvit və içlik seçimi, şəxsi yazı. 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-my-love",
+            "title": "Bento tort foto My Love",
+            "img": "/assets/img/products/bento-tort-foto-my-love.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto My Love - Vanilla.az",
+            "seo_desc": "Bento tort foto My Love — hədiyyə üçün fotolu bento tort: sevimli şəkil krem üzərində, tədbirinizə uyğun yazı ilə. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-i-ki-sekil",
+            "title": "Bento tort foto İki şəkil",
+            "img": "/assets/img/products/bento-tort-foto-i-ki-sekil.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto İki şəkil - Vanilla.az",
+            "seo_desc": "Bento tort foto İki şəkil — bento tort öz fotonuzla. Ölçünü, biskviti və içliyi seçin — şəkli yeməli boya ilə çap edirik."
+        },
+        {
+            "slug": "bento-tort-foto-sevimli-insan",
+            "title": "Bento tort foto Sevimli insan",
+            "img": "/assets/img/products/bento-tort-foto-sevimli-insan.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Sevimli insan - Vanilla.az",
+            "seo_desc": "Bento tort foto Sevimli insan — öz şəklinizlə bento tort. Krem üzərində yeməli boya ilə çap. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-from-this-to-this",
+            "title": "Bento tort foto From This To This",
+            "img": "/assets/img/products/bento-tort-foto-from-this-to-this.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto From This To This - Vanilla.az",
+            "seo_desc": "Bento tort foto From This To This — fotolu bento tort Bakıda: şəkli göndərin, üzərinə istədiyiniz yazını əlavə edək. Qiymət 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-foto-sekil-ve-yazi",
+            "title": "Bento tort foto Şəkil və yazı",
+            "img": "/assets/img/products/bento-tort-foto-sekil-ve-yazi.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Şəkil və yazı - Vanilla.az",
+            "seo_desc": "Bento tort foto Şəkil və yazı — şəkilli bento tort. Yeməli çap, biskvit və içlik seçimi, şəxsi yazı. 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-big-boss",
+            "title": "Bento tort foto Big Boss",
+            "img": "/assets/img/products/bento-tort-foto-big-boss.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Big Boss - Vanilla.az",
+            "seo_desc": "Bento tort foto Big Boss — hədiyyə üçün fotolu bento tort: sevimli şəkil krem üzərində, tədbirinizə uyğun yazı ilə. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-ayiciq",
+            "title": "Bento tort foto Ayıcıq",
+            "img": "/assets/img/products/bento-tort-foto-ayiciq.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Ayıcıq - Vanilla.az",
+            "seo_desc": "Bento tort foto Ayıcıq — bento tort öz fotonuzla. Ölçünü, biskviti və içliyi seçin — şəkli yeməli boya ilə çap edirik."
+        },
+        {
+            "slug": "bento-tort-foto-sahzade",
+            "title": "Bento tort foto Şahzadə",
+            "img": "/assets/img/products/bento-tort-foto-sahzade.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Şahzadə - Vanilla.az",
+            "seo_desc": "Bento tort foto Şahzadə — öz şəklinizlə bento tort. Krem üzərində yeməli boya ilə çap. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-anime",
+            "title": "Bento tort foto Anime",
+            "img": "/assets/img/products/bento-tort-foto-anime.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Anime - Vanilla.az",
+            "seo_desc": "Bento tort foto Anime — fotolu bento tort Bakıda: şəkli göndərin, üzərinə istədiyiniz yazını əlavə edək. Qiymət 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-foto-serial-temali",
+            "title": "Bento tort foto Serial temalı",
+            "img": "/assets/img/products/bento-tort-foto-serial-temali.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Serial temalı - Vanilla.az",
+            "seo_desc": "Bento tort foto Serial temalı — şəkilli bento tort. Yeməli çap, biskvit və içlik seçimi, şəxsi yazı. 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-kosmonavt",
+            "title": "Bento tort foto Kosmonavt",
+            "img": "/assets/img/products/bento-tort-foto-kosmonavt.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Kosmonavt - Vanilla.az",
+            "seo_desc": "Bento tort foto Kosmonavt — hədiyyə üçün fotolu bento tort: sevimli şəkil krem üzərində, tədbirinizə uyğun yazı ilə. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-masin",
+            "title": "Bento tort foto Maşın",
+            "img": "/assets/img/products/bento-tort-foto-masin.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Maşın - Vanilla.az",
+            "seo_desc": "Bento tort foto Maşın — bento tort öz fotonuzla. Ölçünü, biskviti və içliyi seçin — şəkli yeməli boya ilə çap edirik."
+        },
+        {
+            "slug": "bento-tort-foto-tulku-ve-dovsan",
+            "title": "Bento tort foto Tülkü və dovşan",
+            "img": "/assets/img/products/bento-tort-foto-tulku-ve-dovsan.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Tülkü və dovşan - Vanilla.az",
+            "seo_desc": "Bento tort foto Tülkü və dovşan — öz şəklinizlə bento tort. Krem üzərində yeməli boya ilə çap. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-sahzade-qiz",
+            "title": "Bento tort foto Şahzadə qız",
+            "img": "/assets/img/products/bento-tort-foto-sahzade-qiz.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Şahzadə qız - Vanilla.az",
+            "seo_desc": "Bento tort foto Şahzadə qız — fotolu bento tort Bakıda: şəkli göndərin, üzərinə istədiyiniz yazını əlavə edək. Qiymət 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-foto-pisikler",
+            "title": "Bento tort foto Pişiklər",
+            "img": "/assets/img/products/bento-tort-foto-pisikler.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Pişiklər - Vanilla.az",
+            "seo_desc": "Bento tort foto Pişiklər — şəkilli bento tort. Yeməli çap, biskvit və içlik seçimi, şəxsi yazı. 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-cutluk",
+            "title": "Bento tort foto Cütlük",
+            "img": "/assets/img/products/bento-tort-foto-cutluk.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Cütlük - Vanilla.az",
+            "seo_desc": "Bento tort foto Cütlük — hədiyyə üçün fotolu bento tort: sevimli şəkil krem üzərində, tədbirinizə uyğun yazı ilə. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-ayiciqlar",
+            "title": "Bento tort foto Ayıcıqlar",
+            "img": "/assets/img/products/bento-tort-foto-ayiciqlar.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Ayıcıqlar - Vanilla.az",
+            "seo_desc": "Bento tort foto Ayıcıqlar — bento tort öz fotonuzla. Ölçünü, biskviti və içliyi seçin — şəkli yeməli boya ilə çap edirik."
+        },
+        {
+            "slug": "bento-tort-foto-panda",
+            "title": "Bento tort foto Panda",
+            "img": "/assets/img/products/bento-tort-foto-panda.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Panda - Vanilla.az",
+            "seo_desc": "Bento tort foto Panda — öz şəklinizlə bento tort. Krem üzərində yeməli boya ilə çap. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-aktyor",
+            "title": "Bento tort foto Aktyor",
+            "img": "/assets/img/products/bento-tort-foto-aktyor.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Aktyor - Vanilla.az",
+            "seo_desc": "Bento tort foto Aktyor — fotolu bento tort Bakıda: şəkli göndərin, üzərinə istədiyiniz yazını əlavə edək. Qiymət 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-foto-pisik-ailesi",
+            "title": "Bento tort foto Pişik ailəsi",
+            "img": "/assets/img/products/bento-tort-foto-pisik-ailesi.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Pişik ailəsi - Vanilla.az",
+            "seo_desc": "Bento tort foto Pişik ailəsi — şəkilli bento tort. Yeməli çap, biskvit və içlik seçimi, şəxsi yazı. 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-aslan-balasi",
+            "title": "Bento tort foto Aslan balası",
+            "img": "/assets/img/products/bento-tort-foto-aslan-balasi.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Aslan balası - Vanilla.az",
+            "seo_desc": "Bento tort foto Aslan balası — hədiyyə üçün fotolu bento tort: sevimli şəkil krem üzərində, tədbirinizə uyğun yazı ilə. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-taro-kartlari",
+            "title": "Bento tort foto Taro kartları",
+            "img": "/assets/img/products/bento-tort-foto-taro-kartlari.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Taro kartları - Vanilla.az",
+            "seo_desc": "Bento tort foto Taro kartları — bento tort öz fotonuzla. Ölçünü, biskviti və içliyi seçin — şəkli yeməli boya ilə çap edirik."
+        },
+        {
+            "slug": "bento-tort-foto-precious-kitty",
+            "title": "Bento tort foto Precious Kitty",
+            "img": "/assets/img/products/bento-tort-foto-precious-kitty.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Precious Kitty - Vanilla.az",
+            "seo_desc": "Bento tort foto Precious Kitty — öz şəklinizlə bento tort. Krem üzərində yeməli boya ilə çap. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼."
+        },
+        {
+            "slug": "bento-tort-foto-xalca",
+            "title": "Bento tort foto Xalça",
+            "img": "/assets/img/products/bento-tort-foto-xalca.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Xalça - Vanilla.az",
+            "seo_desc": "Bento tort foto Xalça — fotolu bento tort Bakıda: şəkli göndərin, üzərinə istədiyiniz yazını əlavə edək. Qiymət 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-foto-sekilli-hediyye",
+            "title": "Bento tort foto Şəkilli hədiyyə",
+            "img": "/assets/img/products/bento-tort-foto-sekilli-hediyye.jpg",
+            "price": "25 – 60 ₼",
+            "type": "foto",
+            "seo_title": "Bento tort foto Şəkilli hədiyyə - Vanilla.az",
+            "seo_desc": "Bento tort foto Şəkilli hədiyyə — şəkilli bento tort. Yeməli çap, biskvit və içlik seçimi, şəxsi yazı. 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼."
+        },
+        {
             "slug": "bento-tort-love",
             "title": "Bento tort Love",
             "img": "/assets/img/products/bento-tort-love.jpg",

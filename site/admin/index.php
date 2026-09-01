@@ -8,10 +8,23 @@ const PRODUCT_IMG_DIR = __DIR__ . '/../assets/img/products';
 const DESIGN_DIR      = __DIR__ . '/../uploads/designs';
 const ORDERS_FILE      = __DIR__ . '/../data/orders.json';
 const ORDER_STATUSES  = ['new' => 'Новый', 'confirmed' => 'Подтверждён', 'done' => 'Выполнен', 'canceled' => 'Отменён'];
-const CAT_PAGES       = ['bento' => 'Бенто-торты (/bolme/bento-tort/)', 'ctg' => 'Cake to go (/bolme/cake-to-go/)'];
+const CAT_PAGES       = [
+    'own'   => 'Отдельная страница /bolme/…/',
+    'bento' => 'Блоком в разделе «Бенто-торты»',
+    'ctg'   => 'Блоком в разделе «Cake to go»',
+];
 const TEXTS_FILE_ADM  = __DIR__ . '/../data/texts.json';
 const SEO_FILE        = __DIR__ . '/../data/seo.json';
 $PAGEMAP = require __DIR__ . '/pagemap.php';
+// страницы своих категорий добавляем в карту: у них правится SEO
+foreach (own_categories() as $c) {
+    $PAGEMAP['cat_' . $c['key']] = [
+        'label'  => $c['name'],
+        'url'    => cat_url($c),
+        'seo'    => 'cat_' . $c['key'],
+        'groups' => [],
+    ];
+}
 
 // Ключи SEO по карте страниц — чтобы разделы «Страницы» и «SEO» не расходились
 function seo_keys(): array
@@ -178,6 +191,19 @@ function build_customers(array $orders): array
     }
     uasort($out, fn($a, $b) => $b['last'] <=> $a['last']);
     return $out;
+}
+
+// Иконки для кнопок в таблицах: на узком экране остаётся только иконка
+function icon(string $name): string
+{
+    $paths = [
+        'open'   => '<path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>',
+        'edit'   => '<path d="M4 20h4l10-10a2.1 2.1 0 0 0-3-3L5 17z"/><path d="M13.5 7.5l3 3"/>',
+        'trash'  => '<path d="M4 7h16"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M6 7l1 13h10l1-13"/>',
+        'wa'     => '<path d="M12 3a9 9 0 0 0-7.6 13.8L3 21l4.4-1.3A9 9 0 1 0 12 3z"/><path d="M8.5 9.2c.3 2.2 2.1 4 4.3 4.3"/>',
+        'eye'    => '<path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.6"/>',
+    ];
+    return '<svg class="bi" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">' . ($paths[$name] ?? '') . '</svg>';
 }
 
 // ---------- routing ----------
@@ -391,7 +417,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cats[$key]['name_az'] = trim((string)($_POST['name_az'] ?? ''));
             $cats[$key]['name_en'] = trim((string)($_POST['name_en'] ?? ''));
             $cats[$key]['desc']    = mb_substr(trim((string)($_POST['desc'] ?? '')), 0, 300);
-            if (empty($cats[$key]['builtin'])) $cats[$key]['page'] = $page;
+            if (empty($cats[$key]['builtin'])) {
+                $cats[$key]['page'] = $page;
+                if ($page === 'own' && empty($cats[$key]['slug'])) {
+                    $cats[$key]['slug'] = make_slug($name, array_map(fn($c) => ['slug' => $c['slug'] ?? $c['key']], array_values($cats)));
+                }
+            }
             save_categories($cats);
             flash('Категория сохранена.');
             go('/admin/categories');

@@ -115,13 +115,13 @@ $rows = array_filter($products, function ($p) use ($filter, $q, $seoOnly) {
         <?php [$st, $hint] = seo_state($p); ?>
         <td><span class="dot <?= $st === 'ok' ? 'ok' : ($st === 'warn' ? 'warn' : 'no') ?>" title="<?= e($hint) ?>"></span><small><?= e($hint) ?></small></td>
         <td class="right">
-          <a class="btn ghost sm" href="/mehsul/<?= e($p['slug']) ?>/" target="_blank" rel="noopener">Открыть</a>
-          <a class="btn ghost sm" href="/admin/products?edit=<?= e($p['slug']) ?>">Изменить</a>
+          <a class="btn ghost sm ico" href="/mehsul/<?= e($p['slug']) ?>/" target="_blank" rel="noopener" title="Открыть на сайте"><?= icon('open') ?><span>Открыть</span></a>
+          <a class="btn ghost sm ico" href="/admin/products?edit=<?= e($p['slug']) ?>" title="Изменить"><?= icon('edit') ?><span>Изменить</span></a>
           <form method="post" class="inline">
             <input type="hidden" name="action" value="delete">
             <input type="hidden" name="csrf" value="<?= e($_SESSION['csrf']) ?>">
             <input type="hidden" name="slug" value="<?= e($p['slug']) ?>">
-            <button class="btn danger sm" data-confirm="Удалить «<?= e($p['title']) ?>» из каталога?">Удалить</button>
+            <button class="btn danger sm ico" data-confirm="Удалить «<?= e($p['title']) ?>» из каталога?" title="Удалить"><?= icon('trash') ?><span>Удалить</span></button>
           </form>
         </td>
       </tr>

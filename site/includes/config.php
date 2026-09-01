@@ -220,6 +220,17 @@ function extra_categories(string $page): array
     return array_values(array_filter(categories(), fn($c) => empty($c['builtin']) && ($c['page'] ?? '') === $page));
 }
 
+// Категории со своей страницей /bolme/{slug}/
+function own_categories(): array
+{
+    return array_values(array_filter(categories(), fn($c) => ($c['page'] ?? '') === 'own'));
+}
+
+function cat_url(array $c): string
+{
+    return '/bolme/' . ($c['slug'] ?? $c['key']) . '/';
+}
+
 function product_url(array $p): string
 {
     return '/mehsul/' . $p['slug'] . '/';
@@ -228,7 +239,7 @@ function product_url(array $p): string
 // Локализованное отображаемое имя из WP-названия товара
 function product_name(array $p): string
 {
-    global $t;
+    global $t, $lang;
     $title = $p['title'];
     switch ($p['type']) {
         case 'bantik':
@@ -241,6 +252,14 @@ function product_name(array $p): string
             $rest = trim(preg_replace('/^Cake to go\s*[–—-]?\s*/iu', '', $title));
             return 'Cake to go' . ($rest !== '' ? ' — ' . $rest : '');
         default:
+            // своя категория — берём её название в единственном числе
+            $c = categories()[$p['type']] ?? null;
+            if ($c && empty($c['builtin'])) {
+                $label = trim((string)($c['name_one_' . $lang] ?? $c['name_one'] ?? '')) ?: cat_name($p['type']);
+                $strip = (string)($c['strip'] ?? 'Bento tort');
+                $rest  = trim(preg_replace('/^' . preg_quote($strip, '/') . '\s*/iu', '', $title));
+                return $label . ($rest !== '' ? ' «' . $rest . '»' : '');
+            }
             $rest = trim(preg_replace('/^Bento tort\s*/iu', '', $title));
             return $t['p_bento'] . ($rest !== '' ? ' «' . $rest . '»' : '');
     }

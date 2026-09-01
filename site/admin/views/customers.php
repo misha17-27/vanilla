@@ -74,8 +74,8 @@ $total  = array_sum(array_column($customers, 'sum'));
         <td class="hide-s"><?= $c['sum'] ? number_format($c['sum'], 0, '.', ' ') . ' ₼' : '—' ?></td>
         <td class="hide-s"><?= date('d.m.Y', $c['last']) ?></td>
         <td class="right">
-          <a class="btn ghost sm" href="/admin/customers?phone=<?= e($key) ?>">Открыть</a>
-          <a class="btn ghost sm" href="https://wa.me/<?= e($key) ?>" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn ghost sm ico" href="/admin/customers?phone=<?= e($key) ?>" title="Открыть клиента"><?= icon('eye') ?><span>Открыть</span></a>
+          <a class="btn ghost sm ico" href="https://wa.me/<?= e($key) ?>" target="_blank" rel="noopener" title="Написать в WhatsApp"><?= icon('wa') ?><span>WhatsApp</span></a>
         </td>
       </tr>
     <?php endforeach; ?>

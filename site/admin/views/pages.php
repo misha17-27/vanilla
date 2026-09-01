@@ -196,9 +196,9 @@ foreach ($page['groups'] as $keys) foreach ($keys as $k) if (isset($own[$k])) $e
         <td><span class="dot <?= $hasText ? 'ok' : 'no' ?>"></span></td>
         <td><?= empty($p['seo']) ? '<span class="muted">—</span>' : '<span class="dot ' . ($hasSeo ? 'ok' : 'no') . '"></span>' ?></td>
         <td class="right">
-          <a class="btn ghost sm" href="/admin/pages?edit=<?= e($key) ?>">Редактировать</a>
+          <a class="btn ghost sm ico" href="/admin/pages?edit=<?= e($key) ?>" title="Редактировать"><?= icon('edit') ?><span>Редактировать</span></a>
           <?php if ($p['url'] && !str_contains($p['url'], '…')): ?>
-          <a class="btn ghost sm" href="<?= e($p['url']) ?>" target="_blank" rel="noopener">Открыть</a>
+          <a class="btn ghost sm ico" href="<?= e($p['url']) ?>" target="_blank" rel="noopener" title="Открыть на сайте"><?= icon('open') ?><span>Открыть</span></a>
           <?php endif; ?>
         </td>
       </tr>

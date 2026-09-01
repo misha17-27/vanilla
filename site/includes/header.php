@@ -4,6 +4,11 @@ require_once __DIR__ . '/config.php';
 $nav = [
     'index'    => ['/',                    $t['nav_home']],
     'bento'    => ['/bolme/bento-tort/',   $t['nav_bento']],
+];
+foreach (own_categories() as $c) {
+    $nav['cat-' . $c['key']] = [cat_url($c), cat_name($c['key'])];
+}
+$nav += [
     'ctg'      => ['/bolme/cake-to-go/',   $t['nav_ctg']],
     'fillings' => ['/terkibler/',          $t['nav_fillings']],
     'reviews'  => ['/reyler/',             $t['nav_reviews']],

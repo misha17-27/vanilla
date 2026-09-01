@@ -31,6 +31,22 @@
             "name_en": "Cake to go",
             "page": "ctg",
             "builtin": true
+        },
+        {
+            "key": "foto",
+            "name": "Бенто-торты с фото",
+            "name_az": "Fotolu bento tortlar",
+            "name_en": "Photo bento cakes",
+            "page": "own",
+            "slug": "bento-tort-foto",
+            "desc": "Бенто-торт с вашей фотографией или любимым персонажем: печатаем съедобной краской на кремовой поверхности. Пришлите фото — и мы соберём торт под ваш повод.",
+            "desc_az": "Öz şəklinizlə bento tort: krem üzərində yeməli boya ilə çap edirik. Şəkli göndərin — tədbirinizə uyğun tort hazırlayaq.",
+            "desc_en": "A bento cake with your own photo or favourite character, printed with edible ink on the cream surface.",
+            "builtin": false,
+            "name_one": "Бенто-торт с фото",
+            "name_one_az": "Fotolu bento tort",
+            "name_one_en": "Photo bento cake",
+            "strip": "Bento tort foto"
         }
     ]
 }

@@ -196,6 +196,25 @@ $heroSlides = [
   </div>
 </section>
 
+<?php foreach (own_categories() as $ownCat): $ownItems = products_of($ownCat['key']); if (!$ownItems) continue; ?>
+<section class="section">
+  <div class="container">
+    <div class="head-row">
+      <div class="sec-head">
+        <span class="eyebrow">Vanilla</span>
+        <h2><?= e(cat_name($ownCat['key'])) ?></h2>
+        <?php $ownDesc = trim((string)($ownCat['desc_' . $lang] ?? $ownCat['desc'] ?? '')); ?>
+        <?php if ($ownDesc !== ''): ?><p><?= e($ownDesc) ?></p><?php endif; ?>
+      </div>
+      <a class="btn btn-ghost" href="<?= e(cat_url($ownCat)) ?>"><?= e($t['btn_all_bento']) ?></a>
+    </div>
+    <div class="pgrid">
+      <?php foreach (array_slice($ownItems, 0, 8) as $p) product_card($p); ?>
+    </div>
+  </div>
+</section>
+<?php endforeach; ?>
+
 <!-- Cake to go preview -->
 <section class="section">
   <div class="container">

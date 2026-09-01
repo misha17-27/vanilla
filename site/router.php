@@ -130,6 +130,18 @@ if (isset($routes[$path])) {
     exit;
 }
 
+// свои категории каталога: /bolme/{slug}/
+if (preg_match('#^/bolme/([a-z0-9-]+)/$#', $path, $m)) {
+    require_once __DIR__ . '/includes/config.php';
+    foreach (categories() as $key => $c) {
+        if (($c['page'] ?? '') === 'own' && ($c['slug'] ?? $key) === $m[1]) {
+            $CAT_KEY = $key;
+            require __DIR__ . '/category.php';
+            exit;
+        }
+    }
+}
+
 if (preg_match('#^/mehsul/([a-z0-9_-]+)/$#i', $path, $m)) {
     $ROUTE_SLUG = $m[1];
     require __DIR__ . '/mehsul.php';

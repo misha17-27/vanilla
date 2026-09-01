@@ -30,10 +30,18 @@ $catMap = [
     'set'    => ['/bolme/bento-tort/#sets',   $t['sets_h'],     'bento'],
     'ctg'    => ['/bolme/cake-to-go/',        $t['nav_ctg'],    'ctg'],
 ];
+// своя категория — своя страница и свои крошки
+if (!isset($catMap[$prod['type']])) {
+    $c = categories()[$prod['type']] ?? null;
+    $catMap[$prod['type']] = $c && ($c['page'] ?? '') === 'own'
+        ? [cat_url($c), cat_name($prod['type']), 'cat-' . $prod['type']]
+        : ['/bolme/bento-tort/', cat_name($prod['type']), 'bento'];
+}
 [$catUrl, $catLabel, $navSlug] = $catMap[$prod['type']];
 $page = $navSlug;
 
-$sizeOpts = $t['sizes_opt_' . $prod['type']];
+// размеры и цены: у своих категорий берём бенто-набор
+$sizeOpts = $t['sizes_opt_' . $prod['type']] ?? $t['sizes_opt_bento'];
 
 // Разметка товара: цена берётся из тех же размеров, что видит клиент
 $page_schema = 'ItemPage';

@@ -8,6 +8,7 @@ foreach ($cats as $k => $c) $counts[$k] = 0;
 foreach ($products as $p) if (isset($counts[$p['type']])) $counts[$p['type']]++;
 
 $pageUrl = ['bento' => '/bolme/bento-tort/', 'ctg' => '/bolme/cake-to-go/'];
+$urlOf = fn(array $c) => ($c['page'] ?? '') === 'own' ? cat_url($c) : ($pageUrl[$c['page'] ?? 'bento'] ?? '/');
 ?>
 
 <?php if ($showForm): ?>
@@ -41,7 +42,11 @@ $pageUrl = ['bento' => '/bolme/bento-tort/', 'ctg' => '/bolme/cake-to-go/'];
         <?php if (!empty($edit['builtin'])): ?>
         <p class="hint">Базовая категория — её блок на сайте закреплён, чтобы не менялись адреса и позиции в поиске. Название можно править свободно.</p>
         <?php else: ?>
-        <p class="hint">Товары этой категории выйдут отдельным блоком в конце выбранного раздела.</p>
+        <p class="hint">Отдельная страница — свой адрес, заголовок и SEO, пункт в меню сайта. Блоком — товары выйдут в конце выбранного раздела.</p>
+        <?php if (($edit['page'] ?? '') === 'own'): ?>
+        <label>Адрес страницы</label>
+        <input type="text" value="<?= e(cat_url($edit)) ?>" readonly>
+        <?php endif; ?>
         <?php endif; ?>
 
         <label for="c-desc">Описание под заголовком</label>
@@ -73,16 +78,16 @@ $pageUrl = ['bento' => '/bolme/bento-tort/', 'ctg' => '/bolme/cake-to-go/'];
         </td>
         <td class="hide-s"><span class="pill <?= e($k) ?>"><?= e($k) ?></span></td>
         <td><a href="/admin/products?type=<?= e($k) ?>"><?= $counts[$k] ?? 0 ?> →</a></td>
-        <td class="hide-s"><?= e($pageUrl[$c['page'] ?? 'bento'] ?? '—') ?></td>
+        <td class="hide-s"><?= e($urlOf($c)) ?></td>
         <td class="right">
-          <a class="btn ghost sm" href="<?= e($pageUrl[$c['page'] ?? 'bento'] ?? '/') ?>" target="_blank" rel="noopener">Открыть</a>
-          <a class="btn ghost sm" href="/admin/categories?edit=<?= e($k) ?>">Изменить</a>
+          <a class="btn ghost sm ico" href="<?= e($urlOf($c)) ?>" target="_blank" rel="noopener" title="Открыть на сайте"><?= icon('open') ?><span>Открыть</span></a>
+          <a class="btn ghost sm ico" href="/admin/categories?edit=<?= e($k) ?>" title="Изменить"><?= icon('edit') ?><span>Изменить</span></a>
           <?php if (empty($c['builtin'])): ?>
           <form method="post" class="inline">
             <input type="hidden" name="action" value="cat_delete">
             <input type="hidden" name="csrf" value="<?= e($_SESSION['csrf']) ?>">
             <input type="hidden" name="key" value="<?= e($k) ?>">
-            <button class="btn danger sm" data-confirm="Удалить категорию «<?= e($c['name']) ?>»?">Удалить</button>
+            <button class="btn danger sm ico" data-confirm="Удалить категорию «<?= e($c['name']) ?>»?" title="Удалить"><?= icon('trash') ?><span>Удалить</span></button>
           </form>
           <?php endif; ?>
         </td>

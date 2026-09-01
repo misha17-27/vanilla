@@ -2,6 +2,9 @@
 require __DIR__ . '/includes/config.php';
 header('Content-Type: application/xml; charset=UTF-8');
 $urls = ['/', '/bolme/bento-tort/', '/bolme/cake-to-go/', '/terkibler/', '/reyler/', '/konstruktor/', '/haqqimizda/', '/faq/', '/elaqe/'];
+foreach (own_categories() as $c) {
+    $urls[] = cat_url($c);
+}
 foreach ($PRODUCTS as $p) {
     $urls[] = product_url($p);
 }

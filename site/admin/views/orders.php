@@ -146,8 +146,8 @@ $fields = [
           <small><?= e(order_sum($o)) ?></small>
         </td>
         <td class="right">
-          <a class="btn ghost sm" href="/admin/orders?id=<?= e($o['id']) ?>">Открыть</a>
-          <a class="btn ghost sm" href="https://wa.me/<?= e(preg_replace('/\D/', '', $o['phone'])) ?>" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn ghost sm ico" href="/admin/orders?id=<?= e($o['id']) ?>" title="Открыть заказ"><?= icon('eye') ?><span>Открыть</span></a>
+          <a class="btn ghost sm ico" href="https://wa.me/<?= e(preg_replace('/\D/', '', $o['phone'])) ?>" target="_blank" rel="noopener" title="Написать в WhatsApp"><?= icon('wa') ?><span>WhatsApp</span></a>
         </td>
       </tr>
     <?php endforeach; ?>
