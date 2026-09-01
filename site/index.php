@@ -330,7 +330,7 @@ $heroSlides = [
       <div class="about-ph">
         <img loading="lazy" src="/assets/img/ctg-princess.jpg" alt="Vanilla Cake — cake to go" width="480" height="480">
       </div>
-      <div class="about-stamp">Bir dadım — eşq</div>
+      <div class="about-stamp">Made with love</div>
     </div>
     <div>
       <span class="eyebrow"><?= e($t['about_eyebrow']) ?></span>

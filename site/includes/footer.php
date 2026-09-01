@@ -41,7 +41,7 @@
     </div>
     <div class="f-bottom">
       <span>© <?= date('Y') ?> Vanilla.az — <?= e($t['footer_rights']) ?></span>
-      <span class="f-slogan">Bir dadım — eşq</span>
+      <span class="f-slogan">Made with love</span>
     </div>
   </div>
 </footer>
@@ -60,7 +60,7 @@
   <a class="btn btn-wa" href="<?= e(wa_link()) ?>" target="_blank" rel="noopener"><?= e($t['btn_wa']) ?></a>
 </div>
 
-<script src="/assets/site.js" defer></script>
+<script src="/assets/site.js?v=<?= @filemtime(__DIR__ . '/../assets/site.js') ?>" defer></script>
 
 <?php
 // ===== Разметка schema.org: организация, сайт, страница + узлы конкретной страницы =====

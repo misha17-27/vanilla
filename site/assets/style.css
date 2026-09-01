@@ -66,10 +66,17 @@ html.anim .reveal.in{opacity:1;transform:none}
 .menu a:hover::after,.menu a.active::after{right:0}
 .menu a.active{color:var(--pink)}
 .nav-right{display:flex;align-items:center;gap:14px}
-.lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:3px;background:#fff}
-.lang a{padding:6px 11px;border-radius:999px;font-size:11.5px;font-weight:700;letter-spacing:.05em;color:var(--text);transition:.2s}
-.lang a:hover{color:var(--navy)}
-.lang a.active{background:var(--navy);color:#fff}
+.lang{position:relative}
+.lang summary{display:flex;align-items:center;gap:5px;height:38px;padding:0 12px 0 14px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:11.5px;font-weight:700;letter-spacing:.05em;color:var(--navy);cursor:pointer;list-style:none;transition:.2s;user-select:none}
+.lang summary::-webkit-details-marker{display:none}
+.lang summary:hover{border-color:var(--navy)}
+.lang summary svg{width:13px;height:13px;transition:transform .2s}
+.lang[open] summary{border-color:var(--navy)}
+.lang[open] summary svg{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 6px);right:0;z-index:60;display:grid;min-width:78px;padding:5px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 40px -18px rgba(22,82,127,.35)}
+.lang-menu a{padding:8px 12px;border-radius:8px;font-size:11.5px;font-weight:700;letter-spacing:.05em;color:var(--text);transition:.15s}
+.lang-menu a:hover{background:var(--blue-soft);color:var(--navy)}
+.lang-menu a.active{background:var(--navy);color:#fff}
 .btn-nav{padding:13px 24px}
 .burger{display:none;background:none;border:none;cursor:pointer;padding:8px}
 .burger span{display:block;width:24px;height:2px;background:var(--navy);margin:5px 0;transition:.3s}
@@ -554,7 +561,8 @@ html.no-scroll{overflow:hidden}
   .logo img{height:34px}
   .menu{top:calc(70px + 37px)}
   .btn-nav{display:none}
-  .lang a{padding:5px 8px;font-size:10.5px}
+  .lang summary{height:34px;padding:0 9px 0 11px;font-size:10.5px}
+  .lang-menu a{padding:7px 10px;font-size:10.5px}
   .pgrid{grid-template-columns:1fr 1fr;gap:14px}
   .pcard-body{padding:13px 14px 15px}
   .pcard-body h3{font-size:12.5px}

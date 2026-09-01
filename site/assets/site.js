@@ -9,6 +9,17 @@ if (burger && menu) {
     if (e.target.tagName === 'A') menu.classList.remove('open');
   });
 }
+// Language dropdown: закрываем по клику мимо и по Esc
+var langBox = document.getElementById('lang');
+if (langBox) {
+  document.addEventListener('click', function (e) {
+    if (langBox.open && !langBox.contains(e.target)) langBox.open = false;
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && langBox.open) langBox.open = false;
+  });
+}
+
 // Product configurator (size / sponge / filling -> price + WhatsApp message)
 (function () {
   var cfg = window.PROD_CFG;

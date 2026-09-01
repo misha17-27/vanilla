@@ -26,7 +26,7 @@ require __DIR__ . '/includes/header.php';
         <div class="about-ph">
           <img src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1712262810_3339024920686659731_3523099162-3-600x600.jpg" alt="Vanilla Cake" width="600" height="600" fetchpriority="high">
         </div>
-        <div class="about-stamp">Bir dadım — eşq</div>
+        <div class="about-stamp">Made with love</div>
       </div>
       <div class="text">
         <span class="eyebrow"><?= e($t['about_eyebrow']) ?></span>
