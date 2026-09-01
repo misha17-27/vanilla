@@ -129,8 +129,44 @@ if (burger && menu) {
     bad[0].focus();
     return false;
   }
+  // Сохраняем заказ у себя, потом уже открываем WhatsApp
+  function saveOrder() {
+    var size = cfg.sizes[sizeSel.selectedIndex];
+    var payload = {
+      csrf: cfg.csrf,
+      source: cfg.source || 'product',
+      product: cfg.orderName || '',
+      url: cfg.purl || '',
+      size: size ? size[0] : '',
+      price: size ? String(size[1]) + ' AZN' : '',
+      sponge: cfg.sponges[spongeSel.selectedIndex] ? cfg.sponges[spongeSel.selectedIndex][0] : '',
+      filling: fillSel.value,
+      lettering: fText ? fText.value.trim() : '',
+      date: selDate ? fmtDate(selDate) : '',
+      time: timeSel.value,
+      delivery: dlSel.options[dlSel.selectedIndex].textContent,
+      address: dlSel.value === 'courier' ? fAddress.value.trim() : '',
+      point: (dlSel.value === 'courier' && pickedPoint) ? (pickedPoint.lat + ',' + pickedPoint.lng) : '',
+      name: fName.value.trim(),
+      phone: fPhone.value.trim(),
+      recipient: fOther.checked ? [fRname.value.trim(), fRphone.value.trim()].filter(Boolean).join(', ') : '',
+      extras: extraLines.slice(),
+      photos: designUrl ? [designUrl] : []
+    };
+    if (window.__orderPhotos) payload.photos = payload.photos.concat(window.__orderPhotos());
+    try {
+      fetch('/order-save.php', {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        keepalive: true
+      });
+    } catch (e) { /* заказ всё равно уходит в WhatsApp */ }
+  }
   modalSend.addEventListener('click', function (e) {
-    if (!validate()) e.preventDefault();
+    if (!validate()) { e.preventDefault(); return; }
+    saveOrder();
   });
   [fName, fPhone, fAddress].forEach(function (inp) {
     inp.addEventListener('input', function () {

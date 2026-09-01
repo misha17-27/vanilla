@@ -165,3 +165,29 @@ h3{font-size:.95rem;color:var(--navy);margin:26px 0 4px}
 .top-btn.out{background:var(--brand);border-color:var(--brand);color:#fff}
 .top-btn.out:hover{background:var(--brand-d);border-color:var(--brand-d);color:#fff}
 .top-acts form.inline{display:inline-flex}
+
+/* ---------- заказы, клиенты, категории ---------- */
+.st{display:inline-block;padding:4px 10px;border-radius:99px;font:700 11.5px var(--font);background:var(--line-2);color:var(--ink);white-space:nowrap}
+.st.new{background:#FFF3F8;color:#E02D68}
+.st.confirmed{background:#EEF6FC;color:#16527F}
+.st.done{background:#EFF8F1;color:#1F7A45}
+.st.canceled{background:#F4F5F7;color:#78808C}
+.tally.hot{background:var(--brand);color:#fff}
+.side nav a.on .tally.hot{background:rgba(255,255,255,.28)}
+.chip i{font-style:normal;font-size:11px;opacity:.6;margin-left:2px}
+.ordwrap{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:26px;align-items:start}
+.ordside label{margin-top:0}
+.kv{display:grid;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.kv > div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px;padding:11px 16px;border-bottom:1px solid var(--line);font-size:14px}
+.kv > div:last-child{border-bottom:0}
+.kv > div:nth-child(odd){background:#fafbfd}
+.kv span{color:var(--steel);font-size:13px}
+.kv b{color:var(--ink);font-weight:600;word-break:break-word}
+.kv a{color:var(--brand)}
+.card-hd h2 .st{margin-left:8px;vertical-align:middle}
+.grid small.show-s{display:none}
+@media(max-width:1000px){.ordwrap{grid-template-columns:1fr}}
+@media(max-width:640px){
+  .kv > div{grid-template-columns:1fr;gap:2px}
+  .grid small.show-s{display:block}
+}

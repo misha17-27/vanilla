@@ -10,3 +10,4 @@ site/uploads/ratelimit/*
 !site/uploads/ratelimit/.htaccess
 site/data/admin.pass
 site/data/backups/
+site/data/orders.json

@@ -158,6 +158,8 @@ window.PROD_CFG = <?= json_encode([
     ],
     'wa'      => 'https://wa.me/' . WA_NUMBER . '?text=',
     'purl'    => CANON_HOST . '/konstruktor/',
+    'source'  => 'constructor',
+    'orderName' => $t['k_h'],
     'linkLbl' => $t['wa_link_lbl'],
     'upload'  => '/upload-design.php',
     'csrf'    => $_SESSION['csrf'],
@@ -558,6 +560,10 @@ window.PROD_CFG = <?= json_encode([
     });
     if (window.__setExtras) window.__setExtras(extras);
   }
+  // ссылки на фото клиента — уходят и в заказ, который сохраняется у нас
+  window.__orderPhotos = function () {
+    return itemsOf('img').filter(function (it) { return it.own && it.url; }).map(function (it) { return it.url; });
+  };
 
   document.getElementById('prod-order').addEventListener('click', function () {
     buildExtras();

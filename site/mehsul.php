@@ -208,6 +208,8 @@ window.PROD_CFG = <?= json_encode([
     ],
     'wa'      => 'https://wa.me/' . WA_NUMBER . '?text=',
     'purl'    => CANON_HOST . product_url($prod),
+    'source'  => 'product',
+    'orderName' => $name,
     'linkLbl' => $t['wa_link_lbl'],
     'upload'  => '/upload-design.php',
     'csrf'    => $_SESSION['csrf'],

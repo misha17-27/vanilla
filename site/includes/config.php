@@ -115,6 +115,41 @@ function products_of(string $type): array
     return array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === $type));
 }
 
+// ===== Категории каталога =====
+// Четыре базовые (bento / bantik / set / ctg) повторяют структуру vanilla.az —
+// их можно переименовать, но не удалить. Новые добавляются через админку и
+// выводятся отдельным блоком на своей странице раздела.
+const CATEGORIES_FILE = __DIR__ . '/../data/categories.json';
+
+function categories(): array
+{
+    static $cats = null;
+    if ($cats === null) {
+        $raw = json_decode((string)@file_get_contents(CATEGORIES_FILE), true);
+        $cats = [];
+        foreach ($raw['categories'] ?? [] as $c) {
+            if (!empty($c['key'])) $cats[$c['key']] = $c;
+        }
+    }
+    return $cats;
+}
+
+// Название категории на текущем языке
+function cat_name(string $key): string
+{
+    global $lang;
+    $c = categories()[$key] ?? null;
+    if (!$c) return $key;
+    $loc = trim((string)($c['name_' . $lang] ?? ''));
+    return $loc !== '' ? $loc : (string)$c['name'];
+}
+
+// Свои категории (не базовые), закреплённые за страницей раздела
+function extra_categories(string $page): array
+{
+    return array_values(array_filter(categories(), fn($c) => empty($c['builtin']) && ($c['page'] ?? '') === $page));
+}
+
 function product_url(array $p): string
 {
     return '/mehsul/' . $p['slug'] . '/';

@@ -26,7 +26,7 @@ $rows = array_filter($products, function ($p) use ($filter, $q) {
 
         <label for="type">Тип</label>
         <select name="type" id="type">
-          <?php foreach (TYPE_NAMES as $k => $v): ?>
+          <?php foreach (type_names() as $k => $v): ?>
           <option value="<?= $k ?>" <?= ($edit['type'] ?? '') === $k ? 'selected' : '' ?>><?= $v ?></option>
           <?php endforeach; ?>
         </select>
@@ -66,7 +66,7 @@ $rows = array_filter($products, function ($p) use ($filter, $q) {
   <div class="card-hd">
     <div class="filters">
       <a href="/admin/products" class="chip <?= $filter === '' ? 'on' : '' ?>">Все</a>
-      <?php foreach (TYPE_NAMES as $k => $v): ?>
+      <?php foreach (type_names() as $k => $v): ?>
       <a href="/admin/products?type=<?= $k ?>" class="chip <?= $filter === $k ? 'on' : '' ?>"><?= $v ?></a>
       <?php endforeach; ?>
     </div>
@@ -86,7 +86,7 @@ $rows = array_filter($products, function ($p) use ($filter, $q) {
           <a href="/admin/products?edit=<?= e($p['slug']) ?>"><b><?= e($p['title']) ?></b></a>
           <small>/mehsul/<?= e($p['slug']) ?>/</small>
         </td>
-        <td class="hide-s"><span class="pill <?= e($p['type']) ?>"><?= TYPE_NAMES[$p['type']] ?? e($p['type']) ?></span></td>
+        <td class="hide-s"><span class="pill <?= e($p['type']) ?>"><?= type_names()[$p["type"]] ?? e($p["type"]) ?></span></td>
         <td class="hide-s"><?= e($p['price']) ?></td>
         <td class="right">
           <a class="btn ghost sm" href="/mehsul/<?= e($p['slug']) ?>/" target="_blank" rel="noopener">Открыть</a>

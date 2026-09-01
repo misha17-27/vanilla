@@ -25,6 +25,17 @@ $ctg = products_of('ctg');
       <?php foreach ($ctg as $i => $p) product_card($p, $i > 3); ?>
     </div>
 
+    <?php foreach (extra_categories('ctg') as $c): $items = products_of($c['key']); if (!$items) continue; ?>
+    <div class="sec-head" id="cat-<?= e($c['key']) ?>" style="margin-top:84px">
+      <span class="eyebrow">Vanilla</span>
+      <h2><?= e(cat_name($c['key'])) ?></h2>
+      <?php if (trim((string)($c['desc'] ?? '')) !== ''): ?><p><?= e($c['desc']) ?></p><?php endif; ?>
+    </div>
+    <div class="pgrid">
+      <?php foreach ($items as $p) product_card($p); ?>
+    </div>
+    <?php endforeach; ?>
+
     <div class="sizes-wrap" style="margin-top:64px">
       <div class="size-card reveal">
         <h3><?= e($t['ctg_sizes_h']) ?></h3>

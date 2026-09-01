@@ -6,7 +6,17 @@ const ADMIN_PASS_FILE = __DIR__ . '/../data/admin.pass';
 const BACKUP_DIR      = __DIR__ . '/../data/backups';
 const PRODUCT_IMG_DIR = __DIR__ . '/../assets/img/products';
 const DESIGN_DIR      = __DIR__ . '/../uploads/designs';
-const TYPE_NAMES      = ['bento' => 'Бенто', 'bantik' => 'Бантик', 'set' => 'Сет', 'ctg' => 'Cake to go'];
+const ORDERS_FILE      = __DIR__ . '/../data/orders.json';
+const ORDER_STATUSES  = ['new' => 'Новый', 'confirmed' => 'Подтверждён', 'done' => 'Выполнен', 'canceled' => 'Отменён'];
+const CAT_PAGES       = ['bento' => 'Бенто-торты (/bolme/bento-tort/)', 'ctg' => 'Cake to go (/bolme/cake-to-go/)'];
+
+// Названия категорий для админки: базовые + добавленные вручную
+function type_names(): array
+{
+    $out = [];
+    foreach (categories() as $k => $c) $out[$k] = (string)$c['name'];
+    return $out ?: ['bento' => 'Бенто'];
+}
 
 // ---------- helpers ----------
 function admin_logged(): bool { return !empty($_SESSION['admin']); }
@@ -65,6 +75,55 @@ function save_photo(array $f, string $slug): ?string {
     return $ok ? '/assets/img/products/' . $name : null;
 }
 
+function load_orders(): array
+{
+    $d = json_decode((string)@file_get_contents(ORDERS_FILE), true);
+    return is_array($d['orders'] ?? null) ? $d['orders'] : [];
+}
+
+function save_orders(array $orders): void
+{
+    @mkdir(dirname(ORDERS_FILE), 0775, true);
+    file_put_contents(ORDERS_FILE, json_encode(
+        ['orders' => array_values($orders), 'updated' => date('Y-m-d H:i')],
+        JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT
+    ));
+}
+
+function save_categories(array $cats): void
+{
+    file_put_contents(CATEGORIES_FILE, json_encode(
+        ['categories' => array_values($cats)],
+        JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT
+    ));
+}
+
+// Клиенты собираются из заказов: один телефон — один клиент
+function build_customers(array $orders): array
+{
+    $out = [];
+    foreach ($orders as $o) {
+        $key = preg_replace('/\D+/', '', (string)($o['phone'] ?? ''));
+        if ($key === '') continue;
+        if (!isset($out[$key])) {
+            $out[$key] = [
+                'phone' => $o['phone'], 'name' => $o['name'], 'orders' => 0, 'sum' => 0.0,
+                'first' => $o['created'], 'last' => $o['created'], 'items' => [], 'address' => '',
+            ];
+        }
+        $c = &$out[$key];
+        $c['orders']++;
+        $c['sum'] += (float)preg_replace('/[^\d.]/', '', (string)($o['price'] ?? ''));
+        $c['first'] = min($c['first'], $o['created']);
+        if ($o['created'] >= $c['last']) { $c['last'] = $o['created']; $c['name'] = $o['name'] ?: $c['name']; }
+        if ($c['address'] === '' && trim((string)($o['address'] ?? '')) !== '') $c['address'] = $o['address'];
+        $c['items'][] = $o;
+        unset($c);
+    }
+    uasort($out, fn($a, $b) => $b['last'] <=> $a['last']);
+    return $out;
+}
+
 // ---------- routing ----------
 $path = strtok($_SERVER['REQUEST_URI'] ?? '/admin/', '?');
 $seg  = trim(str_replace('/admin', '', $path), '/');   // '' | products | designs | settings | account
@@ -107,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $price = trim((string)($_POST['price'] ?? ''));
             $seoT  = trim((string)($_POST['seo_title'] ?? ''));
             $seoD  = trim((string)($_POST['seo_desc'] ?? ''));
-            if ($title === '' || $price === '' || !isset(TYPE_NAMES[$type])) {
+            if ($title === '' || $price === '' || !isset(type_names()[$type])) {
                 flash('Заполните название, цену и тип.', 'bad');
                 go('/admin/products' . ($slug ? '?edit=' . urlencode($slug) : '?add=1'));
             }
@@ -178,6 +237,72 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             go('/admin/designs');
         }
 
+        if ($action === 'order_status') {
+            $id  = (string)($_POST['id'] ?? '');
+            $st  = (string)($_POST['status'] ?? '');
+            $ord = load_orders();
+            if (isset(ORDER_STATUSES[$st])) {
+                foreach ($ord as &$o) if ($o['id'] === $id) { $o['status'] = $st; break; }
+                unset($o);
+                save_orders($ord);
+                flash('Статус заказа обновлён.');
+            }
+            go('/admin/orders' . (($_POST['back'] ?? '') === 'card' ? '?id=' . urlencode($id) : ''));
+        }
+
+        if ($action === 'order_note') {
+            $id  = (string)($_POST['id'] ?? '');
+            $nt  = mb_substr(trim((string)($_POST['note'] ?? '')), 0, 500);
+            $ord = load_orders();
+            foreach ($ord as &$o) if ($o['id'] === $id) { $o['note'] = $nt; break; }
+            unset($o);
+            save_orders($ord);
+            flash('Комментарий сохранён.');
+            go('/admin/orders?id=' . urlencode($id));
+        }
+
+        if ($action === 'order_delete') {
+            $id = (string)($_POST['id'] ?? '');
+            save_orders(array_filter(load_orders(), fn($o) => $o['id'] !== $id));
+            flash('Заказ удалён.');
+            go('/admin/orders');
+        }
+
+        if ($action === 'cat_save') {
+            $cats = categories();
+            $key  = trim((string)($_POST['key'] ?? ''));
+            $name = trim((string)($_POST['name'] ?? ''));
+            $page = (string)($_POST['page'] ?? 'bento');
+            if ($name === '' || !isset(CAT_PAGES[$page])) {
+                flash('Укажите название категории.', 'bad');
+                go('/admin/categories');
+            }
+            if ($key === '') {                                   // новая категория
+                $key = make_slug($name, array_map(fn($c) => ['slug' => $c['key']], array_values($cats)));
+                $cats[$key] = ['key' => $key, 'builtin' => false];
+            } elseif (!isset($cats[$key])) {
+                go('/admin/categories');
+            }
+            $cats[$key]['name']    = $name;
+            $cats[$key]['name_az'] = trim((string)($_POST['name_az'] ?? ''));
+            $cats[$key]['name_en'] = trim((string)($_POST['name_en'] ?? ''));
+            $cats[$key]['desc']    = mb_substr(trim((string)($_POST['desc'] ?? '')), 0, 300);
+            if (empty($cats[$key]['builtin'])) $cats[$key]['page'] = $page;
+            save_categories($cats);
+            flash('Категория сохранена.');
+            go('/admin/categories');
+        }
+
+        if ($action === 'cat_delete') {
+            $cats = categories();
+            $key  = (string)($_POST['key'] ?? '');
+            $used = count(array_filter($products, fn($p) => $p['type'] === $key));
+            if (empty($cats[$key]) || !empty($cats[$key]['builtin'])) flash('Базовую категорию удалить нельзя.', 'bad');
+            elseif ($used) flash('Сначала перенесите товары (' . $used . ' шт.) в другую категорию.', 'bad');
+            else { unset($cats[$key]); save_categories($cats); flash('Категория удалена.'); }
+            go('/admin/categories');
+        }
+
         if ($action === 'chpass') {
             $cur = (string)($_POST['cur'] ?? ''); $p1 = (string)($_POST['p1'] ?? ''); $p2 = (string)($_POST['p2'] ?? '');
             if (!password_verify($cur, (string)file_get_contents(ADMIN_PASS_FILE))) flash('Текущий пароль неверный.', 'bad');
@@ -198,8 +323,12 @@ foreach (glob(DESIGN_DIR . '/*.jpg') ?: [] as $f) {
     $designs[] = ['name' => basename($f), 'time' => filemtime($f), 'size' => filesize($f)];
 }
 usort($designs, fn($a, $b) => $b['time'] <=> $a['time']);
+$orders    = load_orders();
+$cats      = categories();
+$customers = build_customers($orders);
+$newOrders = count(array_filter($orders, fn($o) => ($o['status'] ?? 'new') === 'new'));
 
-$titles = ['dashboard' => 'Обзор', 'products' => 'Каталог тортов', 'designs' => 'Дизайны клиентов', 'seo' => 'SEO страниц', 'settings' => 'Контакты и карта', 'account' => 'Пароль и безопасность'];
+$titles = ['dashboard' => 'Обзор', 'orders' => 'Заказы', 'customers' => 'Клиенты', 'products' => 'Товары', 'categories' => 'Категории', 'designs' => 'Дизайны клиентов', 'seo' => 'SEO страниц', 'settings' => 'Контакты и карта', 'account' => 'Пароль и безопасность'];
 $title  = $titles[$view] ?? 'Админ';
 if (!array_key_exists($view, $titles)) { $view = 'dashboard'; $title = $titles['dashboard']; }
 

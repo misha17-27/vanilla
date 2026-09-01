@@ -1,0 +1,36 @@
+{
+    "categories": [
+        {
+            "key": "bento",
+            "name": "Бенто-торты",
+            "name_az": "Bento tortlar",
+            "name_en": "Bento cakes",
+            "page": "bento",
+            "builtin": true
+        },
+        {
+            "key": "bantik",
+            "name": "Бенто-бантики",
+            "name_az": "Bento bantiklar",
+            "name_en": "Bow bento",
+            "page": "bento",
+            "builtin": true
+        },
+        {
+            "key": "set",
+            "name": "Бенто-сеты",
+            "name_az": "Bento setlər",
+            "name_en": "Bento sets",
+            "page": "bento",
+            "builtin": true
+        },
+        {
+            "key": "ctg",
+            "name": "Cake to go",
+            "name_az": "Cake to go",
+            "name_en": "Cake to go",
+            "page": "ctg",
+            "builtin": true
+        }
+    ]
+}

@@ -1,10 +1,15 @@
 <?php
 $bare = !admin_logged();
 $nav = [
+    'Магазин' => [
+        ['/admin/',          'dashboard', 'Обзор'],
+        ['/admin/orders',    'orders',    'Заказы'],
+        ['/admin/customers', 'customers', 'Клиенты'],
+    ],
     'Каталог' => [
-        ['/admin/',         'dashboard', 'Обзор'],
-        ['/admin/products', 'products',  'Торты'],
-        ['/admin/designs',  'designs',   'Дизайны клиентов'],
+        ['/admin/products',   'products',   'Товары'],
+        ['/admin/categories', 'categories', 'Категории'],
+        ['/admin/designs',    'designs',    'Дизайны клиентов'],
     ],
     'Настройки' => [
         ['/admin/seo',      'seo',      'SEO страниц'],
@@ -13,6 +18,9 @@ $nav = [
     ],
 ];
 $icons = [
+    'orders'    => '<path d="M6 2h12l2 5H4z"/><path d="M5 7v13h14V7"/><path d="M9 11a3 3 0 0 0 6 0"/>',
+    'customers' => '<circle cx="9" cy="8" r="3.4"/><path d="M3 20c0-3.3 2.7-5.4 6-5.4s6 2.1 6 5.4"/><path d="M16 5.2a3.4 3.4 0 0 1 0 6.6"/><path d="M17.5 14.9c2.1.6 3.5 2.3 3.5 5.1"/>',
+    'categories'=> '<rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/>',
     'seo'       => '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>',
     'dashboard' => '<path d="M3 12l9-8 9 8"/><path d="M5 10v10h14V10"/>',
     'products'  => '<path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7"/>',
@@ -32,7 +40,7 @@ $isOn = function (string $href) use ($here): bool {
 <meta name="robots" content="noindex, nofollow">
 <title><?= e($title) ?> — Vanilla Cake</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍰</text></svg>">
-<link rel="stylesheet" href="/admin/assets/admin.css?v=2">
+<link rel="stylesheet" href="/admin/assets/admin.css?v=3">
 </head>
 <body class="<?= $bare ? 'bare' : '' ?>">
 
@@ -55,6 +63,9 @@ $isOn = function (string $href) use ($here): bool {
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><?= $icons[$icon] ?></svg>
             <?= e($label) ?>
             <?php if ($icon === 'products'): ?><i class="tally"><?= count($products) ?></i><?php endif; ?>
+            <?php if ($icon === 'orders' && $newOrders): ?><i class="tally hot"><?= $newOrders ?></i><?php endif; ?>
+            <?php if ($icon === 'customers' && $customers): ?><i class="tally"><?= count($customers) ?></i><?php endif; ?>
+            <?php if ($icon === 'categories'): ?><i class="tally"><?= count($cats) ?></i><?php endif; ?>
             <?php if ($icon === 'designs' && $designs): ?><i class="tally"><?= count($designs) ?></i><?php endif; ?>
           </a>
           <?php endforeach; ?>
@@ -76,6 +87,8 @@ $isOn = function (string $href) use ($here): bool {
           </a>
           <?php if ($view === 'products'): ?>
           <a class="top-btn accent" href="/admin/products?add=1">+ Добавить торт</a>
+          <?php elseif ($view === 'categories'): ?>
+          <a class="top-btn accent" href="/admin/categories?add=1">+ Добавить категорию</a>
           <?php endif; ?>
           <form method="post" class="inline">
             <input type="hidden" name="action" value="logout">
