@@ -3,6 +3,10 @@
 require_once __DIR__ . '/../includes/config.php';
 
 const ADMIN_PASS_FILE = __DIR__ . '/../data/admin.pass';
+const USERS_FILE      = __DIR__ . '/../data/users.json';
+const ROLES           = ['admin' => 'Администратор', 'manager' => 'Менеджер'];
+// менеджеру доступны заказы, клиенты и каталог; настройки и пользователи — только администратору
+const MANAGER_VIEWS   = ['dashboard', 'orders', 'customers', 'products', 'categories', 'designs', 'account'];
 const BACKUP_DIR      = __DIR__ . '/../data/backups';
 const PRODUCT_IMG_DIR = __DIR__ . '/../assets/img/products';
 const DESIGN_DIR      = __DIR__ . '/../uploads/designs';
@@ -89,6 +93,53 @@ function type_names(): array
 
 // ---------- helpers ----------
 function admin_logged(): bool { return !empty($_SESSION['admin']); }
+
+// ---------- пользователи панели ----------
+function load_users(): array
+{
+    $d = json_decode((string)@file_get_contents(USERS_FILE), true);
+    $users = [];
+    foreach ($d['users'] ?? [] as $u) {
+        if (!empty($u['email'])) $users[mb_strtolower($u['email'])] = $u + ['active' => true, 'role' => 'manager', 'last' => 0];
+    }
+    // переход со старой версии: единственный пароль превращается в администратора
+    if (!$users && is_file(ADMIN_PASS_FILE)) {
+        $email = mb_strtolower(EMAIL);
+        $users[$email] = [
+            'email' => $email, 'name' => 'Administrator', 'role' => 'admin', 'active' => true,
+            'pass' => trim((string)file_get_contents(ADMIN_PASS_FILE)), 'created' => time(), 'last' => 0,
+        ];
+        save_users($users);
+    }
+    return $users;
+}
+
+function save_users(array $users): void
+{
+    file_put_contents(USERS_FILE, json_encode(
+        ['users' => array_values($users)],
+        JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT
+    ));
+}
+
+function me(): ?array
+{
+    return load_users()[mb_strtolower((string)($_SESSION['user'] ?? ''))] ?? null;
+}
+
+function is_admin(): bool { return (me()['role'] ?? '') === 'admin'; }
+
+// Доступен ли раздел текущему пользователю
+function can(string $view): bool
+{
+    return is_admin() || in_array($view, MANAGER_VIEWS, true);
+}
+
+// Сколько активных администраторов останется — последнего не трогаем
+function admins_left(array $users, string $exceptEmail = ''): int
+{
+    return count(array_filter($users, fn($u) => ($u['role'] ?? '') === 'admin' && !empty($u['active']) && mb_strtolower($u['email']) !== $exceptEmail));
+}
 function csrf_ok(): bool { return isset($_POST['csrf']) && is_string($_POST['csrf']) && hash_equals($_SESSION['csrf'], $_POST['csrf']); }
 function flash(string $msg, string $kind = 'ok'): void { $_SESSION['flash'] = ['message' => $msg, 'kind' => $kind]; }
 function take_flash(): ?array { $f = $_SESSION['flash'] ?? null; unset($_SESSION['flash']); return $f; }
@@ -210,7 +261,15 @@ function icon(string $name): string
 $path = strtok($_SERVER['REQUEST_URI'] ?? '/admin/', '?');
 $seg  = trim(str_replace('/admin', '', $path), '/');   // '' | products | designs | settings | account
 $view = $seg === '' ? 'dashboard' : $seg;
-$hasPass = is_file(ADMIN_PASS_FILE);
+$hasPass = (bool)load_users();
+// сессия осталась от старой версии или пользователя отключили — выходим
+if (admin_logged()) {
+    $meNow = me();
+    if (!$meNow || empty($meNow['active'])) {
+        unset($_SESSION['admin'], $_SESSION['user']);
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') { flash('Войдите заново.', 'bad'); go('/admin/'); }
+    }
+}
 $err = '';
 
 // ---------- POST ----------
@@ -218,24 +277,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
 
     if ($action === 'setpass' && !$hasPass) {
+        $email = mb_strtolower(trim((string)($_POST['email'] ?? '')));
+        $name  = trim((string)($_POST['name'] ?? '')) ?: 'Administrator';
         $p1 = (string)($_POST['p1'] ?? ''); $p2 = (string)($_POST['p2'] ?? '');
-        if (mb_strlen($p1) < 8)      $err = 'Пароль должен быть не короче 8 символов.';
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $err = 'Укажите настоящий e-mail — по нему будет вход.';
+        elseif (mb_strlen($p1) < 8)  $err = 'Пароль должен быть не короче 8 символов.';
         elseif ($p1 !== $p2)         $err = 'Пароли не совпадают.';
         else {
-            file_put_contents(ADMIN_PASS_FILE, password_hash($p1, PASSWORD_DEFAULT));
-            flash('Пароль создан — войдите.');
+            save_users([$email => [
+                'email' => $email, 'name' => $name, 'role' => 'admin', 'active' => true,
+                'pass' => password_hash($p1, PASSWORD_DEFAULT), 'created' => time(), 'last' => 0,
+            ]]);
+            flash('Пользователь создан — войдите.');
             go('/admin/');
         }
     } elseif ($action === 'login') {
-        if (login_blocked())                                            $err = 'Слишком много попыток. Попробуйте через 15 минут.';
-        elseif ($hasPass && password_verify((string)($_POST['pass'] ?? ''), (string)file_get_contents(ADMIN_PASS_FILE))) {
+        $users = load_users();
+        $email = mb_strtolower(trim((string)($_POST['email'] ?? '')));
+        $u     = $users[$email] ?? null;
+        if (login_blocked())                          $err = 'Слишком много попыток. Попробуйте через 15 минут.';
+        elseif ($u && empty($u['active']))            { login_hit(); $err = 'Доступ отключён — обратитесь к администратору.'; }
+        elseif ($u && password_verify((string)($_POST['pass'] ?? ''), (string)$u['pass'])) {
             session_regenerate_id(true);
             $_SESSION['admin'] = true;
+            $_SESSION['user']  = $email;
             $_SESSION['csrf']  = bin2hex(random_bytes(16));
+            $users[$email]['last'] = time();
+            save_users($users);
             go('/admin/');
-        } else { login_hit(); $err = 'Неверный пароль.'; }
+        } else { login_hit(); $err = 'Неверный e-mail или пароль.'; }
     } elseif ($action === 'logout') {
-        unset($_SESSION['admin']);
+        unset($_SESSION['admin'], $_SESSION['user']);
         go('/admin/');
     } elseif (admin_logged() && csrf_ok()) {
         $catalog  = json_decode((string)@file_get_contents(CATALOG_FILE), true) ?: ['products' => []];
@@ -288,6 +360,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             save_catalog($catalog);
             flash('Торт удалён из каталога.');
             go('/admin/products');
+        }
+
+        if ($action === 'profile') {
+            $users = load_users();
+            $email = mb_strtolower((string)($_SESSION['user'] ?? ''));
+            if (isset($users[$email])) {
+                $users[$email]['name'] = trim((string)($_POST['name'] ?? '')) ?: $users[$email]['name'];
+                save_users($users);
+                flash('Профиль сохранён.');
+            }
+            go('/admin/account');
         }
 
         if ($action === 'settings') {
@@ -438,12 +521,82 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             go('/admin/categories');
         }
 
+        if ($action === 'user_add' && is_admin()) {
+            $users = load_users();
+            $email = mb_strtolower(trim((string)($_POST['email'] ?? '')));
+            $name  = trim((string)($_POST['name'] ?? '')) ?: $email;
+            $role  = isset(ROLES[(string)($_POST['role'] ?? '')]) ? (string)$_POST['role'] : 'manager';
+            $pass  = (string)($_POST['pass'] ?? '');
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) flash('Укажите настоящий e-mail — по нему будет вход.', 'bad');
+            elseif (isset($users[$email]))                  flash('Пользователь с таким e-mail уже есть.', 'bad');
+            elseif (mb_strlen($pass) < 8)                   flash('Пароль должен быть не короче 8 символов.', 'bad');
+            else {
+                $users[$email] = [
+                    'email' => $email, 'name' => $name, 'role' => $role, 'active' => true,
+                    'pass' => password_hash($pass, PASSWORD_DEFAULT), 'created' => time(), 'last' => 0,
+                ];
+                save_users($users);
+                flash('Пользователь добавлен.');
+            }
+            go('/admin/users');
+        }
+
+        if ($action === 'users_save' && is_admin()) {
+            $users = load_users();
+            $in    = (array)($_POST['u'] ?? []);
+            $meMail = mb_strtolower((string)($_SESSION['user'] ?? ''));
+            $saved = 0; $warn = '';
+            foreach ($users as $email => $row) {
+                $d = $in[$email] ?? null;
+                if (!is_array($d)) continue;
+                $name   = trim((string)($d['name'] ?? '')) ?: $row['name'];
+                $role   = isset(ROLES[(string)($d['role'] ?? '')]) ? (string)$d['role'] : $row['role'];
+                $active = !empty($d['active']);
+                $pass   = (string)($d['pass'] ?? '');
+                // последнего активного администратора не понижаем и не отключаем
+                $wasAdmin = ($row['role'] ?? '') === 'admin' && !empty($row['active']);
+                if ($wasAdmin && ($role !== 'admin' || !$active) && admins_left($users, $email) === 0) {
+                    $role = 'admin'; $active = true;
+                    $warn = 'Это единственный администратор — роль и доступ оставлены как были.';
+                }
+                if ($email === $meMail) $active = true;          // себя не отключаем
+                if ($pass !== '' && mb_strlen($pass) < 8) {
+                    $warn = 'Пароль короче 8 символов не сохранён.';
+                    $pass = '';
+                }
+                $users[$email]['name']   = $name;
+                $users[$email]['role']   = $role;
+                $users[$email]['active'] = $active;
+                if ($pass !== '') $users[$email]['pass'] = password_hash($pass, PASSWORD_DEFAULT);
+                $saved++;
+            }
+            save_users($users);
+            flash($warn ?: 'Изменения сохранены.', $warn ? 'bad' : 'ok');
+            go('/admin/users');
+        }
+
+        if ($action === 'user_delete' && is_admin()) {
+            $users = load_users();
+            $email = mb_strtolower((string)($_POST['email'] ?? ''));
+            if ($email === mb_strtolower((string)($_SESSION['user'] ?? '')))               flash('Себя удалить нельзя.', 'bad');
+            elseif (!isset($users[$email]))                                                flash('Пользователь не найден.', 'bad');
+            elseif (($users[$email]['role'] ?? '') === 'admin' && admins_left($users, $email) === 0) flash('Это единственный администратор.', 'bad');
+            else { unset($users[$email]); save_users($users); flash('Пользователь удалён.'); }
+            go('/admin/users');
+        }
+
         if ($action === 'chpass') {
             $cur = (string)($_POST['cur'] ?? ''); $p1 = (string)($_POST['p1'] ?? ''); $p2 = (string)($_POST['p2'] ?? '');
-            if (!password_verify($cur, (string)file_get_contents(ADMIN_PASS_FILE))) flash('Текущий пароль неверный.', 'bad');
+            $users = load_users();
+            $email = mb_strtolower((string)($_SESSION['user'] ?? ''));
+            if (!isset($users[$email]) || !password_verify($cur, (string)$users[$email]['pass'])) flash('Текущий пароль неверный.', 'bad');
             elseif (mb_strlen($p1) < 8)  flash('Новый пароль должен быть не короче 8 символов.', 'bad');
             elseif ($p1 !== $p2)         flash('Новые пароли не совпадают.', 'bad');
-            else { file_put_contents(ADMIN_PASS_FILE, password_hash($p1, PASSWORD_DEFAULT)); flash('Пароль изменён.'); }
+            else {
+                $users[$email]['pass'] = password_hash($p1, PASSWORD_DEFAULT);
+                save_users($users);
+                flash('Пароль изменён.');
+            }
             go('/admin/account');
         }
     }
@@ -463,8 +616,13 @@ $cats      = categories();
 $customers = build_customers($orders);
 $newOrders = count(array_filter($orders, fn($o) => ($o['status'] ?? 'new') === 'new'));
 
-$titles = ['dashboard' => 'Обзор', 'orders' => 'Заказы', 'customers' => 'Клиенты', 'pages' => 'Страницы', 'products' => 'Товары', 'categories' => 'Категории', 'designs' => 'Дизайны клиентов', 'seo' => 'SEO страниц', 'settings' => 'Контакты и карта', 'account' => 'Пароль и безопасность'];
+$users = load_users();
+$titles = ['dashboard' => 'Обзор', 'orders' => 'Заказы', 'customers' => 'Клиенты', 'pages' => 'Страницы', 'products' => 'Товары', 'categories' => 'Категории', 'designs' => 'Дизайны клиентов', 'seo' => 'SEO страниц', 'settings' => 'Контакты и карта', 'users' => 'Пользователи', 'account' => 'Мой профиль'];
 $title  = $titles[$view] ?? 'Админ';
 if (!array_key_exists($view, $titles)) { $view = 'dashboard'; $title = $titles['dashboard']; }
+if (admin_logged() && !can($view)) {
+    flash('Этот раздел доступен только администратору.', 'bad');
+    go('/admin/');
+}
 
 require __DIR__ . '/views/layout.php';

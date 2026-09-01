@@ -1,3 +1,18 @@
+<?php $meRow = me(); ?>
+<div class="card narrow">
+  <div class="card-hd"><h2>Профиль</h2></div>
+  <form method="post" class="pad">
+    <input type="hidden" name="action" value="profile">
+    <input type="hidden" name="csrf" value="<?= e($_SESSION['csrf']) ?>">
+    <label for="pname">Имя</label>
+    <input type="text" id="pname" name="name" value="<?= e($meRow['name'] ?? '') ?>" required>
+    <label>E-mail (логин)</label>
+    <input type="text" value="<?= e($meRow['email'] ?? '') ?>" readonly>
+    <p class="hint">Роль: <?= e(ROLES[$meRow['role'] ?? 'manager'] ?? '') ?>. E-mail меняет администратор в разделе «Пользователи».</p>
+    <div class="form-foot"><button>Сохранить</button></div>
+  </form>
+</div>
+
 <div class="card narrow">
   <div class="card-hd"><h2>Смена пароля</h2></div>
   <form method="post" class="pad">

@@ -17,10 +17,12 @@ $nav = [
     'Настройки' => [
         ['/admin/seo',      'seo',      'SEO страниц'],
         ['/admin/settings', 'settings', 'Контакты и карта'],
-        ['/admin/account',  'account',  'Пароль'],
+        ['/admin/users',    'users',    'Пользователи'],
+        ['/admin/account',  'account',  'Мой профиль'],
     ],
 ];
 $icons = [
+    'users'     => '<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.2 2.7-5.2 6-5.2s6 2 6 5.2"/><path d="M17 7.5a3.2 3.2 0 0 1 0 6"/><path d="M18.5 15c1.9.6 3.5 2.2 3.5 5"/>',
     'pages'     => '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h6"/>',
     'orders'    => '<path d="M6 2h12l2 5H4z"/><path d="M5 7v13h14V7"/><path d="M9 11a3 3 0 0 0 6 0"/>',
     'customers' => '<circle cx="9" cy="8" r="3.4"/><path d="M3 20c0-3.3 2.7-5.4 6-5.4s6 2.1 6 5.4"/><path d="M16 5.2a3.4 3.4 0 0 1 0 6.6"/><path d="M17.5 14.9c2.1.6 3.5 2.3 3.5 5.1"/>',
@@ -44,7 +46,7 @@ $isOn = function (string $href) use ($here): bool {
 <meta name="robots" content="noindex, nofollow">
 <title><?= e($title) ?> — Vanilla Cake</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍰</text></svg>">
-<link rel="stylesheet" href="/admin/assets/admin.css?v=7">
+<link rel="stylesheet" href="/admin/assets/admin.css?v=8">
 </head>
 <body class="<?= $bare ? 'bare' : '' ?>">
 
@@ -61,8 +63,10 @@ $isOn = function (string $href) use ($here): bool {
       </a>
       <nav>
         <?php foreach ($nav as $group => $links): ?>
+          <?php $visible = array_filter($links, fn($l) => can($l[1] === 'dashboard' ? 'dashboard' : $l[1])); ?>
+          <?php if (!$visible) continue; ?>
           <div class="navgroup"><?= e($group) ?></div>
-          <?php foreach ($links as [$href, $icon, $label]): ?>
+          <?php foreach ($links as [$href, $icon, $label]): if (!can($icon === 'dashboard' ? 'dashboard' : $icon)) continue; ?>
           <a href="<?= e($href) ?>" class="<?= $isOn($href) ? 'on' : '' ?>">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><?= $icons[$icon] ?></svg>
             <?= e($label) ?>
@@ -71,11 +75,19 @@ $isOn = function (string $href) use ($here): bool {
             <?php if ($icon === 'customers' && $customers): ?><i class="tally"><?= count($customers) ?></i><?php endif; ?>
             <?php if ($icon === 'categories'): ?><i class="tally"><?= count($cats) ?></i><?php endif; ?>
             <?php if ($icon === 'designs' && $designs): ?><i class="tally"><?= count($designs) ?></i><?php endif; ?>
+            <?php if ($icon === 'users'): ?><i class="tally"><?= count($users) ?></i><?php endif; ?>
           </a>
           <?php endforeach; ?>
         <?php endforeach; ?>
       </nav>
       <div class="side-foot">
+        <?php $meRow = me(); if ($meRow): ?>
+        <div class="whoami">
+          <small>Вы вошли как</small>
+          <b><?= e($meRow['name']) ?></b>
+          <i class="role <?= e($meRow['role']) ?>"><?= e(ROLES[$meRow['role']] ?? '') ?></i>
+        </div>
+        <?php endif; ?>
         <a href="/" target="_blank" rel="noopener">Открыть сайт ↗</a>
         <form method="post"><input type="hidden" name="action" value="logout"><button class="linkish">Выйти</button></form>
       </div>
