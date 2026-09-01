@@ -61,5 +61,65 @@
 </div>
 
 <script src="/assets/site.js" defer></script>
+
+<?php
+// ===== Разметка schema.org: организация, сайт, страница + узлы конкретной страницы =====
+$orgId  = CANON_HOST . '/#organization';
+$siteId = CANON_HOST . '/#website';
+$graph  = [
+    [
+        '@type'       => ['Bakery', 'Organization'],
+        '@id'         => $orgId,
+        'name'        => 'Vanilla Cake',
+        'alternateName' => 'Vanilla.az',
+        'url'         => CANON_HOST . '/',
+        'logo'        => ['@type' => 'ImageObject', 'url' => CANON_HOST . '/assets/logo.svg'],
+        'image'       => CANON_HOST . '/assets/og-cover.jpg',
+        'description' => $t['footer_desc'],
+        'telephone'   => PHONE_TEL,
+        'email'       => EMAIL,
+        'priceRange'  => '25–100 AZN',
+        'currenciesAccepted' => 'AZN',
+        'address'     => [
+            '@type'           => 'PostalAddress',
+            'addressLocality' => 'Bakı',
+            'addressCountry'  => 'AZ',
+        ],
+        'geo'         => ['@type' => 'GeoCoordinates', 'latitude' => MAP_LAT, 'longitude' => MAP_LNG],
+        'hasMap'      => MAP_URL,
+        'openingHoursSpecification' => [
+            ['@type' => 'OpeningHoursSpecification', 'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], 'opens' => '11:00', 'closes' => '20:00'],
+            ['@type' => 'OpeningHoursSpecification', 'dayOfWeek' => 'Saturday', 'opens' => '11:00', 'closes' => '14:00'],
+            ['@type' => 'OpeningHoursSpecification', 'dayOfWeek' => 'Sunday', 'opens' => '00:00', 'closes' => '00:00'],
+        ],
+        'areaServed'  => ['@type' => 'City', 'name' => 'Bakı'],
+        'sameAs'      => array_values(array_filter([IG_URL, FB_URL])),
+    ],
+    [
+        '@type'      => 'WebSite',
+        '@id'        => $siteId,
+        'url'        => CANON_HOST . '/',
+        'name'       => 'Vanilla Cake',
+        'publisher'  => ['@id' => $orgId],
+        'inLanguage' => $lang,
+    ],
+    [
+        '@type'       => $page_schema ?? 'WebPage',
+        '@id'         => canonical_url() . '#webpage',
+        'url'         => canonical_url(),
+        'name'        => $page_title,
+        'description' => $page_meta,
+        'isPartOf'    => ['@id' => $siteId],
+        'about'       => ['@id' => $orgId],
+        'inLanguage'  => $lang,
+        'primaryImageOfPage' => ['@type' => 'ImageObject', 'url' => $og_image],
+    ] + ($page_schema_extra ?? []),
+];
+foreach ($SCHEMA as $node) $graph[] = $node;
+?>
+<script type="application/ld+json"><?= json_encode(
+    ['@context' => 'https://schema.org', '@graph' => $graph],
+    JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+) ?></script>
 </body>
 </html>

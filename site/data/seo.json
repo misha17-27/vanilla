@@ -5,11 +5,23 @@
     },
     "bento": {
         "title": "Bento tort - Vanilla.az",
-        "desc": ""
+        "desc": "Bakıda bento tort sifarişi: 300–350 q (1–2 nəfər) 25 ₼, 750–800 q (3–4 nəfər) 35 ₼, 1200–1500 q (7–8 nəfər) 60 ₼. Bantikli tortlar, bento setlər və öz yazınız."
     },
     "ctg": {
         "title": "Cake to go - Vanilla.az",
-        "desc": ""
+        "desc": "Cake to go — stəkanda mini tortlar: 2 ədəd 170–190 q 25 ₼, 2 ədəd 270–290 q 30 ₼. Taxta qaşıq və şam komplektdə. Bakı üzrə çatdırılma, əvvəlcədən sifarişlə."
+    },
+    "fillings": {
+        "title": "Tərkiblər və biskvitlər - Vanilla.az",
+        "desc": "Vanilla Cake biskvitləri və içlikləri: vanil, şokolad və red velvet biskvit; çiyələk, albalı, moruq, banan, karamel və snickers içlikləri. Bento tort üçün 1 içlik seçilir."
+    },
+    "reviews": {
+        "title": "Rəylər - Vanilla.az",
+        "desc": "Vanilla Cake haqqında müştəri rəyləri: Bakıdan bizə göndərilən tortların real şəkilləri və Instagram story-ləri."
+    },
+    "konstruktor": {
+        "title": "Tort konstruktoru — öz dizaynınızı yaradın - Vanilla.az",
+        "desc": "Onlayn tort konstruktoru: krem rəngini seçin, şəkil əlavə edin və tortun üzərinə yazı yazın — nəticəni dərhal görün və WhatsApp ilə sifariş edin."
     },
     "about": {
         "title": "Haqqımızda - Vanilla.az",
@@ -17,18 +29,10 @@
     },
     "faq": {
         "title": "FAQ - Vanilla.az",
-        "desc": "Daşınma qaydası Tortu ehtiyatla düz bir səthə yerləşdirin. Yaz aylarında kondisionerlə, qışda birbaşa isitmə olmadan saxlamaq lazımdır. Maşınla dönmə edərkən"
+        "desc": "Vanilla Cake haqqında tez-tez verilən suallar: necə sifariş vermək, neçə gün əvvəl sifariş etmək lazımdır, bento tortun ölçüləri və çəkisi, saxlama və daşınma qaydaları, Bakı üzrə çatdırılma."
     },
     "contact": {
         "title": "Əlaqə - Vanilla.az",
-        "desc": "Əlaqə ƏLAQƏ MƏLUMATLARI Speaker CallA line styled icon from Orion Icon Library. Telefon: +99455 215 63 43 WhatsAppA line styled"
-    },
-    "reviews": {
-        "title": "Rəylər - Vanilla.az",
-        "desc": ""
-    },
-    "fillings": {
-        "title": "",
-        "desc": ""
+        "desc": "Vanilla Cake ilə əlaqə: WhatsApp +994 55 215 63 43, Instagram @vanilla_cake_az, Bakı. İş qrafiki: B.e–C 11:00–20:00, Şənbə 11:00–14:00. Sifarişlər yalnız əvvəlcədən qəbul olunur."
     }
 }

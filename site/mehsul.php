@@ -7,7 +7,8 @@ if (!$prod) {
     http_response_code(404);
     $page = '404';
     $page_title = 'Vanilla Cake — 404';
-    $page_meta  = '';
+    $page_meta  = $t['nf_text'];
+    $page_robots = 'noindex, follow';
     require __DIR__ . '/includes/header.php';
     echo '<section class="page-hero"><div class="container"><h1>404</h1><p class="lead">' . e($t['nf_text']) . '</p>'
        . '<p style="margin-top:24px"><a class="btn btn-primary" href="/bolme/bento-tort/">' . e($t['nav_bento']) . '</a></p></div></section>';
@@ -20,6 +21,7 @@ $name = product_name($prod);
 $page_title = trim($prod['seo_title'] ?? '') !== '' ? $prod['seo_title'] : $prod['title'] . ' - Vanilla.az';
 $page_meta  = trim($prod['seo_desc'] ?? '') !== '' ? $prod['seo_desc'] : $t['home_meta'];
 $og_image   = str_starts_with($prod['img'], 'http') ? $prod['img'] : CANON_HOST . $prod['img'];
+$og_type    = 'product';
 
 // категория для крошек и раздела «похожие»
 $catMap = [
@@ -32,6 +34,41 @@ $catMap = [
 $page = $navSlug;
 
 $sizeOpts = $t['sizes_opt_' . $prod['type']];
+
+// Разметка товара: цена берётся из тех же размеров, что видит клиент
+$page_schema = 'ItemPage';
+schema_breadcrumbs([[$catLabel, $catUrl], [$name, product_url($prod)]]);
+$prices = array_map(fn($o) => (float)$o[1], $sizeOpts);
+$og_price = min($prices);
+schema_add([
+    '@type'       => 'Product',
+    '@id'         => canonical_url() . '#product',
+    'name'        => $name,
+    'sku'         => $prod['slug'],
+    'image'       => [$og_image],
+    'description' => $page_meta,
+    'category'    => $catLabel,
+    'brand'       => ['@type' => 'Brand', 'name' => 'Vanilla Cake'],
+    'url'         => CANON_HOST . product_url($prod),
+    'offers'      => [
+        '@type'         => 'AggregateOffer',
+        'priceCurrency' => 'AZN',
+        'lowPrice'      => min($prices),
+        'highPrice'     => max($prices),
+        'offerCount'    => count($sizeOpts),
+        'availability'  => 'https://schema.org/PreOrder',
+        'url'           => CANON_HOST . product_url($prod),
+        'seller'        => ['@id' => CANON_HOST . '/#organization'],
+        'offers'        => array_map(fn($o) => [
+            '@type'         => 'Offer',
+            'name'          => $o[0],
+            'price'         => (float)$o[1],
+            'priceCurrency' => 'AZN',
+            'availability'  => 'https://schema.org/PreOrder',
+            'url'           => CANON_HOST . product_url($prod),
+        ], $sizeOpts),
+    ],
+]);
 
 // похожие: тот же тип, без текущего
 $related = array_values(array_filter(products_of($prod['type']), fn($p) => $p['slug'] !== $slug));

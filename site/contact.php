@@ -3,6 +3,8 @@ $page = 'contact';
 require __DIR__ . '/includes/config.php';
 $page_title = seo_title('contact', $t['contact_title']);
 $page_meta  = seo_desc('contact', $t['contact_meta']);
+$page_schema = 'ContactPage';
+schema_breadcrumbs([[$t['nav_contact'], '/elaqe/']]);
 require __DIR__ . '/includes/header.php';
 ?>
 

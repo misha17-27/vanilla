@@ -43,7 +43,7 @@ foreach ($products as $p) if (trim($p['seo_desc'] ?? '') === '') $noDesc++;
     </div>
     <div class="chk ok">
       <b>Карта сайта работает</b>
-      <span><a href="/sitemap.xml" target="_blank" rel="noopener">/sitemap.xml</a> — <?= count($products) + 7 ?> адресов, обновляется автоматически при изменении каталога.</span>
+      <span><a href="/sitemap.xml" target="_blank" rel="noopener">/sitemap.xml</a> — <?= count($products) + 9 ?> адресов, обновляется автоматически при изменении каталога.</span>
     </div>
     <div class="chk <?= $noDesc ? 'warn' : 'ok' ?>">
       <b>Описания товаров</b>

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /data/
+Disallow: /includes/
+Disallow: /lang/
+Disallow: /uploads/ratelimit/
+Disallow: /order-save.php
+Disallow: /upload-design.php
+
+Sitemap: https://vanilla.az/sitemap.xml

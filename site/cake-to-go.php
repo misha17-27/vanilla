@@ -5,6 +5,9 @@ $page_title = seo_title('ctg', $t['ctg_title']);
 $page_meta  = seo_desc('ctg', $t['ctg_meta']);
 require __DIR__ . '/includes/header.php';
 $ctg = products_of('ctg');
+$page_schema = 'CollectionPage';
+schema_breadcrumbs([[$t['nav_ctg'], '/bolme/cake-to-go/']]);
+schema_add(schema_item_list($ctg, $t['ctg_h']));
 ?>
 
 <section class="page-hero">

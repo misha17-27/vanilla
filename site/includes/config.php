@@ -86,6 +86,67 @@ function lang_url(string $l): string
     return current_path() . '?lang=' . $l;
 }
 
+// Канонический адрес: язык по умолчанию — на чистом URL, остальные — с ?lang=
+function canonical_url(?string $l = null): string
+{
+    global $lang;
+    $l = $l ?? $lang;
+    return CANON_HOST . current_path() . ($l === 'ru' ? '' : '?lang=' . $l);
+}
+
+// ===== Разметка schema.org =====
+// Страницы добавляют свои узлы через schema_add(); футер печатает их одним @graph.
+$SCHEMA = [];
+
+function schema_add(array $node): void
+{
+    global $SCHEMA;
+    $SCHEMA[] = $node;
+}
+
+// Хлебные крошки: [[название, адрес], …] — «Главная» подставляется сама
+function schema_breadcrumbs(array $items): void
+{
+    global $t;
+    $list = [['@type' => 'ListItem', 'position' => 1, 'name' => $t['breadcrumb_home'], 'item' => CANON_HOST . '/']];
+    foreach ($items as $i => [$name, $url]) {
+        $node = ['@type' => 'ListItem', 'position' => $i + 2, 'name' => $name];
+        if ($url) $node['item'] = CANON_HOST . $url;
+        $list[] = $node;
+    }
+    schema_add(['@type' => 'BreadcrumbList', '@id' => canonical_url() . '#breadcrumb', 'itemListElement' => $list]);
+}
+
+// Список товаров раздела для разметки CollectionPage
+function schema_item_list(array $products, string $name): array
+{
+    $items = [];
+    foreach ($products as $i => $p) {
+        $items[] = [
+            '@type'    => 'ListItem',
+            'position' => $i + 1,
+            'url'      => CANON_HOST . product_url($p),
+            'name'     => product_name($p),
+            'image'    => CANON_HOST . asset($p['img']),
+        ];
+    }
+    return [
+        '@type'           => 'ItemList',
+        '@id'             => canonical_url() . '#items',
+        'name'            => $name,
+        'numberOfItems'   => count($items),
+        'itemListElement' => $items,
+    ];
+}
+
+// Цены товара: из строки «35 – 60 ₼» получаем минимум и максимум
+function price_range(string $price): array
+{
+    preg_match_all('/\d+(?:[.,]\d+)?/u', $price, $m);
+    $nums = array_map(fn($n) => (float)str_replace(',', '.', $n), $m[0] ?: ['0']);
+    return [min($nums), max($nums)];
+}
+
 // ===== SEO (снято с vanilla.az, чтобы сохранить позиции) =====
 $SEO = json_decode((string)@file_get_contents(__DIR__ . '/../data/seo.json'), true) ?: [];
 

@@ -4,6 +4,7 @@ require __DIR__ . '/includes/config.php';
 $page_title = seo_title('home', $t['home_title']);
 $page_meta  = seo_desc('home', $t['home_meta']);
 require __DIR__ . '/includes/header.php';
+$page_schema = 'WebPage';
 $bento  = products_of('bento');
 $bantik = products_of('bantik');
 $sets   = products_of('set');

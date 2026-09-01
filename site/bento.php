@@ -7,6 +7,9 @@ require __DIR__ . '/includes/header.php';
 $bento  = products_of('bento');
 $bantik = products_of('bantik');
 $sets   = products_of('set');
+$page_schema = 'CollectionPage';
+schema_breadcrumbs([[$t['nav_bento'], '/bolme/bento-tort/']]);
+schema_add(schema_item_list(array_merge($bento, $bantik, $sets), $t['bento_h']));
 ?>
 
 <section class="page-hero">

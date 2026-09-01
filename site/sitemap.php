@@ -1,13 +1,20 @@
 <?php
 require __DIR__ . '/includes/config.php';
 header('Content-Type: application/xml; charset=UTF-8');
-$urls = ['/', '/bolme/bento-tort/', '/bolme/cake-to-go/', '/terkibler/', '/reyler/', '/haqqimizda/', '/faq/', '/elaqe/'];
+$urls = ['/', '/bolme/bento-tort/', '/bolme/cake-to-go/', '/terkibler/', '/reyler/', '/konstruktor/', '/haqqimizda/', '/faq/', '/elaqe/'];
 foreach ($PRODUCTS as $p) {
     $urls[] = product_url($p);
 }
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">' . "\n";
 foreach ($urls as $u) {
-    echo '  <url><loc>' . e(CANON_HOST . $u) . '</loc></url>' . "\n";
+    echo '  <url>' . "\n";
+    echo '    <loc>' . e(CANON_HOST . $u) . '</loc>' . "\n";
+    foreach ($LANGS as $l) {
+        $href = CANON_HOST . $u . ($l === 'ru' ? '' : '?lang=' . $l);
+        echo '    <xhtml:link rel="alternate" hreflang="' . e($l) . '" href="' . e($href) . '"/>' . "\n";
+    }
+    echo '    <xhtml:link rel="alternate" hreflang="x-default" href="' . e(CANON_HOST . $u) . '"/>' . "\n";
+    echo '  </url>' . "\n";
 }
 echo '</urlset>';

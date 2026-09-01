@@ -12,8 +12,10 @@ $nav = [
     'faq'      => ['/faq/',                $t['nav_faq']],
     'contact'  => ['/elaqe/',              $t['nav_contact']],
 ];
-$canonical = CANON_HOST . current_path();
-$og_image  = $og_image ?? (CANON_HOST . '/assets/logo.svg');
+$canonical = canonical_url();
+$og_image  = $og_image ?? (CANON_HOST . '/assets/og-cover.jpg');
+$og_type   = $og_type ?? 'website';
+$OG_LOCALE = ['ru' => 'ru_RU', 'az' => 'az_AZ', 'en' => 'en_US'];
 ?><!DOCTYPE html>
 <html lang="<?= e($lang) ?>">
 <head>
@@ -21,12 +23,35 @@ $og_image  = $og_image ?? (CANON_HOST . '/assets/logo.svg');
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= e($page_title) ?></title>
 <meta name="description" content="<?= e($page_meta) ?>">
+<meta name="robots" content="<?= e($page_robots ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1') ?>">
 <link rel="canonical" href="<?= e($canonical) ?>">
-<meta property="og:type" content="website">
+<?php foreach ($LANGS as $l): ?>
+<link rel="alternate" hreflang="<?= e($l) ?>" href="<?= e(canonical_url($l)) ?>">
+<?php endforeach; ?>
+<link rel="alternate" hreflang="x-default" href="<?= e(canonical_url('ru')) ?>">
+<meta property="og:type" content="<?= e($og_type) ?>">
+<meta property="og:site_name" content="Vanilla Cake">
+<meta property="og:locale" content="<?= e($OG_LOCALE[$lang]) ?>">
+<?php foreach ($LANGS as $l): if ($l === $lang) continue; ?>
+<meta property="og:locale:alternate" content="<?= e($OG_LOCALE[$l]) ?>">
+<?php endforeach; ?>
 <meta property="og:title" content="<?= e($page_title) ?>">
 <meta property="og:description" content="<?= e($page_meta) ?>">
 <meta property="og:url" content="<?= e($canonical) ?>">
 <meta property="og:image" content="<?= e($og_image) ?>">
+<meta property="og:image:alt" content="<?= e($page_title) ?>">
+<?php if (!empty($og_price)): ?>
+<meta property="product:price:amount" content="<?= e((string)$og_price) ?>">
+<meta property="product:price:currency" content="AZN">
+<meta property="product:availability" content="preorder">
+<?php endif; ?>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<?= e($page_title) ?>">
+<meta name="twitter:description" content="<?= e($page_meta) ?>">
+<meta name="twitter:image" content="<?= e($og_image) ?>">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="AZ-BA">
+<meta name="geo.placename" content="Bakı">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍰</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

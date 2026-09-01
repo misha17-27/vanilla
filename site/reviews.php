@@ -3,6 +3,8 @@ $page = 'reviews';
 require __DIR__ . '/includes/config.php';
 $page_title = seo_title('reviews', $t['rev_title']);
 $page_meta  = seo_desc('reviews', $t['rev_meta']);
+$page_schema = 'CollectionPage';
+schema_breadcrumbs([[$t['nav_reviews'], '/reyler/']]);
 require __DIR__ . '/includes/header.php';
 $rev = json_decode((string)@file_get_contents(__DIR__ . '/data/reviews.json'), true) ?: ['items' => []];
 $items = $rev['items'] ?? [];
