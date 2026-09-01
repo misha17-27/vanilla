@@ -269,8 +269,9 @@ return [
   'k_colors' => [
     ['Ağ', '#FDFBF7'], ['Krem', '#F7EAD5'], ['Pudra', '#F6D9DE'], ['Çəhrayı', '#F9C9D8'],
     ['Moruq', '#F49AB8'], ['Mərcan', '#F7B3A0'], ['Şaftalı', '#FBD3B4'], ['Sarı', '#F9E3A8'],
-    ['Nanə', '#C6E7DA'], ['Püstə', '#D6E4B4'], ['Mavi', '#BFDCF3'], ['Göy', '#9FB9E8'],
+    ['Nanə', '#C6E7DA'], ['Püstə', '#D6E4B4'], ['Mavi', '#BFDCF3'], ['Açıq göy', '#9FB9E8'],
     ['Lavanda', '#E3D3F0'], ['Yasəmən', '#CBB6E4'], ['Boz', '#D9DDE1'], ['Şokolad', '#6B4A32'],
+    ['Qara', '#1F1F22'], ['Göy', '#2A5CC7'], ['Qırmızı', '#D22B2B'],
   ],
   'k_tcolors' => [
     ['Çəhrayı', '#E0527F'], ['Qırmızı', '#D32F3E'], ['Moruq', '#B3245C'], ['Göy', '#16527F'],

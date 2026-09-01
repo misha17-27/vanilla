@@ -269,8 +269,9 @@ return [
   'k_colors' => [
     ['White', '#FDFBF7'], ['Cream', '#F7EAD5'], ['Powder', '#F6D9DE'], ['Pink', '#F9C9D8'],
     ['Raspberry', '#F49AB8'], ['Coral', '#F7B3A0'], ['Peach', '#FBD3B4'], ['Yellow', '#F9E3A8'],
-    ['Mint', '#C6E7DA'], ['Pistachio', '#D6E4B4'], ['Sky', '#BFDCF3'], ['Blue', '#9FB9E8'],
+    ['Mint', '#C6E7DA'], ['Pistachio', '#D6E4B4'], ['Sky', '#BFDCF3'], ['Periwinkle', '#9FB9E8'],
     ['Lavender', '#E3D3F0'], ['Lilac', '#CBB6E4'], ['Grey', '#D9DDE1'], ['Chocolate', '#6B4A32'],
+    ['Black', '#1F1F22'], ['Blue', '#2A5CC7'], ['Red', '#D22B2B'],
   ],
   'k_tcolors' => [
     ['Pink', '#E0527F'], ['Red', '#D32F3E'], ['Raspberry', '#B3245C'], ['Navy', '#16527F'],
