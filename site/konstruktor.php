@@ -1,8 +1,8 @@
 <?php
 $page = 'konstr';
 require __DIR__ . '/includes/config.php';
-$page_title = $t['k_title'];
-$page_meta  = $t['k_meta'];
+$page_title = seo_title('konstruktor', $t['k_title']);
+$page_meta  = seo_desc('konstruktor', $t['k_meta']);
 require __DIR__ . '/includes/header.php';
 ?>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">

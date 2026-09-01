@@ -1,14 +1,8 @@
 <?php
-$pages = [
-    'home'    => ['Главная', '/'],
-    'bento'   => ['Бенто-торты', '/bolme/bento-tort/'],
-    'ctg'     => ['Cake to go', '/bolme/cake-to-go/'],
-    'reviews' => ['Отзывы', '/reyler/'],
-    'about'   => ['О нас', '/haqqimizda/'],
-    'faq'     => ['FAQ', '/faq/'],
-    'contact' => ['Контакты', '/elaqe/'],
-];
-$seoData = json_decode((string)@file_get_contents(__DIR__ . '/../../data/seo.json'), true) ?: [];
+// Страницы берём из карты (admin/pagemap.php) — та же, что в разделе «Страницы»
+$pages = [];
+foreach ($PAGEMAP as $pageKey => $p) if (!empty($p['seo'])) $pages[$p['seo']] = [$p['label'], $p['url'], $pageKey];
+$seoData = load_seo();
 $noDesc = 0;
 foreach ($products as $p) if (trim($p['seo_desc'] ?? '') === '') $noDesc++;
 ?>
@@ -20,11 +14,11 @@ foreach ($products as $p) if (trim($p['seo_desc'] ?? '') === '') $noDesc++;
   <form method="post" class="pad">
     <input type="hidden" name="action" value="seo">
     <input type="hidden" name="csrf" value="<?= e($_SESSION['csrf']) ?>">
-    <?php foreach ($pages as $key => [$label, $url]): ?>
+    <?php foreach ($pages as $key => [$label, $url, $pageKey]): ?>
     <div class="seo-block">
       <div class="seo-head">
         <b><?= e($label) ?></b>
-        <a href="<?= e($url) ?>" target="_blank" rel="noopener"><?= e($url) ?> ↗</a>
+        <span><a href="/admin/pages?edit=<?= e($pageKey) ?>">тексты страницы</a> · <a href="<?= e($url) ?>" target="_blank" rel="noopener"><?= e($url) ?> ↗</a></span>
       </div>
       <label for="t_<?= $key ?>">Заголовок (title)</label>
       <input type="text" id="t_<?= $key ?>" name="seo[<?= $key ?>][title]" value="<?= e($seoData[$key]['title'] ?? '') ?>" maxlength="120">

@@ -9,6 +9,62 @@ const DESIGN_DIR      = __DIR__ . '/../uploads/designs';
 const ORDERS_FILE      = __DIR__ . '/../data/orders.json';
 const ORDER_STATUSES  = ['new' => 'Новый', 'confirmed' => 'Подтверждён', 'done' => 'Выполнен', 'canceled' => 'Отменён'];
 const CAT_PAGES       = ['bento' => 'Бенто-торты (/bolme/bento-tort/)', 'ctg' => 'Cake to go (/bolme/cake-to-go/)'];
+const TEXTS_FILE_ADM  = __DIR__ . '/../data/texts.json';
+const SEO_FILE        = __DIR__ . '/../data/seo.json';
+$PAGEMAP = require __DIR__ . '/pagemap.php';
+
+// Ключи SEO по карте страниц — чтобы разделы «Страницы» и «SEO» не расходились
+function seo_keys(): array
+{
+    global $PAGEMAP;
+    $out = [];
+    foreach ($PAGEMAP as $p) if (!empty($p['seo'])) $out[] = $p['seo'];
+    return $out;
+}
+
+function load_seo(): array
+{
+    return json_decode((string)@file_get_contents(SEO_FILE), true) ?: [];
+}
+
+function save_seo(array $seo): void
+{
+    file_put_contents(SEO_FILE, json_encode($seo, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+}
+
+function load_texts(): array
+{
+    return json_decode((string)@file_get_contents(TEXTS_FILE_ADM), true) ?: [];
+}
+
+// Тип поля определяем по значению из перевода: список, пары «название | цена» или обычный текст
+function field_kind($default): string
+{
+    if (is_array($default)) return is_array($default[0] ?? null) ? 'pairs' : 'list';
+    return (mb_strlen((string)$default) > 90 || str_contains((string)$default, '<')) ? 'area' : 'line';
+}
+
+// Из того, что ввели в форме, обратно в значение нужного типа
+function field_value(string $raw, string $kind)
+{
+    $raw = str_replace(["\r\n", "\r"], "\n", trim($raw));
+    if ($kind === 'list') {
+        $out = [];
+        foreach (explode("\n", $raw) as $line) { $line = trim($line); if ($line !== '') $out[] = $line; }
+        return $out;
+    }
+    if ($kind === 'pairs') {
+        $out = [];
+        foreach (explode("\n", $raw) as $line) {
+            if (trim($line) === '') continue;
+            $parts = array_map('trim', explode('|', $line, 2));
+            if ($parts[0] === '') continue;
+            $out[] = [$parts[0], (float)str_replace(',', '.', $parts[1] ?? '0')];
+        }
+        return $out;
+    }
+    return $raw;
+}
 
 // Названия категорий для админки: базовые + добавленные вручную
 function type_names(): array
@@ -219,13 +275,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($action === 'seo') {
             $in  = (array)($_POST['seo'] ?? []);
             $out = [];
-            foreach (['home', 'bento', 'ctg', 'reviews', 'about', 'faq', 'contact'] as $k) {
+            foreach (seo_keys() as $k) {
                 $out[$k] = [
                     'title' => trim((string)($in[$k]['title'] ?? '')),
                     'desc'  => trim((string)($in[$k]['desc'] ?? '')),
                 ];
             }
-            file_put_contents(__DIR__ . '/../data/seo.json', json_encode($out, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+            save_seo($out);
             flash('SEO-данные сохранены.');
             go('/admin/seo');
         }
@@ -266,6 +322,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             save_orders(array_filter(load_orders(), fn($o) => $o['id'] !== $id));
             flash('Заказ удалён.');
             go('/admin/orders');
+        }
+
+        if ($action === 'page_save') {
+            $pk = (string)($_POST['page'] ?? '');
+            $l  = (string)($_POST['l'] ?? 'ru');
+            if (!isset($PAGEMAP[$pk]) || !in_array($l, ['ru', 'az', 'en'], true)) go('/admin/pages');
+            $page = $PAGEMAP[$pk];
+
+            // SEO — одно на все языки, как было на vanilla.az
+            if (!empty($page['seo'])) {
+                $seo = load_seo();
+                $seo[$page['seo']] = [
+                    'title' => mb_substr(trim((string)($_POST['seo_title'] ?? '')), 0, 120),
+                    'desc'  => mb_substr(trim((string)($_POST['seo_desc'] ?? '')), 0, 320),
+                ];
+                save_seo($seo);
+            }
+
+            // Тексты: храним только то, что отличается от перевода по умолчанию
+            $def   = require __DIR__ . "/../lang/$l.php";
+            $texts = load_texts();
+            $cur   = $texts[$l] ?? [];
+            $in    = (array)($_POST['tx'] ?? []);
+            foreach ($page['groups'] as $keys) {
+                foreach ($keys as $k) {
+                    if (!array_key_exists($k, $in)) continue;
+                    $val = field_value((string)$in[$k], field_kind($def[$k] ?? ''));
+                    if ($val === '' || $val === [] || $val == ($def[$k] ?? null)) unset($cur[$k]);
+                    else $cur[$k] = $val;
+                }
+            }
+            if ($cur) $texts[$l] = $cur; else unset($texts[$l]);
+            file_put_contents(TEXTS_FILE_ADM, json_encode($texts, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+            flash('Страница сохранена.');
+            go('/admin/pages?edit=' . urlencode($pk) . '&l=' . $l);
+        }
+
+        if ($action === 'page_reset') {
+            $pk = (string)($_POST['page'] ?? '');
+            $l  = (string)($_POST['l'] ?? 'ru');
+            if (isset($PAGEMAP[$pk]) && in_array($l, ['ru', 'az', 'en'], true)) {
+                $texts = load_texts();
+                foreach ($PAGEMAP[$pk]['groups'] as $keys) foreach ($keys as $k) unset($texts[$l][$k]);
+                if (empty($texts[$l])) unset($texts[$l]);
+                file_put_contents(TEXTS_FILE_ADM, json_encode($texts, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+                flash('Тексты страницы возвращены к исходным.');
+            }
+            go('/admin/pages?edit=' . urlencode($pk) . '&l=' . $l);
         }
 
         if ($action === 'cat_save') {
@@ -328,7 +432,7 @@ $cats      = categories();
 $customers = build_customers($orders);
 $newOrders = count(array_filter($orders, fn($o) => ($o['status'] ?? 'new') === 'new'));
 
-$titles = ['dashboard' => 'Обзор', 'orders' => 'Заказы', 'customers' => 'Клиенты', 'products' => 'Товары', 'categories' => 'Категории', 'designs' => 'Дизайны клиентов', 'seo' => 'SEO страниц', 'settings' => 'Контакты и карта', 'account' => 'Пароль и безопасность'];
+$titles = ['dashboard' => 'Обзор', 'orders' => 'Заказы', 'customers' => 'Клиенты', 'pages' => 'Страницы', 'products' => 'Товары', 'categories' => 'Категории', 'designs' => 'Дизайны клиентов', 'seo' => 'SEO страниц', 'settings' => 'Контакты и карта', 'account' => 'Пароль и безопасность'];
 $title  = $titles[$view] ?? 'Админ';
 if (!array_key_exists($view, $titles)) { $view = 'dashboard'; $title = $titles['dashboard']; }
 

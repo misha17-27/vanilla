@@ -191,3 +191,25 @@ h3{font-size:.95rem;color:var(--navy);margin:26px 0 4px}
   .kv > div{grid-template-columns:1fr;gap:2px}
   .grid small.show-s{display:block}
 }
+
+/* ---------- страницы и тексты ---------- */
+.langsw{display:flex;gap:2px;background:var(--line-2);border-radius:99px;padding:3px;margin-right:auto}
+.langsw a{padding:5px 14px;border-radius:99px;font:700 12px var(--mono);letter-spacing:.06em;color:var(--steel)}
+.langsw a:hover{color:var(--navy)}
+.langsw a.on{background:var(--navy);color:#fff}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%;background:#0f9d58}
+.dot.no{background:#d8dde5}
+.urlrow{display:flex;gap:16px;align-items:flex-start;padding-bottom:18px;border-bottom:1px dashed var(--line)}
+.urlrow > div{flex:1}
+.urlrow .btn{margin-top:26px;white-space:nowrap}
+.urlrow input[readonly]{background:#fafbfd;color:var(--steel);font-family:var(--mono);font-size:13px}
+.txgroup{padding:20px 0 4px;border-bottom:1px dashed var(--line)}
+.txgroup:last-of-type{border-bottom:0}
+.txgroup h3{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:12px}
+.txfields{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.txf.wide{grid-column:1 / -1}
+.txf label{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.txf label code{font-size:10.5px;color:#9aa4b2;font-weight:400;background:#f4f6f9;padding:1px 6px;border-radius:5px}
+.txf .mark{font-style:normal;font-size:10px;font-weight:700;color:var(--brand);background:#FFF3F8;padding:1px 7px;border-radius:99px;letter-spacing:.04em}
+.txf textarea{font-size:13.5px;line-height:1.5}
+@media(max-width:900px){.txfields{grid-template-columns:1fr}}

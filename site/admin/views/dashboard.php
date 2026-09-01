@@ -70,6 +70,10 @@ $updated = $catalog['updated'] ?? '';
         <b>Новые заказы</b>
         <small><?= $newOrders ?: 'Пока ни одного' ?><?= $newOrders ? ' ждут подтверждения' : '' ?></small>
       </a>
+      <a class="qbtn" href="/admin/pages">
+        <b>Тексты страниц</b>
+        <small>Заголовки, описания и SEO — RU / AZ / EN</small>
+      </a>
       <a class="qbtn" href="/admin/settings">
         <b>Контакты и карта</b>
         <small>Телефон, WhatsApp, адрес точки</small>

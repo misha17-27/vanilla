@@ -8,6 +8,15 @@ if (isset($_GET['lang']) && in_array($_GET['lang'], $LANGS, true)) {
 $lang = $_SESSION['lang'] ?? 'ru';
 $t = require __DIR__ . "/../lang/$lang.php";
 
+// Правки текстов из админки (раздел «Страницы») перекрывают lang/*.php.
+// Пустое значение = осталось как в переводе по умолчанию.
+const TEXTS_FILE = __DIR__ . '/../data/texts.json';
+$TEXTS = json_decode((string)@file_get_contents(TEXTS_FILE), true) ?: [];
+foreach (($TEXTS[$lang] ?? []) as $k => $v) {
+    if ($v === '' || $v === null || $v === []) continue;
+    $t[$k] = $v;
+}
+
 // CSRF-токен для форм (загрузка дизайна и т.п.)
 if (empty($_SESSION['csrf'])) {
     $_SESSION['csrf'] = bin2hex(random_bytes(16));
