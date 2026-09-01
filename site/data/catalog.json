@@ -2,6 +2,87 @@
     "updated": "2026-09-01",
     "products": [
         {
+            "slug": "bento-tort-boy-or-girl-klassik",
+            "title": "Bento tort Boy or Girl Klassik",
+            "img": "/assets/img/products/bento-tort-boy-or-girl-klassik.jpg",
+            "price": "25 – 60 ₼",
+            "type": "boyorgirl",
+            "seo_title": "Bento tort Boy or Girl Klassik - Vanilla.az",
+            "seo_desc": "Bento tort Boy or Girl Klassik — gender party üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə."
+        },
+        {
+            "slug": "bento-tort-boy-or-girl-panda",
+            "title": "Bento tort Boy or Girl Panda",
+            "img": "/assets/img/products/bento-tort-boy-or-girl-panda.jpg",
+            "price": "25 – 60 ₼",
+            "type": "boyorgirl",
+            "seo_title": "Bento tort Boy or Girl Panda - Vanilla.az",
+            "seo_desc": "Bento tort Boy or Girl Panda — Boy or Girl tortu: mavi-çəhrayı bəzək, üzərində istədiyiniz yazı. 25 ₼-dən, Bakıda əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-boy-or-girl-mavi-ve-cehrayi",
+            "title": "Bento tort Boy or Girl Mavi və çəhrayı",
+            "img": "/assets/img/products/bento-tort-boy-or-girl-mavi-ve-cehrayi.jpg",
+            "price": "25 – 60 ₼",
+            "type": "boyorgirl",
+            "seo_title": "Bento tort Boy or Girl Mavi və çəhrayı - Vanilla.az",
+            "seo_desc": "Bento tort Boy or Girl Mavi və çəhrayı — körpənin cinsini elan etmək üçün tort. 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼."
+        },
+        {
+            "slug": "bento-tort-boy-or-girl-baba-olursan",
+            "title": "Bento tort Boy or Girl Baba olursan",
+            "img": "/assets/img/products/bento-tort-boy-or-girl-baba-olursan.jpg",
+            "price": "25 – 60 ₼",
+            "type": "boyorgirl",
+            "seo_title": "Bento tort Boy or Girl Baba olursan - Vanilla.az",
+            "seo_desc": "Bento tort Boy or Girl Baba olursan — gender party tortu Vanilla Cake-dən. Dizaynı təkrarlayır, biskviti və içliyi özünüz seçirsiniz. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-boy-or-girl-leylek",
+            "title": "Bento tort Boy or Girl Leylək",
+            "img": "/assets/img/products/bento-tort-boy-or-girl-leylek.jpg",
+            "price": "25 – 60 ₼",
+            "type": "boyorgirl",
+            "seo_title": "Bento tort Boy or Girl Leylək - Vanilla.az",
+            "seo_desc": "Bento tort Boy or Girl Leylək — gender party üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə."
+        },
+        {
+            "slug": "bento-tort-boy-or-girl-panda-pastel",
+            "title": "Bento tort Boy or Girl Panda pastel",
+            "img": "/assets/img/products/bento-tort-boy-or-girl-panda-pastel.jpg",
+            "price": "25 – 60 ₼",
+            "type": "boyorgirl",
+            "seo_title": "Bento tort Boy or Girl Panda pastel - Vanilla.az",
+            "seo_desc": "Bento tort Boy or Girl Panda pastel — Boy or Girl tortu: mavi-çəhrayı bəzək, üzərində istədiyiniz yazı. 25 ₼-dən, Bakıda əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-boy-or-girl-yoldadir",
+            "title": "Bento tort Boy or Girl Yoldadır",
+            "img": "/assets/img/products/bento-tort-boy-or-girl-yoldadir.jpg",
+            "price": "25 – 60 ₼",
+            "type": "boyorgirl",
+            "seo_title": "Bento tort Boy or Girl Yoldadır - Vanilla.az",
+            "seo_desc": "Bento tort Boy or Girl Yoldadır — körpənin cinsini elan etmək üçün tort. 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼."
+        },
+        {
+            "slug": "bento-tort-boy-or-girl-xos-geldin-korpe",
+            "title": "Bento tort Boy or Girl Xoş gəldin körpə",
+            "img": "/assets/img/products/bento-tort-boy-or-girl-xos-geldin-korpe.jpg",
+            "price": "25 – 60 ₼",
+            "type": "boyorgirl",
+            "seo_title": "Bento tort Boy or Girl Xoş gəldin körpə - Vanilla.az",
+            "seo_desc": "Bento tort Boy or Girl Xoş gəldin körpə — gender party tortu Vanilla Cake-dən. Dizaynı təkrarlayır, biskviti və içliyi özünüz seçirsiniz. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-boy-or-girl-ayaq-izleri",
+            "title": "Bento tort Boy or Girl Ayaq izləri",
+            "img": "/assets/img/products/bento-tort-boy-or-girl-ayaq-izleri.jpg",
+            "price": "25 – 60 ₼",
+            "type": "boyorgirl",
+            "seo_title": "Bento tort Boy or Girl Ayaq izləri - Vanilla.az",
+            "seo_desc": "Bento tort Boy or Girl Ayaq izləri — gender party üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə."
+        },
+        {
             "slug": "bento-tort-foto-limited-edition",
             "title": "Bento tort foto Limited Edition",
             "img": "/assets/img/products/bento-tort-foto-limited-edition.jpg",

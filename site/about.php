@@ -1,6 +1,6 @@
 <?php
 $page = 'about';
-require __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/config.php';
 $page_title = seo_title('about', $t['about_title']);
 $page_meta  = seo_desc('about', $t['about_meta']);
 $page_schema = 'AboutPage';

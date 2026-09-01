@@ -11,8 +11,6 @@ $bentoSub = [];
 foreach (own_categories() as $c) {
     $bentoSub['cat-' . $c['key']] = [cat_url($c), cat_name($c['key']), $firstImg($c['key'])];
 }
-$bentoSub['bantik'] = ['/bolme/bento-tort/#bantik', $t['bantik_h'], $firstImg('bantik')];
-$bentoSub['sets']   = ['/bolme/bento-tort/#sets',   $t['sets_h'],   $firstImg('set')];
 
 $nav = [
     'index'    => ['/',                    $t['nav_home']],

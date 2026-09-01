@@ -1,6 +1,6 @@
 <?php
 $page = 'faq';
-require __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/config.php';
 $page_title = seo_title('faq', $t['faq_title']);
 $page_meta  = seo_desc('faq', $t['faq_meta']);
 $items = ['f1', 'f2', 'f7', 'f3', 'f4', 'f5', 'f6'];

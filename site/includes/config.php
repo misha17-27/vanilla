@@ -228,7 +228,8 @@ function own_categories(): array
 
 function cat_url(array $c): string
 {
-    return '/bolme/' . ($c['slug'] ?? $c['key']) . '/';
+    // path — если у категории закреплён адрес со старого сайта
+    return $c['path'] ?? ('/bolme/' . ($c['slug'] ?? $c['key']) . '/');
 }
 
 function product_url(array $p): string

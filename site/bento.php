@@ -1,6 +1,6 @@
 <?php
 $page = 'bento';
-require __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/config.php';
 $page_title = seo_title('bento', $t['bento_title']);
 $page_meta  = seo_desc('bento', $t['bento_meta']);
 require __DIR__ . '/includes/header.php';
@@ -32,23 +32,6 @@ schema_add(schema_item_list(array_merge($bento, $bantik, $sets), $t['bento_h']))
       <?php foreach ($bento as $i => $p) product_card($p, $i > 3); ?>
     </div>
 
-    <div class="sec-head" id="bantik" style="margin-top:84px">
-      <span class="eyebrow">Vanilla</span>
-      <h2><?= e($t['bantik_h']) ?></h2>
-      <p><?= e($t['bantik_d']) ?></p>
-    </div>
-    <div class="pgrid">
-      <?php foreach ($bantik as $p) product_card($p); ?>
-    </div>
-
-    <div class="sec-head" id="sets" style="margin-top:84px">
-      <span class="eyebrow">Vanilla</span>
-      <h2><?= e($t['sets_h']) ?></h2>
-      <p><?= e($t['sets_d']) ?></p>
-    </div>
-    <div class="pgrid">
-      <?php foreach ($sets as $p) product_card($p); ?>
-    </div>
 
     <?php foreach (own_categories() as $c): $items = products_of($c['key']); if (!$items) continue; ?>
     <div class="head-row" id="cat-<?= e($c['key']) ?>" style="margin-top:84px">

@@ -79,11 +79,21 @@ foreach (['/biskvit/', '/terkib/', '/olcu/'] as $prefix) {
     }
 }
 
+// Страницы категорий каталога: адрес берём из самой категории
+require_once __DIR__ . '/includes/config.php';
+foreach (categories() as $catKey => $catRow) {
+    if (($catRow['page'] ?? '') === 'own' && cat_url($catRow) === $path) {
+        $CAT_KEY = $catKey;
+        require __DIR__ . '/category.php';
+        exit;
+    }
+}
+
 // Метки товаров WooCommerce (/product-tag/…) — в подходящий раздел
 if (preg_match('#^/product-tag/([^/]+)/$#', $path, $m)) {
     $tagMap = [
         'mini-tort'    => '/bolme/cake-to-go/',
-        'bento-bantik' => '/bolme/bento-tort/#bantik',
+        'bento-bantik' => '/bolme/bento-tort/bento-bantik-tort/',
     ];
     header('Location: ' . ($tagMap[$m[1]] ?? '/bolme/bento-tort/'), true, 301);
     exit;
@@ -91,7 +101,7 @@ if (preg_match('#^/product-tag/([^/]+)/$#', $path, $m)) {
 
 // Подкатегории старого каталога: /bolme/bento-tort/usaq-tortlari/ и т.п.
 if (preg_match('#^/bolme/bento-tort/([^/]+)/$#', $path, $m) && $m[1] !== 'page') {
-    $subMap = ['bento-bantik-tort' => '/bolme/bento-tort/#bantik'];
+    $subMap = [];
     header('Location: ' . ($subMap[$m[1]] ?? '/bolme/bento-tort/'), true, 301);
     exit;
 }
@@ -130,18 +140,6 @@ if (isset($routes[$path])) {
     exit;
 }
 
-// свои категории каталога: /bolme/{slug}/
-if (preg_match('#^/bolme/([a-z0-9-]+)/$#', $path, $m)) {
-    require_once __DIR__ . '/includes/config.php';
-    foreach (categories() as $key => $c) {
-        if (($c['page'] ?? '') === 'own' && ($c['slug'] ?? $key) === $m[1]) {
-            $CAT_KEY = $key;
-            require __DIR__ . '/category.php';
-            exit;
-        }
-    }
-}
-
 if (preg_match('#^/mehsul/([a-z0-9_-]+)/$#i', $path, $m)) {
     $ROUTE_SLUG = $m[1];
     require __DIR__ . '/mehsul.php';
@@ -151,7 +149,7 @@ if (preg_match('#^/mehsul/([a-z0-9_-]+)/$#i', $path, $m)) {
 // 404
 http_response_code(404);
 $page = '404';
-require __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/config.php';
 $page_title = 'Vanilla Cake — 404';
 $page_meta  = '';
 require __DIR__ . '/includes/header.php';

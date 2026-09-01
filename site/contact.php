@@ -1,6 +1,6 @@
 <?php
 $page = 'contact';
-require __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/config.php';
 $page_title = seo_title('contact', $t['contact_title']);
 $page_meta  = seo_desc('contact', $t['contact_meta']);
 $page_schema = 'ContactPage';

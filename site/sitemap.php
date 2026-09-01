@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/config.php';
 header('Content-Type: application/xml; charset=UTF-8');
 $urls = ['/', '/bolme/bento-tort/', '/bolme/cake-to-go/', '/terkibler/', '/reyler/', '/konstruktor/', '/haqqimizda/', '/faq/', '/elaqe/'];
 foreach (own_categories() as $c) {

@@ -9,8 +9,6 @@ $catNav = ['bento' => ['/bolme/bento-tort/', $t['nav_bento'], $catNavImg('bento'
 foreach (own_categories() as $c) {
     $catNav['cat-' . $c['key']] = [cat_url($c), cat_name($c['key']), $catNavImg($c['key']), count(products_of($c['key']))];
 }
-$catNav['bantik'] = ['/bolme/bento-tort/#bantik', $t['bantik_h'], $catNavImg('bantik'), count(products_of('bantik'))];
-$catNav['sets']   = ['/bolme/bento-tort/#sets',   $t['sets_h'],   $catNavImg('set'),    count(products_of('set'))];
 ?>
 <nav class="cat-nav" aria-label="<?= e($t['nav_bento']) ?>">
   <?php foreach ($catNav as $key => [$href, $label, $img, $count]): if (!$count) continue; ?>

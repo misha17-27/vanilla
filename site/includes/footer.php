@@ -14,8 +14,9 @@
         <h4><?= e($t['footer_menu']) ?></h4>
         <ul>
           <li><a href="/bolme/bento-tort/"><?= e($t['nav_bento']) ?></a></li>
-          <li><a href="/bolme/bento-tort/#bantik"><?= e($t['bantik_h']) ?></a></li>
-          <li><a href="/bolme/bento-tort/#sets"><?= e($t['sets_h']) ?></a></li>
+          <?php foreach (own_categories() as $fc): ?>
+          <li><a href="<?= e(cat_url($fc)) ?>"><?= e(cat_name($fc['key'])) ?></a></li>
+          <?php endforeach; ?>
           <li><a href="/bolme/cake-to-go/"><?= e($t['nav_ctg']) ?></a></li>
           <li><a href="/terkibler/"><?= e($t['nav_fillings']) ?></a></li>
         </ul>

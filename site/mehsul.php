@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/config.php';
 
 $slug = $ROUTE_SLUG ?? '';
 $prod = $PRODUCTS_BY_SLUG[$slug] ?? null;
@@ -25,17 +25,15 @@ $og_type    = 'product';
 
 // категория для крошек и раздела «похожие»
 $catMap = [
-    'bento'  => ['/bolme/bento-tort/',        $t['nav_bento'],  'bento'],
-    'bantik' => ['/bolme/bento-tort/#bantik', $t['bantik_h'],   'bento'],
-    'set'    => ['/bolme/bento-tort/#sets',   $t['sets_h'],     'bento'],
-    'ctg'    => ['/bolme/cake-to-go/',        $t['nav_ctg'],    'ctg'],
+    'bento' => ['/bolme/bento-tort/', $t['nav_bento'], 'bento'],
+    'ctg'   => ['/bolme/cake-to-go/', $t['nav_ctg'],   'ctg'],
 ];
-// своя категория — своя страница и свои крошки
-if (!isset($catMap[$prod['type']])) {
-    $c = categories()[$prod['type']] ?? null;
-    $catMap[$prod['type']] = $c && ($c['page'] ?? '') === 'own'
-        ? [cat_url($c), cat_name($prod['type']), 'cat-' . $prod['type']]
-        : ['/bolme/bento-tort/', cat_name($prod['type']), 'bento'];
+// у категории со своей страницей — свои крошки и свой пункт меню
+$prodCat = categories()[$prod['type']] ?? null;
+if ($prodCat && ($prodCat['page'] ?? '') === 'own') {
+    $catMap[$prod['type']] = [cat_url($prodCat), cat_name($prod['type']), 'cat-' . $prod['type']];
+} elseif (!isset($catMap[$prod['type']])) {
+    $catMap[$prod['type']] = ['/bolme/bento-tort/', cat_name($prod['type']), 'bento'];
 }
 [$catUrl, $catLabel, $navSlug] = $catMap[$prod['type']];
 $page = $navSlug;

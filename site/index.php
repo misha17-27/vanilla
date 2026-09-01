@@ -1,6 +1,6 @@
 <?php
 $page = 'index';
-require __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/config.php';
 $page_title = seo_title('home', $t['home_title']);
 $page_meta  = seo_desc('home', $t['home_meta']);
 require __DIR__ . '/includes/header.php';
@@ -15,8 +15,8 @@ $ctg    = products_of('ctg');
 <?php
 $heroSlides = [
     ['eye' => $t['hero_eyebrow'], 'title' => $t['hero_h'],  'lead' => $t['hero_lead'], 'url' => '/bolme/bento-tort/',        'btn' => $t['hero_cta2'],     'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg', 'h1' => true],
-    ['eye' => $t['bantik_h'],     'title' => $t['hs2_t'],   'lead' => $t['hs2_d'],     'url' => '/bolme/bento-tort/#bantik', 'btn' => $t['btn_all_bento'], 'img' => '/assets/img/bantik-blush.jpg'],
-    ['eye' => $t['sets_h'],       'title' => $t['hs3_t'],   'lead' => $t['hs3_d'],     'url' => '/bolme/bento-tort/#sets',   'btn' => $t['btn_all_bento'], 'img' => '/assets/img/set-white.jpg'],
+    ['eye' => $t['bantik_h'],     'title' => $t['hs2_t'],   'lead' => $t['hs2_d'],     'url' => cat_url(categories()['bantik']), 'btn' => $t['btn_all_bento'], 'img' => '/assets/img/bantik-blush.jpg'],
+    ['eye' => $t['sets_h'],       'title' => $t['hs3_t'],   'lead' => $t['hs3_d'],     'url' => cat_url(categories()['set']),   'btn' => $t['btn_all_bento'], 'img' => '/assets/img/set-white.jpg'],
     ['eye' => $t['sec_ctg_t'],    'title' => $t['hs4_t'],   'lead' => $t['hs4_d'],     'url' => '/bolme/cake-to-go/',        'btn' => $t['btn_all_ctg'],   'img' => '/assets/img/ctg-minimal.jpg'],
 ];
 ?>
@@ -106,7 +106,7 @@ $heroSlides = [
       <p><?= e($t['occ_d']) ?></p>
     </div>
     <div class="occasions reveal">
-      <a class="occ" href="/bolme/bento-tort/#bantik">
+      <a class="occ" href="<?= e(cat_url(categories()['bantik'])) ?>">
         <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.2"/><path d="M10.5 11 4 7.5a1.8 1.8 0 0 0-2.6 1.9L3 15l7-2.5M13.5 11 20 7.5a1.8 1.8 0 0 1 2.6 1.9L21 15l-7-2.5M10 13.5 6.5 20M14 13.5 17.5 20"/></svg></span>
         <span><?= e($t['occ1']) ?></span>
       </a>
@@ -130,7 +130,7 @@ $heroSlides = [
         <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 3.5 4.5H13l3.5 4.5H14l3.5 4.5h-11L10 12H7.5L11 7.5H8.5L12 3ZM12 16.5V21"/></svg></span>
         <span><?= e($t['occ6']) ?></span>
       </a>
-      <a class="occ" href="/bolme/bento-tort/#sets">
+      <a class="occ" href="<?= e(cat_url(categories()['set'])) ?>">
         <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="14" width="16" height="6" rx="2"/><rect x="6" y="9" width="12" height="5" rx="2"/><rect x="8" y="4" width="8" height="5" rx="2"/></svg></span>
         <span><?= e($t['occ7']) ?></span>
       </a>
@@ -171,7 +171,7 @@ $heroSlides = [
         <h2><?= e($t['bantik_h']) ?></h2>
         <p><?= e($t['bantik_d']) ?></p>
       </div>
-      <a class="btn btn-ghost" href="/bolme/bento-tort/#bantik"><?= e($t['btn_all_bento']) ?></a>
+      <a class="btn btn-ghost" href="<?= e(cat_url(categories()['bantik'])) ?>"><?= e($t['btn_all_bento']) ?></a>
     </div>
     <div class="pgrid">
       <?php foreach (array_slice($bantik, 0, 8) as $p) product_card($p); ?>
@@ -188,7 +188,7 @@ $heroSlides = [
         <h2><?= e($t['sets_h']) ?></h2>
         <p><?= e($t['sets_d']) ?></p>
       </div>
-      <a class="btn btn-ghost" href="/bolme/bento-tort/#sets"><?= e($t['btn_all_bento']) ?></a>
+      <a class="btn btn-ghost" href="<?= e(cat_url(categories()['set'])) ?>"><?= e($t['btn_all_bento']) ?></a>
     </div>
     <div class="pgrid">
       <?php foreach (array_slice($sets, 0, 8) as $p) product_card($p); ?>
@@ -196,7 +196,9 @@ $heroSlides = [
   </div>
 </section>
 
-<?php foreach (own_categories() as $ownCat): $ownItems = products_of($ownCat['key']); if (!$ownItems) continue; ?>
+<?php foreach (own_categories() as $ownCat):
+    if (in_array($ownCat['key'], ['bantik', 'set'], true)) continue;   // у них свои секции выше
+    $ownItems = products_of($ownCat['key']); if (!$ownItems) continue; ?>
 <section class="section">
   <div class="container">
     <div class="head-row">

@@ -1,6 +1,6 @@
 <?php
 // ===== Админ-панель Vanilla Cake =====
-require __DIR__ . '/../includes/config.php';
+require_once __DIR__ . '/../includes/config.php';
 
 const ADMIN_PASS_FILE = __DIR__ . '/../data/admin.pass';
 const BACKUP_DIR      = __DIR__ . '/../data/backups';

@@ -13,16 +13,24 @@
             "name": "Бенто-бантики",
             "name_az": "Bento bantiklar",
             "name_en": "Bow bento",
-            "page": "bento",
-            "builtin": true
+            "page": "own",
+            "builtin": true,
+            "path": "/bolme/bento-tort/bento-bantik-tort/",
+            "desc": "Нежная классика с атласными бантами — на 3–4 персоны (35 ₼) или 7–8 персон (60 ₼). Цвет крема и лент подберём под ваш повод.",
+            "desc_az": "Atlaz bantlı incə klassika: 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Krem və lentin rəngini tədbirinizə uyğun seçirik.",
+            "desc_en": "Delicate classics with satin bows — for 3–4 (35 ₼) or 7–8 guests (60 ₼)."
         },
         {
             "key": "set",
             "name": "Бенто-сеты",
             "name_az": "Bento setlər",
             "name_en": "Bento sets",
-            "page": "bento",
-            "builtin": true
+            "page": "own",
+            "builtin": true,
+            "slug": "bento-set",
+            "desc": "Несколько мини-бенто в одной коробке — каждому гостю свой дизайн и своя надпись. Сет из 3 — 75 ₼, из 4 — 100 ₼.",
+            "desc_az": "Bir qutuda bir neçə mini bento: hər qonağa öz dizaynı və öz yazısı. 3 ədəd 75 ₼, 4 ədəd 100 ₼.",
+            "desc_en": "Several mini bento cakes in one box — a design and a message for every guest."
         },
         {
             "key": "ctg",
@@ -47,6 +55,22 @@
             "name_one_az": "Fotolu bento tort",
             "name_one_en": "Photo bento cake",
             "strip": "Bento tort foto"
+        },
+        {
+            "key": "boyorgirl",
+            "name": "Торты Boy or Girl",
+            "name_az": "Boy or Girl tortları",
+            "name_en": "Boy or Girl cakes",
+            "name_one": "Торт Boy or Girl",
+            "name_one_az": "Boy or Girl tortu",
+            "name_one_en": "Boy or Girl cake",
+            "strip": "Bento tort Boy or Girl",
+            "page": "own",
+            "slug": "bento-tort-boy-or-girl",
+            "desc": "Торты для гендер-пати: аист с конвертом, панда, следочки и надписи в бело-голубой и розовой гамме. Любой дизайн повторим в бенто-формате на 1–2, 3–4 или 7–8 персон.",
+            "desc_az": "Gender party üçün tortlar: leylək, panda, ayaq izləri və mavi-çəhrayı yazılar. İstənilən dizaynı bento formatında təkrarlayırıq.",
+            "desc_en": "Gender reveal cakes: stork, panda, tiny footprints and lettering in blue and pink.",
+            "builtin": false
         }
     ]
 }

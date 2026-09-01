@@ -38,5 +38,17 @@
     "cat_foto": {
         "title": "Fotolu bento tort — şəkilli tort sifarişi - Vanilla.az",
         "desc": "Öz şəklinizlə bento tort Bakıda: krem üzərində yeməli boya ilə çap, 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Şəkli göndərin — tədbirinizə hazırlayaq."
+    },
+    "cat_boyorgirl": {
+        "title": "Boy or Girl tort — gender party tortu sifarişi - Vanilla.az",
+        "desc": "Gender party üçün Boy or Girl tortu Bakıda: leylək, panda və ayaq izləri dizaynları, mavi-çəhrayı bəzək. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼."
+    },
+    "cat_bantik": {
+        "title": "Bento tort bantik — bantlı tort sifarişi - Vanilla.az",
+        "desc": "Atlaz bantlı bento tort Bakıda: 750–800 q (3–4 nəfər) 35 ₼, 1200–1500 q (7–8 nəfər) 60 ₼. Krem və lentin rəngi tədbirinizə uyğun seçilir."
+    },
+    "cat_set": {
+        "title": "Bento set — mini tortlar dəsti sifarişi - Vanilla.az",
+        "desc": "Bento set Bakıda: bir qutuda 3 mini tort 75 ₼ və ya 4 mini tort 100 ₼. Hər tortun öz dizaynı və öz yazısı olur."
     }
 }

@@ -1,6 +1,6 @@
 <?php
 $page = 'ctg';
-require __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/config.php';
 $page_title = seo_title('ctg', $t['ctg_title']);
 $page_meta  = seo_desc('ctg', $t['ctg_meta']);
 require __DIR__ . '/includes/header.php';

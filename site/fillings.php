@@ -1,6 +1,6 @@
 <?php
 $page = 'fillings';
-require __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/config.php';
 $page_title = seo_title('fillings', $t['fil_title']);
 $page_meta  = seo_desc('fillings', $t['fil_meta']);
 schema_breadcrumbs([[$t['nav_fillings'], '/terkibler/']]);
