@@ -11,12 +11,10 @@ foreach (own_categories() as $c) {
 $nav += [
     'ctg'      => ['/bolme/cake-to-go/',   $t['nav_ctg']],
     'fillings' => ['/terkibler/',          $t['nav_fillings']],
-    'reviews'  => ['/reyler/',             $t['nav_reviews']],
     'konstr'   => ['/konstruktor/',        $t['nav_konstr']],
-    'about'    => ['/haqqimizda/',         $t['nav_about']],
-    'faq'      => ['/faq/',                $t['nav_faq']],
     'contact'  => ['/elaqe/',              $t['nav_contact']],
 ];
+// «Отзывы», «О нас» и FAQ в верхнем меню не показываем — они в подвале
 $canonical = canonical_url();
 $og_image  = $og_image ?? (CANON_HOST . '/assets/og-cover.jpg');
 $og_type   = $og_type ?? 'website';
