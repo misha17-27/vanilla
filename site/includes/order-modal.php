@@ -63,7 +63,7 @@
       </div>
       <div class="opt-row">
         <label for="f-phone"><?= e($t['f_phone']) ?> <i class="req" title="<?= e($t['req_mark']) ?>">*</i></label>
-        <input class="txt" type="tel" id="f-phone" placeholder="<?= e($t['f_phone_ph']) ?>" maxlength="30" required>
+        <input class="txt" type="tel" inputmode="tel" autocomplete="tel" id="f-phone" placeholder="<?= e($t['f_phone_ph']) ?>" maxlength="30" required>
       </div>
       <label class="chk">
         <input type="checkbox" id="f-other">
@@ -75,7 +75,7 @@
       </div>
       <div class="opt-row" id="row-rphone" hidden>
         <label for="f-rphone"><?= e($t['f_phone']) ?></label>
-        <input class="txt" type="tel" id="f-rphone" placeholder="<?= e($t['f_rphone_ph']) ?>" maxlength="30">
+        <input class="txt" type="tel" inputmode="tel" autocomplete="tel" id="f-rphone" placeholder="<?= e($t['f_rphone_ph']) ?>" maxlength="30">
       </div>
     </div>
     <div class="modal-err" id="modal-err" hidden></div>

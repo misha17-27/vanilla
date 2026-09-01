@@ -32,12 +32,17 @@ schema_add(schema_item_list($bentoItems, $t['bento_h']));
 
 <section class="catalog">
   <div class="container">
-    <?php $catNavActive = 'all'; $catNavFilter = true; require __DIR__ . '/includes/cat-nav.php'; ?>
-
-    <div class="pgrid" id="cat-grid">
-      <?php foreach ($bentoItems as $i => $p) product_card($p, $i > 3, $p['_cat']); ?>
+    <div class="catalog-side">
+      <aside class="catalog-filter">
+        <?php $catNavActive = 'all'; $catNavFilter = true; require __DIR__ . '/includes/cat-nav.php'; ?>
+      </aside>
+      <div class="catalog-main">
+        <div class="pgrid" id="cat-grid">
+          <?php foreach ($bentoItems as $i => $p) product_card($p, $i > 3, $p['_cat']); ?>
+        </div>
+        <p class="cat-empty" id="cat-empty" hidden><?= e($t['rev_empty']) ?></p>
+      </div>
     </div>
-    <p class="cat-empty" id="cat-empty" hidden><?= e($t['rev_empty']) ?></p>
 
 
     <?php foreach (extra_categories('bento') as $c): $items = products_of($c['key']); if (!$items) continue; ?>

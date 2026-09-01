@@ -9,6 +9,29 @@ if (burger && menu) {
     if (e.target.tagName === 'A') menu.classList.remove('open');
   });
 }
+// В поля телефона пускаем только цифры и знаки номера — буквы отсекаем сразу
+(function () {
+  var phones = document.querySelectorAll('input[type="tel"]');
+  if (!phones.length) return;
+  function clean(v) { return v.replace(/[^\d+()\-\s]/g, ''); }
+  Array.prototype.forEach.call(phones, function (inp) {
+    inp.addEventListener('input', function () {
+      var v = clean(inp.value);
+      if (v === inp.value) return;
+      var pos = inp.selectionStart - (inp.value.length - v.length);
+      inp.value = v;
+      try { inp.setSelectionRange(pos, pos); } catch (e) {}
+    });
+    inp.addEventListener('paste', function (e) {
+      var txt = (e.clipboardData || window.clipboardData).getData('text');
+      if (clean(txt) === txt) return;
+      e.preventDefault();
+      inp.setRangeText(clean(txt), inp.selectionStart, inp.selectionEnd, 'end');
+      inp.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+  });
+})();
+
 // Фильтр каталога по категориям: плитки прячут лишние карточки без перезагрузки
 (function () {
   var nav = document.querySelector('.cat-nav.is-filter');

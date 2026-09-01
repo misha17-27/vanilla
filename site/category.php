@@ -46,15 +46,20 @@ require __DIR__ . '/includes/header.php';
 
 <section class="catalog">
   <div class="container">
-    <?php $catNavActive = 'cat-' . $cat['key']; require __DIR__ . '/includes/cat-nav.php'; ?>
-
-    <?php if ($items): ?>
-    <div class="pgrid">
-      <?php foreach ($items as $i => $p) product_card($p, $i > 3); ?>
+    <div class="catalog-side">
+      <aside class="catalog-filter">
+        <?php $catNavActive = 'cat-' . $cat['key']; require __DIR__ . '/includes/cat-nav.php'; ?>
+      </aside>
+      <div class="catalog-main">
+        <?php if ($items): ?>
+        <div class="pgrid">
+          <?php foreach ($items as $i => $p) product_card($p, $i > 3); ?>
+        </div>
+        <?php else: ?>
+        <p class="lead"><?= e($t['rev_empty']) ?></p>
+        <?php endif; ?>
+      </div>
     </div>
-    <?php else: ?>
-    <p class="lead"><?= e($t['rev_empty']) ?></p>
-    <?php endif; ?>
 
     <div class="sizes-wrap" style="margin-top:64px">
       <div class="size-card reveal">
