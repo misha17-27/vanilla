@@ -3,6 +3,7 @@ $pages = [
     'home'    => ['Главная', '/'],
     'bento'   => ['Бенто-торты', '/bolme/bento-tort/'],
     'ctg'     => ['Cake to go', '/bolme/cake-to-go/'],
+    'reviews' => ['Отзывы', '/reyler/'],
     'about'   => ['О нас', '/haqqimizda/'],
     'faq'     => ['FAQ', '/faq/'],
     'contact' => ['Контакты', '/elaqe/'],

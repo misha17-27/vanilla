@@ -77,6 +77,13 @@ $isOn = function (string $href) use ($here): bool {
           <?php if ($view === 'products'): ?>
           <a class="top-btn accent" href="/admin/products?add=1">+ Добавить торт</a>
           <?php endif; ?>
+          <form method="post" class="inline">
+            <input type="hidden" name="action" value="logout">
+            <button class="top-btn out">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h4"/><path d="M16 16l4-4-4-4"/><path d="M20 12H9"/></svg>
+              Выйти
+            </button>
+          </form>
         </div>
       </header>
 

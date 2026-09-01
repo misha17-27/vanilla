@@ -160,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($action === 'seo') {
             $in  = (array)($_POST['seo'] ?? []);
             $out = [];
-            foreach (['home', 'bento', 'ctg', 'about', 'faq', 'contact'] as $k) {
+            foreach (['home', 'bento', 'ctg', 'reviews', 'about', 'faq', 'contact'] as $k) {
                 $out[$k] = [
                     'title' => trim((string)($in[$k]['title'] ?? '')),
                     'desc'  => trim((string)($in[$k]['desc'] ?? '')),

@@ -24,6 +24,7 @@
         <h4><?= e($t['footer_pages']) ?></h4>
         <ul>
           <li><a href="/haqqimizda/"><?= e($t['nav_about']) ?></a></li>
+          <li><a href="/reyler/"><?= e($t['nav_reviews']) ?></a></li>
           <li><a href="/faq/"><?= e($t['nav_faq']) ?></a></li>
           <li><a href="/elaqe/"><?= e($t['nav_contact']) ?></a></li>
         </ul>

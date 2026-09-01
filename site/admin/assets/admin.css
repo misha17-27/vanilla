@@ -162,3 +162,6 @@ h3{font-size:.95rem;color:var(--navy);margin:26px 0 4px}
   .card-hd{flex-direction:column;align-items:flex-start}
   .search input{width:100%;max-width:none}
 }
+.top-btn.out{background:var(--brand);border-color:var(--brand);color:#fff}
+.top-btn.out:hover{background:var(--brand-d);border-color:var(--brand-d);color:#fff}
+.top-acts form.inline{display:inline-flex}

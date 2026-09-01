@@ -39,7 +39,6 @@ $path = $uri === '/' ? '/' : rtrim($uri, '/') . '/';
 // 301-редиректы со старых WP-адресов, которые мы не переносим
 $redirects = [
     '/tortlar/'    => '/bolme/bento-tort/',
-    '/reyler/'     => '/',
     '/video/'      => 'https://www.instagram.com/vanilla_cake_az/',
     '/my-account/' => '/',
     '/cart/'       => '/',
@@ -62,6 +61,7 @@ $routes = [
     '/bolme/bento-tort/'   => 'bento.php',
     '/bolme/cake-to-go/'   => 'cake-to-go.php',
     '/terkibler/'          => 'fillings.php',
+    '/reyler/'             => 'reviews.php',
     '/konstruktor/'        => 'konstruktor.php',
     '/haqqimizda/'         => 'about.php',
     '/faq/'                => 'faq.php',

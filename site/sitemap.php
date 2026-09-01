@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/includes/config.php';
 header('Content-Type: application/xml; charset=UTF-8');
-$urls = ['/', '/bolme/bento-tort/', '/bolme/cake-to-go/', '/terkibler/', '/haqqimizda/', '/faq/', '/elaqe/'];
+$urls = ['/', '/bolme/bento-tort/', '/bolme/cake-to-go/', '/terkibler/', '/reyler/', '/haqqimizda/', '/faq/', '/elaqe/'];
 foreach ($PRODUCTS as $p) {
     $urls[] = product_url($p);
 }
