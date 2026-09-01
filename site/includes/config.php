@@ -14,17 +14,33 @@ if (empty($_SESSION['csrf'])) {
 }
 
 // ===== Contacts =====
-const PHONE_DISPLAY = '+994 55 215 63 43';
-const PHONE_TEL     = '+994552156343';
-const WA_NUMBER     = '994552156343';
-const EMAIL         = 'info@vanilla.az';
-const IG_URL        = 'https://www.instagram.com/vanilla_cake_az/';
-const IG_HANDLE     = '@vanilla_cake_az';
-const FB_URL        = 'https://www.facebook.com/vanillacakeaz';
-const MAP_URL       = 'https://www.google.com/maps/place/Vanilla/@40.4196217,49.8047583,17z/data=!3m1!4b1!4m6!3m5!1s0x40308751a035afbd:0xb1a83ee0808b7a8d!8m2!3d40.4196217!4d49.8073332!16s%2Fg%2F11rnpg56rn';
-const MAP_LAT       = '40.4196217';
-const MAP_LNG       = '49.8073332';
-const CANON_HOST    = 'https://vanilla.az'; // production domain for canonical/sitemap
+// Значения по умолчанию; то, что задано через админку (data/settings.json), их перекрывает.
+const SETTINGS_FILE = __DIR__ . '/../data/settings.json';
+const SETTING_KEYS  = ['phone_display', 'phone_tel', 'wa_number', 'email', 'ig_url', 'ig_handle', 'fb_url', 'map_url', 'map_lat', 'map_lng', 'canon_host'];
+$SETTINGS = (json_decode((string)@file_get_contents(SETTINGS_FILE), true) ?: []) + [
+    'phone_display' => '+994 55 215 63 43',
+    'phone_tel'     => '+994552156343',
+    'wa_number'     => '994552156343',
+    'email'         => 'info@vanilla.az',
+    'ig_url'        => 'https://www.instagram.com/vanilla_cake_az/',
+    'ig_handle'     => '@vanilla_cake_az',
+    'fb_url'        => 'https://www.facebook.com/vanillacakeaz',
+    'map_url'       => 'https://www.google.com/maps/place/Vanilla/@40.4196217,49.8047583,17z/data=!3m1!4b1!4m6!3m5!1s0x40308751a035afbd:0xb1a83ee0808b7a8d!8m2!3d40.4196217!4d49.8073332!16s%2Fg%2F11rnpg56rn',
+    'map_lat'       => '40.4196217',
+    'map_lng'       => '49.8073332',
+    'canon_host'    => 'https://vanilla.az',
+];
+define('PHONE_DISPLAY', $SETTINGS['phone_display']);
+define('PHONE_TEL',     $SETTINGS['phone_tel']);
+define('WA_NUMBER',     $SETTINGS['wa_number']);
+define('EMAIL',         $SETTINGS['email']);
+define('IG_URL',        $SETTINGS['ig_url']);
+define('IG_HANDLE',     $SETTINGS['ig_handle']);
+define('FB_URL',        $SETTINGS['fb_url']);
+define('MAP_URL',       $SETTINGS['map_url']);
+define('MAP_LAT',       $SETTINGS['map_lat']);
+define('MAP_LNG',       $SETTINGS['map_lng']);
+define('CANON_HOST',    rtrim($SETTINGS['canon_host'], '/')); // production domain for canonical/sitemap
 
 function e(string $s): string
 {

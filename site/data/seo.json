@@ -1,26 +1,26 @@
 {
-    "home":  {
-                 "title":  "Vanilla.az - Tort sifarişi, tort sifarisi, onlayn tort, tort",
-                 "desc":  "Onlayn tort sifarişi, bento tort, ad gunu tortlari, nisan tortlari, elcilik tortlari, heri tortlari, həri tortları, baby shower tortlari"
-             },
-    "bento":  {
-                  "title":  "Bento tort - Vanilla.az",
-                  "desc":  ""
-              },
-    "ctg":  {
-                "title":  "Cake to go - Vanilla.az",
-                "desc":  ""
-            },
-    "about":  {
-                  "title":  "Haqqımızda - Vanilla.az",
-                  "desc":  "Haqqımızda Şirkət haqqında Vanilla.az öz işinə sevgi və məsuliyyət ilə yanaşan, işini sevən gənc bir xanımın arzusunun nəticəsidir.Biz keyfiyyətli inqridiyentlərlə"
-              },
-    "faq":  {
-                "title":  "FAQ - Vanilla.az",
-                "desc":  "Daşınma qaydası Tortu ehtiyatla düz bir səthə yerləşdirin. Yaz aylarında kondisionerlə, qışda birbaşa isitmə olmadan saxlamaq lazımdır. Maşınla dönmə edərkən"
-            },
-    "contact":  {
-                    "title":  "Əlaqə - Vanilla.az",
-                    "desc":  "Əlaqə ƏLAQƏ MƏLUMATLARI Speaker CallA line styled icon from Orion Icon Library. Telefon: +99455 215 63 43 WhatsAppA line styled"
-                }
+    "home": {
+        "title": "Vanilla.az - Tort sifarişi, tort sifarisi, onlayn tort, tort",
+        "desc": "Onlayn tort sifarişi, bento tort, ad gunu tortlari, nisan tortlari, elcilik tortlari, heri tortlari, həri tortları, baby shower tortlari"
+    },
+    "bento": {
+        "title": "Bento tort - Vanilla.az",
+        "desc": ""
+    },
+    "ctg": {
+        "title": "Cake to go - Vanilla.az",
+        "desc": ""
+    },
+    "about": {
+        "title": "Haqqımızda - Vanilla.az",
+        "desc": "Haqqımızda Şirkət haqqında Vanilla.az öz işinə sevgi və məsuliyyət ilə yanaşan, işini sevən gənc bir xanımın arzusunun nəticəsidir.Biz keyfiyyətli inqridiyentlərlə"
+    },
+    "faq": {
+        "title": "FAQ - Vanilla.az",
+        "desc": "Daşınma qaydası Tortu ehtiyatla düz bir səthə yerləşdirin. Yaz aylarında kondisionerlə, qışda birbaşa isitmə olmadan saxlamaq lazımdır. Maşınla dönmə edərkən"
+    },
+    "contact": {
+        "title": "Əlaqə - Vanilla.az",
+        "desc": "Əlaqə ƏLAQƏ MƏLUMATLARI Speaker CallA line styled icon from Orion Icon Library. Telefon: +99455 215 63 43 WhatsAppA line styled"
+    }
 }

@@ -25,6 +25,14 @@ if ($uri === '/sitemap.xml') {
     exit;
 }
 
+// админ-панель: /admin, /admin/products, /admin/settings …
+if ($uri === '/admin' || str_starts_with($uri, '/admin/')) {
+    if (!preg_match('#^/admin/assets/#', $uri)) {
+        require __DIR__ . '/admin/index.php';
+        exit;
+    }
+}
+
 // нормализуем завершающий слэш
 $path = $uri === '/' ? '/' : rtrim($uri, '/') . '/';
 
@@ -58,7 +66,6 @@ $routes = [
     '/haqqimizda/'         => 'about.php',
     '/faq/'                => 'faq.php',
     '/elaqe/'              => 'contact.php',
-    '/admin/'              => 'admin.php',
 ];
 
 if (preg_match('#^/bolme/bento-tort/page/\d+/$#', $path)) {
