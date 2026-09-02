@@ -86,6 +86,25 @@ $OG_LOCALE = ['ru' => 'ru_RU', 'az' => 'az_AZ', 'en' => 'en_US'];
     </a>
     <nav>
       <ul class="menu" id="menu">
+        <li class="menu-head">
+          <a class="logo" href="/"><img src="/assets/logo.svg" alt="Vanilla Cake" width="150" height="34"></a>
+          <div class="menu-head-r">
+            <details class="lang">
+              <summary aria-label="Language">
+                <span><?= strtoupper($lang) ?></span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="lang-menu">
+                <?php foreach ($LANGS as $l): ?>
+                <a href="<?= e(lang_url($l)) ?>" class="<?= $l === $lang ? 'active' : '' ?>" hreflang="<?= e($l) ?>"><?= strtoupper($l) ?></a>
+                <?php endforeach; ?>
+              </div>
+            </details>
+            <button type="button" class="menu-x" id="menu-close" aria-label="Закрыть">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+          </div>
+        </li>
         <?php foreach ($nav as $slug => $item): ?>
         <?php [$href, $label] = $item; $sub = $item[2] ?? null; ?>
         <li class="<?= $sub ? 'has-sub' : '' ?>">

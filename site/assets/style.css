@@ -60,7 +60,7 @@ html.anim .reveal.in{opacity:1;transform:none}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;height:82px}
 .logo img{height:42px;width:auto}
 .menu{display:flex;gap:22px}
-.menu-foot{display:none}
+.menu-foot,.menu-head{display:none}
 .menu a{font-size:13px;font-weight:600;color:var(--ink);letter-spacing:.02em;padding:6px 0;position:relative;transition:.2s;white-space:nowrap}
 .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1.5px;background:var(--pink);transition:.25s}
 .menu a:hover{color:var(--pink)}
@@ -604,11 +604,17 @@ html.no-scroll{overflow:hidden}
   .burger.on span:nth-child(2){opacity:0}
   .burger.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   /* меню занимает весь экран под шапкой */
-  .menu{position:fixed;left:0;right:0;top:calc(82px + 37px);bottom:0;background:#fff;flex-direction:column;gap:0;padding:14px 24px calc(28px + env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain;transform:translateX(100%);transition:transform .3s ease;z-index:88;display:flex}
+  .menu{position:fixed;inset:0;background:#fff;flex-direction:column;gap:0;padding:0 24px calc(28px + env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain;transform:translateX(100%);transition:transform .3s ease;z-index:95;display:flex}
+  .menu-head{display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;background:#fff;margin:0 -24px;padding:12px 24px;border-bottom:1px solid var(--line);z-index:2}
+  .menu-head .logo img{height:32px}
+  .menu-head-r{display:flex;align-items:center;gap:10px}
+  .menu-x{display:grid;place-items:center;width:42px;height:42px;border:0;background:none;color:var(--navy);cursor:pointer;padding:0}
+  .menu-x svg{width:24px;height:24px}
   .menu.open{transform:none}
   html.menu-open,html.menu-open body{overflow:hidden}
   /* пункты по центру, активный — плашкой */
-  .menu{justify-content:flex-start;padding-top:18px}
+  .menu{justify-content:flex-start}
+  .menu > li:nth-child(2){margin-top:16px}
   .menu > li{width:100%}
   .menu a{display:block;padding:12px 18px;font-size:17px;font-weight:700;text-align:center;border-radius:14px;color:var(--navy)}
   .menu > li > a.active{background:var(--pink-mist);color:var(--pink-deep)}
@@ -641,7 +647,6 @@ html.no-scroll{overflow:hidden}
   .topbar .container{justify-content:center}
   .nav{height:70px}
   .logo img{height:34px}
-  .menu{top:calc(70px + 37px)}
   .menu a{font-size:16px}
   .btn-nav{display:none}
   .lang summary{height:34px;padding:0 9px 0 11px;font-size:10.5px}

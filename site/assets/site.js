@@ -7,6 +7,8 @@ if (burger && menu) {
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     document.documentElement.classList.toggle('menu-open', open);
   }
+  var menuClose = document.getElementById('menu-close');
+  if (menuClose) menuClose.addEventListener('click', function () { setMenu(false); });
   burger.addEventListener('click', function () {
     setMenu(!menu.classList.contains('open'));
   });
@@ -80,13 +82,13 @@ if (burger && menu) {
 })();
 
 // Language dropdown: закрываем по клику мимо и по Esc
-var langBox = document.getElementById('lang');
-if (langBox) {
+var langBoxes = [].slice.call(document.querySelectorAll('details.lang'));
+if (langBoxes.length) {
   document.addEventListener('click', function (e) {
-    if (langBox.open && !langBox.contains(e.target)) langBox.open = false;
+    langBoxes.forEach(function (b) { if (b.open && !b.contains(e.target)) b.open = false; });
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && langBox.open) langBox.open = false;
+    if (e.key === 'Escape') langBoxes.forEach(function (b) { b.open = false; });
   });
 }
 
