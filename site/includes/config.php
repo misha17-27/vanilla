@@ -147,6 +147,62 @@ function price_range(string $price): array
     return [min($nums), max($nums)];
 }
 
+// ===== Капча Cloudflare Turnstile =====
+// Ключи задаются в админке (раздел «Безопасность»). Пусто — капча выключена.
+const SECURITY_FILE = __DIR__ . '/../data/security.json';
+
+function load_security(): array
+{
+    $d = json_decode((string)@file_get_contents(SECURITY_FILE), true) ?: [];
+    return [
+        'turnstile_site'   => trim((string)($d['turnstile_site'] ?? '')),
+        'turnstile_secret' => trim((string)($d['turnstile_secret'] ?? '')),
+    ];
+}
+
+function turnstile_on(): bool
+{
+    $s = load_security();
+    return $s['turnstile_site'] !== '' && $s['turnstile_secret'] !== '';
+}
+
+// Виджет на форме: подключаем скрипт один раз
+function turnstile_widget(string $extraClass = ''): string
+{
+    if (!turnstile_on()) return '';
+    static $script = false;
+    $out = $script ? '' : '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>';
+    $script = true;
+    return $out . '<div class="cf-turnstile ' . e($extraClass) . '" data-sitekey="'
+        . e(load_security()['turnstile_site']) . '" data-size="flexible"></div>';
+}
+
+// Проверка ответа. Если Cloudflare недоступен — пропускаем, чтобы не терять заказы.
+function turnstile_ok(string $token): bool
+{
+    if (!turnstile_on()) return true;
+    if ($token === '') return false;
+    $body = http_build_query([
+        'secret'   => load_security()['turnstile_secret'],
+        'response' => $token,
+        'remoteip' => $_SERVER['REMOTE_ADDR'] ?? '',
+    ]);
+    $res = false;
+    if (function_exists('curl_init')) {
+        $ch = curl_init('https://challenges.cloudflare.com/turnstile/v0/siteverify');
+        curl_setopt_array($ch, [CURLOPT_POST => true, CURLOPT_POSTFIELDS => $body,
+            CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 8]);
+        $res = curl_exec($ch);
+        curl_close($ch);
+    } else {
+        $res = @file_get_contents('https://challenges.cloudflare.com/turnstile/v0/siteverify', false,
+            stream_context_create(['http' => ['method' => 'POST', 'timeout' => 8,
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n", 'content' => $body]]));
+    }
+    if ($res === false) return true;                 // не достучались — не блокируем
+    return (bool)(json_decode((string)$res, true)['success'] ?? false);
+}
+
 // ===== SEO (снято с vanilla.az, чтобы сохранить позиции) =====
 $SEO = json_decode((string)@file_get_contents(__DIR__ . '/../data/seo.json'), true) ?: [];
 

@@ -332,9 +332,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif ($action === 'login') {
         $users = load_users();
-        $email = mb_strtolower(trim((string)($_POST['email'] ?? '')));
+        $email = mb_strtolower(trim((string)($_POST['login'] ?? $_POST['email'] ?? '')));
         $u     = $users[$email] ?? null;
+        // можно войти и по имени, если оно одно такое
+        if (!$u && $email !== '') {
+            $byName = array_filter($users, fn($x) => mb_strtolower(trim((string)$x['name'])) === $email);
+            if (count($byName) === 1) {
+                $u     = reset($byName);
+                $email = mb_strtolower($u['email']);
+            }
+        }
         if (login_blocked())                          $err = 'Слишком много попыток. Попробуйте через 15 минут.';
+        elseif (!turnstile_ok((string)($_POST['cf-turnstile-response'] ?? ''))) { login_hit(); $err = 'Проверка на робота не пройдена — попробуйте ещё раз.'; }
         elseif ($u && empty($u['active']))            { login_hit(); $err = 'Доступ отключён — обратитесь к администратору.'; }
         elseif ($u && password_verify((string)($_POST['pass'] ?? ''), (string)$u['pass'])) {
             session_regenerate_id(true);
@@ -344,7 +353,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $users[$email]['last'] = time();
             save_users($users);
             go('/admin/');
-        } else { login_hit(); $err = 'Неверный e-mail или пароль.'; }
+        } else { login_hit(); $err = 'Неверные данные для входа.'; }
     } elseif ($action === 'logout') {
         unset($_SESSION['admin'], $_SESSION['user']);
         go('/admin/');
@@ -410,6 +419,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 flash('Профиль сохранён.');
             }
             go('/admin/account');
+        }
+
+        if ($action === 'security' && is_admin()) {
+            $cur = load_security();
+            $site   = trim((string)($_POST['turnstile_site'] ?? ''));
+            $secret = trim((string)($_POST['turnstile_secret'] ?? ''));
+            // пустой секрет = не меняем; чтобы выключить капчу, чистим оба поля
+            if ($secret === '' && $site !== '') $secret = $cur['turnstile_secret'];
+            if ($site === '') $secret = '';
+            file_put_contents(SECURITY_FILE, json_encode(
+                ['turnstile_site' => $site, 'turnstile_secret' => $secret],
+                JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT
+            ));
+            flash($site !== '' ? 'Капча включена.' : 'Капча выключена.');
+            go('/admin/security');
         }
 
         if ($action === 'settings') {
@@ -656,7 +680,7 @@ $customers = build_customers($orders);
 $newOrders = count(array_filter($orders, fn($o) => ($o['status'] ?? 'new') === 'new'));
 
 $users = load_users();
-$titles = ['dashboard' => 'Обзор', 'orders' => 'Заказы', 'customers' => 'Клиенты', 'pages' => 'Страницы', 'products' => 'Товары', 'categories' => 'Категории', 'designs' => 'Дизайны клиентов', 'seo' => 'SEO страниц', 'settings' => 'Контакты и карта', 'users' => 'Пользователи', 'account' => 'Мой профиль'];
+$titles = ['dashboard' => 'Обзор', 'orders' => 'Заказы', 'customers' => 'Клиенты', 'pages' => 'Страницы', 'products' => 'Товары', 'categories' => 'Категории', 'designs' => 'Дизайны клиентов', 'seo' => 'SEO страниц', 'settings' => 'Контакты и карта', 'security' => 'Безопасность', 'users' => 'Пользователи', 'account' => 'Мой профиль'];
 $title  = $titles[$view] ?? 'Админ';
 if (!array_key_exists($view, $titles)) { $view = 'dashboard'; $title = $titles['dashboard']; }
 if (admin_logged() && !can($view)) {

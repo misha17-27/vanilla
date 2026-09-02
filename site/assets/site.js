@@ -227,6 +227,8 @@ if (langBox) {
       photos: designUrl ? [designUrl] : []
     };
     if (window.__orderPhotos) payload.photos = payload.photos.concat(window.__orderPhotos());
+    var cf = modal.querySelector('[name="cf-turnstile-response"]');
+    if (cf) payload.captcha = cf.value;
     try {
       fetch('/order-save.php', {
         method: 'POST',

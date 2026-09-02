@@ -17,11 +17,13 @@ $nav = [
     'Настройки' => [
         ['/admin/seo',      'seo',      'SEO страниц'],
         ['/admin/settings', 'settings', 'Контакты и карта'],
+        ['/admin/security', 'security', 'Безопасность'],
         ['/admin/users',    'users',    'Пользователи'],
         ['/admin/account',  'account',  'Мой профиль'],
     ],
 ];
 $icons = [
+    'security'  => '<path d="M12 3l7.5 3v5.2c0 4.6-3.1 8.3-7.5 9.8-4.4-1.5-7.5-5.2-7.5-9.8V6z"/><path d="M12 11v4"/><path d="M12 8.2h.01"/>',
     'users'     => '<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.2 2.7-5.2 6-5.2s6 2 6 5.2"/><path d="M17 7.5a3.2 3.2 0 0 1 0 6"/><path d="M18.5 15c1.9.6 3.5 2.2 3.5 5"/>',
     'pages'     => '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h6"/>',
     'orders'    => '<path d="M6 2h12l2 5H4z"/><path d="M5 7v13h14V7"/><path d="M9 11a3 3 0 0 0 6 0"/>',
@@ -46,7 +48,7 @@ $isOn = function (string $href) use ($here): bool {
 <meta name="robots" content="noindex, nofollow">
 <title><?= e($title) ?> — Vanilla Cake</title>
 <link rel="icon" href="/favicon.ico" sizes="32x32">
-<link rel="stylesheet" href="/admin/assets/admin.css?v=8">
+<link rel="stylesheet" href="/admin/assets/admin.css?v=9">
 </head>
 <body class="<?= $bare ? 'bare' : '' ?>">
 

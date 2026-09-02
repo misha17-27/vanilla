@@ -22,6 +22,7 @@ if (strlen($raw) > 20000) bad('size');
 $in = json_decode($raw, true);
 if (!is_array($in)) bad('json');
 if (!isset($in['csrf']) || !is_string($in['csrf']) || !hash_equals($_SESSION['csrf'], $in['csrf'])) bad('csrf', 403);
+if (!turnstile_ok((string)($in['captcha'] ?? ''))) bad('captcha', 403);
 
 // лимит по IP
 $rlDir = __DIR__ . '/uploads/ratelimit';
