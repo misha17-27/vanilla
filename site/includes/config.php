@@ -232,6 +232,13 @@ function cat_url(array $c): string
     return $c['path'] ?? ('/bolme/' . ($c['slug'] ?? $c['key']) . '/');
 }
 
+// Превью 400×400 для карточек; если файла нет — отдаём оригинал
+function thumb_url(string $img): string
+{
+    $t = '/assets/img/thumbs/' . basename($img);
+    return is_file(__DIR__ . '/..' . $t) ? asset($t) : asset($img);
+}
+
 function product_url(array $p): string
 {
     return '/mehsul/' . $p['slug'] . '/';
@@ -303,9 +310,11 @@ function product_card(array $p, bool $lazy = true, ?string $cat = null): void
     $url  = product_url($p);
     $wa   = wa_link($name, CANON_HOST . $url);
     $loading = $lazy ? 'loading="lazy"' : 'fetchpriority="high"';
+    $thumb = thumb_url($p['img']);
+    $srcset = $thumb !== $p['img'] ? ' srcset="' . e($thumb) . ' 400w, ' . e($p['img']) . ' 800w" sizes="(max-width:1060px) 46vw, 280px"' : '';
     echo '<article class="pcard reveal"' . ($cat !== null ? ' data-cat="' . e($cat) . '"' : '') . '>
       <a class="pcard-ph" href="' . e($url) . '" aria-label="' . e($name) . '">
-        <img ' . $loading . ' src="' . e($p['img']) . '" alt="' . e($name) . '" width="600" height="600">
+        <img ' . $loading . ' decoding="async" src="' . e($thumb) . '"' . $srcset . ' alt="' . e($name) . '" width="600" height="600">
       </a>
       <div class="pcard-body">
         <h3><a href="' . e($url) . '">' . e($name) . '</a></h3>

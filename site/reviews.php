@@ -31,7 +31,7 @@ $items = $rev['items'] ?? [];
     <div class="rev-grid" id="rev-grid">
       <?php foreach ($items as $i => $it): ?>
       <button type="button" class="rev-item reveal" data-src="<?= e(asset($it['file'])) ?>">
-        <img loading="lazy" src="<?= e(asset($it['file'])) ?>" alt="<?= e($t['rev_h']) ?>"
+        <img loading="lazy" decoding="async" src="<?= e(thumb_url($it['file'])) ?>" alt="<?= e($t['rev_h']) ?>"
              width="<?= (int)($it['w'] ?? 640) ?>" height="<?= (int)($it['h'] ?? 1138) ?>">
       </button>
       <?php endforeach; ?>

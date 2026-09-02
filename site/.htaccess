@@ -5,6 +5,11 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ router.php [L]
 
+# Сжатие текстовых ответов
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/xml application/javascript application/json image/svg+xml
+</IfModule>
+
 # Кэширование статики
 <IfModule mod_expires.c>
   ExpiresActive On
@@ -12,4 +17,6 @@ RewriteRule ^ router.php [L]
   ExpiresByType image/svg+xml "access plus 30 days"
   ExpiresByType text/css "access plus 7 days"
   ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 30 days"
 </IfModule>

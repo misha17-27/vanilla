@@ -9,6 +9,7 @@ const ROLES           = ['admin' => 'Администратор', 'manager' => '
 const MANAGER_VIEWS   = ['dashboard', 'orders', 'customers', 'products', 'categories', 'designs', 'account'];
 const BACKUP_DIR      = __DIR__ . '/../data/backups';
 const PRODUCT_IMG_DIR = __DIR__ . '/../assets/img/products';
+const THUMB_DIR       = __DIR__ . '/../assets/img/thumbs';
 const DESIGN_DIR      = __DIR__ . '/../uploads/designs';
 const ORDERS_FILE      = __DIR__ . '/../data/orders.json';
 const ORDER_STATUSES  = ['new' => 'Новый', 'confirmed' => 'Подтверждён', 'done' => 'Выполнен', 'canceled' => 'Отменён'];
@@ -191,7 +192,12 @@ function save_photo(array $f, string $slug): ?string {
     @mkdir(PRODUCT_IMG_DIR, 0775, true);
     $name = $slug . '-' . bin2hex(random_bytes(4)) . '.jpg';
     $ok = imagejpeg($dst, PRODUCT_IMG_DIR . '/' . $name, 85);
-    imagedestroy($src); imagedestroy($dst);
+    // превью 400×400 для сеток каталога
+    $th = imagecreatetruecolor(400, 400);
+    imagecopyresampled($th, $dst, 0, 0, 0, 0, 400, 400, 800, 800);
+    @mkdir(THUMB_DIR, 0775, true);
+    imagejpeg($th, THUMB_DIR . '/' . $name, 80);
+    imagedestroy($src); imagedestroy($dst); imagedestroy($th);
     return $ok ? '/assets/img/products/' . $name : null;
 }
 
