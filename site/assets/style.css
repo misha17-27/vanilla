@@ -627,6 +627,9 @@ html.no-scroll{overflow:hidden}
   .sub-caret{display:inline-block;width:15px;height:15px;transition:transform .25s}
   .has-sub.open .sub-caret{transform:rotate(180deg)}
   .submenu{display:none;position:static;transform:none;opacity:1;visibility:visible;padding:2px 0 10px}
+  /* при касании пункт получает фокус и срабатывает десктопное правило
+     с translateX(-50%) — на телефоне список должен оставаться на месте */
+  .menu .has-sub:hover .submenu,.menu .has-sub:focus-within .submenu,.has-sub.open .submenu{transform:none}
   .has-sub.open .submenu{display:block}
   .submenu-in{border:0;box-shadow:none;padding:0;gap:2px;background:none;max-width:250px;margin:0 auto}
   .sub-item{justify-content:flex-start;padding:8px 12px !important;border-radius:12px}
