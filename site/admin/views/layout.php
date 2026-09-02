@@ -45,7 +45,7 @@ $isOn = function (string $href) use ($here): bool {
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title><?= e($title) ?> — Vanilla Cake</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍰</text></svg>">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="stylesheet" href="/admin/assets/admin.css?v=8">
 </head>
 <body class="<?= $bare ? 'bare' : '' ?>">

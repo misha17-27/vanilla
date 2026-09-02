@@ -11,7 +11,7 @@ deployment:
     - /bin/cp -f $SRC/contact.php $SRC/faq.php $SRC/fillings.php $SRC/index.php $DEPLOYPATH/
     - /bin/cp -f $SRC/konstruktor.php $SRC/mehsul.php $SRC/order-save.php $DEPLOYPATH/
     - /bin/cp -f $SRC/reviews.php $SRC/router.php $SRC/sitemap.php $SRC/upload-design.php $DEPLOYPATH/
-    - /bin/cp -f $SRC/.htaccess $SRC/.user.ini $SRC/robots.txt $DEPLOYPATH/
+    - /bin/cp -f $SRC/.htaccess $SRC/.user.ini $SRC/robots.txt $SRC/favicon.ico $DEPLOYPATH/
     - /bin/cp -Rn $SRC/data/. $DEPLOYPATH/data/
     - /bin/cp -f $SRC/data/.htaccess $DEPLOYPATH/data/.htaccess
     - /bin/cp -f $SRC/uploads/designs/.htaccess $DEPLOYPATH/uploads/designs/.htaccess

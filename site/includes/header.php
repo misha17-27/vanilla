@@ -61,7 +61,9 @@ $OG_LOCALE = ['ru' => 'ru_RU', 'az' => 'az_AZ', 'en' => 'en_US'];
 <meta name="theme-color" content="#ffffff">
 <meta name="geo.region" content="AZ-BA">
 <meta name="geo.placename" content="Bakı">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍰</text></svg>">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/favicon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://vanilla.az">
