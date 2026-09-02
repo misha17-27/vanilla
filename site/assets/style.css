@@ -83,7 +83,9 @@ html.anim .reveal.in{opacity:1;transform:none}
 .sub-item.active span{color:var(--pink-deep)}
 
 /* Карточки категорий на страницах каталога */
-.cat-nav{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:38px}
+.cat-picker{margin-bottom:38px}
+.cat-picker-btn{display:none}
+.cat-nav{display:flex;gap:12px;flex-wrap:wrap}
 .cat-tile{display:flex;align-items:center;gap:12px;padding:8px 18px 8px 8px;background:#fff;border:1px solid var(--line);border-radius:999px;transition:.2s}
 .cat-tile img{width:52px;height:52px;border-radius:50%;object-fit:cover;background:var(--cream);flex:none}
 .cat-tile span{display:grid;gap:1px}
@@ -549,6 +551,19 @@ html.no-scroll{overflow:hidden}
 @media(max-width:1060px){
   .catalog-side{grid-template-columns:1fr;gap:0}
   .catalog-filter{position:static;margin-bottom:30px}
+  /* вместо ряда плиток — кнопка со списком категорий */
+  .cat-picker{position:relative;margin-bottom:0}
+  .cat-picker-btn{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:12px 16px;background:#fff;border:1px solid var(--line);border-radius:16px;cursor:pointer;text-align:left;transition:.2s}
+  .cat-picker-btn span{display:grid;gap:1px}
+  .cat-picker-btn b{font-size:14.5px;font-weight:700;color:var(--navy)}
+  .cat-picker-btn i{font-style:normal;font-size:12px;color:var(--text)}
+  .cat-picker-btn svg{width:18px;height:18px;color:var(--navy);flex:none;transition:transform .25s}
+  .cat-picker.open .cat-picker-btn{border-color:var(--navy);border-bottom-left-radius:0;border-bottom-right-radius:0}
+  .cat-picker.open .cat-picker-btn svg{transform:rotate(180deg)}
+  .cat-picker .cat-nav{display:none}
+  .cat-picker.open .cat-nav{display:grid;gap:2px;position:absolute;left:0;right:0;top:100%;z-index:30;background:#fff;border:1px solid var(--navy);border-top:0;border-radius:0 0 16px 16px;padding:6px;box-shadow:0 22px 40px -20px rgba(22,82,127,.4);max-height:60vh;overflow-y:auto}
+  .cat-picker .cat-tile{width:100%;border:0;border-radius:12px;padding:8px 12px 8px 8px}
+  .cat-picker .cat-tile:hover{transform:none;background:var(--blue-soft)}
   .catalog-side .cat-nav{flex-direction:row;flex-wrap:wrap;gap:12px}
   .catalog-side .cat-tile{width:auto;border-radius:999px}
   .catalog-side .cat-tile img{border-radius:50%}
@@ -648,11 +663,8 @@ html.no-scroll{overflow:hidden}
   html.menu-open .mob-cta,html.menu-open .ig-fab{display:none}
 }
 @media(max-width:640px){
-  .cat-nav,.catalog-side .cat-nav{flex-wrap:nowrap;overflow-x:auto;margin:0 -18px 26px;padding:2px 18px 8px;scrollbar-width:none;gap:10px}
-  .cat-nav::-webkit-scrollbar{display:none}
-  .cat-tile{padding:6px 14px 6px 6px}
   .cat-tile img{width:42px;height:42px}
-  .cat-tile b{font-size:12.5px}
+  .cat-tile b{font-size:13px}
   .section{padding:64px 0}
   .topbar .hide-m{display:none}
   .topbar .container{justify-content:center}

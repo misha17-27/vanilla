@@ -52,6 +52,29 @@ if (burger && menu) {
   });
 })();
 
+// Кнопка «Категории» на телефоне: раскрывает список
+(function () {
+  var box = document.getElementById('cat-picker');
+  var btn = document.getElementById('cat-picker-btn');
+  if (!box || !btn) return;
+  function open(v) {
+    box.classList.toggle('open', v);
+    btn.setAttribute('aria-expanded', v ? 'true' : 'false');
+  }
+  btn.addEventListener('click', function (e) { e.stopPropagation(); open(!box.classList.contains('open')); });
+  document.addEventListener('click', function (e) { if (!box.contains(e.target)) open(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') open(false); });
+  // выбрали категорию — закрываем и показываем её на кнопке
+  box.addEventListener('click', function (e) {
+    var tile = e.target.closest('.cat-tile');
+    if (!tile) return;
+    var b = tile.querySelector('b'), i = tile.querySelector('i');
+    if (b) btn.querySelector('b').textContent = b.textContent;
+    if (i) btn.querySelector('i').textContent = i.textContent;
+    open(false);
+  });
+})();
+
 // Фильтр каталога по категориям: плитки прячут лишние карточки без перезагрузки
 (function () {
   var nav = document.querySelector('.cat-nav.is-filter');

@@ -19,7 +19,17 @@ if ($catNavFilter) {
     $catNav['all'][3] = array_sum(array_map(fn($r) => $r[3], $catNav));
     $catNav['all'][2] = $catNav['bento'][2];
 }
+// что показать на кнопке: текущий раздел
+$catNavCur = $catNav[$catNavActive ?? ''] ?? reset($catNav);
 ?>
+<div class="cat-picker" id="cat-picker">
+  <button type="button" class="cat-picker-btn" id="cat-picker-btn" aria-expanded="false">
+    <span>
+      <b><?= e($catNavCur[1]) ?></b>
+      <i><?= (int)$catNavCur[3] ?> <?= e($t['pcs']) ?></i>
+    </span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
 <nav class="cat-nav<?= $catNavFilter ? ' is-filter' : '' ?>" aria-label="<?= e($t['nav_bento']) ?>">
   <?php foreach ($catNav as $key => [$href, $label, $img, $count, $catKey]): if (!$count) continue; ?>
   <a class="cat-tile <?= $key === ($catNavActive ?? '') ? 'on' : '' ?>" href="<?= e($href) ?>" data-cat="<?= e($catKey) ?>">
@@ -31,3 +41,4 @@ if ($catNavFilter) {
   </a>
   <?php endforeach; ?>
 </nav>
+</div>

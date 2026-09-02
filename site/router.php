@@ -101,7 +101,7 @@ foreach (['/biskvit/', '/terkib/', '/olcu/'] as $prefix) {
 // Страницы категорий каталога: адрес берём из самой категории
 require_once __DIR__ . '/includes/config.php';
 foreach (categories() as $catKey => $catRow) {
-    if (($catRow['page'] ?? '') === 'own' && cat_url($catRow) === $path) {
+    if (($catRow['page'] ?? '') === 'own' && cat_path($catRow) === $path) {
         $CAT_KEY = $catKey;
         require __DIR__ . '/category.php';
         exit;

@@ -305,10 +305,16 @@ function own_categories(): array
     return array_values(array_filter(categories(), fn($c) => ($c['page'] ?? '') === 'own'));
 }
 
-function cat_url(array $c): string
+// Адрес категории без языковой приставки — для сравнения в роутере и карты сайта
+function cat_path(array $c): string
 {
     // path — если у категории закреплён адрес со старого сайта
-    return u($c['path'] ?? ('/bolme/' . ($c['slug'] ?? $c['key']) . '/'));
+    return $c['path'] ?? ('/bolme/' . ($c['slug'] ?? $c['key']) . '/');
+}
+
+function cat_url(array $c): string
+{
+    return u(cat_path($c));
 }
 
 // Превью 400×400 для карточек; если файла нет — отдаём оригинал
