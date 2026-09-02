@@ -1,3 +1,0 @@
-# cPanel читает .cpanel.yml на сервере — переводы строк должны остаться LF
-.cpanel.yml text eol=lf
-*.sh text eol=lf
