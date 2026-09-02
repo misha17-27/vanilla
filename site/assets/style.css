@@ -60,6 +60,7 @@ html.anim .reveal.in{opacity:1;transform:none}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;height:82px}
 .logo img{height:42px;width:auto}
 .menu{display:flex;gap:22px}
+.menu-foot{display:none}
 .menu a{font-size:13px;font-weight:600;color:var(--ink);letter-spacing:.02em;padding:6px 0;position:relative;transition:.2s;white-space:nowrap}
 .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1.5px;background:var(--pink);transition:.25s}
 .menu a:hover{color:var(--pink)}
@@ -606,14 +607,28 @@ html.no-scroll{overflow:hidden}
   .menu{position:fixed;left:0;right:0;top:calc(82px + 37px);bottom:0;background:#fff;flex-direction:column;gap:0;padding:14px 24px calc(28px + env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain;transform:translateX(100%);transition:transform .3s ease;z-index:88;display:flex}
   .menu.open{transform:none}
   html.menu-open,html.menu-open body{overflow:hidden}
-  .menu a{display:block;padding:14px 0;font-size:15px;border-bottom:1px solid var(--cream)}
+  /* пункты по центру, активный — плашкой */
+  .menu{justify-content:flex-start;padding-top:18px}
+  .menu > li{width:100%}
+  .menu a{display:block;padding:12px 18px;font-size:17px;font-weight:700;text-align:center;border-radius:14px;color:var(--navy)}
+  .menu > li > a.active{background:var(--pink-mist);color:var(--pink-deep)}
   .menu a::after{display:none}
+  .menu .has-sub > a{justify-content:center}
   .sub-caret{display:none}
-  .submenu{position:static;transform:none;opacity:1;visibility:visible;padding:0 0 6px}
-  .submenu-in{border:0;box-shadow:none;padding:0;gap:0;background:none}
-  .sub-item{padding:10px 0 10px 14px !important;border-bottom:1px solid var(--cream);border-radius:0}
-  .sub-item img{width:38px;height:38px}
-  .sub-item span{font-size:14px}
+  .submenu{position:static;transform:none;opacity:1;visibility:visible;padding:2px 0 10px}
+  .submenu-in{border:0;box-shadow:none;padding:0;gap:2px;background:none;max-width:250px;margin:0 auto}
+  .sub-item{justify-content:flex-start;padding:8px 12px !important;border-radius:12px}
+  .sub-item img{width:34px;height:34px}
+  .sub-item span{font-size:14.5px;font-weight:600}
+  /* подвал меню: связаться и режим работы */
+  .menu-foot{display:grid;justify-items:center;gap:12px;margin-top:auto;padding-top:20px;border-top:1px solid var(--line)}
+  .menu-foot .btn{width:100%;max-width:340px;justify-content:center}
+  .menu-soc{display:flex;gap:12px}
+  .menu-soc a{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:var(--blue-soft);color:var(--navy);padding:0}
+  .menu-soc svg{width:20px;height:20px}
+  .menu-tag{font-size:12.5px;color:var(--text);text-align:center;line-height:1.5}
+  /* пока меню открыто, нижняя кнопка не нужна — она есть внутри */
+  html.menu-open .mob-cta,html.menu-open .ig-fab{display:none}
 }
 @media(max-width:640px){
   .cat-nav,.catalog-side .cat-nav{flex-wrap:nowrap;overflow-x:auto;margin:0 -18px 26px;padding:2px 18px 8px;scrollbar-width:none;gap:10px}
