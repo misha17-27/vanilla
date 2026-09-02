@@ -1,12 +1,20 @@
 // Mobile menu
 var burger = document.getElementById('burger'), menu = document.getElementById('menu');
 if (burger && menu) {
-  burger.addEventListener('click', function () {
-    var open = menu.classList.toggle('open');
+  function setMenu(open) {
+    menu.classList.toggle('open', open);
+    burger.classList.toggle('on', open);
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.documentElement.classList.toggle('menu-open', open);
+  }
+  burger.addEventListener('click', function () {
+    setMenu(!menu.classList.contains('open'));
   });
   menu.addEventListener('click', function (e) {
-    if (e.target.tagName === 'A') menu.classList.remove('open');
+    if (e.target.closest('a')) setMenu(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('open')) setMenu(false);
   });
 }
 // В поля телефона пускаем только цифры и знаки номера — буквы отсекаем сразу
@@ -463,6 +471,28 @@ if (langBox) {
   var hero = document.querySelector('.hero');
   hero.addEventListener('mouseenter', stop);
   hero.addEventListener('mouseleave', start);
+
+  // Листание пальцем: горизонтальный жест переключает слайд,
+  // вертикальный отдаём странице, чтобы не мешать прокрутке.
+  var x0 = 0, y0 = 0, dx = 0, dy = 0, swiping = false;
+  hero.addEventListener('touchstart', function (e) {
+    if (e.touches.length !== 1) return;
+    x0 = e.touches[0].clientX; y0 = e.touches[0].clientY;
+    dx = dy = 0; swiping = true;
+    stop();
+  }, { passive: true });
+  hero.addEventListener('touchmove', function (e) {
+    if (!swiping) return;
+    dx = e.touches[0].clientX - x0;
+    dy = e.touches[0].clientY - y0;
+  }, { passive: true });
+  hero.addEventListener('touchend', function () {
+    if (!swiping) return;
+    swiping = false;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? i + 1 : i - 1);
+    start();
+  }, { passive: true });
+
   start();
 })();
 // Reveal on scroll (content stays visible when IO is unavailable)

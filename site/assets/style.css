@@ -594,9 +594,18 @@ html.no-scroll{overflow:hidden}
   .menu{display:flex !important}
 }
 @media(max-width:1060px){
-  .burger{display:block}
-  .menu{position:fixed;left:0;right:0;top:calc(82px + 37px);background:#fff;border-bottom:1px solid var(--line);flex-direction:column;gap:0;padding:10px 24px 18px;box-shadow:0 30px 40px -20px rgba(22,82,127,.2);transform:translateY(-140%);transition:.35s;z-index:-1;display:flex}
+  /* backdrop-filter делает шапку системой координат для fixed-элементов,
+     из-за этого меню внутри неё не могло растянуться на экран */
+  .site-header{backdrop-filter:none;background:#fff}
+  .burger{display:block;position:relative;z-index:95}
+  .burger span{transition:transform .3s,opacity .2s}
+  .burger.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.on span:nth-child(2){opacity:0}
+  .burger.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  /* меню занимает весь экран под шапкой */
+  .menu{position:fixed;left:0;right:0;top:calc(82px + 37px);bottom:0;background:#fff;flex-direction:column;gap:0;padding:14px 24px calc(28px + env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain;transform:translateX(100%);transition:transform .3s ease;z-index:88;display:flex}
   .menu.open{transform:none}
+  html.menu-open,html.menu-open body{overflow:hidden}
   .menu a{display:block;padding:14px 0;font-size:15px;border-bottom:1px solid var(--cream)}
   .menu a::after{display:none}
   .sub-caret{display:none}
@@ -618,6 +627,7 @@ html.no-scroll{overflow:hidden}
   .nav{height:70px}
   .logo img{height:34px}
   .menu{top:calc(70px + 37px)}
+  .menu a{font-size:16px}
   .btn-nav{display:none}
   .lang summary{height:34px;padding:0 9px 0 11px;font-size:10.5px}
   .lang-menu a{padding:7px 10px;font-size:10.5px}
