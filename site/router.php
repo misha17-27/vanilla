@@ -33,6 +33,32 @@ if ($uri === '/admin' || str_starts_with($uri, '/admin/')) {
     }
 }
 
+// Язык в адресе: /az/… и /en/…; русский — основной, живёт без приставки.
+// /ru/… ведём на адрес без приставки, чтобы у страницы был один адрес.
+$LANG_PREFIX = '';
+if (preg_match('#^/(ru|az|en)(/.*)?$#', $uri, $lm)) {
+    $rest = $lm[2] ?? '/';
+    if ($rest === '') $rest = '/';
+    if ($lm[1] === 'ru') {
+        $qs = $_SERVER['QUERY_STRING'] ?? '';
+        header('Location: ' . $rest . ($qs !== '' ? '?' . $qs : ''), true, 301);
+        exit;
+    }
+    $LANG_PREFIX  = $lm[1];
+    $FORCE_LANG   = $lm[1];
+    $uri = $rest;
+}
+
+// Старый вид ?lang=xx — переводим на адрес с приставкой
+if (isset($_GET['lang']) && in_array($_GET['lang'], ['ru', 'az', 'en'], true)) {
+    $qs = $_GET;
+    $to = $qs['lang'];
+    unset($qs['lang']);
+    $tail = $qs ? '?' . http_build_query($qs) : '';
+    header('Location: ' . ($to === 'ru' ? '' : '/' . $to) . $uri . $tail, true, 301);
+    exit;
+}
+
 // нормализуем завершающий слэш
 $path = $uri === '/' ? '/' : rtrim($uri, '/') . '/';
 
@@ -47,13 +73,6 @@ if (preg_match('#^/melbet-#i', $path)) {
 // Старые карты сайта (sitemap_index.xml и файлы Yoast) — на нашу
 if (preg_match('#^/(sitemap_index|page-sitemap|product-sitemap|product_cat-sitemap|product_tag-sitemap|pa_[a-z]+-sitemap)\.xml$#i', $uri)) {
     header('Location: /sitemap.xml', true, 301);
-    exit;
-}
-
-// Русская ветка старого сайта: /ru/mehsul/… → /mehsul/…
-if (preg_match('#^/ru(/.*)?$#', $path, $m)) {
-    $rest = $m[1] ?? '/';
-    header('Location: ' . ($rest === '/' ? '/' : $rest) . '?lang=ru', true, 301);
     exit;
 }
 
@@ -154,5 +173,5 @@ $page_title = 'Vanilla Cake — 404';
 $page_meta  = '';
 require __DIR__ . '/includes/header.php';
 echo '<section class="page-hero"><div class="container"><h1>404</h1><p class="lead">' . e($t['nf_text'] ?? 'Səhifə tapılmadı') . '</p>'
-   . '<p style="margin-top:24px"><a class="btn btn-primary" href="/">' . e($t['nav_home']) . '</a></p></div></section>';
+   . '<p style="margin-top:24px"><a class="btn btn-primary" href="' . e(u('/')) . '">' . e($t['nav_home']) . '</a></p></div></section>';
 require __DIR__ . '/includes/footer.php';

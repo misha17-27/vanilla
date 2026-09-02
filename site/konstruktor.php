@@ -18,7 +18,7 @@ $stickers = [
 <section class="page-hero">
   <div class="container">
     <div class="crumbs">
-      <a href="/"><?= e($t['breadcrumb_home']) ?></a>
+      <a href="<?= e(u('/')) ?>"><?= e($t['breadcrumb_home']) ?></a>
       <span class="sep">/</span>
       <span><?= e($t['k_h']) ?></span>
     </div>

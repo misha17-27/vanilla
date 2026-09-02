@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/includes/config.php';
+$LANG_BASE = '';   // адреса тут всегда без языковой приставки
 header('Content-Type: application/xml; charset=UTF-8');
 $urls = ['/', '/bolme/bento-tort/', '/bolme/cake-to-go/', '/terkibler/', '/reyler/', '/konstruktor/', '/haqqimizda/', '/faq/', '/elaqe/'];
 foreach (own_categories() as $c) {
@@ -14,7 +15,7 @@ foreach ($urls as $u) {
     echo '  <url>' . "\n";
     echo '    <loc>' . e(CANON_HOST . $u) . '</loc>' . "\n";
     foreach ($LANGS as $l) {
-        $href = CANON_HOST . $u . ($l === 'ru' ? '' : '?lang=' . $l);
+        $href = CANON_HOST . lang_path($l, $u);
         echo '    <xhtml:link rel="alternate" hreflang="' . e($l) . '" href="' . e($href) . '"/>' . "\n";
     }
     echo '    <xhtml:link rel="alternate" hreflang="x-default" href="' . e(CANON_HOST . $u) . '"/>' . "\n";

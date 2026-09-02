@@ -151,13 +151,13 @@ $heroSlides = [
         <h2><?= e($t['sec_bento_t']) ?></h2>
         <p><?= e($t['sec_bento_d']) ?></p>
       </div>
-      <a class="btn btn-ghost" href="/bolme/bento-tort/"><?= e($t['btn_all_bento']) ?></a>
+      <a class="btn btn-ghost" href="<?= e(u('/bolme/bento-tort/')) ?>"><?= e($t['btn_all_bento']) ?></a>
     </div>
     <div class="pgrid">
       <?php foreach (array_slice($bento, 0, 16) as $p) product_card($p); ?>
     </div>
     <div class="center sec-cta">
-      <a class="btn btn-ghost" href="/bolme/bento-tort/"><?= e($t['btn_all_bento']) ?></a>
+      <a class="btn btn-ghost" href="<?= e(u('/bolme/bento-tort/')) ?>"><?= e($t['btn_all_bento']) ?></a>
     </div>
   </div>
 </section>
@@ -226,13 +226,13 @@ $heroSlides = [
         <h2><?= e($t['sec_ctg_t']) ?></h2>
         <p><?= e($t['sec_ctg_d']) ?></p>
       </div>
-      <a class="btn btn-ghost" href="/bolme/cake-to-go/"><?= e($t['btn_all_ctg']) ?></a>
+      <a class="btn btn-ghost" href="<?= e(u('/bolme/cake-to-go/')) ?>"><?= e($t['btn_all_ctg']) ?></a>
     </div>
     <div class="pgrid">
       <?php foreach (array_slice($ctg, 0, 16) as $p) product_card($p); ?>
     </div>
     <div class="center sec-cta">
-      <a class="btn btn-ghost" href="/bolme/cake-to-go/"><?= e($t['btn_all_ctg']) ?></a>
+      <a class="btn btn-ghost" href="<?= e(u('/bolme/cake-to-go/')) ?>"><?= e($t['btn_all_ctg']) ?></a>
     </div>
   </div>
 </section>
@@ -288,7 +288,7 @@ $heroSlides = [
       <?php endforeach; ?>
     </div>
     <div class="center sec-cta">
-      <a class="btn btn-ghost" href="/terkibler/"><?= e($t['nav_fillings']) ?> →</a>
+      <a class="btn btn-ghost" href="<?= e(u('/terkibler/')) ?>"><?= e($t['nav_fillings']) ?> →</a>
     </div>
   </div>
 </section>
@@ -344,7 +344,7 @@ $heroSlides = [
         <div class="stat"><b>1650+</b><span><?= e($t['stat2']) ?></span></div>
         <div class="stat"><b>120+</b><span><?= e($t['stat3']) ?></span></div>
       </div>
-      <a class="btn btn-ghost" href="/haqqimizda/"><?= e($t['about_btn']) ?></a>
+      <a class="btn btn-ghost" href="<?= e(u('/haqqimizda/')) ?>"><?= e($t['about_btn']) ?></a>
     </div>
   </div>
 </section>

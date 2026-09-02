@@ -21,7 +21,7 @@ schema_add(schema_item_list($bentoItems, $t['bento_h']));
 <section class="page-hero">
   <div class="container">
     <div class="crumbs">
-      <a href="/"><?= e($t['breadcrumb_home']) ?></a>
+      <a href="<?= e(u('/')) ?>"><?= e($t['breadcrumb_home']) ?></a>
       <span class="sep">/</span>
       <span><?= e($t['nav_bento']) ?></span>
     </div>
@@ -74,7 +74,7 @@ schema_add(schema_item_list($bentoItems, $t['bento_h']));
         <div class="size-row"><span class="w"><?= e($t['fl3_t']) ?></span><span class="dots"></span><span class="c" style="color:var(--navy)"><?= e($t['fl3_s']) ?></span></div>
         <div class="size-note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-          <span><?= e($t['fl_d']) ?> <a href="/terkibler/" style="color:var(--pink);font-weight:600"><?= e($t['nav_fillings']) ?> →</a></span>
+          <span><?= e($t['fl_d']) ?> <a href="<?= e(u('/terkibler/')) ?>" style="color:var(--pink);font-weight:600"><?= e($t['nav_fillings']) ?> →</a></span>
         </div>
       </div>
     </div>

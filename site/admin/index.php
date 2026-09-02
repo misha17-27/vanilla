@@ -32,6 +32,7 @@ if ($missing) {
 }
 
 require_once __DIR__ . '/../includes/config.php';
+$LANG_BASE = '';   // адреса тут всегда без языковой приставки
 
 const ADMIN_PASS_FILE = __DIR__ . '/../data/admin.pass';
 const USERS_FILE      = __DIR__ . '/../data/users.json';

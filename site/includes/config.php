@@ -5,7 +5,15 @@ $LANGS = ['ru', 'az', 'en'];
 if (isset($_GET['lang']) && in_array($_GET['lang'], $LANGS, true)) {
     $_SESSION['lang'] = $_GET['lang'];
 }
-$lang = $_SESSION['lang'] ?? 'ru';
+// Язык берём из адреса (/az/…, /en/…), иначе из сессии, иначе русский
+if (isset($FORCE_LANG) && in_array($FORCE_LANG, $LANGS, true)) {
+    $lang = $FORCE_LANG;
+    $_SESSION['lang'] = $lang;
+} else {
+    $lang = $_SESSION['lang'] ?? 'ru';
+}
+// приставка языка для ссылок: у русского её нет
+$LANG_BASE = $lang === 'ru' ? '' : '/' . $lang;
 $t = require __DIR__ . "/../lang/$lang.php";
 
 // Правки текстов из админки (раздел «Страницы») перекрывают lang/*.php.
@@ -75,23 +83,38 @@ function wa_link(?string $product = null, ?string $url = null): string
 }
 
 // Current path (без query), для language switcher и canonical
+// Путь страницы без языковой приставки
 function current_path(): string
 {
     $p = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
-    return $p;
+    $p = preg_replace('#^/(ru|az|en)(?=/|$)#', '', $p);
+    return $p === '' ? '/' : $p;
+}
+
+// Внутренняя ссылка с приставкой языка: /az/bolme/… для не-русских версий
+function u(string $path): string
+{
+    global $LANG_BASE;
+    return ($LANG_BASE ?? '') . $path;
+}
+
+// Тот же адрес на другом языке
+function lang_path(string $l, ?string $path = null): string
+{
+    $path = $path ?? current_path();
+    return ($l === 'ru' ? '' : '/' . $l) . ($path === '/' && $l !== 'ru' ? '/' : $path);
 }
 
 function lang_url(string $l): string
 {
-    return current_path() . '?lang=' . $l;
+    return lang_path($l);
 }
 
 // Канонический адрес: язык по умолчанию — на чистом URL, остальные — с ?lang=
 function canonical_url(?string $l = null): string
 {
     global $lang;
-    $l = $l ?? $lang;
-    return CANON_HOST . current_path() . ($l === 'ru' ? '' : '?lang=' . $l);
+    return CANON_HOST . lang_path($l ?? $lang);
 }
 
 // ===== Разметка schema.org =====
@@ -285,7 +308,7 @@ function own_categories(): array
 function cat_url(array $c): string
 {
     // path — если у категории закреплён адрес со старого сайта
-    return $c['path'] ?? ('/bolme/' . ($c['slug'] ?? $c['key']) . '/');
+    return u($c['path'] ?? ('/bolme/' . ($c['slug'] ?? $c['key']) . '/'));
 }
 
 // Превью 400×400 для карточек; если файла нет — отдаём оригинал
@@ -297,7 +320,7 @@ function thumb_url(string $img): string
 
 function product_url(array $p): string
 {
-    return '/mehsul/' . $p['slug'] . '/';
+    return u('/mehsul/' . $p['slug'] . '/');
 }
 
 // Локализованное отображаемое имя из WP-названия товара

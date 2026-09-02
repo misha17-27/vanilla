@@ -7,18 +7,18 @@ $firstImg = function (string $type): string {
     $items = products_of($type);
     return $items ? asset($items[0]['img']) : '';
 };
-$bentoSub = ['bento' => ['/bolme/bento-tort/', $t['nav_bento'], $firstImg('bento')]];
+$bentoSub = ['bento' => [u('/bolme/bento-tort/'), $t['nav_bento'], $firstImg('bento')]];
 foreach (own_categories() as $c) {
     $bentoSub['cat-' . $c['key']] = [cat_url($c), cat_name($c['key']), $firstImg($c['key'])];
 }
 
 $nav = [
-    'index'    => ['/',                    $t['nav_home']],
-    'bento'    => ['/bolme/bento-tort/',   $t['nav_bento'], $bentoSub],
-    'ctg'      => ['/bolme/cake-to-go/',   $t['nav_ctg']],
-    'fillings' => ['/terkibler/',          $t['nav_fillings']],
-    'konstr'   => ['/konstruktor/',        $t['nav_konstr']],
-    'contact'  => ['/elaqe/',              $t['nav_contact']],
+    'index'    => [u('/'),                    $t['nav_home']],
+    'bento'    => [u('/bolme/bento-tort/'),   $t['nav_bento'], $bentoSub],
+    'ctg'      => [u('/bolme/cake-to-go/'),   $t['nav_ctg']],
+    'fillings' => [u('/terkibler/'),          $t['nav_fillings']],
+    'konstr'   => [u('/konstruktor/'),        $t['nav_konstr']],
+    'contact'  => [u('/elaqe/'),              $t['nav_contact']],
 ];
 // «Отзывы», «О нас» и FAQ в верхнем меню не показываем — они в подвале
 $canonical = canonical_url();
@@ -81,13 +81,13 @@ $OG_LOCALE = ['ru' => 'ru_RU', 'az' => 'az_AZ', 'en' => 'en_US'];
 
 <header class="site-header">
   <div class="container nav">
-    <a class="logo" href="/">
+    <a class="logo" href="<?= e(u('/')) ?>">
       <img src="/assets/logo.svg" alt="Vanilla Cake" width="180" height="40">
     </a>
     <nav>
       <ul class="menu" id="menu">
         <li class="menu-head">
-          <a class="logo" href="/"><img src="/assets/logo.svg" alt="Vanilla Cake" width="150" height="34"></a>
+          <a class="logo" href="<?= e(u('/')) ?>"><img src="/assets/logo.svg" alt="Vanilla Cake" width="150" height="34"></a>
           <div class="menu-head-r">
             <details class="lang">
               <summary aria-label="Language">

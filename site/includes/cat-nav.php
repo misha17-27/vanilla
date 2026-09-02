@@ -9,9 +9,9 @@ $catNavImg = function (string $type): string {
 $catNavFilter = $catNavFilter ?? false;
 $catNav = [];
 if ($catNavFilter) {
-    $catNav['all'] = ['/bolme/bento-tort/', $t['cat_all'], '', 0, ''];
+    $catNav['all'] = [u('/bolme/bento-tort/'), $t['cat_all'], '', 0, ''];
 }
-$catNav['bento'] = ['/bolme/bento-tort/', $t['nav_bento'], $catNavImg('bento'), count(products_of('bento')), 'bento'];
+$catNav['bento'] = [u('/bolme/bento-tort/'), $t['nav_bento'], $catNavImg('bento'), count(products_of('bento')), 'bento'];
 foreach (own_categories() as $c) {
     $catNav['cat-' . $c['key']] = [cat_url($c), cat_name($c['key']), $catNavImg($c['key']), count(products_of($c['key'])), $c['key']];
 }

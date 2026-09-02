@@ -11,7 +11,7 @@ if (!$prod) {
     $page_robots = 'noindex, follow';
     require __DIR__ . '/includes/header.php';
     echo '<section class="page-hero"><div class="container"><h1>404</h1><p class="lead">' . e($t['nf_text']) . '</p>'
-       . '<p style="margin-top:24px"><a class="btn btn-primary" href="/bolme/bento-tort/">' . e($t['nav_bento']) . '</a></p></div></section>';
+       . '<p style="margin-top:24px"><a class="btn btn-primary" href="<?= e(u('/bolme/bento-tort/')) ?>">' . e($t['nav_bento']) . '</a></p></div></section>';
     require __DIR__ . '/includes/footer.php';
     exit;
 }
@@ -87,7 +87,7 @@ require __DIR__ . '/includes/header.php';
 <section class="page-hero prod-hero">
   <div class="container">
     <div class="crumbs">
-      <a href="/"><?= e($t['breadcrumb_home']) ?></a>
+      <a href="<?= e(u('/')) ?>"><?= e($t['breadcrumb_home']) ?></a>
       <span class="sep">/</span>
       <a href="<?= e($catUrl) ?>"><?= e($catLabel) ?></a>
       <span class="sep">/</span>
@@ -199,7 +199,7 @@ require __DIR__ . '/includes/header.php';
           </div>
           <?php endforeach; ?>
         </div>
-        <p style="margin-top:20px"><?= e($t['fl_d']) ?> <a class="tp-link" href="/terkibler/"><?= e($t['nav_fillings']) ?> →</a></p>
+        <p style="margin-top:20px"><?= e($t['fl_d']) ?> <a class="tp-link" href="<?= e(u('/terkibler/')) ?>"><?= e($t['nav_fillings']) ?> →</a></p>
       </section>
       <section class="pd-sec">
         <h3><?= e($t['tab_time']) ?></h3>

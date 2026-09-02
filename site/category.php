@@ -35,7 +35,7 @@ require __DIR__ . '/includes/header.php';
 <section class="page-hero">
   <div class="container">
     <div class="crumbs">
-      <a href="/"><?= e($t['breadcrumb_home']) ?></a>
+      <a href="<?= e(u('/')) ?>"><?= e($t['breadcrumb_home']) ?></a>
       <span class="sep">/</span>
       <span><?= e($name) ?></span>
     </div>
@@ -77,7 +77,7 @@ require __DIR__ . '/includes/header.php';
         <div class="size-row"><span class="w"><?= e($t['fl3_t']) ?></span><span class="dots"></span><span class="c" style="color:var(--navy)"><?= e($t['fl3_s']) ?></span></div>
         <div class="size-note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-          <span><a href="/terkibler/" style="color:var(--pink);font-weight:600"><?= e($t['nav_fillings']) ?> →</a></span>
+          <span><a href="<?= e(u('/terkibler/')) ?>" style="color:var(--pink);font-weight:600"><?= e($t['nav_fillings']) ?> →</a></span>
         </div>
       </div>
     </div>
