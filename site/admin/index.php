@@ -1,5 +1,36 @@
 <?php
 // ===== Админ-панель Vanilla Cake =====
+
+// Чего может не хватать на хостинге. Без этой проверки любая нехватка
+// даёт пустую 500-ю страницу, по которой ничего не понять.
+$need = [
+    'mbstring' => 'работа с русским и азербайджанским текстом',
+    'gd'       => 'кадрирование фото товаров и конструктор торта',
+    'json'     => 'хранение каталога и заказов',
+];
+$missing = [];
+foreach ($need as $ext => $why) if (!extension_loaded($ext)) $missing[$ext] = $why;
+$dataDir = __DIR__ . '/../data';
+if (!is_dir($dataDir) || !is_writable($dataDir)) $missing['__data'] = 'папка data должна быть доступна для записи (chmod 755)';
+if (!is_writable(__DIR__ . '/../uploads')) $missing['__uploads'] = 'папка uploads должна быть доступна для записи (chmod 755)';
+if (version_compare(PHP_VERSION, '8.1', '<')) $missing['__php'] = 'нужен PHP 8.1 или новее, сейчас ' . PHP_VERSION;
+
+if ($missing) {
+    http_response_code(503);
+    header('Content-Type: text/html; charset=UTF-8');
+    echo '<!DOCTYPE html><meta charset="utf-8"><title>Панель не может запуститься</title>'
+       . '<style>body{font:15px/1.6 system-ui,sans-serif;max-width:680px;margin:60px auto;padding:0 20px;color:#2A4159}'
+       . 'h1{font-size:22px;color:#16527F}li{margin:8px 0}code{background:#f2f4f7;padding:2px 6px;border-radius:5px}</style>'
+       . '<h1>Панель не может запуститься</h1><p>На сервере не хватает вот этого:</p><ul>';
+    foreach ($missing as $k => $why) {
+        $name = str_starts_with($k, '__') ? '' : '<code>' . htmlspecialchars($k) . '</code> — ';
+        echo '<li>', $name, htmlspecialchars($why), '</li>';
+    }
+    echo '</ul><p>Расширения включаются в cPanel → <b>Select PHP Version → Extensions</b>, '
+       . 'версия PHP — в <b>MultiPHP Manager</b>, права на папки — в <b>File Manager</b>.</p>';
+    exit;
+}
+
 require_once __DIR__ . '/../includes/config.php';
 
 const ADMIN_PASS_FILE = __DIR__ . '/../data/admin.pass';
@@ -115,12 +146,13 @@ function load_users(): array
     return $users;
 }
 
-function save_users(array $users): void
+function save_users(array $users): bool
 {
-    file_put_contents(USERS_FILE, json_encode(
+    $ok = @file_put_contents(USERS_FILE, json_encode(
         ['users' => array_values($users)],
         JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT
     ));
+    return $ok !== false;
 }
 
 function me(): ?array
@@ -289,11 +321,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $err = 'Укажите настоящий e-mail — по нему будет вход.';
         elseif (mb_strlen($p1) < 8)  $err = 'Пароль должен быть не короче 8 символов.';
         elseif ($p1 !== $p2)         $err = 'Пароли не совпадают.';
-        else {
-            save_users([$email => [
-                'email' => $email, 'name' => $name, 'role' => 'admin', 'active' => true,
-                'pass' => password_hash($p1, PASSWORD_DEFAULT), 'created' => time(), 'last' => 0,
-            ]]);
+        elseif (!save_users([$email => [
+            'email' => $email, 'name' => $name, 'role' => 'admin', 'active' => true,
+            'pass' => password_hash($p1, PASSWORD_DEFAULT), 'created' => time(), 'last' => 0,
+        ]])) {
+            $err = 'Не удалось записать data/users.json — нужны права на запись в папку data (chmod 755).';
+        } else {
             flash('Пользователь создан — войдите.');
             go('/admin/');
         }
