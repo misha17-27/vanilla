@@ -1,0 +1,28 @@
+---
+# Развёртывание сайта из репозитория в корень домена.
+# cPanel → Git Version Control → Manage → Pull or Deploy → Deploy HEAD Commit.
+# Выкладывается только папка site/ — исходные фото и старые макеты остаются в репозитории.
+#
+# Если корень домена другой, поменяйте DEPLOYPATH:
+# cPanel → Domains → колонка Document Root.
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/vanilla/public_html
+    - export SRC=$PWD/site
+    - /bin/mkdir -p $DEPLOYPATH
+
+    # Код, шаблоны, стили и картинки.
+    # data/ и uploads/ пропускаем: там каталог, заказы, пользователи и файлы клиентов,
+    # которые правятся через админку прямо на сервере.
+    - /bin/rsync -a --exclude='data/' --exclude='uploads/' $SRC/ $DEPLOYPATH/
+
+    # Первый деплой: кладём стартовые данные. Что уже есть на сервере — не трогаем.
+    - /bin/cp -rn $SRC/data $DEPLOYPATH/ || true
+    - /bin/mkdir -p $DEPLOYPATH/data/backups $DEPLOYPATH/uploads/designs $DEPLOYPATH/uploads/ratelimit
+
+    # Правила защиты служебных папок обновляем всегда — это код, а не данные
+    - /bin/cp -f $SRC/data/.htaccess $DEPLOYPATH/data/.htaccess
+    - /bin/cp -f $SRC/uploads/designs/.htaccess $DEPLOYPATH/uploads/designs/.htaccess
+    - /bin/cp -f $SRC/uploads/ratelimit/.htaccess $DEPLOYPATH/uploads/ratelimit/.htaccess
+
+    - /bin/chmod -R 755 $DEPLOYPATH/data $DEPLOYPATH/uploads

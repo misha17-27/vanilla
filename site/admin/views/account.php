@@ -28,6 +28,37 @@
   </form>
 </div>
 
+<?php if (is_admin()):
+$checks = [];
+$phpOk = version_compare(PHP_VERSION, '8.1', '>=');
+$checks[] = [$phpOk, 'PHP ' . PHP_VERSION, $phpOk ? 'Версия подходит.' : 'Нужен PHP 8.1 или новее: cPanel → MultiPHP Manager.'];
+$gd = extension_loaded('gd');
+$checks[] = [$gd, 'Обработка картинок (GD)', $gd ? 'Фото товаров кадрируются и пересохраняются на сервере.' : 'Расширение GD выключено — загрузка фото и конструктор работать не будут.'];
+$writable = is_writable(__DIR__ . '/../../data') && is_writable(__DIR__ . '/../../uploads');
+$checks[] = [$writable, 'Папки data и uploads', $writable ? 'Доступны для записи — заказы и загрузки сохраняются.' : 'Нет прав на запись: chmod 755 для data и uploads.'];
+$https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || ($_SERVER['SERVER_PORT'] ?? '') == 443;
+$local = in_array($_SERVER['SERVER_NAME'] ?? '', ['localhost', '127.0.0.1'], true);
+$checks[] = [$https || $local, 'HTTPS', $https ? 'Сайт открывается по защищённому соединению.' : ($local ? 'Локальный запуск — проверка не нужна.' : 'Включите SSL в cPanel и редирект на https.')];
+$host = parse_url(CANON_HOST, PHP_URL_HOST);
+$hostOk = $local || ($host && str_contains((string)($_SERVER['HTTP_HOST'] ?? ''), $host));
+$checks[] = [$hostOk, 'Основной адрес: ' . CANON_HOST, $hostOk ? 'Совпадает с доменом — ссылки в заказах и разметке верные.' : 'Домен не совпадает с настройкой. Поправьте в «Контакты и карта».'];
+$rew = function_exists('apache_get_modules') ? in_array('mod_rewrite', apache_get_modules(), true) : true;
+$checks[] = [$rew, 'Адреса страниц', $rew ? 'Правила .htaccess работают — адреса как на старом сайте.' : 'mod_rewrite не найден — страницы будут отдавать 404.'];
+$bad = count(array_filter($checks, fn($c) => !$c[0]));
+?>
+<div class="card narrow">
+  <div class="card-hd">
+    <h2>Сервер</h2>
+    <span class="muted"><?= $bad ? $bad . ' требует внимания' : 'всё в порядке' ?></span>
+  </div>
+  <div class="pad seo-check">
+    <?php foreach ($checks as [$ok, $title, $note]): ?>
+    <div class="chk <?= $ok ? 'ok' : 'warn' ?>"><b><?= e($title) ?></b><span><?= e($note) ?></span></div>
+    <?php endforeach; ?>
+  </div>
+</div>
+<?php endif; ?>
+
 <div class="card narrow">
   <div class="card-hd"><h2>Безопасность</h2></div>
   <div class="pad seo-check">
