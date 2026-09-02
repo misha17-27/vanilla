@@ -7,7 +7,7 @@ $firstImg = function (string $type): string {
     $items = products_of($type);
     return $items ? asset($items[0]['img']) : '';
 };
-$bentoSub = [];
+$bentoSub = ['bento' => ['/bolme/bento-tort/', $t['nav_bento'], $firstImg('bento')]];
 foreach (own_categories() as $c) {
     $bentoSub['cat-' . $c['key']] = [cat_url($c), cat_name($c['key']), $firstImg($c['key'])];
 }

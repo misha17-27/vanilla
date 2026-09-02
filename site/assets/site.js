@@ -12,8 +12,18 @@ if (burger && menu) {
   burger.addEventListener('click', function () {
     setMenu(!menu.classList.contains('open'));
   });
+  var narrow = window.matchMedia('(max-width:1060px)');
   menu.addEventListener('click', function (e) {
-    if (e.target.closest('a')) setMenu(false);
+    var link = e.target.closest('a');
+    if (!link) return;
+    // на телефоне нажатие на раздел с подменю раскрывает список, а не уводит со страницы
+    var parent = link.parentNode;
+    if (narrow.matches && parent && parent.classList.contains('has-sub') && link.parentNode === parent) {
+      e.preventDefault();
+      parent.classList.toggle('open');
+      return;
+    }
+    setMenu(false);
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && menu.classList.contains('open')) setMenu(false);

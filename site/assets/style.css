@@ -598,7 +598,9 @@ html.no-scroll{overflow:hidden}
   /* backdrop-filter делает шапку системой координат для fixed-элементов,
      из-за этого меню внутри неё не могло растянуться на экран */
   .site-header{backdrop-filter:none;background:#fff}
-  .burger{display:block;position:relative;z-index:95}
+  .burger{display:block}
+  /* пока меню открыто, бургер прячем — крестик есть внутри панели */
+  html.menu-open .burger{visibility:hidden}
   .burger span{transition:transform .3s,opacity .2s}
   .burger.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   .burger.on span:nth-child(2){opacity:0}
@@ -620,8 +622,12 @@ html.no-scroll{overflow:hidden}
   .menu > li > a.active{background:var(--pink-mist);color:var(--pink-deep)}
   .menu a::after{display:none}
   .menu .has-sub > a{justify-content:center}
-  .sub-caret{display:none}
-  .submenu{position:static;transform:none;opacity:1;visibility:visible;padding:2px 0 10px}
+  /* подменю свёрнуто, открывается по нажатию на пункт */
+  .menu .has-sub > a{display:flex;align-items:center;justify-content:center;gap:7px}
+  .sub-caret{display:inline-block;width:15px;height:15px;transition:transform .25s}
+  .has-sub.open .sub-caret{transform:rotate(180deg)}
+  .submenu{display:none;position:static;transform:none;opacity:1;visibility:visible;padding:2px 0 10px}
+  .has-sub.open .submenu{display:block}
   .submenu-in{border:0;box-shadow:none;padding:0;gap:2px;background:none;max-width:250px;margin:0 auto}
   .sub-item{justify-content:flex-start;padding:8px 12px !important;border-radius:12px}
   .sub-item img{width:34px;height:34px}
