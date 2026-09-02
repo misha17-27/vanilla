@@ -638,6 +638,8 @@ html.no-scroll{overflow:hidden}
   /* подвал меню: связаться и режим работы */
   .menu-foot{display:grid;justify-items:center;gap:12px;margin-top:auto;padding-top:20px;border-top:1px solid var(--line)}
   .menu-foot .btn{width:100%;max-width:340px;justify-content:center}
+  /* кнопка в меню — в тон активного пункта */
+  .menu-foot .btn-wa,.menu-foot .btn-wa:hover{background:var(--pink-mist);color:var(--pink-deep);box-shadow:none}
   .menu-soc{display:flex;gap:12px}
   .menu-soc a{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:var(--blue-soft);color:var(--navy);padding:0}
   .menu-soc svg{width:20px;height:20px}
