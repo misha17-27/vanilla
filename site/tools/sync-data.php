@@ -2,9 +2,9 @@
 /**
  * Перенос данных из репозитория на сервер при деплое.
  *
- * Правила простые: то, что уже есть на сервере, остаётся нетронутым —
- * правки из админки не теряются. Приезжает только новое: товары, которых
- * там нет, новые категории, новые ключи SEO и текстов.
+ * Правило простое: всё, что правили в админке, остаётся серверным — такие
+ * записи помечены полем edited. Остальное подтягивается из репозитория:
+ * новые товары и категории добавляются, нетронутые — обновляются.
  *
  * Запускается из .cpanel.yml:  php tools/sync-data.php /home/vanilla/public_html
  * Заказы, пользователи, расписание и настройки не трогаются никогда.
@@ -47,15 +47,25 @@ $log = [];
 $a = readJson("$src/catalog.json");
 $b = readJson("$dst/catalog.json");
 if ($a && $b) {
-    $have = array_flip(array_column($b['products'] ?? [], 'slug'));
-    $add  = array_values(array_filter($a['products'] ?? [], fn($p) => !isset($have[$p['slug']])));
-    if ($add) {
+    $byRepo = [];
+    foreach ($a['products'] ?? [] as $p) $byRepo[$p['slug']] = $p;
+    $add = $upd = 0;
+    foreach ($b['products'] as &$p) {
+        // товар правили в админке — оставляем как есть
+        if (!empty($p['edited']) || !isset($byRepo[$p['slug']])) continue;
+        if (json_encode($p) !== json_encode($byRepo[$p['slug']])) { $p = $byRepo[$p['slug']]; $upd++; }
+    }
+    unset($p);
+    $have = array_flip(array_column($b['products'], 'slug'));
+    $new  = array_values(array_filter($a['products'] ?? [], fn($p) => !isset($have[$p['slug']])));
+    $add  = count($new);
+    if ($add || $upd) {
         backup("$dst/catalog.json");
-        $b['products'] = array_merge($add, $b['products']);
-        $b['updated']  = date('Y-m-d');
+        if ($add) $b['products'] = array_merge($new, $b['products']);
+        $b['updated'] = date('Y-m-d');
         writeJson("$dst/catalog.json", $b);
     }
-    $log[] = 'каталог: добавлено ' . count($add) . ', на сервере было ' . count($have);
+    $log[] = "каталог: добавлено $add, обновлено $upd, всего " . count($b['products']);
 } elseif ($a && !$b) {
     copy("$src/catalog.json", "$dst/catalog.json");
     $log[] = 'каталог: скопирован целиком (на сервере его не было)';
@@ -65,14 +75,22 @@ if ($a && $b) {
 $a = readJson("$src/categories.json");
 $b = readJson("$dst/categories.json");
 if ($a && $b) {
-    $have = array_flip(array_column($b['categories'] ?? [], 'key'));
-    $add  = array_values(array_filter($a['categories'] ?? [], fn($c) => !isset($have[$c['key']])));
-    if ($add) {
+    $byRepo = [];
+    foreach ($a['categories'] ?? [] as $c) $byRepo[$c['key']] = $c;
+    $upd = 0;
+    foreach ($b['categories'] as &$c) {
+        if (!empty($c['edited']) || !isset($byRepo[$c['key']])) continue;
+        if (json_encode($c) !== json_encode($byRepo[$c['key']])) { $c = $byRepo[$c['key']]; $upd++; }
+    }
+    unset($c);
+    $have = array_flip(array_column($b['categories'], 'key'));
+    $new  = array_values(array_filter($a['categories'] ?? [], fn($c) => !isset($have[$c['key']])));
+    if ($new || $upd) {
         backup("$dst/categories.json");
-        $b['categories'] = array_merge($b['categories'], $add);
+        $b['categories'] = array_merge($b['categories'], $new);
         writeJson("$dst/categories.json", $b);
     }
-    $log[] = 'категории: добавлено ' . count($add);
+    $log[] = 'категории: добавлено ' . count($new) . ", обновлено $upd";
 } elseif ($a && !$b) {
     copy("$src/categories.json", "$dst/categories.json");
     $log[] = 'категории: скопированы целиком';

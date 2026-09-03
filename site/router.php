@@ -112,20 +112,24 @@ foreach (categories() as $catKey => $catRow) {
 if (preg_match('#^/product-tag/([^/]+)/$#', $path, $m)) {
     $tagMap = [
         'mini-tort'    => '/bolme/cake-to-go/',
-        'bento-bantik' => '/bolme/bento-tort/bento-bantik-tort/',
+        'bento-bantik' => '/bolme/bento-tort-bantik/',
     ];
-    header('Location: ' . ($tagMap[$m[1]] ?? '/bolme/bento-tort/'), true, 301);
+    header('Location: ' . u($tagMap[$m[1]] ?? '/bolme/bento-tort/'), true, 301);
     exit;
 }
 
 // Подкатегории старого каталога: /bolme/bento-tort/usaq-tortlari/ и т.п.
 if (preg_match('#^/bolme/bento-tort/([^/]+)/$#', $path, $m) && $m[1] !== 'page') {
-    $subMap = [];
-    header('Location: ' . ($subMap[$m[1]] ?? '/bolme/bento-tort/'), true, 301);
+    // старые адреса подкатегорий WordPress ведут на новые страницы
+    $subMap = [
+        'bento-bantik-tort' => '/bolme/bento-tort-bantik/',
+        'usaq-tortlari'     => '/bolme/usaq-tortlari/',
+    ];
+    header('Location: ' . u($subMap[$m[1]] ?? '/bolme/bento-tort/'), true, 301);
     exit;
 }
 if (preg_match('#^/bolme/cake-to-go/[^/]+/$#', $path)) {
-    header('Location: /bolme/cake-to-go/', true, 301);
+    header('Location: ' . u('/bolme/cake-to-go/'), true, 301);
     exit;
 }
 

@@ -15,10 +15,10 @@
             "name_en": "Bow bento",
             "page": "own",
             "builtin": true,
-            "path": "/bolme/bento-tort/bento-bantik-tort/",
             "desc": "Нежная классика с атласными бантами — на 3–4 персоны (35 ₼) или 7–8 персон (60 ₼). Цвет крема и лент подберём под ваш повод.",
             "desc_az": "Atlaz bantlı incə klassika: 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Krem və lentin rəngini tədbirinizə uyğun seçirik.",
-            "desc_en": "Delicate classics with satin bows — for 3–4 (35 ₼) or 7–8 guests (60 ₼)."
+            "desc_en": "Delicate classics with satin bows — for 3–4 (35 ₼) or 7–8 guests (60 ₼).",
+            "slug": "bento-tort-bantik"
         },
         {
             "key": "set",
@@ -82,11 +82,11 @@
             "name_one_en": "Kids bento cake",
             "strip": "Bento tort",
             "page": "own",
-            "path": "/bolme/bento-tort/usaq-tortlari/",
             "desc": "Торты на каждый месяц малыша и первые дни рождения: зверята, мультяшные герои, машинки, цветы и ягоды. Любую надпись и имя добавим бесплатно.",
             "desc_az": "Körpənin hər ayı və ilk ad günləri üçün tortlar: heyvanlar, cizgi qəhrəmanları, maşınlar, çiçəklər. İstənilən ad və yazını əlavə edirik.",
             "desc_en": "Cakes for every baby month and first birthdays: animals, cartoon heroes, cars, flowers and berries.",
-            "builtin": false
+            "builtin": false,
+            "slug": "usaq-tortlari"
         }
     ]
 }

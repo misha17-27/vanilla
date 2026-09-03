@@ -405,6 +405,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'seo_title' => $seoT !== '' ? $seoT : $title . ' - Vanilla.az', 'seo_desc' => $seoD,
                 ]);
             }
+            foreach ($products as &$pp) if ($pp['slug'] === $slug) $pp['edited'] = true;
+            unset($pp);
             $catalog['products'] = $products;
             save_catalog($catalog);
             flash($isNew ? 'Торт добавлен в каталог.' : 'Изменения сохранены.');
@@ -597,6 +599,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cats[$key]['name_az'] = trim((string)($_POST['name_az'] ?? ''));
             $cats[$key]['name_en'] = trim((string)($_POST['name_en'] ?? ''));
             $cats[$key]['desc']    = mb_substr(trim((string)($_POST['desc'] ?? '')), 0, 300);
+            $cats[$key]['edited']  = true;   // деплой такие категории не перезаписывает
             if (empty($cats[$key]['builtin'])) {
                 $cats[$key]['page'] = $page;
                 if ($page === 'own' && empty($cats[$key]['slug'])) {
