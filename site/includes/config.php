@@ -170,6 +170,20 @@ function price_range(string $price): array
     return [min($nums), max($nums)];
 }
 
+// ===== Выходные дни =====
+// Отмечаются в админке («Календарь»). weekly — постоянные выходные (0 = воскресенье),
+// closed — разовые даты в виде ГГГГ-ММ-ДД.
+const SCHEDULE_FILE = __DIR__ . '/../data/schedule.json';
+
+function load_schedule(): array
+{
+    $d = json_decode((string)@file_get_contents(SCHEDULE_FILE), true) ?: [];
+    $weekly = array_values(array_filter(array_map('intval', (array)($d['weekly'] ?? [0])), fn($n) => $n >= 0 && $n <= 6));
+    $closed = array_values(array_filter((array)($d['closed'] ?? []), fn($x) => is_string($x) && preg_match('/^\d{4}-\d{2}-\d{2}$/', $x)));
+    sort($closed);
+    return ['weekly' => $weekly ?: [0], 'closed' => $closed];
+}
+
 // ===== Капча Cloudflare Turnstile =====
 // Ключи задаются в админке (раздел «Безопасность»). Пусто — капча выключена.
 const SECURITY_FILE = __DIR__ . '/../data/security.json';

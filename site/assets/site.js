@@ -167,7 +167,7 @@ if (langBoxes.length) {
   function fmtDate(d) { return pad2(d.getDate()) + '.' + pad2(d.getMonth() + 1) + '.' + d.getFullYear(); }
   // Слоты времени: будни/по умолчанию 11:00–20:00, суббота — только 11:00–14:00
   function refreshSlots() {
-    var lastStart = (selDate && selDate.getDay() === 6) ? 13 : 19;
+    var lastStart = (selDate && selDate.getDay() === 6) ? 13 : 19;   // суббота — до 14:00
     var cur = timeSel.value;
     var html = '<option value="">' + timeSel.options[0].textContent + '</option>';
     for (var h = 11; h <= lastStart; h++) {
@@ -377,7 +377,16 @@ if (langBoxes.length) {
   toggleFields();
   update();
 
-  // Календарь желаемой даты (воскресенья — выходной — недоступны)
+  // Календарь желаемой даты. Выходные приходят из админки: постоянные дни недели
+  // и разовые даты — их клиент выбрать не может.
+  var offWeekly = cfg.weekly || [0];
+  var offDates  = cfg.closed || [];
+  function isClosed(dt) {
+    if (offWeekly.indexOf(dt.getDay()) > -1) return true;
+    var iso = dt.getFullYear() + '-' + pad2(dt.getMonth() + 1) + '-' + pad2(dt.getDate());
+    return offDates.indexOf(iso) > -1;
+  }
+
   var dateBtn = document.getElementById('opt-date');
   var dateVal = document.getElementById('date-val');
   var cal = document.getElementById('cal');
@@ -405,7 +414,7 @@ if (langBoxes.length) {
       var dim = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
       for (var d = 1; d <= dim; d++) {
         var dt = new Date(view.getFullYear(), view.getMonth(), d);
-        var dis = dt < minD || dt > maxD || dt.getDay() === 0;
+        var dis = dt < minD || dt > maxD || isClosed(dt);
         var sel = selDate && dt.getTime() === selDate.getTime();
         html += '<button type="button" class="cal-day' + (dis ? ' dis' : '') + (sel ? ' sel' : '') + '" data-d="' + d + '"' + (dis ? ' disabled' : '') + '>' + d + '</button>';
       }

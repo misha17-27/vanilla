@@ -163,6 +163,8 @@ window.PROD_CFG = <?= json_encode([
     'linkLbl' => $t['wa_link_lbl'],
     'upload'  => '/upload-design.php',
     'csrf'    => $_SESSION['csrf'],
+    'closed'  => load_schedule()['closed'],
+    'weekly'  => load_schedule()['weekly'],
     'design'  => $t['wa_design'],
     'errors'  => [
         'type'    => $t['up_e_type'],

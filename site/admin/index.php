@@ -38,7 +38,7 @@ const ADMIN_PASS_FILE = __DIR__ . '/../data/admin.pass';
 const USERS_FILE      = __DIR__ . '/../data/users.json';
 const ROLES           = ['admin' => 'Администратор', 'manager' => 'Менеджер'];
 // менеджеру доступны заказы, клиенты и каталог; настройки и пользователи — только администратору
-const MANAGER_VIEWS   = ['dashboard', 'orders', 'customers', 'products', 'categories', 'designs', 'account'];
+const MANAGER_VIEWS   = ['dashboard', 'orders', 'customers', 'schedule', 'products', 'categories', 'designs', 'account'];
 const BACKUP_DIR      = __DIR__ . '/../data/backups';
 const PRODUCT_IMG_DIR = __DIR__ . '/../assets/img/products';
 const THUMB_DIR       = __DIR__ . '/../assets/img/thumbs';
@@ -128,6 +128,14 @@ function type_names(): array
 function admin_logged(): bool { return !empty($_SESSION['admin']); }
 
 // ---------- пользователи панели ----------
+function save_schedule(array $sch): void
+{
+    file_put_contents(SCHEDULE_FILE, json_encode(
+        ['weekly' => array_values($sch['weekly']), 'closed' => array_values($sch['closed'])],
+        JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT
+    ));
+}
+
 function load_users(): array
 {
     $d = json_decode((string)@file_get_contents(USERS_FILE), true);
@@ -422,6 +430,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             go('/admin/account');
         }
 
+        if ($action === 'schedule') {
+            $sch   = load_schedule();
+            $month = (string)($_POST['month'] ?? '');
+            $list  = array_filter(array_map('trim', explode(',', (string)($_POST['closed'] ?? ''))));
+            // заменяем отметки только показанного месяца, остальные не трогаем
+            $keep  = array_filter($sch['closed'], fn($d) => !preg_match('/^\d{4}-\d{2}$/', $month) || strpos($d, $month) !== 0);
+            $add   = array_filter($list, fn($d) => preg_match('/^\d{4}-\d{2}-\d{2}$/', $d) && strpos($d, $month) === 0);
+            $sch['closed'] = array_values(array_unique(array_merge($keep, $add)));
+            sort($sch['closed']);
+            save_schedule($sch);
+            flash('Календарь сохранён.');
+            go('/admin/schedule?m=' . urlencode($month));
+        }
+
+        if ($action === 'schedule_weekly') {
+            $sch = load_schedule();
+            $sch['weekly'] = array_values(array_unique(array_filter(
+                array_map('intval', (array)($_POST['weekly'] ?? [])),
+                fn($n) => $n >= 0 && $n <= 6
+            )));
+            save_schedule($sch);
+            flash('Постоянные выходные сохранены.');
+            go('/admin/schedule');
+        }
+
         if ($action === 'security' && is_admin()) {
             $cur = load_security();
             $site   = trim((string)($_POST['turnstile_site'] ?? ''));
@@ -681,7 +714,7 @@ $customers = build_customers($orders);
 $newOrders = count(array_filter($orders, fn($o) => ($o['status'] ?? 'new') === 'new'));
 
 $users = load_users();
-$titles = ['dashboard' => 'Обзор', 'orders' => 'Заказы', 'customers' => 'Клиенты', 'pages' => 'Страницы', 'products' => 'Товары', 'categories' => 'Категории', 'designs' => 'Дизайны клиентов', 'seo' => 'SEO страниц', 'settings' => 'Контакты и карта', 'security' => 'Безопасность', 'users' => 'Пользователи', 'account' => 'Мой профиль'];
+$titles = ['dashboard' => 'Обзор', 'orders' => 'Заказы', 'customers' => 'Клиенты', 'schedule' => 'Календарь', 'pages' => 'Страницы', 'products' => 'Товары', 'categories' => 'Категории', 'designs' => 'Дизайны клиентов', 'seo' => 'SEO страниц', 'settings' => 'Контакты и карта', 'security' => 'Безопасность', 'users' => 'Пользователи', 'account' => 'Мой профиль'];
 $title  = $titles[$view] ?? 'Админ';
 if (!array_key_exists($view, $titles)) { $view = 'dashboard'; $title = $titles['dashboard']; }
 if (admin_logged() && !can($view)) {
