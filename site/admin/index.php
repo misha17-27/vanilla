@@ -116,6 +116,13 @@ function field_value(string $raw, string $kind)
     return $raw;
 }
 
+// Под каким ключом лежит SEO категории: у своих страниц — cat_{key},
+// у базовых разделов — тот же ключ, что у страницы раздела
+function cat_seo_key(string $key, array $c): string
+{
+    return ($c['page'] ?? '') === 'own' ? 'cat_' . $key : $key;
+}
+
 // Названия категорий для админки: базовые + добавленные вручную
 function type_names(): array
 {
@@ -600,6 +607,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cats[$key]['name_en'] = trim((string)($_POST['name_en'] ?? ''));
             $cats[$key]['desc']    = mb_substr(trim((string)($_POST['desc'] ?? '')), 0, 300);
             $cats[$key]['edited']  = true;   // деплой такие категории не перезаписывает
+            // SEO страницы категории
+            $seoKey = cat_seo_key($key, $cats[$key]);
+            $seo    = load_seo();
+            $seo[$seoKey] = [
+                'title' => mb_substr(trim((string)($_POST['seo_title'] ?? '')), 0, 120),
+                'desc'  => mb_substr(trim((string)($_POST['seo_desc'] ?? '')), 0, 320),
+            ];
+            save_seo($seo);
             if (empty($cats[$key]['builtin'])) {
                 $cats[$key]['page'] = $page;
                 if ($page === 'own' && empty($cats[$key]['slug'])) {
