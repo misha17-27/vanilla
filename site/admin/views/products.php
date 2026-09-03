@@ -101,7 +101,7 @@ $rows = array_filter($products, function ($p) use ($filter, $q, $seoOnly) {
   </div>
 
   <table class="grid">
-    <thead><tr><th class="thumb"></th><th>Название</th><th class="hide-s">Тип</th><th class="hide-s">Цена</th><th>SEO</th><th class="right"></th></tr></thead>
+    <thead><tr><th class="thumb"></th><th>Название</th><th class="hide-s">Тип</th><th class="hide-s">Цена</th><th>SEO</th><th class="hide-s">Добавлен</th><th class="right"></th></tr></thead>
     <tbody>
     <?php foreach ($rows as $p): ?>
       <tr>
@@ -114,6 +114,7 @@ $rows = array_filter($products, function ($p) use ($filter, $q, $seoOnly) {
         <td class="hide-s"><?= e($p['price']) ?></td>
         <?php [$st, $hint] = seo_state($p); ?>
         <td><span class="dot <?= $st === 'ok' ? 'ok' : ($st === 'warn' ? 'warn' : 'no') ?>" title="<?= e($hint) ?>"></span><small><?= e($hint) ?></small></td>
+        <td class="hide-s"><?= !empty($p['created']) ? date('d.m.Y', (int)$p['created']) : '<span class="muted">—</span>' ?></td>
         <td class="right">
           <a class="btn ghost sm ico" href="/mehsul/<?= e($p['slug']) ?>/" target="_blank" rel="noopener" title="Открыть на сайте"><?= icon('open') ?><span>Открыть</span></a>
           <a class="btn ghost sm ico" href="/admin/products?edit=<?= e($p['slug']) ?>" title="Изменить"><?= icon('edit') ?><span>Изменить</span></a>
@@ -127,7 +128,7 @@ $rows = array_filter($products, function ($p) use ($filter, $q, $seoOnly) {
       </tr>
     <?php endforeach; ?>
     <?php if (!$rows): ?>
-      <tr><td colspan="6" class="pad muted">Ничего не найдено.</td></tr>
+      <tr><td colspan="7" class="pad muted">Ничего не найдено.</td></tr>
     <?php endif; ?>
     </tbody>
   </table>

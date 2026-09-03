@@ -409,6 +409,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!$found) {
                 array_unshift($products, [
                     'slug' => $slug, 'title' => $title, 'img' => $photo, 'price' => $price, 'type' => $type,
+                    'created' => time(),
                     'seo_title' => $seoT !== '' ? $seoT : $title . ' - Vanilla.az', 'seo_desc' => $seoD,
                 ]);
             }
