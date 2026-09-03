@@ -50,5 +50,9 @@
     "cat_set": {
         "title": "Bento set — mini tortlar dəsti sifarişi - Vanilla.az",
         "desc": "Bento set Bakıda: bir qutuda 3 mini tort 75 ₼ və ya 4 mini tort 100 ₼. Hər tortun öz dizaynı və öz yazısı olur."
+    },
+    "cat_usaq": {
+        "title": "Uşaq tortları — körpə üçün aylıq tort sifarişi - Vanilla.az",
+        "desc": "Uşaq tortları Bakıda: hər ay üçün bento tort, ilk ad günü, heyvanlar və cizgi qəhrəmanları. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼."
     }
 }

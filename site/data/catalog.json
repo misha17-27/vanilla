@@ -1,6 +1,1176 @@
 {
-    "updated": "2026-09-01",
+    "updated": "2026-09-03",
     "products": [
+        {
+            "slug": "bento-tort-milad-8-months",
+            "title": "Bento tort Milad 8 months",
+            "img": "/assets/img/products/bento-tort-milad-8-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Milad 8 months - Vanilla.az",
+            "seo_desc": "Bento tort Milad 8 months — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-milad-1-month",
+            "title": "Bento tort Milad 1 month",
+            "img": "/assets/img/products/bento-tort-milad-1-month.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Milad 1 month - Vanilla.az",
+            "seo_desc": "Bento tort Milad 1 month — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-qirlanda-10-months",
+            "title": "Bento tort Qirlanda 10 months",
+            "img": "/assets/img/products/bento-tort-qirlanda-10-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Qirlanda 10 months - Vanilla.az",
+            "seo_desc": "Bento tort Qirlanda 10 months — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-qis-1-month",
+            "title": "Bento tort Qış 1 month",
+            "img": "/assets/img/products/bento-tort-qis-1-month.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Qış 1 month - Vanilla.az",
+            "seo_desc": "Bento tort Qış 1 month — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-milad-aylin-8-months",
+            "title": "Bento tort Milad Aylin 8 months",
+            "img": "/assets/img/products/bento-tort-milad-aylin-8-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Milad Aylin 8 months - Vanilla.az",
+            "seo_desc": "Bento tort Milad Aylin 8 months — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-yasil-4-months",
+            "title": "Bento tort Yaşıl 4 months",
+            "img": "/assets/img/products/bento-tort-yasil-4-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Yaşıl 4 months - Vanilla.az",
+            "seo_desc": "Bento tort Yaşıl 4 months — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-aslan-5-months",
+            "title": "Bento tort Aslan 5 months",
+            "img": "/assets/img/products/bento-tort-aslan-5-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Aslan 5 months - Vanilla.az",
+            "seo_desc": "Bento tort Aslan 5 months — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-guller-aziza-6-months",
+            "title": "Bento tort Güllər Aziza 6 months",
+            "img": "/assets/img/products/bento-tort-guller-aziza-6-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Güllər Aziza 6 months - Vanilla.az",
+            "seo_desc": "Bento tort Güllər Aziza 6 months — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-futbol-ayaz",
+            "title": "Bento tort Futbol Ayaz",
+            "img": "/assets/img/products/bento-tort-futbol-ayaz.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Futbol Ayaz - Vanilla.az",
+            "seo_desc": "Bento tort Futbol Ayaz — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-novruz-meryem",
+            "title": "Bento tort Novruz Meryem",
+            "img": "/assets/img/products/bento-tort-novruz-meryem.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Novruz Meryem - Vanilla.az",
+            "seo_desc": "Bento tort Novruz Meryem — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-novruz-8-months",
+            "title": "Bento tort Novruz 8 months",
+            "img": "/assets/img/products/bento-tort-novruz-8-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Novruz 8 months - Vanilla.az",
+            "seo_desc": "Bento tort Novruz 8 months — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-novruz-9-ay",
+            "title": "Bento tort Novruz 9 ay",
+            "img": "/assets/img/products/bento-tort-novruz-9-ay.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Novruz 9 ay - Vanilla.az",
+            "seo_desc": "Bento tort Novruz 9 ay — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-ag-ayi-yarim-il",
+            "title": "Bento tort Ağ ayı yarım il",
+            "img": "/assets/img/products/bento-tort-ag-ayi-yarim-il.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ağ ayı yarım il - Vanilla.az",
+            "seo_desc": "Bento tort Ağ ayı yarım il — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-ayaq-izleri-mirel",
+            "title": "Bento tort Ayaq izləri Mirel",
+            "img": "/assets/img/products/bento-tort-ayaq-izleri-mirel.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ayaq izləri Mirel - Vanilla.az",
+            "seo_desc": "Bento tort Ayaq izləri Mirel — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-zurafe-10-ay",
+            "title": "Bento tort Zürafə 10 ay",
+            "img": "/assets/img/products/bento-tort-zurafe-10-ay.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Zürafə 10 ay - Vanilla.az",
+            "seo_desc": "Bento tort Zürafə 10 ay — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-peleng-11-ay",
+            "title": "Bento tort Pələng 11 ay",
+            "img": "/assets/img/products/bento-tort-peleng-11-ay.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Pələng 11 ay - Vanilla.az",
+            "seo_desc": "Bento tort Pələng 11 ay — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-cehrayi-7-months",
+            "title": "Bento tort Çəhrayı 7 months",
+            "img": "/assets/img/products/bento-tort-cehrayi-7-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Çəhrayı 7 months - Vanilla.az",
+            "seo_desc": "Bento tort Çəhrayı 7 months — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-novruz-leyla-6-months",
+            "title": "Bento tort Novruz Leyla 6 months",
+            "img": "/assets/img/products/bento-tort-novruz-leyla-6-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Novruz Leyla 6 months - Vanilla.az",
+            "seo_desc": "Bento tort Novruz Leyla 6 months — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-ag-bant",
+            "title": "Bento tort Ağ bant",
+            "img": "/assets/img/products/bento-tort-ag-bant.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ağ bant - Vanilla.az",
+            "seo_desc": "Bento tort Ağ bant — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-goy-qursagi-amira",
+            "title": "Bento tort Göy qurşağı Amira",
+            "img": "/assets/img/products/bento-tort-goy-qursagi-amira.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Göy qurşağı Amira - Vanilla.az",
+            "seo_desc": "Bento tort Göy qurşağı Amira — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-arilar-lena-5-months",
+            "title": "Bento tort Arılar Lena 5 months",
+            "img": "/assets/img/products/bento-tort-arilar-lena-5-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Arılar Lena 5 months - Vanilla.az",
+            "seo_desc": "Bento tort Arılar Lena 5 months — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-dovsan-ve-sar",
+            "title": "Bento tort Dovşan və şar",
+            "img": "/assets/img/products/bento-tort-dovsan-ve-sar.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Dovşan və şar - Vanilla.az",
+            "seo_desc": "Bento tort Dovşan və şar — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-dis-perisi-7-ay",
+            "title": "Bento tort Diş pərisi 7 ay",
+            "img": "/assets/img/products/bento-tort-dis-perisi-7-ay.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Diş pərisi 7 ay - Vanilla.az",
+            "seo_desc": "Bento tort Diş pərisi 7 ay — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-kosmos-4-ay",
+            "title": "Bento tort Kosmos 4 ay",
+            "img": "/assets/img/products/bento-tort-kosmos-4-ay.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Kosmos 4 ay - Vanilla.az",
+            "seo_desc": "Bento tort Kosmos 4 ay — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-kepenekler-aylin",
+            "title": "Bento tort Kəpənəklər Aylin",
+            "img": "/assets/img/products/bento-tort-kepenekler-aylin.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Kəpənəklər Aylin - Vanilla.az",
+            "seo_desc": "Bento tort Kəpənəklər Aylin — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-meyveler-4-months",
+            "title": "Bento tort Meyvələr 4 months",
+            "img": "/assets/img/products/bento-tort-meyveler-4-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Meyvələr 4 months - Vanilla.az",
+            "seo_desc": "Bento tort Meyvələr 4 months — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-ayiciq-1-yas",
+            "title": "Bento tort Ayıcıq 1 yaş",
+            "img": "/assets/img/products/bento-tort-ayiciq-1-yas.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ayıcıq 1 yaş - Vanilla.az",
+            "seo_desc": "Bento tort Ayıcıq 1 yaş — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-hello-kindergarten",
+            "title": "Bento tort Hello Kindergarten",
+            "img": "/assets/img/products/bento-tort-hello-kindergarten.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Hello Kindergarten - Vanilla.az",
+            "seo_desc": "Bento tort Hello Kindergarten — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-peleng-3-yas",
+            "title": "Bento tort Pələng 3 yaş",
+            "img": "/assets/img/products/bento-tort-peleng-3-yas.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Pələng 3 yaş - Vanilla.az",
+            "seo_desc": "Bento tort Pələng 3 yaş — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-pisik-10-months",
+            "title": "Bento tort Pişik 10 months",
+            "img": "/assets/img/products/bento-tort-pisik-10-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Pişik 10 months - Vanilla.az",
+            "seo_desc": "Bento tort Pişik 10 months — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-ayi-ve-tort",
+            "title": "Bento tort Ayı və tort",
+            "img": "/assets/img/products/bento-tort-ayi-ve-tort.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ayı və tort - Vanilla.az",
+            "seo_desc": "Bento tort Ayı və tort — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-yasemen-8-months",
+            "title": "Bento tort Yasəmən 8 months",
+            "img": "/assets/img/products/bento-tort-yasemen-8-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Yasəmən 8 months - Vanilla.az",
+            "seo_desc": "Bento tort Yasəmən 8 months — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-urek-8",
+            "title": "Bento tort Ürək 8",
+            "img": "/assets/img/products/bento-tort-urek-8.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ürək 8 - Vanilla.az",
+            "seo_desc": "Bento tort Ürək 8 — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-kucukler-5-months",
+            "title": "Bento tort Küçüklər 5 months",
+            "img": "/assets/img/products/bento-tort-kucukler-5-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Küçüklər 5 months - Vanilla.az",
+            "seo_desc": "Bento tort Küçüklər 5 months — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-ayiciq-adnan",
+            "title": "Bento tort Ayıcıq Adnan",
+            "img": "/assets/img/products/bento-tort-ayiciq-adnan.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ayıcıq Adnan - Vanilla.az",
+            "seo_desc": "Bento tort Ayıcıq Adnan — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-begemot-40-gun",
+            "title": "Bento tort Begemot 40 gün",
+            "img": "/assets/img/products/bento-tort-begemot-40-gun.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Begemot 40 gün - Vanilla.az",
+            "seo_desc": "Bento tort Begemot 40 gün — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-sari-cicekler-3-ay",
+            "title": "Bento tort Sarı çiçəklər 3 ay",
+            "img": "/assets/img/products/bento-tort-sari-cicekler-3-ay.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Sarı çiçəklər 3 ay - Vanilla.az",
+            "seo_desc": "Bento tort Sarı çiçəklər 3 ay — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-ayi-7-months-of-love",
+            "title": "Bento tort Ayı 7 months of love",
+            "img": "/assets/img/products/bento-tort-ayi-7-months-of-love.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ayı 7 months of love - Vanilla.az",
+            "seo_desc": "Bento tort Ayı 7 months of love — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-yasil-emiliya",
+            "title": "Bento tort Yaşıl Emiliya",
+            "img": "/assets/img/products/bento-tort-yasil-emiliya.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Yaşıl Emiliya - Vanilla.az",
+            "seo_desc": "Bento tort Yaşıl Emiliya — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-anime-personajlar",
+            "title": "Bento tort Anime personajlar",
+            "img": "/assets/img/products/bento-tort-anime-personajlar.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Anime personajlar - Vanilla.az",
+            "seo_desc": "Bento tort Anime personajlar — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-dis-perisi-1-month",
+            "title": "Bento tort Diş pərisi 1 month",
+            "img": "/assets/img/products/bento-tort-dis-perisi-1-month.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Diş pərisi 1 month - Vanilla.az",
+            "seo_desc": "Bento tort Diş pərisi 1 month — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-i-tcikler-8-months",
+            "title": "Bento tort İtçiklər 8 months",
+            "img": "/assets/img/products/bento-tort-i-tcikler-8-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort İtçiklər 8 months - Vanilla.az",
+            "seo_desc": "Bento tort İtçiklər 8 months — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-ag-ayi-yarim-il-2",
+            "title": "Bento tort Ağ ayı yarım il 2",
+            "img": "/assets/img/products/bento-tort-ag-ayi-yarim-il-2.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ağ ayı yarım il 2 - Vanilla.az",
+            "seo_desc": "Bento tort Ağ ayı yarım il 2 — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-masinlar-7-months",
+            "title": "Bento tort Maşınlar 7 months",
+            "img": "/assets/img/products/bento-tort-masinlar-7-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Maşınlar 7 months - Vanilla.az",
+            "seo_desc": "Bento tort Maşınlar 7 months — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-happy-birthday-cavid",
+            "title": "Bento tort Happy Birthday Cavid",
+            "img": "/assets/img/products/bento-tort-happy-birthday-cavid.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Happy Birthday Cavid - Vanilla.az",
+            "seo_desc": "Bento tort Happy Birthday Cavid — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-bulka-8-ay",
+            "title": "Bento tort Bulka 8 ay",
+            "img": "/assets/img/products/bento-tort-bulka-8-ay.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Bulka 8 ay - Vanilla.az",
+            "seo_desc": "Bento tort Bulka 8 ay — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-limonlar-11-months",
+            "title": "Bento tort Limonlar 11 months",
+            "img": "/assets/img/products/bento-tort-limonlar-11-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Limonlar 11 months - Vanilla.az",
+            "seo_desc": "Bento tort Limonlar 11 months — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-ag-ayi-happy-birthday",
+            "title": "Bento tort Ağ ayı Happy Birthday",
+            "img": "/assets/img/products/bento-tort-ag-ayi-happy-birthday.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ağ ayı Happy Birthday - Vanilla.az",
+            "seo_desc": "Bento tort Ağ ayı Happy Birthday — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-half-way-to-level-one",
+            "title": "Bento tort Half Way To Level One",
+            "img": "/assets/img/products/bento-tort-half-way-to-level-one.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Half Way To Level One - Vanilla.az",
+            "seo_desc": "Bento tort Half Way To Level One — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-qu-qusu-1-month",
+            "title": "Bento tort Qu quşu 1 month",
+            "img": "/assets/img/products/bento-tort-qu-qusu-1-month.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Qu quşu 1 month - Vanilla.az",
+            "seo_desc": "Bento tort Qu quşu 1 month — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-cicekler-12-months",
+            "title": "Bento tort Çiçəklər 12 months",
+            "img": "/assets/img/products/bento-tort-cicekler-12-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Çiçəklər 12 months - Vanilla.az",
+            "seo_desc": "Bento tort Çiçəklər 12 months — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-sehrbaz-aylin",
+            "title": "Bento tort Sehrbaz Aylin",
+            "img": "/assets/img/products/bento-tort-sehrbaz-aylin.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Sehrbaz Aylin - Vanilla.az",
+            "seo_desc": "Bento tort Sehrbaz Aylin — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-dinozavr-two-months",
+            "title": "Bento tort Dinozavr Two months",
+            "img": "/assets/img/products/bento-tort-dinozavr-two-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Dinozavr Two months - Vanilla.az",
+            "seo_desc": "Bento tort Dinozavr Two months — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-kopek-baligi-8-month",
+            "title": "Bento tort Köpək balığı 8 month",
+            "img": "/assets/img/products/bento-tort-kopek-baligi-8-month.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Köpək balığı 8 month - Vanilla.az",
+            "seo_desc": "Bento tort Köpək balığı 8 month — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-urekler-1-month",
+            "title": "Bento tort Ürəklər 1 month",
+            "img": "/assets/img/products/bento-tort-urekler-1-month.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ürəklər 1 month - Vanilla.az",
+            "seo_desc": "Bento tort Ürəklər 1 month — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-korpe-dogum-gunun",
+            "title": "Bento tort Körpə Doğum Günün",
+            "img": "/assets/img/products/bento-tort-korpe-dogum-gunun.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Körpə Doğum Günün - Vanilla.az",
+            "seo_desc": "Bento tort Körpə Doğum Günün — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-limonlar-lena-7-months",
+            "title": "Bento tort Limonlar Lena 7 months",
+            "img": "/assets/img/products/bento-tort-limonlar-lena-7-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Limonlar Lena 7 months - Vanilla.az",
+            "seo_desc": "Bento tort Limonlar Lena 7 months — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-mavi-masin",
+            "title": "Bento tort Mavi maşın",
+            "img": "/assets/img/products/bento-tort-mavi-masin.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Mavi maşın - Vanilla.az",
+            "seo_desc": "Bento tort Mavi maşın — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-mavi-traktor",
+            "title": "Bento tort Mavi traktor",
+            "img": "/assets/img/products/bento-tort-mavi-traktor.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Mavi traktor - Vanilla.az",
+            "seo_desc": "Bento tort Mavi traktor — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-ayiciq-bayraqciq-1-yas",
+            "title": "Bento tort Ayıcıq bayraqcıq 1 yaş",
+            "img": "/assets/img/products/bento-tort-ayiciq-bayraqciq-1-yas.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ayıcıq bayraqcıq 1 yaş - Vanilla.az",
+            "seo_desc": "Bento tort Ayıcıq bayraqcıq 1 yaş — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-albali-10-months",
+            "title": "Bento tort Albalı 10 months",
+            "img": "/assets/img/products/bento-tort-albali-10-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Albalı 10 months - Vanilla.az",
+            "seo_desc": "Bento tort Albalı 10 months — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-mavi-cicekler-lena",
+            "title": "Bento tort Mavi çiçəklər Lena",
+            "img": "/assets/img/products/bento-tort-mavi-cicekler-lena.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Mavi çiçəklər Lena - Vanilla.az",
+            "seo_desc": "Bento tort Mavi çiçəklər Lena — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-vinni-9-months",
+            "title": "Bento tort Vinni 9 months",
+            "img": "/assets/img/products/bento-tort-vinni-9-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Vinni 9 months - Vanilla.az",
+            "seo_desc": "Bento tort Vinni 9 months — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-cehrayi-cicekler-2-months",
+            "title": "Bento tort Çəhrayı çiçəklər 2 months",
+            "img": "/assets/img/products/bento-tort-cehrayi-cicekler-2-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Çəhrayı çiçəklər 2 months - Vanilla.az",
+            "seo_desc": "Bento tort Çəhrayı çiçəklər 2 months — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-ag-naxislar-18-ay",
+            "title": "Bento tort Ağ naxışlar 18 ay",
+            "img": "/assets/img/products/bento-tort-ag-naxislar-18-ay.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ağ naxışlar 18 ay - Vanilla.az",
+            "seo_desc": "Bento tort Ağ naxışlar 18 ay — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-qara-pisik-11",
+            "title": "Bento tort Qara pişik 11",
+            "img": "/assets/img/products/bento-tort-qara-pisik-11.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Qara pişik 11 - Vanilla.az",
+            "seo_desc": "Bento tort Qara pişik 11 — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-dis-6-month",
+            "title": "Bento tort Diş 6 month",
+            "img": "/assets/img/products/bento-tort-dis-6-month.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Diş 6 month - Vanilla.az",
+            "seo_desc": "Bento tort Diş 6 month — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-sunger-bob",
+            "title": "Bento tort Sünger Bob",
+            "img": "/assets/img/products/bento-tort-sunger-bob.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Sünger Bob - Vanilla.az",
+            "seo_desc": "Bento tort Sünger Bob — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-ayiciq-1-month",
+            "title": "Bento tort Ayıcıq 1 month",
+            "img": "/assets/img/products/bento-tort-ayiciq-1-month.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ayıcıq 1 month - Vanilla.az",
+            "seo_desc": "Bento tort Ayıcıq 1 month — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-ayiciq-5-months",
+            "title": "Bento tort Ayıcıq 5 months",
+            "img": "/assets/img/products/bento-tort-ayiciq-5-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ayıcıq 5 months - Vanilla.az",
+            "seo_desc": "Bento tort Ayıcıq 5 months — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-lecekler-lena-9-month",
+            "title": "Bento tort Ləçəklər Lena 9 month",
+            "img": "/assets/img/products/bento-tort-lecekler-lena-9-month.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ləçəklər Lena 9 month - Vanilla.az",
+            "seo_desc": "Bento tort Ləçəklər Lena 9 month — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-dondurma-8-ay",
+            "title": "Bento tort Dondurma 8 ay",
+            "img": "/assets/img/products/bento-tort-dondurma-8-ay.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Dondurma 8 ay - Vanilla.az",
+            "seo_desc": "Bento tort Dondurma 8 ay — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-yelkenli-5-months",
+            "title": "Bento tort Yelkənli 5 months",
+            "img": "/assets/img/products/bento-tort-yelkenli-5-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Yelkənli 5 months - Vanilla.az",
+            "seo_desc": "Bento tort Yelkənli 5 months — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-limonlar-8-months",
+            "title": "Bento tort Limonlar 8 months",
+            "img": "/assets/img/products/bento-tort-limonlar-8-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Limonlar 8 months - Vanilla.az",
+            "seo_desc": "Bento tort Limonlar 8 months — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-dondurma-zarifa",
+            "title": "Bento tort Dondurma Zarifa",
+            "img": "/assets/img/products/bento-tort-dondurma-zarifa.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Dondurma Zarifa - Vanilla.az",
+            "seo_desc": "Bento tort Dondurma Zarifa — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-yasil-iren-2-months",
+            "title": "Bento tort Yaşıl Iren 2 months",
+            "img": "/assets/img/products/bento-tort-yasil-iren-2-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Yaşıl Iren 2 months - Vanilla.az",
+            "seo_desc": "Bento tort Yaşıl Iren 2 months — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-aslan-one-month",
+            "title": "Bento tort Aslan One Month",
+            "img": "/assets/img/products/bento-tort-aslan-one-month.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Aslan One Month - Vanilla.az",
+            "seo_desc": "Bento tort Aslan One Month — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-peri-qiz",
+            "title": "Bento tort Pəri qız",
+            "img": "/assets/img/products/bento-tort-peri-qiz.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Pəri qız - Vanilla.az",
+            "seo_desc": "Bento tort Pəri qız — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-lecekler-5-months",
+            "title": "Bento tort Ləçəklər 5 months",
+            "img": "/assets/img/products/bento-tort-lecekler-5-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ləçəklər 5 months - Vanilla.az",
+            "seo_desc": "Bento tort Ləçəklər 5 months — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-albali-3-months",
+            "title": "Bento tort Albalı 3 months",
+            "img": "/assets/img/products/bento-tort-albali-3-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Albalı 3 months - Vanilla.az",
+            "seo_desc": "Bento tort Albalı 3 months — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-cicekler-3-months",
+            "title": "Bento tort Çiçəklər 3 months",
+            "img": "/assets/img/products/bento-tort-cicekler-3-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Çiçəklər 3 months - Vanilla.az",
+            "seo_desc": "Bento tort Çiçəklər 3 months — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-futbolcu-omar",
+            "title": "Bento tort Futbolçu Omar",
+            "img": "/assets/img/products/bento-tort-futbolcu-omar.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Futbolçu Omar - Vanilla.az",
+            "seo_desc": "Bento tort Futbolçu Omar — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-sari-11-months",
+            "title": "Bento tort Sarı 11 months",
+            "img": "/assets/img/products/bento-tort-sari-11-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Sarı 11 months - Vanilla.az",
+            "seo_desc": "Bento tort Sarı 11 months — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-qarpiz-10-months",
+            "title": "Bento tort Qarpız 10 months",
+            "img": "/assets/img/products/bento-tort-qarpiz-10-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Qarpız 10 months - Vanilla.az",
+            "seo_desc": "Bento tort Qarpız 10 months — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-ayiciq-3-months",
+            "title": "Bento tort Ayıcıq 3 months",
+            "img": "/assets/img/products/bento-tort-ayiciq-3-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ayıcıq 3 months - Vanilla.az",
+            "seo_desc": "Bento tort Ayıcıq 3 months — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-dovsan-olivia",
+            "title": "Bento tort Dovşan Olivia",
+            "img": "/assets/img/products/bento-tort-dovsan-olivia.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Dovşan Olivia - Vanilla.az",
+            "seo_desc": "Bento tort Dovşan Olivia — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-ayiciq-bayram-1-month",
+            "title": "Bento tort Ayıcıq bayram 1 month",
+            "img": "/assets/img/products/bento-tort-ayiciq-bayram-1-month.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ayıcıq bayram 1 month - Vanilla.az",
+            "seo_desc": "Bento tort Ayıcıq bayram 1 month — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-maral-6-months",
+            "title": "Bento tort Maral 6 months",
+            "img": "/assets/img/products/bento-tort-maral-6-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Maral 6 months - Vanilla.az",
+            "seo_desc": "Bento tort Maral 6 months — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-qaz-5-months",
+            "title": "Bento tort Qaz 5 months",
+            "img": "/assets/img/products/bento-tort-qaz-5-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Qaz 5 months - Vanilla.az",
+            "seo_desc": "Bento tort Qaz 5 months — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-ari-selin",
+            "title": "Bento tort Arı Selin",
+            "img": "/assets/img/products/bento-tort-ari-selin.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Arı Selin - Vanilla.az",
+            "seo_desc": "Bento tort Arı Selin — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-horumcek-adam",
+            "title": "Bento tort Hörümçək adam",
+            "img": "/assets/img/products/bento-tort-horumcek-adam.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Hörümçək adam - Vanilla.az",
+            "seo_desc": "Bento tort Hörümçək adam — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-qis-almiyar",
+            "title": "Bento tort Qış Almiyar",
+            "img": "/assets/img/products/bento-tort-qis-almiyar.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Qış Almiyar - Vanilla.az",
+            "seo_desc": "Bento tort Qış Almiyar — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-dovsan-amir",
+            "title": "Bento tort Dovşan Amir",
+            "img": "/assets/img/products/bento-tort-dovsan-amir.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Dovşan Amir - Vanilla.az",
+            "seo_desc": "Bento tort Dovşan Amir — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-limon-4-months",
+            "title": "Bento tort Limon 4 months",
+            "img": "/assets/img/products/bento-tort-limon-4-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Limon 4 months - Vanilla.az",
+            "seo_desc": "Bento tort Limon 4 months — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-urekler-6-months",
+            "title": "Bento tort Ürəklər 6 months",
+            "img": "/assets/img/products/bento-tort-urekler-6-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ürəklər 6 months - Vanilla.az",
+            "seo_desc": "Bento tort Ürəklər 6 months — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-vinni-altay",
+            "title": "Bento tort Vinni Altay",
+            "img": "/assets/img/products/bento-tort-vinni-altay.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Vinni Altay - Vanilla.az",
+            "seo_desc": "Bento tort Vinni Altay — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-novruz-5-months",
+            "title": "Bento tort Novruz 5 months",
+            "img": "/assets/img/products/bento-tort-novruz-5-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Novruz 5 months - Vanilla.az",
+            "seo_desc": "Bento tort Novruz 5 months — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-dinozavr-3-months",
+            "title": "Bento tort Dinozavr 3 months",
+            "img": "/assets/img/products/bento-tort-dinozavr-3-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Dinozavr 3 months - Vanilla.az",
+            "seo_desc": "Bento tort Dinozavr 3 months — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-astronavt-4-months",
+            "title": "Bento tort Astronavt 4 months",
+            "img": "/assets/img/products/bento-tort-astronavt-4-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Astronavt 4 months - Vanilla.az",
+            "seo_desc": "Bento tort Astronavt 4 months — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-dovsan-2-months",
+            "title": "Bento tort Dovşan 2 months",
+            "img": "/assets/img/products/bento-tort-dovsan-2-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Dovşan 2 months - Vanilla.az",
+            "seo_desc": "Bento tort Dovşan 2 months — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-albali-6-months",
+            "title": "Bento tort Albalı 6 months",
+            "img": "/assets/img/products/bento-tort-albali-6-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Albalı 6 months - Vanilla.az",
+            "seo_desc": "Bento tort Albalı 6 months — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-dinozavr-5",
+            "title": "Bento tort Dinozavr 5",
+            "img": "/assets/img/products/bento-tort-dinozavr-5.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Dinozavr 5 - Vanilla.az",
+            "seo_desc": "Bento tort Dinozavr 5 — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-mavi-traktor-mirk",
+            "title": "Bento tort Mavi traktor Mirk",
+            "img": "/assets/img/products/bento-tort-mavi-traktor-mirk.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Mavi traktor Mirk - Vanilla.az",
+            "seo_desc": "Bento tort Mavi traktor Mirk — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-qu-qusu-8-months",
+            "title": "Bento tort Qu quşu 8 months",
+            "img": "/assets/img/products/bento-tort-qu-qusu-8-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Qu quşu 8 months - Vanilla.az",
+            "seo_desc": "Bento tort Qu quşu 8 months — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-i-t-ve-tort",
+            "title": "Bento tort İt və tort",
+            "img": "/assets/img/products/bento-tort-i-t-ve-tort.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort İt və tort - Vanilla.az",
+            "seo_desc": "Bento tort İt və tort — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-koynek-3-months",
+            "title": "Bento tort Köynək 3 months",
+            "img": "/assets/img/products/bento-tort-koynek-3-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Köynək 3 months - Vanilla.az",
+            "seo_desc": "Bento tort Köynək 3 months — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-cehrayi-cicekler-11-months",
+            "title": "Bento tort Çəhrayı çiçəklər 11 months",
+            "img": "/assets/img/products/bento-tort-cehrayi-cicekler-11-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Çəhrayı çiçəklər 11 months - Vanilla.az",
+            "seo_desc": "Bento tort Çəhrayı çiçəklər 11 months — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-lecekler-iren",
+            "title": "Bento tort Ləçəklər Iren",
+            "img": "/assets/img/products/bento-tort-lecekler-iren.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ləçəklər Iren - Vanilla.az",
+            "seo_desc": "Bento tort Ləçəklər Iren — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-fil-5-months",
+            "title": "Bento tort Fil 5 months",
+            "img": "/assets/img/products/bento-tort-fil-5-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Fil 5 months - Vanilla.az",
+            "seo_desc": "Bento tort Fil 5 months — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-zurafe-1-yas",
+            "title": "Bento tort Zürafə 1 yaş",
+            "img": "/assets/img/products/bento-tort-zurafe-1-yas.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Zürafə 1 yaş - Vanilla.az",
+            "seo_desc": "Bento tort Zürafə 1 yaş — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-albali-9-months",
+            "title": "Bento tort Albalı 9 months",
+            "img": "/assets/img/products/bento-tort-albali-9-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Albalı 9 months - Vanilla.az",
+            "seo_desc": "Bento tort Albalı 9 months — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-status-deyisikliyi",
+            "title": "Bento tort Status dəyişikliyi",
+            "img": "/assets/img/products/bento-tort-status-deyisikliyi.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Status dəyişikliyi - Vanilla.az",
+            "seo_desc": "Bento tort Status dəyişikliyi — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-dinozavr-malik-2-years",
+            "title": "Bento tort Dinozavr Malik 2 years",
+            "img": "/assets/img/products/bento-tort-dinozavr-malik-2-years.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Dinozavr Malik 2 years - Vanilla.az",
+            "seo_desc": "Bento tort Dinozavr Malik 2 years — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-masinlar-rauf",
+            "title": "Bento tort Maşınlar Rauf",
+            "img": "/assets/img/products/bento-tort-masinlar-rauf.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Maşınlar Rauf - Vanilla.az",
+            "seo_desc": "Bento tort Maşınlar Rauf — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-guller-maryam",
+            "title": "Bento tort Güllər Maryam",
+            "img": "/assets/img/products/bento-tort-guller-maryam.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Güllər Maryam - Vanilla.az",
+            "seo_desc": "Bento tort Güllər Maryam — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-mamont-amine",
+            "title": "Bento tort Mamont Amine",
+            "img": "/assets/img/products/bento-tort-mamont-amine.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Mamont Amine - Vanilla.az",
+            "seo_desc": "Bento tort Mamont Amine — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-yarim-il-cehrayi",
+            "title": "Bento tort Yarım il çəhrayı",
+            "img": "/assets/img/products/bento-tort-yarim-il-cehrayi.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Yarım il çəhrayı - Vanilla.az",
+            "seo_desc": "Bento tort Yarım il çəhrayı — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-portagal-8-months",
+            "title": "Bento tort Portağal 8 months",
+            "img": "/assets/img/products/bento-tort-portagal-8-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Portağal 8 months - Vanilla.az",
+            "seo_desc": "Bento tort Portağal 8 months — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-deniz-10-months",
+            "title": "Bento tort Dəniz 10 months",
+            "img": "/assets/img/products/bento-tort-deniz-10-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Dəniz 10 months - Vanilla.az",
+            "seo_desc": "Bento tort Dəniz 10 months — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-baliqqulaqlari-3",
+            "title": "Bento tort Balıqqulaqları 3",
+            "img": "/assets/img/products/bento-tort-baliqqulaqlari-3.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Balıqqulaqları 3 - Vanilla.az",
+            "seo_desc": "Bento tort Balıqqulaqları 3 — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-goy-qursagi-selya",
+            "title": "Bento tort Göy qurşağı Selya",
+            "img": "/assets/img/products/bento-tort-goy-qursagi-selya.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Göy qurşağı Selya - Vanilla.az",
+            "seo_desc": "Bento tort Göy qurşağı Selya — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-paltarlar-jeyla",
+            "title": "Bento tort Paltarlar Jeyla",
+            "img": "/assets/img/products/bento-tort-paltarlar-jeyla.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Paltarlar Jeyla - Vanilla.az",
+            "seo_desc": "Bento tort Paltarlar Jeyla — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-dovsan-soraya",
+            "title": "Bento tort Dovşan Soraya",
+            "img": "/assets/img/products/bento-tort-dovsan-soraya.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Dovşan Soraya - Vanilla.az",
+            "seo_desc": "Bento tort Dovşan Soraya — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-albali-11-months",
+            "title": "Bento tort Albalı 11 months",
+            "img": "/assets/img/products/bento-tort-albali-11-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Albalı 11 months - Vanilla.az",
+            "seo_desc": "Bento tort Albalı 11 months — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-ayiciq-happy-1-year",
+            "title": "Bento tort Ayıcıq Happy 1 year",
+            "img": "/assets/img/products/bento-tort-ayiciq-happy-1-year.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Ayıcıq Happy 1 year - Vanilla.az",
+            "seo_desc": "Bento tort Ayıcıq Happy 1 year — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
+        {
+            "slug": "bento-tort-cicekler-1-ay",
+            "title": "Bento tort Çiçəklər 1 ay",
+            "img": "/assets/img/products/bento-tort-cicekler-1-ay.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Çiçəklər 1 ay - Vanilla.az",
+            "seo_desc": "Bento tort Çiçəklər 1 ay — uşaq üçün bento tort. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Ad və yazını pulsuz əlavə edirik."
+        },
+        {
+            "slug": "bento-tort-masinlar-7-months-2",
+            "title": "Bento tort Maşınlar 7 months 2",
+            "img": "/assets/img/products/bento-tort-masinlar-7-months-2.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Maşınlar 7 months 2 - Vanilla.az",
+            "seo_desc": "Bento tort Maşınlar 7 months 2 — körpənin ayını qeyd etmək üçün tort. Biskvit və içlik seçimi, üzərində istədiyiniz ad. 25 ₼-dən."
+        },
+        {
+            "slug": "bento-tort-yenot-11-months",
+            "title": "Bento tort Yenot 11 months",
+            "img": "/assets/img/products/bento-tort-yenot-11-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Yenot 11 months - Vanilla.az",
+            "seo_desc": "Bento tort Yenot 11 months — uşaq tortu Bakıda: 1–2 nəfərlik 25 ₼, 3–4 nəfərlik 35 ₼, 7–8 nəfərlik 60 ₼. Əvvəlcədən sifarişlə."
+        },
+        {
+            "slug": "bento-tort-ciyelek-3-months",
+            "title": "Bento tort Çiyələk 3 months",
+            "img": "/assets/img/products/bento-tort-ciyelek-3-months.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Çiyələk 3 months - Vanilla.az",
+            "seo_desc": "Bento tort Çiyələk 3 months — ad günü və aylıq üçün bento tort. Dizaynı təkrarlayırıq, yazını sizin istəyinizlə yazırıq."
+        },
+        {
+            "slug": "bento-tort-zurafe-1-year",
+            "title": "Bento tort Zürafə 1 year",
+            "img": "/assets/img/products/bento-tort-zurafe-1-year.jpg",
+            "price": "25 – 60 ₼",
+            "type": "usaq",
+            "seo_title": "Bento tort Zürafə 1 year - Vanilla.az",
+            "seo_desc": "Bento tort Zürafə 1 year — Vanilla Cake-dən uşaq tortu. Ölçünü, biskviti və içliyi seçin — qalanını biz edirik. 25–60 ₼."
+        },
         {
             "slug": "bento-tort-boy-or-girl-klassik",
             "title": "Bento tort Boy or Girl Klassik",
