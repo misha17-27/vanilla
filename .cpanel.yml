@@ -13,6 +13,7 @@ deployment:
     - /bin/cp -f $SRC/reviews.php $SRC/router.php $SRC/sitemap.php $SRC/upload-design.php $DEPLOYPATH/
     - /bin/cp -f $SRC/.htaccess $SRC/.user.ini $SRC/robots.txt $SRC/favicon.ico $DEPLOYPATH/
     - /bin/cp -Rn $SRC/data/. $DEPLOYPATH/data/
+    - /bin/sh -c "/usr/local/bin/php $SRC/tools/sync-data.php $DEPLOYPATH || /usr/bin/php $SRC/tools/sync-data.php $DEPLOYPATH || echo 'PHP CLI not found - data not synced'"
     - /bin/cp -f $SRC/data/.htaccess $DEPLOYPATH/data/.htaccess
     - /bin/cp -f $SRC/uploads/designs/.htaccess $DEPLOYPATH/uploads/designs/.htaccess
     - /bin/cp -f $SRC/uploads/ratelimit/.htaccess $DEPLOYPATH/uploads/ratelimit/.htaccess
