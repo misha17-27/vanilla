@@ -173,8 +173,9 @@ if (preg_match('#^/mehsul/([a-z0-9_-]+)/$#i', $path, $m)) {
 http_response_code(404);
 $page = '404';
 require_once __DIR__ . '/includes/config.php';
-$page_title = 'Vanilla Cake — 404';
-$page_meta  = '';
+$page_title  = 'Vanilla Cake — 404';
+$page_meta   = '';
+$page_robots = 'noindex, follow';
 require __DIR__ . '/includes/header.php';
 echo '<section class="page-hero"><div class="container"><h1>404</h1><p class="lead">' . e($t['nf_text'] ?? 'Səhifə tapılmadı') . '</p>'
    . '<p style="margin-top:24px"><a class="btn btn-primary" href="' . e(u('/')) . '">' . e($t['nav_home']) . '</a></p></div></section>';

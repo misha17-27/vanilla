@@ -1,6 +1,15 @@
 # Vanilla Cake — все не-файловые запросы через router.php (URL-структура как у WordPress)
 RewriteEngine On
 RewriteBase /
+
+# /index.php - дубль главной, уводим на короткий адрес
+RewriteCond %{THE_REQUEST} \s/+index\.php[\s?] [NC]
+RewriteRule ^index\.php$ / [R=301,L]
+
+# Главная тоже идёт через router.php: иначе Apache отдаёт index.php сам
+# и ?lang=xx на ней не превращается в /az/ и /en/
+RewriteRule ^$ router.php [L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ router.php [L]

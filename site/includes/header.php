@@ -33,11 +33,13 @@ $OG_LOCALE = ['ru' => 'ru_RU', 'az' => 'az_AZ', 'en' => 'en_US'];
 <title><?= e($page_title) ?></title>
 <meta name="description" content="<?= e($page_meta) ?>">
 <meta name="robots" content="<?= e($page_robots ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1') ?>">
+<?php if (http_response_code() !== 404): ?>
 <link rel="canonical" href="<?= e($canonical) ?>">
 <?php foreach ($LANGS as $l): ?>
 <link rel="alternate" hreflang="<?= e($l) ?>" href="<?= e(canonical_url($l)) ?>">
 <?php endforeach; ?>
 <link rel="alternate" hreflang="x-default" href="<?= e(canonical_url('ru')) ?>">
+<?php endif; ?>
 <meta property="og:type" content="<?= e($og_type) ?>">
 <meta property="og:site_name" content="Vanilla Cake">
 <meta property="og:locale" content="<?= e($OG_LOCALE[$lang]) ?>">
