@@ -2,16 +2,28 @@
 RewriteEngine On
 RewriteBase /
 
-# /index.php - дубль главной, уводим на короткий адрес
+# Файлы страниц лежат в корне, и Apache отдаёт их напрямую в обход router.php.
+# Получались вторые копии тех же страниц (/about.php и /haqqimizda/), поэтому
+# уводим каждый файл на его настоящий адрес.
 RewriteCond %{THE_REQUEST} \s/+index\.php[\s?] [NC]
 RewriteRule ^index\.php$ / [R=301,L]
+RewriteRule ^about\.php$       /haqqimizda/        [R=301,L]
+RewriteRule ^bento\.php$       /bolme/bento-tort/  [R=301,L]
+RewriteRule ^cake-to-go\.php$  /bolme/cake-to-go/  [R=301,L]
+RewriteRule ^contact\.php$     /elaqe/             [R=301,L]
+RewriteRule ^faq\.php$         /faq/               [R=301,L]
+RewriteRule ^fillings\.php$    /terkibler/         [R=301,L]
+RewriteRule ^konstruktor\.php$ /konstruktor/       [R=301,L]
+RewriteRule ^reviews\.php$     /reyler/            [R=301,L]
+RewriteRule ^sitemap\.php$     /sitemap.xml        [R=301,L]
 
 # Главная тоже идёт через router.php: иначе Apache отдаёт index.php сам
 # и ?lang=xx на ней не превращается в /az/ и /en/
 RewriteRule ^$ router.php [L]
 
+# Адрес каталога (/assets/, /uploads/) тоже уходит в router.php — он ответит 404.
+# Файлы внутри каталогов отдаёт сам Apache: они проходят по условию -f.
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ router.php [L]
 
 # Сжатие текстовых ответов

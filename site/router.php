@@ -20,6 +20,10 @@ if (php_sapi_name() === 'cli-server') {
 }
 
 // sitemap
+if ($uri === '/sitemap.php') {
+    header('Location: /sitemap.xml', true, 301);
+    exit;
+}
 if ($uri === '/sitemap.xml') {
     require __DIR__ . '/sitemap.php';
     exit;
@@ -56,6 +60,14 @@ if (isset($_GET['lang']) && in_array($_GET['lang'], ['ru', 'az', 'en'], true)) {
     unset($qs['lang']);
     $tail = $qs ? '?' . http_build_query($qs) : '';
     header('Location: ' . ($to === 'ru' ? '' : '/' . $to) . $uri . $tail, true, 301);
+    exit;
+}
+
+// Публичная часть работает без параметров: единственный, что мы понимаем, — lang,
+// и он обработан выше. Всё остальное (?p=, ?s=, ?add-to-cart=, ?orderby= и прочее
+// наследие WordPress) уводим на чистый адрес, чтобы не плодить копии страниц.
+if (($_SERVER['QUERY_STRING'] ?? '') !== '' && in_array($_SERVER['REQUEST_METHOD'] ?? 'GET', ['GET', 'HEAD'], true)) {
+    header('Location: ' . ($LANG_PREFIX !== '' ? '/' . $LANG_PREFIX : '') . $uri, true, 301);
     exit;
 }
 
