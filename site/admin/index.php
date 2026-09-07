@@ -413,7 +413,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'seo_title' => $seoT !== '' ? $seoT : $title . ' - Vanilla.az', 'seo_desc' => $seoD,
                 ]);
             }
-            foreach ($products as &$pp) if ($pp['slug'] === $slug) $pp['edited'] = true;
+            foreach ($products as &$pp) if ($pp['slug'] === $slug) {
+                $pp['edited']  = true;
+                $pp['updated'] = time();   // отсюда берётся lastmod в карте сайта
+            }
             unset($pp);
             $catalog['products'] = $products;
             save_catalog($catalog);

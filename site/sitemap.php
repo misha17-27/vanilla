@@ -35,8 +35,11 @@ $entries = [
 foreach (own_categories() as $c) {
     $entries[] = [cat_path($c), $day($dataStamp)];
 }
+// У товара своя дата: когда его правили, иначе когда добавили. Одинаковый
+// lastmod у всех страниц поиск быстро перестаёт учитывать.
 foreach ($PRODUCTS as $p) {
-    $entries[] = ['/mehsul/' . $p['slug'] . '/', $day($dataStamp)];
+    $ts = (int)($p['updated'] ?? 0) ?: (int)($p['created'] ?? 0);
+    $entries[] = ['/mehsul/' . $p['slug'] . '/', $ts ? $day($ts) : $day($dataStamp)];
 }
 
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";

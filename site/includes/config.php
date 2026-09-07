@@ -1,6 +1,14 @@
 <?php
 // ===== Language =====
+// PHP по умолчанию шлёт сессиям Cache-Control: no-store. Для публичных страниц
+// это лишнее: содержимое не секретное, а no-store выключает мгновенный переход
+// «назад» в браузере. Ставим свои заголовки: кэш только у самого посетителя
+// (в нём есть CSRF-токен формы) и всегда с проверкой у сервера.
+session_cache_limiter('');
 session_start();
+if (!headers_sent()) {
+    header('Cache-Control: private, no-cache, must-revalidate');
+}
 $LANGS = ['ru', 'az', 'en'];
 if (isset($_GET['lang']) && in_array($_GET['lang'], $LANGS, true)) {
     $_SESSION['lang'] = $_GET['lang'];
