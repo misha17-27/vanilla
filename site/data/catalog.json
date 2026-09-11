@@ -1,6 +1,393 @@
 {
-    "updated": "2026-09-03",
+    "updated": "2026-09-11T07:26:57+00:00",
     "products": [
+        {
+            "slug": "bento-tort-8-mart-i-love-you",
+            "title": "Bento tort 8 mart I Love You",
+            "img": "/assets/img/products/bento-tort-8-mart-i-love-you.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart I Love You - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart I Love You — 8 Mart üçün bento tort: pudra rəngli krem, «i love you» yazısı və ürəklər. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-qirmizi-urekler",
+            "title": "Bento tort 8 mart Qirmizi Ureklər",
+            "img": "/assets/img/products/bento-tort-8-mart-qirmizi-urekler.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Qirmizi Ureklər - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Qirmizi Ureklər — 8 Mart üçün bento tort: çəhrayı krem üzərində qırmızı ürəklər səpələnib. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-krem-guller",
+            "title": "Bento tort 8 mart Krem Güllər",
+            "img": "/assets/img/products/bento-tort-8-mart-krem-guller.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Krem Güllər - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Krem Güllər — 8 Mart üçün bento tort: çəhrayı krem, kremdən güllər və yaşıl yarpaqlar. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-galaxy-love",
+            "title": "Bento tort 8 mart Galaxy Love",
+            "img": "/assets/img/products/bento-tort-8-mart-galaxy-love.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Galaxy Love - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Galaxy Love — 8 Mart üçün bento tort: lavanda-mavi mərmər krem, ulduzlar və «love you» yazısı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-horme-hasiye",
+            "title": "Bento tort 8 mart Hörmə Haşiyə",
+            "img": "/assets/img/products/bento-tort-8-mart-horme-hasiye.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Hörmə Haşiyə - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Hörmə Haşiyə — 8 Mart üçün bento tort: krem rəngli tort, hörmə haşiyə və ürək. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-urek-medalyon",
+            "title": "Bento tort 8 mart Ürək Medalyon",
+            "img": "/assets/img/products/bento-tort-8-mart-urek-medalyon.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Ürək Medalyon - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Ürək Medalyon — 8 Mart üçün bento tort: ağ krem üzərində çəhrayı ürək və «I love you» yazısı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-sari-urek",
+            "title": "Bento tort 8 mart Sarı Ürək",
+            "img": "/assets/img/products/bento-tort-8-mart-sari-urek.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Sarı Ürək - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Sarı Ürək — 8 Mart üçün bento tort: sarı ürək və zərif yazı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-love-you-klassik",
+            "title": "Bento tort 8 mart Love You Klassik",
+            "img": "/assets/img/products/bento-tort-8-mart-love-you-klassik.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Love You Klassik - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Love You Klassik — 8 Mart üçün bento tort: ağ krem, krem naxışlı haşiyə və «love you» yazısı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-love-forever",
+            "title": "Bento tort 8 mart Love Forever",
+            "img": "/assets/img/products/bento-tort-8-mart-love-forever.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Love Forever - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Love Forever — 8 Mart üçün bento tort: krem rəngli tort, qızılı «love forever» yazısı və ürək. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-to-the-moon",
+            "title": "Bento tort 8 mart To The Moon",
+            "img": "/assets/img/products/bento-tort-8-mart-to-the-moon.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart To The Moon - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart To The Moon — 8 Mart üçün bento tort: tünd mavi kosmos, ulduzlar, ay və «to the moon and back» yazısı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "cake-to-go-8-mart-sevgi-mesaji",
+            "title": "Cake to go Sevgi Mesajı",
+            "img": "/assets/img/products/cake-to-go-8-mart-sevgi-mesaji.jpg",
+            "price": "25 – 30 ₼",
+            "type": "8mart",
+            "seo_title": "Cake to go Sevgi Mesajı - Vanilla.az",
+            "seo_desc": "Cake to go Sevgi Mesajı — 8 Mart üçün cake to go: stəkanlarda ağ krem, qırmızı ürəklər, ayıcıq rəsmi və sevgi yazısı. Komplektdə taxta qaşıq və şam. 2 ədəd 170–190 q 25 ₼, 2 ədəd 270–290 q 30 ₼. Bakıda sifarişlə.",
+            "created": 1789111613,
+            "kind": "ctg"
+        },
+        {
+            "slug": "bento-tort-8-mart-urek-love",
+            "title": "Bento tort 8 mart Ürək Love",
+            "img": "/assets/img/products/bento-tort-8-mart-urek-love.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Ürək Love - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Ürək Love — 8 Mart üçün bento tort: ürək formalı tort, qırmızı «love» yazısı və ürəklər. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-sevimli-ana",
+            "title": "Bento tort 8 mart Sevimli Ana",
+            "img": "/assets/img/products/bento-tort-8-mart-sevimli-ana.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Sevimli Ana - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Sevimli Ana — 8 Mart üçün bento tort: ağ krem, qırmızı ürəklər və anaya həsr olunmuş yazı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-sari-papatya",
+            "title": "Bento tort 8 mart Sarı Papatya",
+            "img": "/assets/img/products/bento-tort-8-mart-sari-papatya.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Sarı Papatya - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Sarı Papatya — 8 Mart üçün bento tort: sarı krem, ağ papatyalar və «8 Mart» təbriki. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-lavanda-celengi",
+            "title": "Bento tort 8 mart Lavanda Çələngi",
+            "img": "/assets/img/products/bento-tort-8-mart-lavanda-celengi.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Lavanda Çələngi - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Lavanda Çələngi — 8 Mart üçün bento tort: ağ krem üzərində lavanda çələngi və «8 Mart» yazısı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "cake-to-go-8-mart-qizili-love-you",
+            "title": "Cake to go Qızılı Love You",
+            "img": "/assets/img/products/cake-to-go-8-mart-qizili-love-you.jpg",
+            "price": "25 – 30 ₼",
+            "type": "8mart",
+            "seo_title": "Cake to go Qızılı Love You - Vanilla.az",
+            "seo_desc": "Cake to go Qızılı Love You — 8 Mart üçün cake to go: iki stəkanda ağ krem və qızılı «love you» yazısı. Komplektdə taxta qaşıq və şam. 2 ədəd 170–190 q 25 ₼, 2 ədəd 270–290 q 30 ₼. Bakıda sifarişlə.",
+            "created": 1789111613,
+            "kind": "ctg"
+        },
+        {
+            "slug": "bento-tort-8-mart-qirmizi-love",
+            "title": "Bento tort 8 mart Qırmızı Love",
+            "img": "/assets/img/products/bento-tort-8-mart-qirmizi-love.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Qırmızı Love - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Qırmızı Love — 8 Mart üçün bento tort: parlaq qırmızı krem və ağ «i love you» yazısı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-dovsanlar",
+            "title": "Bento tort 8 mart Dovşanlar",
+            "img": "/assets/img/products/bento-tort-8-mart-dovsanlar.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Dovşanlar - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Dovşanlar — 8 Mart üçün bento tort: ağ krem üzərində qucaqlaşan dovşanlar və ürəklər. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "cake-to-go-8-mart-urekli-stekanlar",
+            "title": "Cake to go Ürəkli Stəkanlar",
+            "img": "/assets/img/products/cake-to-go-8-mart-urekli-stekanlar.jpg",
+            "price": "25 – 30 ₼",
+            "type": "8mart",
+            "seo_title": "Cake to go Ürəkli Stəkanlar - Vanilla.az",
+            "seo_desc": "Cake to go Ürəkli Stəkanlar — 8 Mart üçün cake to go: çəhrayı və ağ stəkanlarda krem və kiçik ürəklər. Komplektdə taxta qaşıq və şam. 2 ədəd 170–190 q 25 ₼, 2 ədəd 270–290 q 30 ₼. Bakıda sifarişlə.",
+            "created": 1789111613,
+            "kind": "ctg"
+        },
+        {
+            "slug": "cake-to-go-8-mart-sevgi-sozleri",
+            "title": "Cake to go Sevgi Sözləri",
+            "img": "/assets/img/products/cake-to-go-8-mart-sevgi-sozleri.jpg",
+            "price": "25 – 30 ₼",
+            "type": "8mart",
+            "seo_title": "Cake to go Sevgi Sözləri - Vanilla.az",
+            "seo_desc": "Cake to go Sevgi Sözləri — 8 Mart üçün cake to go: iki stəkanda qırmızı ürəklər və zarafatlı sevgi yazıları. Komplektdə taxta qaşıq və şam. 2 ədəd 170–190 q 25 ₼, 2 ədəd 270–290 q 30 ₼. Bakıda sifarişlə.",
+            "created": 1789111613,
+            "kind": "ctg"
+        },
+        {
+            "slug": "bento-tort-8-mart-love-you-urekler",
+            "title": "Bento tort 8 mart Love You Ürəklər",
+            "img": "/assets/img/products/bento-tort-8-mart-love-you-urekler.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Love You Ürəklər - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Love You Ürəklər — 8 Mart üçün bento tort: ağ krem, qırmızı ürəklər və «love you» yazısı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "cake-to-go-8-mart-sevirem",
+            "title": "Cake to go Sevirəm",
+            "img": "/assets/img/products/cake-to-go-8-mart-sevirem.jpg",
+            "price": "25 – 30 ₼",
+            "type": "8mart",
+            "seo_title": "Cake to go Sevirəm - Vanilla.az",
+            "seo_desc": "Cake to go Sevirəm — 8 Mart üçün cake to go: ağ və çəhrayı stəkanlar, «sevirəm» yazısı və kiçik ürəklər. Komplektdə taxta qaşıq və şam. 2 ədəd 170–190 q 25 ₼, 2 ədəd 270–290 q 30 ₼. Bakıda sifarişlə.",
+            "created": 1789111613,
+            "kind": "ctg"
+        },
+        {
+            "slug": "cake-to-go-8-mart-qizili-yazi",
+            "title": "Cake to go Qızılı Yazı",
+            "img": "/assets/img/products/cake-to-go-8-mart-qizili-yazi.jpg",
+            "price": "25 – 30 ₼",
+            "type": "8mart",
+            "seo_title": "Cake to go Qızılı Yazı - Vanilla.az",
+            "seo_desc": "Cake to go Qızılı Yazı — 8 Mart üçün cake to go: iki stəkanda krem və əl yazısı ilə qızılı «love you». Komplektdə taxta qaşıq və şam. 2 ədəd 170–190 q 25 ₼, 2 ədəd 270–290 q 30 ₼. Bakıda sifarişlə.",
+            "created": 1789111613,
+            "kind": "ctg"
+        },
+        {
+            "slug": "cake-to-go-8-mart-love-urekler",
+            "title": "Cake to go LOVE Ürəklər",
+            "img": "/assets/img/products/cake-to-go-8-mart-love-urekler.jpg",
+            "price": "25 – 30 ₼",
+            "type": "8mart",
+            "seo_title": "Cake to go LOVE Ürəklər - Vanilla.az",
+            "seo_desc": "Cake to go LOVE Ürəklər — 8 Mart üçün cake to go: iki stəkanda qırmızı ürəklərdən yığılmış «LOVE» sözü. Komplektdə taxta qaşıq və şam. 2 ədəd 170–190 q 25 ₼, 2 ədəd 270–290 q 30 ₼. Bakıda sifarişlə.",
+            "created": 1789111613,
+            "kind": "ctg"
+        },
+        {
+            "slug": "bento-tort-8-mart-mini-love",
+            "title": "Bento tort 8 mart Mini Love",
+            "img": "/assets/img/products/bento-tort-8-mart-mini-love.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Mini Love - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Mini Love — 8 Mart üçün bento tort: ağ krem, xırda qırmızı və ağ ürəklər, «i love u» yazısı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-womens-day",
+            "title": "Bento tort 8 mart Women's Day",
+            "img": "/assets/img/products/bento-tort-8-mart-womens-day.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Women's Day - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Women's Day — 8 Mart üçün bento tort: ağ krem, krem naxışlar, qara lent və «Happy Women's day» yazısı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-ana-cicekleri",
+            "title": "Bento tort 8 mart Ana Çiçəkləri",
+            "img": "/assets/img/products/bento-tort-8-mart-ana-cicekleri.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Ana Çiçəkləri - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Ana Çiçəkləri — 8 Mart üçün bento tort: mavi krem üzərində ağ çiçəklər, incilər və anaya yazı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-en-yaxsi-ana",
+            "title": "Bento tort 8 mart Ən Yaxşı Ana",
+            "img": "/assets/img/products/bento-tort-8-mart-en-yaxsi-ana.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Ən Yaxşı Ana - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Ən Yaxşı Ana — 8 Mart üçün bento tort: ağ krem, qırmızı ürəklər və qızından anaya təbrik. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-sekkiz-gullerden",
+            "title": "Bento tort 8 mart Səkkiz Güllərdən",
+            "img": "/assets/img/products/bento-tort-8-mart-sekkiz-gullerden.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Səkkiz Güllərdən - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Səkkiz Güllərdən — 8 Mart üçün bento tort: çəhrayı krem üzərində kremdən çiçəklərlə yığılmış səkkiz rəqəmi. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-qurbagalar",
+            "title": "Bento tort 8 mart Qurbağalar",
+            "img": "/assets/img/products/bento-tort-8-mart-qurbagalar.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Qurbağalar - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Qurbağalar — 8 Mart üçün bento tort: bej krem üzərində qucaqlaşan qurbağalar və «I love you» yazısı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-ana-evi",
+            "title": "Bento tort 8 mart Ana Evi",
+            "img": "/assets/img/products/bento-tort-8-mart-ana-evi.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Ana Evi - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Ana Evi — 8 Mart üçün bento tort: ağ-çəhrayı krem, ürək və anaya həsr olunmuş yazı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-urek-love-you",
+            "title": "Bento tort 8 mart Ürək Love You",
+            "img": "/assets/img/products/bento-tort-8-mart-urek-love-you.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Ürək Love You - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Ürək Love You — 8 Mart üçün bento tort: ürək formalı ağ tort, qırmızı «love you» yazısı və ürəklər. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-serab-kimi",
+            "title": "Bento tort 8 mart Şərab Kimi",
+            "img": "/assets/img/products/bento-tort-8-mart-serab-kimi.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Şərab Kimi - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Şərab Kimi — 8 Mart üçün bento tort: ağ krem, şərab qədəhi rəsmi və zarafatlı təbrik yazısı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-mavi-papatya",
+            "title": "Bento tort 8 mart Mavi Papatya",
+            "img": "/assets/img/products/bento-tort-8-mart-mavi-papatya.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Mavi Papatya - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Mavi Papatya — 8 Mart üçün bento tort: mavi krem, ağ papatyalar, gümüşü muncuqlar və «8 Mart» yazısı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-laleler",
+            "title": "Bento tort 8 mart Lalələr",
+            "img": "/assets/img/products/bento-tort-8-mart-laleler.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Lalələr - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Lalələr — 8 Mart üçün bento tort: krem rəngli tort, rəngli lalələr və «Happy Women's Day» yazısı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-cicekli-sekkiz",
+            "title": "Bento tort 8 mart Çiçəkli Səkkiz",
+            "img": "/assets/img/products/bento-tort-8-mart-cicekli-sekkiz.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Çiçəkli Səkkiz - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Çiçəkli Səkkiz — 8 Mart üçün bento tort: pudra rəngli krem, çiçəklərdən səkkiz rəqəmi və «Marta» yazısı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-ag-urek",
+            "title": "Bento tort 8 mart Ağ Ürək",
+            "img": "/assets/img/products/bento-tort-8-mart-ag-urek.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Ağ Ürək - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Ağ Ürək — 8 Mart üçün bento tort: ürək formalı ağ tort, qırmızı əlyazma «love you» və ürəklər. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
+        {
+            "slug": "bento-tort-8-mart-papatya-pink",
+            "title": "Bento tort 8 mart Papatya Pink",
+            "img": "/assets/img/products/bento-tort-8-mart-papatya-pink.jpg",
+            "price": "25 – 60 ₼",
+            "type": "8mart",
+            "seo_title": "Bento tort 8 mart Papatya Pink - Vanilla.az",
+            "seo_desc": "Bento tort 8 mart Papatya Pink — 8 Mart üçün bento tort: çəhrayı krem, iri ağ papatyalar və «8 Marta» yazısı. 300–350 q 25 ₼, 750–800 q 35 ₼, 1200–1500 q 60 ₼. Biskvit, içlik və yazı sizin seçiminizlə.",
+            "created": 1789111613
+        },
         {
             "slug": "bento-tort-milad-8-months",
             "title": "Bento tort Milad 8 months",

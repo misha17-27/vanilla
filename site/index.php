@@ -118,7 +118,7 @@ $heroSlides = [
         <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="9" cy="10.5" r=".6" fill="currentColor"/><circle cx="15" cy="10.5" r=".6" fill="currentColor"/><path d="M8.5 14.5c1 1.2 2.2 1.8 3.5 1.8s2.5-.6 3.5-1.8"/><path d="M12 3.5c1 .8 1.4 1.8 1 3"/></svg></span>
         <span><?= e($t['occ3']) ?></span>
       </a>
-      <a class="occ" href="<?= IG_URL ?>" target="_blank" rel="noopener">
+      <a class="occ" href="<?= e(cat_url(categories()['8mart'])) ?>">
         <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12v9M12 21c0-3-2-5-5-5M12 21c0-3 2-5 5-5"/><circle cx="12" cy="7.5" r="2"/><circle cx="8.7" cy="5.8" r="2"/><circle cx="15.3" cy="5.8" r="2"/><circle cx="10" cy="9.4" r="2"/><circle cx="14" cy="9.4" r="2"/></svg></span>
         <span><?= e($t['occ4']) ?></span>
       </a>

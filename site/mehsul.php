@@ -38,8 +38,9 @@ if ($prodCat && ($prodCat['page'] ?? '') === 'own') {
 [$catUrl, $catLabel, $navSlug] = $catMap[$prod['type']];
 $page = $navSlug;
 
-// размеры и цены: у своих категорий берём бенто-набор
-$sizeOpts = $t['sizes_opt_' . $prod['type']] ?? $t['sizes_opt_bento'];
+// размеры и цены: по формату товара, если он задан, иначе по категории;
+// у своих категорий без своего набора — бенто-размеры
+$sizeOpts = $t['sizes_opt_' . ($prod['kind'] ?? $prod['type'])] ?? $t['sizes_opt_bento'];
 
 // Разметка товара: цена берётся из тех же размеров, что видит клиент
 $page_schema = 'ItemPage';

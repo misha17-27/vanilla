@@ -87,6 +87,22 @@
             "desc_en": "Cakes for every baby month and first birthdays: animals, cartoon heroes, cars, flowers and berries.",
             "builtin": false,
             "slug": "usaq-tortlari"
+        },
+        {
+            "key": "8mart",
+            "name": "Торты на 8 марта",
+            "name_az": "8 Mart tortları",
+            "name_en": "Women's Day cakes",
+            "name_one": "Торт на 8 марта",
+            "name_one_az": "8 Mart tortu",
+            "name_one_en": "Women's Day cake",
+            "strip": "Bento tort 8 mart",
+            "page": "own",
+            "slug": "8-mart-tortlari",
+            "builtin": false,
+            "desc": "Торты к 8 марта и Женскому дню: ромашки и тюльпаны, восьмёрки из крема, тёплые слова маме и любимой. Есть бенто-торты на 1–2, 3–4 и 7–8 персон и наборы Cake to go из двух стаканчиков.",
+            "desc_az": "8 Mart və Qadınlar Günü üçün tortlar: papatya və lalələr, kremdən səkkiz rəqəmi, anaya və sevdiyinizə isti sözlər. Bento tortlar 1–2, 3–4 və 7–8 nəfərlik, həmçinin iki stəkanlıq Cake to go dəstləri.",
+            "desc_en": "Cakes for Women's Day: daisies and tulips, cream number eights, warm words for mum and for your loved one. Bento cakes for 1–2, 3–4 and 7–8 guests plus two-cup Cake to go sets."
         }
     ]
 }

@@ -356,7 +356,8 @@ function product_name(array $p): string
 {
     global $t, $lang;
     $title = $p['title'];
-    switch ($p['type']) {
+    // kind — формат товара, если он отличается от категории (Cake to go в «8 марта»)
+    switch ($p['kind'] ?? $p['type']) {
         case 'bantik':
             $rest = trim(preg_replace('/^Bento tort bantik\s*/iu', '', $title));
             return $t['p_bantik'] . ($rest !== '' ? ' «' . $rest . '»' : '');
