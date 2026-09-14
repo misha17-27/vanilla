@@ -24,7 +24,7 @@ require __DIR__ . '/includes/header.php';
     <div class="about-grid">
       <div class="about-art reveal">
         <div class="about-ph">
-          <img src="https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1712262810_3339024920686659731_3523099162-3-600x600.jpg" alt="Vanilla Cake" width="600" height="600" fetchpriority="high">
+          <img src="/assets/img/about-vanilla.jpg" alt="Vanilla Cake" width="800" height="800" fetchpriority="high">
         </div>
         <div class="about-stamp">Made with love</div>
       </div>

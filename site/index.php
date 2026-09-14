@@ -14,7 +14,7 @@ $ctg    = products_of('ctg');
 <!-- Hero slider: по слайду на категорию -->
 <?php
 $heroSlides = [
-    ['eye' => $t['hero_eyebrow'], 'title' => $t['hero_h'],  'lead' => $t['hero_lead'], 'url' => '/bolme/bento-tort/',        'btn' => $t['hero_cta2'],     'img' => 'https://vanilla.az/wp-content/uploads/2025/07/vanilla_cake_az_1715803570_3368726971637270283_3523099162-3-600x600.jpg', 'h1' => true],
+    ['eye' => $t['hero_eyebrow'], 'title' => $t['hero_h'],  'lead' => $t['hero_lead'], 'url' => '/bolme/bento-tort/',        'btn' => $t['hero_cta2'],     'img' => '/assets/img/hero-bento.jpg', 'h1' => true],
     ['eye' => $t['bantik_h'],     'title' => $t['hs2_t'],   'lead' => $t['hs2_d'],     'url' => cat_url(categories()['bantik']), 'btn' => $t['btn_all_bento'], 'img' => '/assets/img/bantik-blush.jpg'],
     ['eye' => $t['sets_h'],       'title' => $t['hs3_t'],   'lead' => $t['hs3_d'],     'url' => cat_url(categories()['set']),   'btn' => $t['btn_all_bento'], 'img' => '/assets/img/set-white.jpg'],
     ['eye' => $t['sec_ctg_t'],    'title' => $t['hs4_t'],   'lead' => $t['hs4_d'],     'url' => '/bolme/cake-to-go/',        'btn' => $t['btn_all_ctg'],   'img' => '/assets/img/ctg-minimal.jpg'],
@@ -49,7 +49,7 @@ $heroSlides = [
           <div class="hero-deco d1"></div>
           <div class="hero-deco d2"></div>
           <div class="hero-ph">
-            <img src="<?= e($s['img']) ?>" alt="<?= e($s['eye']) ?>" width="600" height="600" <?= $si === 0 ? 'fetchpriority="high"' : 'loading="lazy"' ?>>
+            <img src="<?= e($s['img']) ?>" alt="<?= e($s['eye']) ?>" width="800" height="800" <?= $si === 0 ? 'fetchpriority="high"' : 'loading="lazy"' ?>>
           </div>
           <div class="hero-badge">
             <span class="dot">
