@@ -63,6 +63,16 @@ $rows = array_filter($products, function ($p) use ($filter, $q, $seoOnly) {
         <p class="hint">Не меняется — так сохраняются позиции в поиске.</p>
         <?php endif; ?>
 
+        <label for="desc">Описание на странице <span class="muted">(русский)</span></label>
+        <textarea name="desc" id="desc" rows="3" maxlength="600"><?= e($edit['desc'] ?? '') ?></textarea>
+
+        <label for="desc_az">Описание <span class="muted">(Azərbaycanca)</span></label>
+        <textarea name="desc_az" id="desc_az" rows="3" maxlength="600"><?= e($edit['desc_az'] ?? '') ?></textarea>
+
+        <label for="desc_en">Описание <span class="muted">(English)</span></label>
+        <textarea name="desc_en" id="desc_en" rows="3" maxlength="600"><?= e($edit['desc_en'] ?? '') ?></textarea>
+        <p class="hint">Показывается на странице торта. Пусто — возьмётся общий текст, но тогда страница почти не отличается от других и хуже индексируется.</p>
+
         <label for="seo_title">SEO-заголовок <span class="muted">(пусто — автоматически)</span> <i class="cnt" id="cnt-t"></i></label>
         <input type="text" name="seo_title" id="seo_title" value="<?= e($edit['seo_title'] ?? '') ?>" maxlength="120">
 

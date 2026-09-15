@@ -180,7 +180,9 @@ require __DIR__ . '/includes/header.php';
     <div class="pd-secs reveal">
       <section class="pd-sec">
         <h3><?= e($t['tab_desc']) ?></h3>
-        <p><?= e($t['pd_desc']) ?></p>
+        <?php $own = trim((string)($prod['desc_' . $lang] ?? $prod['desc'] ?? '')); ?>
+        <p><?= e($own !== '' ? $own : $t['pd_desc']) ?></p>
+        <?php if ($own !== ''): ?><p><?= e($t['pd_desc']) ?></p><?php endif; ?>
         <ul class="tp-sizes">
           <?php foreach ($sizeOpts as $o): ?>
           <li><span><?= e($o[0]) ?></span><b><?= e($o[1]) ?> ₼</b></li>

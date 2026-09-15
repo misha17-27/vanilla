@@ -384,6 +384,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $price = trim((string)($_POST['price'] ?? ''));
             $seoT  = trim((string)($_POST['seo_title'] ?? ''));
             $seoD  = trim((string)($_POST['seo_desc'] ?? ''));
+            // описание на странице торта — по языкам
+            $descs = [];
+            foreach (['desc', 'desc_az', 'desc_en'] as $k) {
+                $descs[$k] = mb_substr(trim((string)($_POST[$k] ?? '')), 0, 600);
+            }
             if ($title === '' || $price === '' || !isset(type_names()[$type])) {
                 flash('Заполните название, цену и тип.', 'bad');
                 go('/admin/products' . ($slug ? '?edit=' . urlencode($slug) : '?add=1'));
@@ -401,6 +406,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $p['title'] = $title; $p['type'] = $type; $p['price'] = $price;
                     $p['seo_title'] = $seoT !== '' ? $seoT : $title . ' - Vanilla.az';
                     $p['seo_desc']  = $seoD;
+                    foreach ($descs as $k => $v) {
+                        if ($v !== '') $p[$k] = $v; else unset($p[$k]);
+                    }
                     if ($photo) $p['img'] = $photo;
                     $found = true; break;
                 }
@@ -411,7 +419,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'slug' => $slug, 'title' => $title, 'img' => $photo, 'price' => $price, 'type' => $type,
                     'created' => time(),
                     'seo_title' => $seoT !== '' ? $seoT : $title . ' - Vanilla.az', 'seo_desc' => $seoD,
-                ]);
+                ] + array_filter($descs, fn($v) => $v !== ''));
             }
             foreach ($products as &$pp) if ($pp['slug'] === $slug) {
                 $pp['edited']  = true;
