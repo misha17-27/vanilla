@@ -13,6 +13,7 @@ $nav = [
     'Каталог' => [
         ['/admin/products',   'products',   'Товары'],
         ['/admin/categories', 'categories', 'Категории'],
+        ['/admin/reviews',    'reviews',    'Отзывы'],
         ['/admin/designs',    'designs',    'Дизайны клиентов'],
     ],
     'Настройки' => [

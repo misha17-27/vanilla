@@ -27,6 +27,28 @@ $items = $rev['items'] ?? [];
 
 <section class="catalog">
   <div class="container">
+    <?php
+    $quotes = array_values(array_filter($items, fn($x) => trim((string)($x['text'] ?? '')) !== ''));
+    foreach ($quotes as $q) {
+        schema_add([
+            '@type'        => 'Review',
+            'reviewBody'   => $q['text'],
+            'author'       => ['@type' => 'Person', 'name' => trim((string)($q['author'] ?? '')) ?: 'Vanilla Cake müştərisi'],
+            'itemReviewed' => ['@id' => CANON_HOST . '/#organization'],
+        ]);
+    }
+    ?>
+    <?php if ($quotes): ?>
+    <div class="rev-quotes">
+      <?php foreach ($quotes as $q): ?>
+      <figure class="rev-q reveal">
+        <blockquote><?= e($q['text']) ?></blockquote>
+        <?php if (!empty($q['author'])): ?><figcaption>@<?= e($q['author']) ?></figcaption><?php endif; ?>
+      </figure>
+      <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
+
     <?php if ($items): ?>
     <div class="rev-grid" id="rev-grid">
       <?php foreach ($items as $i => $it): ?>

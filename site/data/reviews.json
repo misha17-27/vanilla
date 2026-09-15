@@ -1,290 +1,328 @@
 {
-    "updated":  "2026-09-01",
-    "items":  [
-                  {
-                      "file":  "assets/img/reviews/review-01.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-02.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-03.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-04.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-05.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-06.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-07.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-08.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-09.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-10.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-11.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-12.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-13.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-14.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-15.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-16.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-17.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-18.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-19.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-20.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-21.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-22.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-23.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-24.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-25.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-26.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-27.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-28.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-29.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-30.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-31.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-32.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-33.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-34.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-35.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-36.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-37.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-38.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-39.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-40.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-41.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-42.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-43.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-44.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-45.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-46.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-47.jpg",
-                      "w":  1152,
-                      "h":  2048
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-48.jpg",
-                      "w":  828,
-                      "h":  1472
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-49.jpg",
-                      "w":  828,
-                      "h":  1472
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-50.jpg",
-                      "w":  828,
-                      "h":  1472
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-51.jpg",
-                      "w":  828,
-                      "h":  1472
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-52.jpg",
-                      "w":  828,
-                      "h":  1472
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-53.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-54.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-55.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-56.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  },
-                  {
-                      "file":  "assets/img/reviews/review-57.jpg",
-                      "w":  1179,
-                      "h":  2096
-                  }
-              ]
+    "updated": "2026-09-01",
+    "items": [
+        {
+            "file": "assets/img/reviews/review-01.jpg",
+            "w": 1179,
+            "h": 2096,
+            "author": "mintynailbaku",
+            "text": "Прозвучит громко, но это единственный кондитер в стране, который так чётко повторяет запросы и так красиво пишет на тортиках, и на вкус это всегда объеденье."
+        },
+        {
+            "file": "assets/img/reviews/review-02.jpg",
+            "w": 1179,
+            "h": 2096,
+            "text": "Добрый вечер. Спасибо большое за прекрасный торт! Было как всегда очень вкусно."
+        },
+        {
+            "file": "assets/img/reviews/review-03.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-04.jpg",
+            "w": 1179,
+            "h": 2096,
+            "author": "lunar.t",
+            "text": "Очень вкусный тортик."
+        },
+        {
+            "file": "assets/img/reviews/review-05.jpg",
+            "w": 1179,
+            "h": 2096,
+            "text": "Я хотела сказать вам спасибо большое, торт очень понравился им, всё было чудесно!"
+        },
+        {
+            "file": "assets/img/reviews/review-06.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-07.jpg",
+            "w": 1179,
+            "h": 2096,
+            "author": "servet.esed",
+            "text": "Təşəkkürlər!"
+        },
+        {
+            "file": "assets/img/reviews/review-08.jpg",
+            "w": 1179,
+            "h": 2096,
+            "text": "Здравствуйте! Спасибо за тортик, было очень вкусно, всем понравился, и за своевременную доставку — всё было вовремя."
+        },
+        {
+            "file": "assets/img/reviews/review-09.jpg",
+            "w": 1179,
+            "h": 2096,
+            "text": "Добрый вечер. Спасибо вам большое! Торт маме очень понравился!"
+        },
+        {
+            "file": "assets/img/reviews/review-10.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-11.jpg",
+            "w": 1179,
+            "h": 2096,
+            "author": "ilamunamusic"
+        },
+        {
+            "file": "assets/img/reviews/review-12.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-13.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-14.jpg",
+            "w": 1179,
+            "h": 2096,
+            "text": "Salam, sizə tort sifariş etmişdim. Çox sağ olun, çox göyçək idi. Əziyyətiniz üçün təşəkkürlər!"
+        },
+        {
+            "file": "assets/img/reviews/review-15.jpg",
+            "w": 1179,
+            "h": 2096,
+            "text": "Salam, çox gözəl tort idi, əllərinizə sağlıq. Bacım ad günümə sifariş etmişdi, çox bəyəndim, təşəkkür edirəm."
+        },
+        {
+            "file": "assets/img/reviews/review-16.jpg",
+            "w": 1179,
+            "h": 2096,
+            "author": "darya_sharygina"
+        },
+        {
+            "file": "assets/img/reviews/review-17.jpg",
+            "w": 1179,
+            "h": 2096,
+            "text": "Salam. Sizdən çox razı qaldım. Tortun özü kimi dadı da əla idi."
+        },
+        {
+            "file": "assets/img/reviews/review-18.jpg",
+            "w": 1179,
+            "h": 2096,
+            "author": "foolish_final_thoughtzz"
+        },
+        {
+            "file": "assets/img/reviews/review-19.jpg",
+            "w": 1179,
+            "h": 2096,
+            "author": "mintynailbaku"
+        },
+        {
+            "file": "assets/img/reviews/review-20.jpg",
+            "w": 1179,
+            "h": 2096,
+            "author": "baby.tebriz"
+        },
+        {
+            "file": "assets/img/reviews/review-21.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-22.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-23.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-24.jpg",
+            "w": 1179,
+            "h": 2096,
+            "text": "Salam, torta görə çox sağ olun, çox dadlı idi. Allah razı olsun sizdən."
+        },
+        {
+            "file": "assets/img/reviews/review-25.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-26.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-27.jpg",
+            "w": 1179,
+            "h": 2096,
+            "text": "Axşamınız xeyir. Təşəkkür edirəm, əllərinizə sağlıq. Dadlı idi!"
+        },
+        {
+            "file": "assets/img/reviews/review-28.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-29.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-30.jpg",
+            "w": 1179,
+            "h": 2096,
+            "text": "Спасибо за тортик, вчера не смогла написать: всё как всегда на высшем уровне — и вкус, и дизайн, и доставка. О чём ещё можно мечтать?"
+        },
+        {
+            "file": "assets/img/reviews/review-31.jpg",
+            "w": 1179,
+            "h": 2096,
+            "text": "Спасибо большое за тортик. Сын-сладкоежка оценил — всё понравилось."
+        },
+        {
+            "file": "assets/img/reviews/review-32.jpg",
+            "w": 1179,
+            "h": 2096,
+            "text": "Hər şey çox gözəl idi, çox sağ olun!"
+        },
+        {
+            "file": "assets/img/reviews/review-33.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-34.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-35.jpg",
+            "w": 1179,
+            "h": 2096,
+            "author": "gulikr",
+            "text": "Запомните эту страничку! За короткое время приготовили такооой красивый и вкусный торт! Я очень переживала, что дизайн будет не таким, как я хотела. Но они сделали его намного лучше!"
+        },
+        {
+            "file": "assets/img/reviews/review-36.jpg",
+            "w": 1179,
+            "h": 2096,
+            "author": "med_oreshki_",
+            "text": "Спасибо! Было вкусно."
+        },
+        {
+            "file": "assets/img/reviews/review-37.jpg",
+            "w": 1179,
+            "h": 2096,
+            "text": "Спасибо вам большое, торт шикарный и очень вкусный."
+        },
+        {
+            "file": "assets/img/reviews/review-38.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-39.jpg",
+            "w": 1179,
+            "h": 2096,
+            "author": "darya_sharygina"
+        },
+        {
+            "file": "assets/img/reviews/review-40.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-41.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-42.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-43.jpg",
+            "w": 1179,
+            "h": 2096,
+            "author": "jamasharifova"
+        },
+        {
+            "file": "assets/img/reviews/review-44.jpg",
+            "w": 1179,
+            "h": 2096,
+            "author": "r.i.s.t.i.c"
+        },
+        {
+            "file": "assets/img/reviews/review-45.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-46.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-47.jpg",
+            "w": 1152,
+            "h": 2048
+        },
+        {
+            "file": "assets/img/reviews/review-48.jpg",
+            "w": 828,
+            "h": 1472,
+            "author": "melisa.s.mom"
+        },
+        {
+            "file": "assets/img/reviews/review-49.jpg",
+            "w": 828,
+            "h": 1472,
+            "text": "Доброй ночи, извините, что так поздно. Хотела написать отзыв насчёт торта."
+        },
+        {
+            "file": "assets/img/reviews/review-50.jpg",
+            "w": 828,
+            "h": 1472
+        },
+        {
+            "file": "assets/img/reviews/review-51.jpg",
+            "w": 828,
+            "h": 1472,
+            "author": "liketime_baku"
+        },
+        {
+            "file": "assets/img/reviews/review-52.jpg",
+            "w": 828,
+            "h": 1472,
+            "author": "ameerasattari",
+            "text": "Amiranın tortiklərini hər zaman @vanilla_cake_az hazırlayır."
+        },
+        {
+            "file": "assets/img/reviews/review-53.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-54.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-55.jpg",
+            "w": 1179,
+            "h": 2096,
+            "text": "Salam. Həmişəki kimi tortunuz super! Hamımız çox bəyəndik."
+        },
+        {
+            "file": "assets/img/reviews/review-56.jpg",
+            "w": 1179,
+            "h": 2096
+        },
+        {
+            "file": "assets/img/reviews/review-57.jpg",
+            "w": 1179,
+            "h": 2096,
+            "text": "Большое спасибо вам, всё пришло! Выглядит очень красиво, аромат чудесный! Ещё раз вам большое спасибо!"
+        }
+    ]
 }

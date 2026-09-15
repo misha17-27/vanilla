@@ -732,3 +732,11 @@ html.no-scroll{overflow:hidden}
 .cat-text p{margin:0 0 12px;line-height:1.75;color:var(--text)}
 .cat-text p:last-child{margin-bottom:0}
 @media (max-width:760px){.cat-text{margin-top:40px}.cat-text h2{font-size:21px}}
+
+/* Отзывы текстом — то, что люди написали в WhatsApp и Instagram */
+.rev-quotes{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-bottom:44px}
+.rev-q{margin:0;background:#fff;border-radius:18px;padding:22px 24px;box-shadow:var(--shadow-s)}
+.rev-q blockquote{margin:0;font-size:15px;line-height:1.7;color:var(--text)}
+.rev-q blockquote:before{content:'\201C';color:var(--pink);font-size:34px;line-height:0;vertical-align:-10px;margin-right:4px}
+.rev-q figcaption{margin-top:12px;font-size:13px;color:var(--pink);font-weight:600}
+@media (max-width:560px){.rev-quotes{grid-template-columns:1fr;gap:14px}.rev-q{padding:18px 20px}}

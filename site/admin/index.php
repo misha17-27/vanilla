@@ -42,6 +42,7 @@ const MANAGER_VIEWS   = ['dashboard', 'orders', 'customers', 'schedule', 'produc
 const BACKUP_DIR      = __DIR__ . '/../data/backups';
 const PRODUCT_IMG_DIR = __DIR__ . '/../assets/img/products';
 const THUMB_DIR       = __DIR__ . '/../assets/img/thumbs';
+const REVIEWS_FILE_ADM = __DIR__ . '/../data/reviews.json';
 const DESIGN_DIR      = __DIR__ . '/../uploads/designs';
 const ORDERS_FILE      = __DIR__ . '/../data/orders.json';
 const ORDER_STATUSES  = ['new' => 'Новый', 'confirmed' => 'Подтверждён', 'done' => 'Выполнен', 'canceled' => 'Отменён'];
@@ -599,6 +600,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             go('/admin/pages?edit=' . urlencode($pk) . '&l=' . $l);
         }
 
+        if ($action === 'reviews_save') {
+            $rev = json_decode((string)@file_get_contents(REVIEWS_FILE_ADM), true) ?: ['items' => []];
+            $texts   = (array)($_POST['text'] ?? []);
+            $authors = (array)($_POST['author'] ?? []);
+            foreach ($rev['items'] as $i => &$it) {
+                $tx = mb_substr(trim((string)($texts[$i] ?? '')), 0, 800);
+                $au = mb_substr(trim((string)($authors[$i] ?? '')), 0, 80);
+                if ($tx !== '') $it['text'] = $tx;   else unset($it['text']);
+                if ($au !== '') $it['author'] = ltrim($au, '@'); else unset($it['author']);
+            }
+            unset($it);
+            $rev['updated'] = date('Y-m-d');
+            file_put_contents(REVIEWS_FILE_ADM, json_encode($rev, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+            flash('Отзывы сохранены.');
+            go('/admin/reviews');
+        }
+
         if ($action === 'cat_save') {
             $cats = categories();
             $key  = trim((string)($_POST['key'] ?? ''));
@@ -749,7 +767,7 @@ $customers = build_customers($orders);
 $newOrders = count(array_filter($orders, fn($o) => ($o['status'] ?? 'new') === 'new'));
 
 $users = load_users();
-$titles = ['dashboard' => 'Обзор', 'orders' => 'Заказы', 'customers' => 'Клиенты', 'schedule' => 'Календарь', 'pages' => 'Страницы', 'products' => 'Товары', 'categories' => 'Категории', 'designs' => 'Дизайны клиентов', 'seo' => 'SEO страниц', 'settings' => 'Контакты и карта', 'security' => 'Безопасность', 'users' => 'Пользователи', 'account' => 'Мой профиль'];
+$titles = ['dashboard' => 'Обзор', 'orders' => 'Заказы', 'customers' => 'Клиенты', 'schedule' => 'Календарь', 'pages' => 'Страницы', 'products' => 'Товары', 'categories' => 'Категории', 'reviews' => 'Отзывы', 'designs' => 'Дизайны клиентов', 'seo' => 'SEO страниц', 'settings' => 'Контакты и карта', 'security' => 'Безопасность', 'users' => 'Пользователи', 'account' => 'Мой профиль'];
 $title  = $titles[$view] ?? 'Админ';
 if (!array_key_exists($view, $titles)) { $view = 'dashboard'; $title = $titles['dashboard']; }
 if (admin_logged() && !can($view)) {
