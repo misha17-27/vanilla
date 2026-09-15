@@ -88,6 +88,19 @@ if (preg_match('#^/(sitemap_index|page-sitemap|product-sitemap|product_cat-sitem
     exit;
 }
 
+// Короткие адреса под поводы — для ссылок в Instagram, рекламе и на визитках.
+// Ведут в подходящий раздел и сохраняют язык: /az/ad-gunu-tortu/ -> /az/bolme/...
+$shortcuts = [
+    '/ad-gunu-tortu/'   => '/bolme/bento-tort/',
+    '/1-yas-tortu/'     => '/bolme/usaq-tortlari/',
+    '/korporativ-tort/' => '/bolme/cake-to-go/',
+];
+if (isset($shortcuts[$path])) {
+    $pfx = $LANG_PREFIX !== '' ? '/' . $LANG_PREFIX : '';
+    header('Location: ' . $pfx . $shortcuts[$path], true, 301);
+    exit;
+}
+
 // 301-редиректы со старых WP-адресов, которые мы не переносим
 $redirects = [
     '/tortlar/'      => '/bolme/bento-tort/',
