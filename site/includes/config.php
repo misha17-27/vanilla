@@ -327,6 +327,15 @@ function own_categories(): array
     return array_values(array_filter(categories(), fn($c) => ($c['page'] ?? '') === 'own'));
 }
 
+// Текст раздела на текущем языке: абзацы разделены пустой строкой
+function cat_text(string $key): string
+{
+    global $lang;
+    $c = categories()[$key] ?? [];
+    $v = trim((string)($c['text_' . $lang] ?? ''));
+    return $v !== '' ? $v : trim((string)($c['text'] ?? ''));
+}
+
 // Адрес категории без языковой приставки — для сравнения в роутере и карты сайта
 function cat_path(array $c): string
 {

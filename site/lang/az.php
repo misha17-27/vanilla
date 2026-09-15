@@ -174,6 +174,7 @@ return [
   'nf_text' => 'Belə səhifə yoxdur — amma tortlar öz yerindədir!',
   'pd_order' => 'Bu tortu sifariş et',
   'pd_note' => 'Öncədən sifarişlə işləyirik: əvvəlcədən yazın — tarixinizi ayıraq.',
+  'cat_text_h' => 'Bu tortlar haqqında',
   'tab_desc' => 'Təsvir',
   'tab_fill' => 'Tərkiblər',
   'tab_time' => 'Hazırlanma müddəti',

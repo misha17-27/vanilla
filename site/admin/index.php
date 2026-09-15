@@ -618,6 +618,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cats[$key]['name_az'] = trim((string)($_POST['name_az'] ?? ''));
             $cats[$key]['name_en'] = trim((string)($_POST['name_en'] ?? ''));
             $cats[$key]['desc']    = mb_substr(trim((string)($_POST['desc'] ?? '')), 0, 300);
+            // Текст под каталогом: по абзацам, на трёх языках
+            foreach (['text', 'text_az', 'text_en'] as $tk) {
+                $v = mb_substr(trim((string)($_POST[$tk] ?? '')), 0, 3000);
+                if ($v !== '') $cats[$key][$tk] = $v; else unset($cats[$key][$tk]);
+            }
             $cats[$key]['edited']  = true;   // деплой такие категории не перезаписывает
             // SEO страницы категории
             $seoKey = cat_seo_key($key, $cats[$key]);

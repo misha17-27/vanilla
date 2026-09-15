@@ -82,6 +82,15 @@ require __DIR__ . '/includes/header.php';
       </div>
     </div>
 
+    <?php $catText = cat_text($cat['key']); if ($catText !== ''): ?>
+    <div class="cat-text reveal">
+      <h2><?= e($t['cat_text_h']) ?></h2>
+      <?php foreach (preg_split('~\n\s*\n~u', $catText) as $para): $para = trim($para); if ($para === '') continue; ?>
+      <p><?= e($para) ?></p>
+      <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
+
     <div class="more-card reveal">
       <div>
         <h3><?= e($t['bento_more_t']) ?></h3>

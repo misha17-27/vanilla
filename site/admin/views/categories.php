@@ -68,6 +68,21 @@ $urlOf = fn(array $c) => ($c['page'] ?? '') === 'own' ? cat_url($c) : ($pageUrl[
       </div>
     </div>
 
+    <div class="grid2">
+      <div>
+        <label for="c-text">Текст под каталогом (RU)</label>
+        <textarea name="text" id="c-text" rows="8"><?= e($edit['text'] ?? '') ?></textarea>
+        <p class="hint">Показывается внизу страницы раздела. Абзацы разделяйте пустой строкой. Здесь поиск и читает, чем этот раздел отличается от других.</p>
+
+        <label for="c-text-az">Текст под каталогом (AZ)</label>
+        <textarea name="text_az" id="c-text-az" rows="8"><?= e($edit['text_az'] ?? '') ?></textarea>
+      </div>
+      <div>
+        <label for="c-text-en">Текст под каталогом (EN)</label>
+        <textarea name="text_en" id="c-text-en" rows="8"><?= e($edit['text_en'] ?? '') ?></textarea>
+      </div>
+    </div>
+
     <?php $curSeo = $edit ? ($seoData[cat_seo_key($editKey, $edit)] ?? []) : []; ?>
     <div class="seo-block">
       <div class="seo-head">

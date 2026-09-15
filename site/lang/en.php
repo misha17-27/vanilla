@@ -174,6 +174,7 @@ return [
   'nf_text' => 'This page does not exist — but the cakes are all here!',
   'pd_order' => 'Order this cake',
   'pd_note' => 'Pre-order only: message us in advance and we will reserve a date for your order.',
+  'cat_text_h' => 'About these cakes',
   'tab_desc' => 'Description',
   'tab_fill' => 'Fillings',
   'tab_time' => 'Preparation time',
