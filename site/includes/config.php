@@ -66,6 +66,8 @@ define('MAP_URL',       $SETTINGS['map_url']);
 define('MAP_LAT',       $SETTINGS['map_lat']);
 define('MAP_LNG',       $SETTINGS['map_lng']);
 define('CANON_HOST',    rtrim($SETTINGS['canon_host'], '/')); // production domain for canonical/sitemap
+// Google Analytics: пусто — счётчик не выводится
+define('GA_ID', (string)($SETTINGS['ga_id'] ?? 'G-JN004CMVNS'));
 
 function e(string $s): string
 {

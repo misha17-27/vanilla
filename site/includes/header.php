@@ -71,6 +71,19 @@ $OG_LOCALE = ['ru' => 'ru_RU', 'az' => 'az_AZ', 'en' => 'en_US'];
 <link rel="preconnect" href="https://vanilla.az">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css?v=<?= @filemtime(__DIR__ . '/../assets/style.css') ?>">
+<?php
+// Google Analytics — только на боевом домене: локальные заходы статистику не портят
+$gaHost = strtok((string)($_SERVER['HTTP_HOST'] ?? ''), ':');
+if (GA_ID !== '' && !in_array($gaHost, ['localhost', '127.0.0.1', '::1'], true)):
+?>
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?= e(GA_ID) ?>"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '<?= e(GA_ID) ?>');
+</script>
+<?php endif; ?>
 </head>
 <body>
 
