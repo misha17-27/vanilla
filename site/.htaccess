@@ -2,6 +2,10 @@
 RewriteEngine On
 RewriteBase /
 
+# www отдавал полную копию сайта на втором адресе — уводим на основной
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
 # Файлы страниц лежат в корне, и Apache отдаёт их напрямую в обход router.php.
 # Получались вторые копии тех же страниц (/about.php и /haqqimizda/), поэтому
 # уводим каждый файл на его настоящий адрес.
@@ -40,4 +44,11 @@ RewriteRule ^ router.php [L]
   ExpiresByType application/javascript "access plus 7 days"
   ExpiresByType image/webp "access plus 30 days"
   ExpiresByType font/woff2 "access plus 30 days"
+</IfModule>
+
+# Базовые заголовки ответа
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>

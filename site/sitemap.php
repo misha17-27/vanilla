@@ -39,12 +39,16 @@ foreach (own_categories() as $c) {
 // lastmod у всех страниц поиск быстро перестаёт учитывать.
 foreach ($PRODUCTS as $p) {
     $ts = (int)($p['updated'] ?? 0) ?: (int)($p['created'] ?? 0);
-    $entries[] = ['/mehsul/' . $p['slug'] . '/', $ts ? $day($ts) : $day($dataStamp)];
+    // третьим элементом — фотография торта: по ней приходят из Google Картинок
+    $entries[] = ['/mehsul/' . $p['slug'] . '/', $ts ? $day($ts) : $day($dataStamp), $p['img'] ?? ''];
 }
 
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">' . "\n";
-foreach ($entries as [$path, $mod]) {
+echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"'
+   . ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">' . "\n";
+foreach ($entries as $entry) {
+    [$path, $mod] = $entry;
+    $img = $entry[2] ?? '';
     // Каждая языковая версия — отдельная запись со полным набором альтернатив,
     // как требует справка Google по hreflang в карте сайта.
     foreach ($LANGS as $cur) {
@@ -55,6 +59,9 @@ foreach ($entries as [$path, $mod]) {
             echo '    <xhtml:link rel="alternate" hreflang="' . e($l) . '" href="' . e(CANON_HOST . lang_path($l, $path)) . '"/>' . "\n";
         }
         echo '    <xhtml:link rel="alternate" hreflang="x-default" href="' . e(CANON_HOST . lang_path('ru', $path)) . '"/>' . "\n";
+        if ($img !== '') {
+            echo '    <image:image><image:loc>' . e(CANON_HOST . asset($img)) . '</image:loc></image:image>' . "\n";
+        }
         echo '  </url>' . "\n";
     }
 }

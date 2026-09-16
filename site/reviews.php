@@ -39,6 +39,7 @@ $items = $rev['items'] ?? [];
     }
     ?>
     <?php if ($quotes): ?>
+    <h2 class="rev-quotes-h"><?= e($t['rev_quotes_h']) ?></h2>
     <div class="rev-quotes">
       <?php foreach ($quotes as $q): ?>
       <figure class="rev-q reveal">
