@@ -507,6 +507,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $out[$k] = [
                     'title' => trim((string)($in[$k]['title'] ?? '')),
                     'desc'  => trim((string)($in[$k]['desc'] ?? '')),
+                    'edited' => true,   // деплой такие ключи не перезаписывает
                 ];
             }
             save_seo($out);
@@ -564,6 +565,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $seo[$page['seo']] = [
                     'title' => mb_substr(trim((string)($_POST['seo_title'] ?? '')), 0, 120),
                     'desc'  => mb_substr(trim((string)($_POST['seo_desc'] ?? '')), 0, 320),
+                    'edited' => true,   // деплой такие ключи не перезаписывает
                 ];
                 save_seo($seo);
             }
@@ -648,6 +650,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $seo[$seoKey] = [
                 'title' => mb_substr(trim((string)($_POST['seo_title'] ?? '')), 0, 120),
                 'desc'  => mb_substr(trim((string)($_POST['seo_desc'] ?? '')), 0, 320),
+                'edited' => true,   // деплой такие ключи не перезаписывает
             ];
             save_seo($seo);
             if (empty($cats[$key]['builtin'])) {

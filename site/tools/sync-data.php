@@ -96,24 +96,27 @@ if ($a && $b) {
     $log[] = 'категории: скопированы целиком';
 }
 
-// ---------- SEO и тексты: только недостающие ключи ----------
+// ---------- SEO и тексты ----------
+// Новые ключи добавляем. Существующие обновляем из репозитория, но только если
+// их не правили в админке: при сохранении она ставит пометку edited.
 foreach (['seo.json', 'texts.json'] as $file) {
     $a = readJson("$src/$file");
     $b = readJson("$dst/$file");
     if (!$a) continue;
     if (!$b) { copy("$src/$file", "$dst/$file"); $log[] = "$file: скопирован целиком"; continue; }
-    $added = 0;
+    $added = $upd = 0;
     foreach ($a as $k => $v) {
         if (!array_key_exists($k, $b)) { $b[$k] = $v; $added++; continue; }
-        // вложенные наборы (языки в texts.json) дополняем по ключам
+        if (is_array($b[$k]) && !empty($b[$k]['edited'])) continue;   // правил человек — не трогаем
         if (is_array($v) && is_array($b[$k])) {
             foreach ($v as $k2 => $v2) {
                 if (!array_key_exists($k2, $b[$k])) { $b[$k][$k2] = $v2; $added++; }
+                elseif ($b[$k][$k2] !== $v2)        { $b[$k][$k2] = $v2; $upd++; }
             }
-        }
+        } elseif ($b[$k] !== $v) { $b[$k] = $v; $upd++; }
     }
-    if ($added) { backup("$dst/$file"); writeJson("$dst/$file", $b); }
-    $log[] = "$file: добавлено ключей $added";
+    if ($added || $upd) { backup("$dst/$file"); writeJson("$dst/$file", $b); }
+    $log[] = "$file: добавлено ключей $added, обновлено $upd";
 }
 
 // ---------- витринные данные, которые ведём только в репозитории ----------
