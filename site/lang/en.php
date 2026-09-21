@@ -208,6 +208,7 @@ return [
   'date_ph' => 'Pick a date',
   'date_note' => 'Sunday is our day off; orders start from the next day',
   'opt_time' => 'Time',
+  'time_mon_note' => 'On Monday the earliest handover is 17:00 — Sunday is our day off and we bake in the morning.',
   'time_ph' => 'Pick a time',
   'opt_dl' => 'Receiving',
   'dl_courier' => 'Courier delivery',

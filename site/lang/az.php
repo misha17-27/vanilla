@@ -208,6 +208,7 @@ return [
   'date_ph' => 'Tarixi seçin',
   'date_note' => 'Bazar günü istirahətdir, sifarişlər növbəti gündən hazırlanır',
   'opt_time' => 'Vaxt',
+  'time_mon_note' => 'Bazar ertəsi ən erkən təhvil vaxtı 17:00-dır: bazar günü istirahətdir, tortları səhərdən bişiririk.',
   'time_ph' => 'Vaxtı seçin',
   'opt_dl' => 'Təhvil',
   'dl_courier' => 'Kuryerlə çatdırılma',

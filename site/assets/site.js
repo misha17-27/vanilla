@@ -153,6 +153,7 @@ if (langBoxes.length) {
   window.__setExtras = function (arr) { extraLines = arr || []; update(); };
   var dlSel = document.getElementById('opt-dl');
   var timeSel = document.getElementById('opt-time');
+  var monNote = document.getElementById('mon-note');
   var rowAddress = document.getElementById('row-address');
   var fAddress = document.getElementById('f-address');
   var fName = document.getElementById('f-name');
@@ -167,10 +168,13 @@ if (langBoxes.length) {
   function fmtDate(d) { return pad2(d.getDate()) + '.' + pad2(d.getMonth() + 1) + '.' + d.getFullYear(); }
   // Слоты времени: будни/по умолчанию 11:00–20:00, суббота — только 11:00–14:00
   function refreshSlots() {
-    var lastStart = (selDate && selDate.getDay() === 6) ? 13 : 19;   // суббота — до 14:00
+    var wd = selDate ? selDate.getDay() : -1;
+    var lastStart  = wd === 6 ? 13 : 19;   // суббота — выдача до 14:00
+    var firstStart = wd === 1 ? 17 : 11;   // понедельник — не раньше 17:00
     var cur = timeSel.value;
     var html = '<option value="">' + timeSel.options[0].textContent + '</option>';
-    for (var h = 11; h <= lastStart; h++) {
+    if (monNote) monNote.hidden = wd !== 1;
+    for (var h = firstStart; h <= lastStart; h++) {
       var v = h + ':00–' + (h + 1) + ':00';
       html += '<option' + (v === cur ? ' selected' : '') + '>' + v + '</option>';
     }
