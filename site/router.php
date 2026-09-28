@@ -4,6 +4,7 @@
 // Prod: Apache + .htaccess переписывает все не-файловые запросы сюда.
 
 $uri  = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+$reqPath = $uri;                     // как запросили, с приставкой языка и без правок
 
 // Служебные каталоги и скрытые файлы наружу не отдаём
 if (preg_match('#^/(uploads/ratelimit/|data/|includes/|lang/)#', $uri) || str_contains($uri, '/.')) {
@@ -63,16 +64,27 @@ if (isset($_GET['lang']) && in_array($_GET['lang'], ['ru', 'az', 'en'], true)) {
     exit;
 }
 
+// нормализуем завершающий слэш; адреса с расширением оставляем как есть
+$isFileUri = (bool)preg_match('~\.[a-z0-9]{2,5}$~i', $uri);
+$path = ($uri === '/' || $isFileUri) ? $uri : rtrim($uri, '/') . '/';
+$pfx  = $LANG_PREFIX !== '' ? '/' . $LANG_PREFIX : '';
+$isGet = in_array($_SERVER['REQUEST_METHOD'] ?? 'GET', ['GET', 'HEAD'], true);
+
 // Публичная часть работает без параметров: единственный, что мы понимаем, — lang,
 // и он обработан выше. Всё остальное (?p=, ?s=, ?add-to-cart=, ?orderby= и прочее
 // наследие WordPress) уводим на чистый адрес, чтобы не плодить копии страниц.
-if (($_SERVER['QUERY_STRING'] ?? '') !== '' && in_array($_SERVER['REQUEST_METHOD'] ?? 'GET', ['GET', 'HEAD'], true)) {
-    header('Location: ' . ($LANG_PREFIX !== '' ? '/' . $LANG_PREFIX : '') . $uri, true, 301);
+if (($_SERVER['QUERY_STRING'] ?? '') !== '' && $isGet) {
+    header('Location: ' . $pfx . $path, true, 301);
     exit;
 }
 
-// нормализуем завершающий слэш
-$path = $uri === '/' ? '/' : rtrim($uri, '/') . '/';
+// У страницы один адрес: со слэшем на конце и с приставкой языка. Без этого
+// /az/konstruktor уводило на русскую версию, а /bolme/xxx открывалось и со
+// слэшем, и без — двумя копиями одной страницы.
+if ($isGet && !$isFileUri && $pfx . $path !== $reqPath) {
+    header('Location: ' . $pfx . $path, true, 301);
+    exit;
+}
 
 // Спам-страницы, оставшиеся от WordPress: убираем из индекса совсем
 if (preg_match('#^/melbet-#i', $path)) {
@@ -173,13 +185,6 @@ $routes = [
 
 if (preg_match('#^/bolme/bento-tort/page/\d+/$#', $path)) {
     header('Location: /bolme/bento-tort/', true, 301); // каталог теперь на одной странице
-    exit;
-}
-
-// канонический редирект на вариант со слэшем
-if ($uri !== $path && (isset($routes[$path]) || preg_match('#^/mehsul/[a-z0-9-]+/$#', $path))) {
-    $qs = $_SERVER['QUERY_STRING'] ?? '';
-    header('Location: ' . $path . ($qs !== '' ? '?' . $qs : ''), true, 301);
     exit;
 }
 
