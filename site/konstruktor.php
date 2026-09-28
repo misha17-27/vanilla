@@ -157,7 +157,7 @@ window.PROD_CFG = <?= json_encode([
         [$t['fl3_t'], $t['fl3_items']],
     ],
     'wa'      => 'https://wa.me/' . WA_NUMBER . '?text=',
-    'purl'    => CANON_HOST . '/konstruktor/',
+    'purl'    => CANON_HOST . u('/konstruktor/'),   // ссылка в WhatsApp — на версию того же языка
     'source'  => 'constructor',
     'orderName' => $t['k_h'],
     'linkLbl' => $t['wa_link_lbl'],

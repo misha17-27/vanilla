@@ -10,16 +10,8 @@ if (!headers_sent()) {
     header('Cache-Control: private, no-cache, must-revalidate');
 }
 $LANGS = ['ru', 'az', 'en'];
-if (isset($_GET['lang']) && in_array($_GET['lang'], $LANGS, true)) {
-    $_SESSION['lang'] = $_GET['lang'];
-}
-// Язык берём из адреса (/az/…, /en/…), иначе из сессии, иначе русский
-if (isset($FORCE_LANG) && in_array($FORCE_LANG, $LANGS, true)) {
-    $lang = $FORCE_LANG;
-    $_SESSION['lang'] = $lang;
-} else {
-    $lang = $_SESSION['lang'] ?? 'ru';
-}
+// Язык берём только из адреса: /az/…, /en/…, без приставки — русский
+$lang = (isset($FORCE_LANG) && in_array($FORCE_LANG, $LANGS, true)) ? $FORCE_LANG : 'ru';
 // приставка языка для ссылок: у русского её нет
 $LANG_BASE = $lang === 'ru' ? '' : '/' . $lang;
 $t = require __DIR__ . "/../lang/$lang.php";
