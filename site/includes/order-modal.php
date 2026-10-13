@@ -14,7 +14,7 @@
     <div class="modal-body">
       <div class="opt-row">
         <label for="opt-dl"><?= e($t['opt_dl']) ?></label>
-        <select id="opt-dl">
+        <select id="opt-dl" autocomplete="off">
           <option value="courier"><?= e($t['dl_courier']) ?></option>
           <option value="bolt"><?= e($t['dl_bolt']) ?></option>
           <option value="pickup"><?= e($t['dl_pickup']) ?></option>
@@ -42,7 +42,7 @@
               <div class="cal-note"><?= e($t['date_note']) ?></div>
             </div>
           </div>
-          <select id="opt-time">
+          <select id="opt-time" autocomplete="off">
             <option value=""><?= e($t['time_ph']) ?></option>
           </select>
         </div>

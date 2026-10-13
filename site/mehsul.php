@@ -110,7 +110,7 @@ require __DIR__ . '/includes/header.php';
         <div class="prod-opts">
           <div class="opt-row">
             <label for="opt-size"><?= e($t['opt_size']) ?></label>
-            <select id="opt-size">
+            <select id="opt-size" autocomplete="off">
               <?php foreach ($sizeOpts as $i => $o): ?>
               <option value="<?= $i ?>"><?= e($o[0]) ?></option>
               <?php endforeach; ?>
@@ -119,12 +119,12 @@ require __DIR__ . '/includes/header.php';
           <div class="opt-row">
             <label><?= e($t['opt_sponge']) ?> · <?= e($t['opt_fill']) ?></label>
             <div class="duo">
-              <select id="opt-sponge">
+              <select id="opt-sponge" autocomplete="off">
                 <?php foreach ([1, 2, 3] as $i): ?>
                 <option value="<?= $i ?>"><?= e($t["fl{$i}_t"]) ?></option>
                 <?php endforeach; ?>
               </select>
-              <select id="opt-fill">
+              <select id="opt-fill" autocomplete="off">
                 <?php foreach ($t['fl1_items'] as $item): ?>
                 <option><?= e($item) ?></option>
                 <?php endforeach; ?>

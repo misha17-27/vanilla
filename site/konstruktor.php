@@ -146,12 +146,12 @@ $stickers = [
             <div class="opt-row">
               <label><?= e($t['opt_sponge']) ?> · <?= e($t['opt_fill']) ?></label>
               <div class="duo">
-                <select id="opt-sponge">
+                <select id="opt-sponge" autocomplete="off">
                   <?php foreach ([1, 2, 3] as $i): ?>
                   <option value="<?= $i ?>"><?= e($t["fl{$i}_t"]) ?></option>
                   <?php endforeach; ?>
                 </select>
-                <select id="opt-fill">
+                <select id="opt-fill" autocomplete="off">
                   <?php foreach ($t['fl1_items'] as $item): ?>
                   <option><?= e($item) ?></option>
                   <?php endforeach; ?>
@@ -854,6 +854,7 @@ window.PROD_CFG = <?= json_encode([
     if (!k3.api || k3.host === 'none') return;
     drawTop(topCv.getContext('2d'), 1024, 512, cachedImg, { flat: true, ring: false });
     k3.api.setCream(state.cream);
+    k3.api.setBox(smallCake());   // 1–2 персоны — в бенто-боксе
     k3.api.setEdge(state.edge, state.ecolor, !smallCake());
     k3.api.topChanged();
   }

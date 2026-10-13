@@ -25,6 +25,80 @@ const EDGES = {
 };
 const SHELL_LEN = 2.75;   // длина заготовки ракушки до масштабирования (см. shellGeometry)
 
+// Бенто-бокс, в котором отдают торт на 1–2 персоны: белая коробка-раскладушка
+// со скруглёнными углами, крышка откинута назад, под тортом пергамент.
+// a0/a1 — полуширина дна и верха стенки, lip — бортик, open — угол открытой крышки.
+// Крышка откинута почти плашмя: стоящая торчала бы за верхний край кадра.
+const BOX = { a0: 1.17, a1: 1.29, h: 0.5, lip: 0.075, lidH: 0.4, open: 3.0, p: 5, n: 112 };
+const FIT_BOX = 1.7;      // кадр шире: в него входят и коробка, и крышка
+
+// Скруглённый квадрат как суперэллипс |x|^p + |z|^p = a^p: точки по кругу,
+// одинаковые номера у колец разного размера — так их легко сшивать стенками
+function squircle(a, n, p) {
+  const pts = [];
+  for (let k = 0; k < n; k++) {
+    const t = k / n * Math.PI * 2;
+    const c = Math.cos(t), s = Math.sin(t);
+    pts.push([a * Math.sign(c) * Math.pow(Math.abs(c), 2 / p), a * Math.sign(s) * Math.pow(Math.abs(s), 2 / p)]);
+  }
+  return pts;
+}
+
+// Лоток коробки: дно, наклонная стенка, плоский бортик с загибом вниз
+function trayGeometry(h) {
+  const { a0, a1, lip, p, n } = BOX;
+  const rings = [[a0 * 0.82, 0], [a0, 0], [a0 + 0.03, 0.04], [a1, h], [a1 + lip, h], [a1 + lip, h - 0.04]];
+  const pos = [0, 0, 0];
+  rings.forEach(([a, y]) => squircle(a, n, p).forEach(([x, z]) => pos.push(x, y, z)));
+  const idx = [];
+  for (let k = 0; k < n; k++) idx.push(0, 1 + (k + 1) % n, 1 + k);
+  for (let r = 0; r < rings.length - 1; r++) {
+    const o = 1 + r * n, q = o + n;
+    for (let k = 0; k < n; k++) {
+      const k2 = (k + 1) % n;
+      idx.push(o + k, o + k2, q + k, o + k2, q + k2, q + k);
+    }
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  geo.setIndex(idx);
+  geo.computeVertexNormals();
+  return geo;
+}
+
+// Пергамент: лежит на дне, а у стенок мнётся и поднимается вверх
+function paperGeometry() {
+  const M = 18, n = BOX.n, a = BOX.a0 - 0.04;
+  const base = squircle(a, n, BOX.p);
+  const pos = [0, 0.004, 0];
+  for (let r = 1; r <= M; r++) {
+    const u = r / M;
+    // поднимается только за краем торта (радиус 1) — под тортом бумага лежит ровно
+    const raise = Math.max(0, Math.min(1, (u * a - 1.03) / (a - 1.03)));
+    base.forEach(([x, z], k) => {
+      const t = k / n * Math.PI * 2;
+      const crumple = raise * (0.035 * Math.sin(9 * t + 2.1) * Math.cos(5 * t) + 0.02 * Math.sin(23 * t));
+      const y = 0.004 + Math.pow(raise, 1.5) * 0.26 + crumple;
+      const s = u * (1 + 0.06 * raise);   // по стенке коробка расширяется — бумага за ней
+      pos.push(x * s, y, z * s);
+    });
+  }
+  const idx = [];
+  for (let k = 0; k < n; k++) idx.push(0, 1 + (k + 1) % n, 1 + k);
+  for (let r = 0; r < M - 1; r++) {
+    const o = 1 + r * n, q = o + n;
+    for (let k = 0; k < n; k++) {
+      const k2 = (k + 1) % n;
+      idx.push(o + k, o + k2, q + k, o + k2, q + k2, q + k);
+    }
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  geo.setIndex(idx);
+  geo.computeVertexNormals();
+  return geo;
+}
+
 // После computeVertexNormals у сферы и тела вращения остаётся шов: вершины на нём
 // продублированы, и нормали у дублей разные. Усредняем их по совпадающим позициям.
 // Ключ — целые десятитысячные: у toFixed «-0.0000» и «0.0000» разные строки.
@@ -193,6 +267,47 @@ export function createCake3D(canvas, opts = {}) {
     }).catch(() => {});
   }
 
+  // Бенто-бокс вместо подложки (маленький торт). Коробка стоит на месте, а торт
+  // в ней крутится, как на подставке: иначе открытая крышка, повернувшись к
+  // покупателю, закрывала бы торт. Строим при первом показе.
+  const boxGroup = new THREE.Group();
+  boxGroup.visible = false;
+  scene.add(boxGroup);
+  let boxBuilt = false, fit = FIT;
+  function buildBox() {
+    boxBuilt = true;
+    // Стенки видны с двух сторон. Не DoubleSide, а две односторонние копии: у
+    // DoubleSide смещение тени (normalBias) уходит не в ту сторону, и наружная
+    // стенка затеняет сама себя — белая коробка выглядит серой.
+    const mat = new THREE.MeshStandardMaterial({ color: 0xf7f5f1, roughness: 0.95 });
+    const matBack = mat.clone();
+    matBack.side = THREE.BackSide;
+    const twoSided = (geo) => {
+      const m = new THREE.Mesh(geo, mat);
+      m.add(new THREE.Mesh(geo, matBack));
+      return m;
+    };
+    const base = twoSided(trayGeometry(BOX.h));
+    base.position.y = -0.006;
+    // крышка на петле у заднего бортика, откинута назад
+    const hinge = new THREE.Group();
+    hinge.position.set(0, BOX.h - 0.006, -(BOX.a1 + BOX.lip));
+    const lid = twoSided(trayGeometry(BOX.lidH));
+    lid.rotation.x = Math.PI;
+    lid.position.set(0, BOX.lidH, BOX.a1 + BOX.lip);
+    hinge.add(lid);
+    hinge.rotation.x = -BOX.open;
+    // язычок замка на переднем бортике
+    const tab = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.016, 0.16), mat);
+    tab.position.set(0, BOX.h - 0.03, BOX.a1 + BOX.lip + 0.05);
+    tab.rotation.x = 0.35;
+    const paper = new THREE.Mesh(paperGeometry(),
+      new THREE.MeshStandardMaterial({ color: 0xf1e9dc, roughness: 0.9, side: THREE.DoubleSide }));
+    [base, lid, tab].forEach((m) => m.traverse((o) => { o.castShadow = true; o.receiveShadow = true; }));
+    paper.receiveShadow = true;
+    boxGroup.add(base, hinge, tab, paper);
+  }
+
   const sideMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.82, side: THREE.DoubleSide });
   const body = new THREE.Mesh(bodyGeometry(), sideMat);
   body.castShadow = true;
@@ -285,7 +400,7 @@ export function createCake3D(canvas, opts = {}) {
     camera.aspect = w / h;
     const vfov = THREE.MathUtils.degToRad(camera.fov);
     const hfov = 2 * Math.atan(Math.tan(vfov / 2) * camera.aspect);
-    const dist = FIT / Math.sin(Math.min(vfov, hfov) / 2);
+    const dist = fit / Math.sin(Math.min(vfov, hfov) / 2);
     camera.position.set(0, target.y + Math.sin(elev) * dist, Math.cos(elev) * dist);
     camera.lookAt(target);
     camera.updateProjectionMatrix();
@@ -389,6 +504,22 @@ export function createCake3D(canvas, opts = {}) {
     },
     topChanged() {
       topTex.needsUpdate = true;
+      request();
+    },
+    // on — торт в бенто-боксе (1–2 персоны), иначе на подложке
+    setBox(on) {
+      if (on === boxGroup.visible) return;
+      if (on && !boxBuilt) buildBox();
+      boxGroup.visible = on;
+      boardSide.visible = boardTop.visible = !on;
+      ground.position.y = on ? -0.008 : -BOARD_H;
+      fit = on ? FIT_BOX : FIT;
+      target.y = on ? 0.8 : H * 0.4;   // кадр сдвинут назад — к откинутой крышке
+      // тень крышки за коробкой должна целиком попадать в карту теней
+      Object.assign(key.shadow.camera, on
+        ? { left: -3.4, right: 2.8, top: 4.8, bottom: -2.8 }
+        : { left: -2.6, right: 2.6, top: 2.6, bottom: -2.6 });
+      key.shadow.camera.updateProjectionMatrix();
       request();
     },
     resize() {
