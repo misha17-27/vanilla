@@ -35,7 +35,19 @@ $stickers = [
       <div class="k-preview reveal in">
         <div class="k-box">
           <div class="k-cake" id="k-cake" style="--cream:#FDFBF7"><svg class="k-edge-svg" id="k-edge-svg" viewBox="0 0 200 200" aria-hidden="true"></svg></div>
-          <div class="k-toast" id="k-toast" hidden></div>
+          <!-- 3D-вид: на компьютере накрывает это превью, на телефоне переезжает в блок «Края торта» -->
+          <div class="k-3d" id="k-3d" hidden>
+            <canvas class="k-3d-cv" role="img" aria-label="<?= e($t['k_3d_aria']) ?>"></canvas>
+            <div class="k-3d-load" id="k-3d-load"><span class="up-spin"></span><?= e($t['k_3d_loading']) ?></div>
+            <button type="button" class="k-3d-rot l" data-rot="-1" aria-label="<?= e($t['k_3d_left']) ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v5h5"/></svg></button>
+            <button type="button" class="k-3d-rot r" data-rot="1" aria-label="<?= e($t['k_3d_right']) ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg></button>
+            <div class="k-3d-hint"><?= e($t['k_3d_hint']) ?></div>
+          </div>
+          <div class="k-toast" id="k-toast" role="status" aria-live="polite" hidden></div>
+          <div class="k-views" id="k-views">
+            <button type="button" class="k-view on" data-view="top" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/></svg><?= e($t['k_view_top']) ?></button>
+            <button type="button" class="k-view" data-view="3d" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><ellipse cx="12" cy="7.5" rx="8" ry="3"/><path d="M4 7.5v8c0 1.7 3.6 3 8 3s8-1.3 8-3v-8"/></svg><?= e($t['k_view_3d']) ?></button>
+          </div>
         </div>
         <div class="k-tools" id="k-tools">
           <div class="k-tools-empty" id="k-tools-empty"><?= e($t['k_sel_none']) ?></div>
@@ -45,7 +57,7 @@ $stickers = [
             <button type="button" class="k-del" id="k-del"><?= e($t['k_del']) ?></button>
           </div>
         </div>
-        <p class="k-hint"><?= e($t['k_hint']) ?></p>
+        <p class="k-hint" id="k-hint"><?= e($t['k_hint']) ?></p>
       </div>
 
       <!-- Панель -->
@@ -89,6 +101,7 @@ $stickers = [
 
         <div class="k-group">
           <div class="k-lbl"><?= e($t['k_edge']) ?></div>
+          <div class="k-3d-slot" id="k-3d-slot" hidden></div>
           <div class="k-edges" id="k-edges">
             <?php foreach ($t['k_edges'] as $i => $e): ?>
             <button type="button" class="k-edge<?= $i === 0 ? ' on' : '' ?>" data-edge="<?= e($e[0]) ?>" data-name="<?= e($e[1]) ?>">
@@ -192,6 +205,10 @@ window.PROD_CFG = <?= json_encode([
     ],
     'creamLbl' => $t['k_cream_lbl'],
     'edgeLbl'  => $t['k_edge'],
+    'cake3d'   => '/assets/cake3d.js?v=' . @filemtime(__DIR__ . '/assets/cake3d.js'),
+    'three'    => '/assets/vendor/three/three.module.min.js?v=' . @filemtime(__DIR__ . '/assets/vendor/three/three.module.min.js'),
+    'k3dNet'   => $t['k_3d_net'],
+    'boardText' => 'Vanilla Cake',
     'textPh'   => $t['k_text_n'],
     'delLbl'   => $t['k_del'],
     'photoLbl' => $t['wa_photo'],
@@ -218,9 +235,8 @@ window.PROD_CFG = <?= json_encode([
   // n — сколько фигурок по кругу, w/h — половина ширины и высота купола,
   // r — радиус шарика, out — насколько центр фигурки отступает от края внутрь.
   var EDGES = {
-    dots:   { n: 30, r: 0.090, out: 0.900 },
-    shells: { n: 26, r: 0.105, out: 0.940 },
-    waves:  { n: 16, r: 0.170, out: 0.925 }
+    dots:   { n: 30, r: 0.098, out: 0.925 },
+    shells: { n: 26, r: 0.105, out: 0.940 }
   };
   // Размеры считаются в долях диаметра торта. Базовый кегль надписи = 8.6% диаметра.
   // Пределы подобраны так, чтобы при стандартном превью (~430 px) минимум был
@@ -241,7 +257,7 @@ window.PROD_CFG = <?= json_encode([
     items: [],
     sel: null,
     seq: 0,
-    edge: 'none',          // край торта: none | dots | shells | waves
+    edge: 'none',          // край торта: none | dots | shells
     edgeName: '',
     ecolor: firstCream ? firstCream.dataset.color : '#FDFBF7',
     ecolorName: firstCream ? firstCream.dataset.name : ''
@@ -336,6 +352,7 @@ window.PROD_CFG = <?= json_encode([
     }
     // кнопка добавления надписи
     addTextBtn.hidden = itemsOf('text').length >= MAX_TEXT;
+    schedule3d();
   }
 
   // ---- Перетаскивание ----
@@ -400,6 +417,7 @@ window.PROD_CFG = <?= json_encode([
   document.getElementById('k-stickers').addEventListener('click', function (e) {
     var b = e.target.closest('.k-st');
     if (!b) return;
+    editStage();
     if (b.id === 'k-own') { fileInp.click(); return; }
     if (!b.dataset.src) { // «Очистить всё»
       state.items = itemsOf('text');
@@ -454,7 +472,7 @@ window.PROD_CFG = <?= json_encode([
         it.text = inp.value.replace(/[\u0000-\u001F\u007F]/g, ' ');
         render();
       });
-      inp.addEventListener('focus', function () { state.sel = it.id; render(); markRows(); });
+      inp.addEventListener('focus', function () { editStage(); state.sel = it.id; render(); markRows(); });
       var x = document.createElement('button');
       x.type = 'button';
       x.className = 'k-row-x';
@@ -479,6 +497,7 @@ window.PROD_CFG = <?= json_encode([
     });
   }
   addTextBtn.addEventListener('click', function () {
+    editStage();
     var id = addText('');
     if (!id) return;
     state.sel = id;
@@ -514,17 +533,20 @@ window.PROD_CFG = <?= json_encode([
     ecolorLbl.hidden = !show;
     render();
     buildExtras();
+    edgeStage();
   });
   swatchGroup('k-ecolors', function (c, n) {
     state.ecolor = c; state.ecolorName = n;
     render();
     buildExtras();
+    edgeStage();
   });
   // Картинки в кнопках выбора края — те же фигурки, что и на торте
   edgesBox.querySelectorAll('.k-edge-ico').forEach(function (ico) {
     var kind = ico.dataset.ico;
     if (kind === 'none') { ico.innerHTML = '<svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="86" fill="none" stroke="currentColor" stroke-width="7" stroke-dasharray="10 9"/></svg>'; return; }
-    ico.innerHTML = '<svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="74" fill="rgba(0,0,0,.05)"/>' + edgeMarkup(kind, 'currentColor', 100) + '</svg>';
+    // 92 вместо 100: шарики свисают за край торта и обрезались бы рамкой значка
+    ico.innerHTML = '<svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="70" fill="rgba(0,0,0,.05)"/>' + edgeMarkup(kind, 'currentColor', 92) + '</svg>';
   });
   swatchGroup('k-tcolors', function (c, n) {
     state.tcolor = c; state.tcolorName = n;
@@ -555,6 +577,94 @@ window.PROD_CFG = <?= json_encode([
   addText('');
   syncTextRows();
 
+  // ---- Верх торта на canvas: для макета в WhatsApp и для текстуры 3D ----
+  // flat — без фона, тени и бликов (в 3D объём даёт свет), ring — рисовать край
+  // кольцом (в 3D он объёмный, отдельными фигурками). getImg(src) — готовая
+  // картинка или null, если она ещё не загрузилась.
+  function drawTop(g, S, R, getImg, o) {
+    var cx = S / 2, cy = S / 2;
+    if (o.flat) {
+      g.fillStyle = state.cream;
+      g.fillRect(0, 0, S, S);
+    } else {
+      g.fillStyle = '#F3F0EB';
+      g.fillRect(0, 0, S, S);
+      var grad = g.createRadialGradient(cx - R * 0.3, cy - R * 0.35, R * 0.2, cx, cy, R * 1.05);
+      grad.addColorStop(0, 'rgba(255,255,255,0.55)');
+      grad.addColorStop(0.55, 'rgba(255,255,255,0)');
+      grad.addColorStop(1, 'rgba(0,0,0,0.10)');
+      g.save();
+      g.shadowColor = 'rgba(60,45,35,.25)';
+      g.shadowBlur = R * 0.1;
+      g.shadowOffsetY = R * 0.045;
+      g.fillStyle = state.cream;
+      g.beginPath(); g.arc(cx, cy, R, 0, 7); g.fill();
+      g.restore();
+      g.fillStyle = grad;
+      g.beginPath(); g.arc(cx, cy, R, 0, 7); g.fill();
+      g.strokeStyle = 'rgba(0,0,0,0.06)';
+      g.lineWidth = R * 0.025;
+      g.beginPath(); g.arc(cx, cy, R * 0.985, 0, 7); g.stroke();
+    }
+
+    // край торта — теми же пропорциями, что и в превью
+    var ec = o.ring ? EDGES[state.edge] : null;
+    if (ec) {
+      // обрезаем по кругу торта — в превью это делает круглая маска,
+      // иначе основания фигурок торчат наружу и силуэт становится гранёным
+      g.save();
+      g.beginPath(); g.arc(cx, cy, R, 0, 7); g.clip();
+      g.fillStyle = state.ecolor;
+      // лёгкая тень: без неё край в цвет торта сливается с покрытием
+      g.shadowColor = 'rgba(0,0,0,.18)';
+      g.shadowBlur = R * 0.015;
+      g.shadowOffsetY = R * 0.005;
+      for (var e = 0; e < ec.n; e++) {
+        g.save();
+        g.translate(cx, cy);
+        g.rotate(e * 2 * Math.PI / ec.n);
+        g.translate(0, -ec.out * R);
+        g.beginPath();
+        g.arc(0, 0, ec.r * R, 0, 7);
+        g.fill();
+        g.restore();
+      }
+      g.restore();
+    }
+
+    for (var k = 0; k < state.items.length; k++) {
+      var it = state.items[k];
+      if (it.type === 'img') {
+        var im = getImg(it.src);
+        if (!im) continue;
+        var s = it.size * 2 * R;
+        var ratio = (im.naturalWidth || im.width) / (im.naturalHeight || im.height);
+        var w = s, h = s;
+        if (ratio > 1) h = s / ratio; else w = s * ratio;
+        g.save();
+        g.beginPath(); g.arc(cx, cy, R * 0.97, 0, 7); g.clip();
+        g.drawImage(im, cx + it.x * R - w / 2, cy + it.y * R - h / 2, w, h);
+        g.restore();
+      } else if (it.text) {
+        var fs = R * 0.128 * it.size; // 6.4% диаметра — как в превью
+        g.font = '800 ' + fs + 'px Montserrat, sans-serif';
+        while (g.measureText(it.text).width > R * 1.6 && fs > R * 0.045) {
+          fs -= R * 0.0075;
+          g.font = '800 ' + fs + 'px Montserrat, sans-serif';
+        }
+        g.save();
+        g.fillStyle = it.color;
+        g.textAlign = 'center';
+        g.textBaseline = 'middle';
+        if (String(it.color).toLowerCase() === '#ffffff') {
+          g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowBlur = R * 0.015;
+        }
+        g.fillText(it.text, cx + it.x * R, cy + it.y * R);
+        g.restore();
+      }
+    }
+  }
+
   // ---- Рендер макета в canvas -> загрузка -> ссылка в WhatsApp ----
   function loadImg(src) {
     return new Promise(function (res, rej) {
@@ -567,83 +677,15 @@ window.PROD_CFG = <?= json_encode([
   async function renderAndUpload() {
     try {
       await document.fonts.load('800 80px Montserrat');
-      var S = 900, R = 400, cx = S / 2, cy = S / 2;
-      var cv = document.createElement('canvas');
-      cv.width = S; cv.height = S;
-      var g = cv.getContext('2d');
-      g.fillStyle = '#F3F0EB';
-      g.fillRect(0, 0, S, S);
-      var grad = g.createRadialGradient(cx - R * 0.3, cy - R * 0.35, R * 0.2, cx, cy, R * 1.05);
-      grad.addColorStop(0, 'rgba(255,255,255,0.55)');
-      grad.addColorStop(0.55, 'rgba(255,255,255,0)');
-      grad.addColorStop(1, 'rgba(0,0,0,0.10)');
-      g.save();
-      g.shadowColor = 'rgba(60,45,35,.25)';
-      g.shadowBlur = 40;
-      g.shadowOffsetY = 18;
-      g.fillStyle = state.cream;
-      g.beginPath(); g.arc(cx, cy, R, 0, 7); g.fill();
-      g.restore();
-      g.fillStyle = grad;
-      g.beginPath(); g.arc(cx, cy, R, 0, 7); g.fill();
-      g.strokeStyle = 'rgba(0,0,0,0.06)';
-      g.lineWidth = 10;
-      g.beginPath(); g.arc(cx, cy, R - 6, 0, 7); g.stroke();
-
-      // край торта — теми же пропорциями, что и в превью
-      var ec = EDGES[state.edge];
-      if (ec) {
-        // обрезаем по кругу торта — в превью это делает круглая маска,
-        // иначе основания фигурок торчат наружу и силуэт становится гранёным
-        g.save();
-        g.beginPath(); g.arc(cx, cy, R, 0, 7); g.clip();
-        g.fillStyle = state.ecolor;
-        // лёгкая тень: без неё край в цвет торта сливается с покрытием
-        g.shadowColor = 'rgba(0,0,0,.18)';
-        g.shadowBlur = 6;
-        g.shadowOffsetY = 2;
-        for (var e = 0; e < ec.n; e++) {
-          g.save();
-          g.translate(cx, cy);
-          g.rotate(e * 2 * Math.PI / ec.n);
-          g.translate(0, -ec.out * R);
-          g.beginPath();
-          g.arc(0, 0, ec.r * R, 0, 7);
-          g.fill();
-          g.restore();
-        }
-        g.restore();
-      }
-
+      var imgs = {};
       for (var k = 0; k < state.items.length; k++) {
         var it = state.items[k];
-        if (it.type === 'img') {
-          var im = await loadImg(it.src);
-          var s = it.size * 2 * R;
-          var ratio = im.naturalWidth / im.naturalHeight;
-          var w = s, h = s;
-          if (ratio > 1) h = s / ratio; else w = s * ratio;
-          g.save();
-          g.beginPath(); g.arc(cx, cy, R - 12, 0, 7); g.clip();
-          g.drawImage(im, cx + it.x * R - w / 2, cy + it.y * R - h / 2, w, h);
-          g.restore();
-        } else if (it.text) {
-          var fs = R * 0.128 * it.size; // 6.4% диаметра — как в превью
-          g.font = '800 ' + fs + 'px Montserrat, sans-serif';
-          while (g.measureText(it.text).width > R * 1.6 && fs > 18) {
-            fs -= 3;
-            g.font = '800 ' + fs + 'px Montserrat, sans-serif';
-          }
-          g.fillStyle = it.color;
-          g.textAlign = 'center';
-          g.textBaseline = 'middle';
-          if (String(it.color).toLowerCase() === '#ffffff') {
-            g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowBlur = 6;
-          }
-          g.fillText(it.text, cx + it.x * R, cy + it.y * R);
-          g.shadowBlur = 0;
-        }
+        if (it.type === 'img' && !imgs[it.src]) imgs[it.src] = await loadImg(it.src);
       }
+      var S = 900;
+      var cv = document.createElement('canvas');
+      cv.width = S; cv.height = S;
+      drawTop(cv.getContext('2d'), S, 400, function (src) { return imgs[src] || null; }, { flat: false, ring: true });
       var blob = await new Promise(function (r) { cv.toBlob(r, 'image/jpeg', 0.9); });
       var fd = new FormData();
       fd.append('photo', new File([blob], 'cake-design.jpg', { type: 'image/jpeg' }));
@@ -654,6 +696,229 @@ window.PROD_CFG = <?= json_encode([
       }
     } catch (e) { /* макет не критичен — заказ уйдёт без ссылки */ }
   }
+
+  // ---- 3D-вид ----
+  // Включается, когда переходят к выбору краёв: на виде сверху не видно, как край
+  // ложится по бокам. Для правки картинок и надписей возвращаемся к виду сверху —
+  // перетаскивать элементы можно только там.
+  // На компьютере 3D накрывает превью слева (оно прилипает к экрану), на телефоне
+  // превью далеко вверху, поэтому сцена переезжает прямо в блок «Края торта».
+  var k3 = { host: 'none', api: null, mod: null, ready: null, failed: false, raf: 0, tries: 0, vis: true, dirty: false };
+  var stage = document.getElementById('k-3d');
+  var stageCv = stage.querySelector('canvas');
+  var stageLoad = document.getElementById('k-3d-load');
+  var slotEdges = document.getElementById('k-3d-slot');
+  var box = cake.parentNode;
+  var viewsBox = document.getElementById('k-views');
+  var hintEl = document.getElementById('k-hint');
+  var toolsBox = document.getElementById('k-tools');
+  var wideMq = window.matchMedia('(min-width: 1061px)');
+  var topCv = document.createElement('canvas');
+  topCv.width = topCv.height = 1024;
+
+  // import() — синтаксис, который старые браузеры не понимают; через Function
+  // ошибка случится только при вызове, а не сломает весь конструктор
+  var dynImport = null;
+  try { dynImport = new Function('u', 'return import(u)'); } catch (err) { dynImport = null; }
+  if (!dynImport) viewsBox.hidden = true;
+
+  // three.js нужен WebGL2. Проверяем до загрузки: без него 690 КБ качать незачем,
+  // а кнопку «Объём» прячем — края и так видны на плоском превью.
+  var gl2 = null;
+  function hasGL2() {
+    if (gl2 === null) {
+      try {
+        var gl = document.createElement('canvas').getContext('webgl2');
+        gl2 = !!gl;
+        var x = gl && gl.getExtension('WEBGL_lose_context');
+        if (x) x.loseContext();   // пробный контекст сразу отпускаем
+      } catch (err) { gl2 = false; }
+    }
+    return gl2;
+  }
+
+  // Модуль сцены и three грузим вместе. Неудачную загрузку браузер запоминает
+  // по адресу, поэтому повторная попытка идёт с новой меткой в адресе.
+  function load3d() {
+    if (!dynImport) return Promise.reject(new Error('no-import'));
+    if (!hasGL2()) {
+      k3.failed = true;
+      viewsBox.hidden = true;
+      return Promise.reject(new Error('no-webgl'));
+    }
+    if (!k3.mod) {
+      var r = k3.tries++ ? '&r=' + k3.tries : '';
+      k3.mod = Promise.all([dynImport(PROD_CFG.three + r), dynImport(PROD_CFG.cake3d + r)])
+        .then(function (a) { a[1].init(a[0]); return a[1]; })
+        .catch(function (err) {
+          k3.mod = null;
+          var e = new Error('net');
+          e.net = true;
+          throw e;
+        });
+    }
+    return k3.mod;
+  }
+
+  // Картинки для текстуры: берём из кэша, недогруженные дорисуем по готовности.
+  // Большое фото с телефона сразу уменьшаем — иначе каждый кадр масштабировал бы 12 Мп.
+  var imgCache = {};
+  function cachedImg(src) {
+    var c = imgCache[src];
+    if (!c) {
+      c = imgCache[src] = { im: null };
+      var im = new Image();
+      im.onload = function () {
+        var k = Math.min(1, 1024 / Math.max(im.naturalWidth, im.naturalHeight));
+        if (k < 1) {
+          var cv = document.createElement('canvas');
+          cv.width = Math.round(im.naturalWidth * k);
+          cv.height = Math.round(im.naturalHeight * k);
+          cv.getContext('2d').drawImage(im, 0, 0, cv.width, cv.height);
+          c.im = cv;
+        } else {
+          c.im = im;
+        }
+        schedule3d();
+      };
+      im.src = src;
+    }
+    return c.im;
+  }
+
+  // Пока сцена за пределами экрана (на телефоне она в блоке краёв, а правят торт
+  // наверху), ничего не перерисовываем — только помечаем, что пора обновить.
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) {
+      k3.vis = en[en.length - 1].isIntersecting;
+      if (k3.vis && k3.dirty) schedule3d();
+    }).observe(stage);
+  }
+
+  function sync3d() {
+    k3.raf = 0;
+    k3.dirty = false;
+    if (!k3.api || k3.host === 'none') return;
+    drawTop(topCv.getContext('2d'), 1024, 512, cachedImg, { flat: true, ring: false });
+    k3.api.setCream(state.cream);
+    k3.api.setEdge(state.edge, state.ecolor);
+    k3.api.topChanged();
+  }
+  // render() срабатывает и до этого блока (первая надпись), тогда k3 ещё нет
+  function schedule3d() {
+    if (!k3 || !k3.api || k3.host === 'none') return;
+    if (!k3.vis) { k3.dirty = true; return; }
+    if (!k3.raf) k3.raf = requestAnimationFrame(sync3d);
+  }
+
+  // Сбой: без WebGL2 тихо остаёмся на виде сверху. Если не загрузилось по сети —
+  // говорим об этом, и следующий выбор края попробует ещё раз.
+  function fail3d(err) {
+    var net = err && err.net;
+    if (!net) {
+      k3.failed = true;
+      viewsBox.hidden = true;
+    }
+    k3.ready = null;
+    var wasShown = k3.host !== 'none';
+    mount('none');
+    if (net && wasShown) toast(PROD_CFG.k3dNet);
+  }
+
+  function ensure3d() {
+    if (k3.failed) return Promise.reject(new Error('3d-failed'));
+    if (!k3.ready) {
+      k3.ready = load3d().then(function (m) {
+        k3.api = m.createCake3D(stageCv, {
+          topCanvas: topCv,
+          boardText: PROD_CFG.boardText
+        });
+        stageLoad.hidden = true;
+        document.fonts.load('800 80px Montserrat').then(schedule3d).catch(function () {});
+        sync3d();
+        k3.api.intro();
+      });
+      k3.ready.catch(fail3d);
+    }
+    return k3.ready;
+  }
+
+  function setViewButtons(v) {
+    viewsBox.querySelectorAll('.k-view').forEach(function (b) {
+      var on = b.dataset.view === v;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+
+  // host: none — только вид сверху; preview — 3D вместо превью; edges — 3D в блоке краёв
+  function mount(host) {
+    if (host !== 'none' && k3.failed) host = 'none';
+    var slotWasHidden = slotEdges.hidden;
+    k3.host = host;
+    if (host === 'preview') box.appendChild(stage);
+    else if (host === 'edges') slotEdges.appendChild(stage);
+    stage.hidden = host === 'none';
+    slotEdges.hidden = host !== 'edges';
+    box.classList.toggle('is-3d', host === 'preview');
+    toolsBox.hidden = host === 'preview';
+    hintEl.hidden = host === 'preview';
+    setViewButtons(host === 'preview' ? '3d' : 'top');
+    if (host === 'none') return;
+    if (host === 'edges' && slotWasHidden) {
+      requestAnimationFrame(function () {
+        var r = stage.getBoundingClientRect();
+        // 80 — высота прилипшей шапки сайта с запасом
+        if (r.top < 80) stage.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        else if (r.bottom > window.innerHeight) stage.scrollIntoView({ block: 'end', behavior: 'smooth' });
+      });
+    }
+    ensure3d().then(function () {
+      if (k3.host === 'none') return;
+      k3.api.resize();
+      sync3d();
+    }).catch(function () {});
+  }
+
+  // этап выбора краёв -> объём
+  function edgeStage() {
+    if (k3.failed || !dynImport || !hasGL2()) return;
+    var host = wideMq.matches ? 'preview' : 'edges';
+    if (k3.host !== host) mount(host);
+  }
+  // правка картинок и надписей -> вид сверху
+  function editStage() {
+    if (k3.host === 'preview') mount('none');
+  }
+
+  viewsBox.addEventListener('click', function (e) {
+    var b = e.target.closest('.k-view');
+    if (!b) return;
+    if (b.dataset.view === '3d') mount('preview');
+    else if (k3.host === 'preview') mount('none');
+  });
+  // сцену подгружаем заранее: при наведении на «Объём» и когда блок краёв на подходе
+  viewsBox.addEventListener('pointerenter', function () { load3d().catch(function () {}); });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (en) {
+      if (en.some(function (x) { return x.isIntersecting; })) {
+        load3d().catch(function () {});
+        io.disconnect();
+      }
+    }, { rootMargin: '300px' });
+    io.observe(edgesBox);
+  }
+  stage.addEventListener('click', function (e) {
+    var b = e.target.closest('.k-3d-rot');
+    if (b && k3.api) k3.api.rotateStep(+b.dataset.rot);
+  });
+  // подсказку «потяните» убираем, как только торт повернули
+  stageCv.addEventListener('pointerdown', function () { stage.classList.add('used'); });
+  function onWide() {
+    if (k3.host === 'edges' && wideMq.matches) mount('preview');
+  }
+  if (wideMq.addEventListener) wideMq.addEventListener('change', onWide);
+  else if (wideMq.addListener) wideMq.addListener(onWide);
 
   function buildExtras() {
     var extras = [PROD_CFG.creamLbl + ': ' + state.creamName];

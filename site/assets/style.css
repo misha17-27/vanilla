@@ -498,6 +498,7 @@ html.no-scroll{overflow:hidden}
 .tp-fill b{display:block;color:var(--navy);font-size:15px;margin-bottom:2px}
 /* ===== Конструктор торта ===== */
 .k-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:start}
+.k-layout>*{min-width:0}
 .k-preview{position:sticky;top:120px}
 .k-box{position:relative;background:linear-gradient(165deg,#F8F5F0,#ECE7E0);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow-s);padding:min(6vw,52px);display:grid;place-items:center}
 .k-toast{position:absolute;left:16px;right:16px;bottom:16px;background:var(--navy);color:#fff;border-radius:14px;padding:13px 18px;font-size:13px;font-weight:600;line-height:1.45;text-align:center;box-shadow:0 18px 34px -16px rgba(10,35,60,.6);opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;z-index:12}
@@ -513,7 +514,7 @@ html.no-scroll{overflow:hidden}
 .k-tools{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 16px;box-shadow:var(--shadow-s)}
 .k-tools-empty{font-size:12.5px;color:var(--text);text-align:center}
 .k-tools-on{display:flex;align-items:center;gap:14px}
-.k-tools-on input[type=range]{flex:1;accent-color:var(--pink)}
+.k-tools-on input[type=range]{flex:1;min-width:0;accent-color:var(--pink)}
 .k-del{border:1px solid #F3C1CB;background:#fff;color:#C4344C;border-radius:999px;padding:7px 15px;font-family:var(--sans);font-size:12.5px;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap}
 .k-del:hover{background:#C4344C;color:#fff;border-color:#C4344C}
 .k-texts{display:grid;gap:9px}
@@ -755,4 +756,32 @@ html.no-scroll{overflow:hidden}
 .k-edge-txt{display:grid;gap:2px;min-width:0}
 .k-edge-txt b{font-size:14px;font-weight:700}
 .k-edge-txt small{font-size:12px;color:var(--text);line-height:1.35}
+/* 3D-вид торта */
+.k-3d{position:absolute;inset:0;border-radius:inherit;overflow:hidden;z-index:5;background:linear-gradient(165deg,#F8F5F0,#ECE7E0)}
+.k-3d[hidden],.k-3d-slot[hidden],.k-3d-load[hidden],.k-views[hidden]{display:none}
+.k-3d-slot{margin-bottom:14px}
+.k-3d-slot .k-3d{scroll-margin-top:90px}
+.k-3d-slot .k-3d{position:relative;inset:auto;aspect-ratio:1/.92;border-radius:18px;border:1px solid var(--line)}
+.k-3d-cv{width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab;-webkit-tap-highlight-color:transparent}
+.k-3d-cv.drag{cursor:grabbing}
+.k-3d-load{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;font-size:13px;font-weight:600;color:var(--text)}
+.k-3d-rot{position:absolute;top:50%;width:40px;height:40px;margin-top:-20px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.88);color:var(--navy);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow-s);transition:.2s}
+.k-3d-rot:hover{color:var(--pink);border-color:var(--pink-soft)}
+.k-3d-rot svg{width:18px;height:18px}
+.k-3d-rot.l{left:12px}
+.k-3d-rot.r{right:12px}
+.k-3d-hint{position:absolute;left:50%;top:14px;transform:translateX(-50%);white-space:nowrap;font-size:12px;font-weight:600;color:var(--navy);background:rgba(255,255,255,.85);border-radius:999px;padding:6px 14px;pointer-events:none;box-shadow:0 6px 16px -10px rgba(10,35,60,.4)}
+.k-3d.used .k-3d-hint{opacity:0;transition:opacity .4s}
+.k-box.is-3d .k-cake{visibility:hidden}
+.k-views{position:relative;z-index:6;display:flex;justify-content:center;gap:4px;width:max-content;margin:14px auto 0;padding:4px;background:#fff;border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow-s)}
+.k-view{display:flex;align-items:center;gap:7px;border:0;background:none;color:var(--navy);border-radius:999px;padding:8px 18px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
+.k-view svg{width:16px;height:16px;flex:none}
+.k-view:hover{color:var(--pink)}
+.k-view.on{background:var(--pink);color:#fff}
+/* на компьютере переключатель стоит в нижнем поле блока превью: превью прилипает
+   к экрану, и лишняя высота унесла бы инструменты размера за нижний край */
+@media (min-width:1061px){.k-views{position:absolute;left:50%;bottom:5px;transform:translateX(-50%);margin:0}}
+/* на телефоне превью далеко вверху — сообщения показываем у нижнего края экрана */
+@media (max-width:1060px){.k-toast{position:fixed;left:16px;right:16px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:92}}
+@media (max-width:560px){.k-3d-rot{width:36px;height:36px;margin-top:-18px}.k-3d-rot.l{left:8px}.k-3d-rot.r{right:8px}.k-3d-hint{font-size:11.5px;top:10px}}
 @media (max-width:560px){.k-edge{padding:9px 10px;gap:10px}.k-edge-ico{width:34px;height:34px}.k-edge-txt small{font-size:11.5px}}
