@@ -268,6 +268,14 @@ return [
   'k_limit_img' => 'Ən çox 3 şəkil əlavə etmək olar',
   'k_limit_text' => 'Ən çox 3 yazı əlavə etmək olar',
   'k_wa_intro' => 'Salam! Öz dizaynımla tort sifariş etmək istəyirəm.',
+  'k_edge' => 'Tortun kənarı',
+  'k_edge_color' => 'Kənarın rəngi',
+  'k_edges' => [
+    ['none',   'Kənarsız',        'Düz kənar, yalnız örtük'],
+    ['dots',   'Topcuqlar',       'Kənar boyu krem topcuqlar'],
+    ['shells', 'Balıqqulaqları',  'Dairə boyu xırda krem naxışlar'],
+    ['waves',  'İri naxışlar',    'Kənarda həcmli dalğalar'],
+  ],
   'k_cream_lbl' => 'Krem',
   'k_custom_name' => 'Sizin dizaynınızla tort',
   'k_colors' => [

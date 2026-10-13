@@ -34,7 +34,7 @@ $stickers = [
       <!-- Превью -->
       <div class="k-preview reveal in">
         <div class="k-box">
-          <div class="k-cake" id="k-cake" style="--cream:#FDFBF7"></div>
+          <div class="k-cake" id="k-cake" style="--cream:#FDFBF7"><svg class="k-edge-svg" id="k-edge-svg" viewBox="0 0 200 200" aria-hidden="true"></svg></div>
           <div class="k-toast" id="k-toast" hidden></div>
         </div>
         <div class="k-tools" id="k-tools">
@@ -82,6 +82,24 @@ $stickers = [
           <div class="k-lbl" style="margin-top:16px"><?= e($t['k_text_color']) ?></div>
           <div class="k-swatches" id="k-tcolors">
             <?php foreach ($t['k_tcolors'] as $i => $c): ?>
+            <button type="button" class="k-sw<?= $i === 0 ? ' on' : '' ?>" style="--c:<?= e($c[1]) ?>" data-color="<?= e($c[1]) ?>" data-name="<?= e($c[0]) ?>" title="<?= e($c[0]) ?>"></button>
+            <?php endforeach; ?>
+          </div>
+        </div>
+
+        <div class="k-group">
+          <div class="k-lbl"><?= e($t['k_edge']) ?></div>
+          <div class="k-edges" id="k-edges">
+            <?php foreach ($t['k_edges'] as $i => $e): ?>
+            <button type="button" class="k-edge<?= $i === 0 ? ' on' : '' ?>" data-edge="<?= e($e[0]) ?>" data-name="<?= e($e[1]) ?>">
+              <span class="k-edge-ico" data-ico="<?= e($e[0]) ?>"></span>
+              <span class="k-edge-txt"><b><?= e($e[1]) ?></b><small><?= e($e[2]) ?></small></span>
+            </button>
+            <?php endforeach; ?>
+          </div>
+          <div class="k-lbl" id="k-ecolor-lbl" style="margin-top:16px" hidden><?= e($t['k_edge_color']) ?></div>
+          <div class="k-swatches" id="k-ecolors" hidden>
+            <?php foreach ($t['k_colors'] as $i => $c): ?>
             <button type="button" class="k-sw<?= $i === 0 ? ' on' : '' ?>" style="--c:<?= e($c[1]) ?>" data-color="<?= e($c[1]) ?>" data-name="<?= e($c[0]) ?>" title="<?= e($c[0]) ?>"></button>
             <?php endforeach; ?>
           </div>
@@ -173,6 +191,7 @@ window.PROD_CFG = <?= json_encode([
         'generic' => $t['up_e_generic'],
     ],
     'creamLbl' => $t['k_cream_lbl'],
+    'edgeLbl'  => $t['k_edge'],
     'textPh'   => $t['k_text_n'],
     'delLbl'   => $t['k_del'],
     'photoLbl' => $t['wa_photo'],
@@ -194,6 +213,15 @@ window.PROD_CFG = <?= json_encode([
   var firstTcolor = document.querySelector('#k-tcolors .k-sw');
 
   var MAX_IMG = 3, MAX_TEXT = 3;
+
+  // Края торта. Доли радиуса, чтобы одинаково считалось и в превью, и в макете.
+  // n — сколько фигурок по кругу, w/h — половина ширины и высота купола,
+  // r — радиус шарика, out — насколько центр фигурки отступает от края внутрь.
+  var EDGES = {
+    dots:   { n: 30, r: 0.090, out: 0.900 },
+    shells: { n: 26, r: 0.105, out: 0.940 },
+    waves:  { n: 16, r: 0.170, out: 0.925 }
+  };
   // Размеры считаются в долях диаметра торта. Базовый кегль надписи = 8.6% диаметра.
   // Пределы подобраны так, чтобы при стандартном превью (~430 px) минимум был
   // 100 px для картинки и 30 px для надписи.
@@ -212,7 +240,11 @@ window.PROD_CFG = <?= json_encode([
     tcolorName: firstTcolor ? firstTcolor.dataset.name : '',
     items: [],
     sel: null,
-    seq: 0
+    seq: 0,
+    edge: 'none',          // край торта: none | dots | shells | waves
+    edgeName: '',
+    ecolor: firstCream ? firstCream.dataset.color : '#FDFBF7',
+    ecolorName: firstCream ? firstCream.dataset.name : ''
   };
 
   // Всплывающее уведомление
@@ -238,13 +270,33 @@ window.PROD_CFG = <?= json_encode([
   }
   function selItem() { return state.sel ? byId(state.sel) : null; }
 
+  // ---- Край торта в превью: кольцо фигурок из SVG ----
+  var edgeSvg = document.getElementById('k-edge-svg');
+  function edgeMarkup(kind, color, R) {
+    var cfg = EDGES[kind];
+    if (!cfg) return '';
+    var out = '';
+    for (var i = 0; i < cfg.n; i++) {
+      var deg = i * 360 / cfg.n;
+      var tr = 'translate(100,100) rotate(' + deg.toFixed(2) + ') translate(0,' + (-cfg.out * R).toFixed(2) + ')';
+      out += '<circle r="' + (cfg.r * R).toFixed(2) + '" transform="' + tr + '" fill="' + color + '"/>';
+    }
+    return out;
+  }
+  function renderEdge() {
+    edgeSvg.innerHTML = edgeMarkup(state.edge, state.ecolor, 100);
+    edgeSvg.hidden = state.edge === 'none';
+  }
+
   // ---- Рендер торта ----
   function render() {
     cake.style.setProperty('--cream', state.cream);
+    renderEdge();
     var d = cake.clientWidth || 400;
     // удаляем узлы исчезнувших элементов
     [].slice.call(cake.children).forEach(function (node) {
-      if (!byId(node.dataset.id)) node.remove();
+      // у слоя краёв нет data-id — его чистка не трогает
+      if (node.dataset.id && !byId(node.dataset.id)) node.remove();
     });
     state.items.forEach(function (it, idx) {
       var el = cake.querySelector('[data-id="' + it.id + '"]');
@@ -446,6 +498,34 @@ window.PROD_CFG = <?= json_encode([
     });
   }
   swatchGroup('k-creams', function (c, n) { state.cream = c; state.creamName = n; render(); });
+
+  // Края торта: выбор формы и цвета. Цвет показываем только когда край выбран.
+  var edgesBox = document.getElementById('k-edges');
+  var ecolorBox = document.getElementById('k-ecolors');
+  var ecolorLbl = document.getElementById('k-ecolor-lbl');
+  edgesBox.addEventListener('click', function (e) {
+    var b = e.target.closest('.k-edge');
+    if (!b) return;
+    edgesBox.querySelectorAll('.k-edge').forEach(function (x) { x.classList.toggle('on', x === b); });
+    state.edge = b.dataset.edge;
+    state.edgeName = b.dataset.name;
+    var show = state.edge !== 'none';
+    ecolorBox.hidden = !show;
+    ecolorLbl.hidden = !show;
+    render();
+    buildExtras();
+  });
+  swatchGroup('k-ecolors', function (c, n) {
+    state.ecolor = c; state.ecolorName = n;
+    render();
+    buildExtras();
+  });
+  // Картинки в кнопках выбора края — те же фигурки, что и на торте
+  edgesBox.querySelectorAll('.k-edge-ico').forEach(function (ico) {
+    var kind = ico.dataset.ico;
+    if (kind === 'none') { ico.innerHTML = '<svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="86" fill="none" stroke="currentColor" stroke-width="7" stroke-dasharray="10 9"/></svg>'; return; }
+    ico.innerHTML = '<svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="74" fill="rgba(0,0,0,.05)"/>' + edgeMarkup(kind, 'currentColor', 100) + '</svg>';
+  });
   swatchGroup('k-tcolors', function (c, n) {
     state.tcolor = c; state.tcolorName = n;
     var sel = selItem();
@@ -510,6 +590,31 @@ window.PROD_CFG = <?= json_encode([
       g.lineWidth = 10;
       g.beginPath(); g.arc(cx, cy, R - 6, 0, 7); g.stroke();
 
+      // край торта — теми же пропорциями, что и в превью
+      var ec = EDGES[state.edge];
+      if (ec) {
+        // обрезаем по кругу торта — в превью это делает круглая маска,
+        // иначе основания фигурок торчат наружу и силуэт становится гранёным
+        g.save();
+        g.beginPath(); g.arc(cx, cy, R, 0, 7); g.clip();
+        g.fillStyle = state.ecolor;
+        // лёгкая тень: без неё край в цвет торта сливается с покрытием
+        g.shadowColor = 'rgba(0,0,0,.18)';
+        g.shadowBlur = 6;
+        g.shadowOffsetY = 2;
+        for (var e = 0; e < ec.n; e++) {
+          g.save();
+          g.translate(cx, cy);
+          g.rotate(e * 2 * Math.PI / ec.n);
+          g.translate(0, -ec.out * R);
+          g.beginPath();
+          g.arc(0, 0, ec.r * R, 0, 7);
+          g.fill();
+          g.restore();
+        }
+        g.restore();
+      }
+
       for (var k = 0; k < state.items.length; k++) {
         var it = state.items[k];
         if (it.type === 'img') {
@@ -552,6 +657,7 @@ window.PROD_CFG = <?= json_encode([
 
   function buildExtras() {
     var extras = [PROD_CFG.creamLbl + ': ' + state.creamName];
+    if (state.edge !== 'none') extras.push(PROD_CFG.edgeLbl + ': ' + state.edgeName + ' (' + state.ecolorName + ')');
     itemsOf('text').forEach(function (it) {
       if (it.text.trim()) extras.push(PROD_CFG.labels.text + ': «' + it.text.trim() + '» (' + (it.colorName || state.tcolorName) + ')');
     });

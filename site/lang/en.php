@@ -268,6 +268,14 @@ return [
   'k_limit_img' => 'You can add up to 3 pictures',
   'k_limit_text' => 'You can add up to 3 lettering lines',
   'k_wa_intro' => 'Hello! I would like to order a cake with my own design.',
+  'k_edge' => 'Cake border',
+  'k_edge_color' => 'Border colour',
+  'k_edges' => [
+    ['none',   'No border',     'A clean edge, coating only'],
+    ['dots',   'Pearls',        'Cream pearls all around the rim'],
+    ['shells', 'Shells',        'Small piped shells around the rim'],
+    ['waves',  'Large shells',  'Generous waves around the rim'],
+  ],
   'k_cream_lbl' => 'Cream',
   'k_custom_name' => 'Cake with your design',
   'k_colors' => [
