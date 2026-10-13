@@ -868,9 +868,12 @@ window.PROD_CFG = <?= json_encode([
     if (host === 'edges' && slotWasHidden) {
       requestAnimationFrame(function () {
         var r = stage.getBoundingClientRect();
+        // снизу экран закрывает зелёная кнопка «Заказать в WhatsApp» (на узких экранах)
+        var cta = document.querySelector('.mob-cta');
+        var bottom = cta && getComputedStyle(cta).display !== 'none' ? cta.getBoundingClientRect().top : window.innerHeight;
         // 80 — высота прилипшей шапки сайта с запасом
         if (r.top < 80) stage.scrollIntoView({ block: 'start', behavior: 'smooth' });
-        else if (r.bottom > window.innerHeight) stage.scrollIntoView({ block: 'end', behavior: 'smooth' });
+        else if (r.bottom > bottom) stage.scrollIntoView({ block: 'end', behavior: 'smooth' });
       });
     }
     ensure3d().then(function () {
