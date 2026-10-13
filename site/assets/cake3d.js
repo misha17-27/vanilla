@@ -215,7 +215,7 @@ export function createCake3D(canvas, opts = {}) {
   // ---- Края ----
   const geos = {};
   const edgeMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.74, side: THREE.DoubleSide });
-  let edgeMesh = null, edgeKind = 'none';
+  let edgeMesh = null, edgeKind = 'none', edgeBase = true;
 
   function shellPlacement(cfg, ring, i) {
     const len = (2 * Math.PI * R / cfg.n) * cfg.overlap;
@@ -227,20 +227,22 @@ export function createCake3D(canvas, opts = {}) {
     return { th, rho, y, s };
   }
 
-  function buildEdge(kind) {
+  // base = false — нижний ряд у основания не делаем (маленький торт на 1–2 персоны)
+  function buildEdge(kind, base) {
     if (edgeMesh) {
       group.remove(edgeMesh);
       edgeMesh.dispose();
       edgeMesh = null;
     }
     edgeKind = kind;
+    edgeBase = base;
     const cfg = EDGES[kind];
     if (!cfg) return;
     const shape = cfg.shape;
     if (!geos[shape]) geos[shape] = shape === 'ball' ? ballGeometry() : shellGeometry();
     const rings = [];
     if (cfg.top) rings.push('top');
-    if (cfg.bottom) rings.push('bottom');
+    if (cfg.bottom && base) rings.push('bottom');
     const mesh = new THREE.InstancedMesh(geos[shape], edgeMat, cfg.n * rings.length);
     const m = new THREE.Matrix4(), q = new THREE.Quaternion(), sc = new THREE.Vector3();
     const pos = new THREE.Vector3(), up = new THREE.Vector3(0, 1, 0);
@@ -380,9 +382,9 @@ export function createCake3D(canvas, opts = {}) {
       sideMat.color.set(hex);
       request();
     },
-    setEdge(kind, hex) {
+    setEdge(kind, hex, base = true) {
       if (hex !== ecolor) { ecolor = hex; edgeMat.color.set(hex); }
-      if (kind !== edgeKind) buildEdge(kind);
+      if (kind !== edgeKind || base !== edgeBase) buildEdge(kind, base);
       request();
     },
     topChanged() {

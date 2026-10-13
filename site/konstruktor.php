@@ -62,6 +62,27 @@ $stickers = [
 
       <!-- Панель -->
       <div class="k-panel">
+        <!-- Размер — первым: от него зависит, какие края можно сделать -->
+        <div class="k-group">
+          <div class="k-lbl" id="k-size-lbl"><?= e($t['k_size']) ?></div>
+          <div class="k-sizes" id="k-sizes" role="group" aria-labelledby="k-size-lbl">
+            <?php foreach ($sizeOpts as $i => $o):
+              $sp = explode(' · ', $o[0], 2); ?>
+            <button type="button" class="k-size<?= $i === 0 ? ' on' : '' ?>" data-i="<?= $i ?>" aria-pressed="<?= $i === 0 ? 'true' : 'false' ?>">
+              <b><?= e($sp[0]) ?></b>
+              <?php if (isset($sp[1])): ?><small><?= e($sp[1]) ?></small><?php endif; ?>
+              <span class="k-size-p"><?= e($o[1]) ?> ₼</span>
+            </button>
+            <?php endforeach; ?>
+          </div>
+          <!-- сам выбор живёт в обычном списке: из него берёт размер и цену форма заказа -->
+          <select id="opt-size" hidden aria-hidden="true" tabindex="-1" autocomplete="off">
+            <?php foreach ($sizeOpts as $i => $o): ?>
+            <option value="<?= $i ?>"><?= e($o[0]) ?></option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+
         <div class="k-group">
           <div class="k-lbl"><?= e($t['k_cream']) ?></div>
           <div class="k-swatches" id="k-creams">
@@ -104,12 +125,13 @@ $stickers = [
           <div class="k-3d-slot" id="k-3d-slot" hidden></div>
           <div class="k-edges" id="k-edges">
             <?php foreach ($t['k_edges'] as $i => $e): ?>
-            <button type="button" class="k-edge<?= $i === 0 ? ' on' : '' ?>" data-edge="<?= e($e[0]) ?>" data-name="<?= e($e[1]) ?>">
+            <button type="button" class="k-edge<?= $i === 0 ? ' on' : '' ?>" data-edge="<?= e($e[0]) ?>" data-name="<?= e($e[1]) ?>" data-desc="<?= e($e[2]) ?>" data-desc-small="<?= e($e[3] ?? $e[2]) ?>">
               <span class="k-edge-ico" data-ico="<?= e($e[0]) ?>"></span>
               <span class="k-edge-txt"><b><?= e($e[1]) ?></b><small><?= e($e[2]) ?></small></span>
             </button>
             <?php endforeach; ?>
           </div>
+          <p class="k-edge-note" id="k-edge-note" hidden><?= e($t['k_edge_small']) ?></p>
           <div class="k-lbl" id="k-ecolor-lbl" style="margin-top:16px" hidden><?= e($t['k_edge_color']) ?></div>
           <div class="k-swatches" id="k-ecolors" hidden>
             <?php foreach ($t['k_colors'] as $i => $c): ?>
@@ -121,14 +143,6 @@ $stickers = [
         <div class="k-group">
           <div class="prod-price" id="prod-price"><?= e($sizeOpts[0][1]) ?> ₼</div>
           <div class="prod-opts" style="margin-top:14px">
-            <div class="opt-row">
-              <label for="opt-size"><?= e($t['opt_size']) ?></label>
-              <select id="opt-size">
-                <?php foreach ($sizeOpts as $i => $o): ?>
-                <option value="<?= $i ?>"><?= e($o[0]) ?></option>
-                <?php endforeach; ?>
-              </select>
-            </div>
             <div class="opt-row">
               <label><?= e($t['opt_sponge']) ?> · <?= e($t['opt_fill']) ?></label>
               <div class="duo">
@@ -208,6 +222,8 @@ window.PROD_CFG = <?= json_encode([
     'cake3d'   => '/assets/cake3d.js?v=' . @filemtime(__DIR__ . '/assets/cake3d.js'),
     'three'    => '/assets/vendor/three/three.module.min.js?v=' . @filemtime(__DIR__ . '/assets/vendor/three/three.module.min.js'),
     'k3dNet'   => $t['k_3d_net'],
+    // номера размеров «1–2 персоны»: на таком торте нижний бортик у основания не делаем
+    'smallSizes' => [0],
     'boardText' => 'Vanilla Cake',
     'textPh'   => $t['k_text_n'],
     'delLbl'   => $t['k_del'],
@@ -548,6 +564,43 @@ window.PROD_CFG = <?= json_encode([
     // 92 вместо 100: шарики свисают за край торта и обрезались бы рамкой значка
     ico.innerHTML = '<svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="70" fill="rgba(0,0,0,.05)"/>' + edgeMarkup(kind, 'currentColor', 92) + '</svg>';
   });
+  // ---- Размер ----
+  // Кнопки наверху управляют обычным списком #opt-size: из него форма заказа
+  // берёт размер и цену. У маленького торта (1–2 персоны) край только сверху.
+  var sizeSel = document.getElementById('opt-size');
+  var sizesBox = document.getElementById('k-sizes');
+  var edgeNote = document.getElementById('k-edge-note');
+  function smallCake() {
+    return (PROD_CFG.smallSizes || []).indexOf(sizeSel.selectedIndex) > -1;
+  }
+  function applySize() {
+    var small = smallCake();
+    edgesBox.querySelectorAll('.k-edge').forEach(function (b) {
+      b.querySelector('small').textContent = small ? b.dataset.descSmall : b.dataset.desc;
+    });
+    edgeNote.hidden = !small;
+    schedule3d();
+  }
+  function markSize() {
+    sizesBox.querySelectorAll('.k-size').forEach(function (x) {
+      var on = +x.dataset.i === sizeSel.selectedIndex;
+      x.classList.toggle('on', on);
+      x.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  sizesBox.addEventListener('click', function (e) {
+    var b = e.target.closest('.k-size');
+    if (!b) return;
+    sizeSel.selectedIndex = +b.dataset.i;
+    sizeSel.dispatchEvent(new Event('change'));   // цена и текст заказа
+    markSize();
+    applySize();
+  });
+  // при возврате «Назад» браузер может вернуть прежний размер в список — подсветку берём из него
+  window.addEventListener('pageshow', function () { markSize(); applySize(); });
+  markSize();
+  applySize();
+
   swatchGroup('k-tcolors', function (c, n) {
     state.tcolor = c; state.tcolorName = n;
     var sel = selItem();
@@ -801,7 +854,7 @@ window.PROD_CFG = <?= json_encode([
     if (!k3.api || k3.host === 'none') return;
     drawTop(topCv.getContext('2d'), 1024, 512, cachedImg, { flat: true, ring: false });
     k3.api.setCream(state.cream);
-    k3.api.setEdge(state.edge, state.ecolor);
+    k3.api.setEdge(state.edge, state.ecolor, !smallCake());
     k3.api.topChanged();
   }
   // render() срабатывает и до этого блока (первая надпись), тогда k3 ещё нет
