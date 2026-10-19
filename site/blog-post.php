@@ -52,8 +52,14 @@ if ($faq) {
         ], $faq),
     ]);
 }
-// другие статьи внизу — свежие, кроме этой
-$more = array_slice(array_values(array_filter(blog_posts(), fn($p) => $p['slug'] !== $post['slug'])), 0, 3);
+// другие статьи внизу — три следующие по списку, по кругу: у каждой статьи свои
+// соседи, и ссылки из блока распределяются по всем статьям поровну
+$all  = array_values(blog_posts());
+$pos  = array_search($post['slug'], array_column($all, 'slug'), true);
+$more = [];
+for ($i = 1; $i <= min(3, count($all) - 1); $i++) {
+    $more[] = $all[($pos + $i) % count($all)];
+}
 require __DIR__ . '/includes/header.php';
 ?>
 
