@@ -1,0 +1,717 @@
+{
+  "slug": "tort-sifarisi",
+  "published": "2026-10-19",
+  "updated": "2026-10-19",
+  "image": "/assets/img/products/bento-tort-happy-birthday.jpg",
+  "ru": {
+    "title": "Как заказать торт в Баку: от выбора дизайна до доставки",
+    "seo_title": "Заказать торт в Баку: даты, доставка, Bolt | Vanilla Cake",
+    "seo_desc": "Как заказать торт в Баку по шагам: дизайн, размер, начинка и надпись, дата минимум за 2 дня, доставка торта курьером или Bolt, самовывоз и заказ в WhatsApp.",
+    "excerpt": "Пошагово: как выбрать дизайн, размер и начинку, за сколько дней бронировать дату, как получить торт — курьером, через Bolt или самовывозом — и когда заказ считается принятым.",
+    "image_alt": "Заказ торта в Баку: маленький бенто-торт с бело-голубым градиентом и надписью «Happy Birthday» синим кремом в белой бенто-коробке",
+    "body": [
+      {
+        "type": "p",
+        "text": "Чтобы **заказать торт в Баку** у нас, в Vanilla Cake, достаточно определиться с шестью вещами: дизайном, размером, бисквитом и начинкой, надписью, датой и временем, способом получения. Всё это вы выбираете в одной форме — на странице торта или в конструкторе, — и заказ приходит к нам в WhatsApp одним сообщением. Ближайшая дата — через два дня, а принятым заказ считается после нашего подтверждения. Ниже разбираем каждый шаг по порядку, а заодно рассказываем о графике работы, самовывозе и о том, как устроена **доставка торта по Баку** — курьером или через Bolt."
+      },
+      {
+        "type": "p",
+        "text": "Если вы ещё не решили, нужен ли вам именно бенто, и хотите сначала разобраться в форматах, весе и ценах, начните со статьи [что такое бенто-торт](/blog/bento-tort-nedir/). Здесь — только практика: что и в каком порядке выбрать, чтобы торт был готов вовремя. Перед тем как открыть форму, полезно ответить себе на пять вопросов:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Для кого и по какому поводу торт** — от этого зависят дизайн и надпись;",
+          "**Сколько будет гостей** — это определит размер;",
+          "**Что любит тот, кого вы поздравляете** — под это подбирают бисквит и начинку;",
+          "**Когда нужен торт** — день и удобный час;",
+          "**Где вы его получите** — дома, в офисе или у нас в кондитерской."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Шаг 1. Выберите дизайн"
+      },
+      {
+        "type": "p",
+        "text": "Дизайн можно выбрать тремя способами — все они ведут к одной и той же форме заказа."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Из каталога.** В [каталоге бенто-тортов](/bolme/bento-tort/) собраны готовые дизайны на дни рождения, годовщины и подарки без повода. Рисунок мы повторим, а надпись сделаем вашу — имя, возраст или любую фразу.",
+          "**По вашей картинке.** На странице любого торта есть поле «Отправьте свой дизайн»: прикрепите фото понравившегося торта (JPG, PNG или WebP до 8 МБ) — мы повторим или адаптируем его, а ссылка на снимок добавится в сообщение. Для торта с фотографией присылайте крупный кадр без сильного увеличения: мы печатаем его съедобными красками прямо на креме.",
+          "**В конструкторе.** В [онлайн-конструкторе торта](/konstruktor/) дизайн собирается за несколько минут: один из 19 цветов крема, до трёх картинок (в том числе ваши фото), до трёх строк текста и бортик. Готовый торт можно покрутить и рассмотреть в 3D, а ссылка на изображение дизайна добавится в заказ автоматически."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Несколько дизайнов из каталога для примера: одни можно заказать как есть, в других мы меняем имя, дату, фотографию или рисунок под ваш повод."
+      },
+      {
+        "type": "products",
+        "slugs": [
+          "bento-tort-hbd",
+          "bento-tort-happy-birthday",
+          "bento-tort-pink-heart",
+          "bento-tort-brown-dog",
+          "bento-tort-foto-sekilli-hediyye",
+          "bento-tort-hbd-green"
+        ]
+      },
+      {
+        "type": "cta",
+        "target": "konstruktor",
+        "title": "Не нашли нужный дизайн? Соберите свой",
+        "text": "Цвет крема, картинки, надпись и бортик: торт видно на экране ещё до заказа, а ссылка на дизайн придёт к нам вместе с сообщением."
+      },
+      {
+        "type": "h2",
+        "text": "Шаг 2. Размер, бисквит и начинка"
+      },
+      {
+        "type": "p",
+        "text": "Размер выбирайте по числу гостей: торт на 1–2 персоны весит 300–350 г и стоит 25 ₼, на 3–4 персоны — 750–800 г за 35 ₼, на 7–8 персон — 1200–1500 г за 60 ₼. Цена зависит только от размера, а не от сложности рисунка, поэтому итоговую сумму видно сразу на странице торта. У бенто с бантиками маленького размера нет: такой отделке нужна высота."
+      },
+      {
+        "type": "p",
+        "text": "Внутри — бисквит с кремом-чиз и одна начинка: правило простое, «1 бисквит + 1 начинка». Бисквитов три: ванильный, шоколадный и красный бархат. Как только вы выберете бисквит, в форме останутся только подходящие к нему начинки, так что неудачное сочетание собрать не получится. Все варианты с фотографиями — на странице [бисквитов и начинок](/terkibler/)."
+      },
+      {
+        "type": "h2",
+        "text": "Шаг 3. Надпись на торте"
+      },
+      {
+        "type": "p",
+        "text": "Надпись делаем бесплатно — на русском, азербайджанском или английском. На странице торта для неё есть отдельное поле «Надпись»: впишите текст ровно так, как он должен выглядеть на креме, например «С днём рождения, Айсель!». В конструкторе можно добавить до трёх строк и выбрать цвет надписи. Если не получается подобрать слова, загляните в подборку [идей надписей для торта](/blog/tort-ucun-yazilar/) на разные поводы."
+      },
+      {
+        "type": "tip",
+        "text": "**Проверьте имя перед отправкой.** Укажите его ровно в том виде, в каком оно должно появиться на торте, — кириллицей или латиницей, без опечаток и в нужной форме: «Айсель», «Aysel» и «Ayselim» — это три разные надписи."
+      },
+      {
+        "type": "h2",
+        "text": "Шаг 4. Дата и время: за сколько дней заказывать торт"
+      },
+      {
+        "type": "p",
+        "text": "Мы работаем только по предзаказу: витрины с готовыми тортами нет, каждый торт готовим к конкретному дню. Поэтому ближайшая дата в календаре формы — через два дня. Например, написали во вторник — торт можно получить в четверг. Чем раньше вы оформите заказ, тем проще занять нужный день, особенно перед праздниками. Лучше всего бронировать дату сразу, как только она стала известна."
+      },
+      {
+        "type": "p",
+        "text": "Что учесть при выборе дня и часа:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Воскресенье — выходной.** В календаре его не выбрать, как и другие наши нерабочие дни. Если праздник выпадает на воскресенье, планируйте торт на субботу.",
+          "**Понедельник — не раньше 17:00.** В воскресенье мы не работаем, поэтому торты на понедельник печём с утра. Если вы написали в пятницу, ближайший вариант — как раз понедельник, с 17:00.",
+          "**Суббота — короткий день.** Торт можно получить с 11:00 до 14:00.",
+          "**Время — это часовой интервал.** Например, 15:00–16:00: выберите час, когда вы точно будете на месте."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Шаг 5. Доставка торта по Баку или самовывоз"
+      },
+      {
+        "type": "p",
+        "text": "Способ получения выбирается в той же форме: доставка курьером, Bolt Delivery или самовывоз. Коротко о каждом:"
+      },
+      {
+        "type": "table",
+        "head": [
+          "Способ",
+          "Когда",
+          "Адрес в форме"
+        ],
+        "rows": [
+          [
+            "Доставка курьером",
+            "Пн–Пт 11:00–20:00",
+            "Нужен: улица, дом, квартира; точку можно отметить на карте"
+          ],
+          [
+            "Bolt Delivery",
+            "Пн–Пт 11:00–22:00",
+            "Не нужен: курьера Bolt вы вызываете на наш адрес сами"
+          ],
+          [
+            "Самовывоз",
+            "В час, выбранный при заказе",
+            "Не нужен: вы забираете торт у нас"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Общий график такой: в субботу торт можно получить с 11:00 до 14:00, в понедельник — не раньше 17:00, воскресенье — выходной."
+      },
+      {
+        "type": "h3",
+        "text": "Курьер"
+      },
+      {
+        "type": "p",
+        "text": "Впишите адрес — улицу, дом и квартиру. Чтобы курьеру не пришлось искать нужный дом, нажмите «Выбрать на карте» и отметьте точку: ссылка на неё добавится в сообщение. Детали доставки согласуем в WhatsApp, когда будем подтверждать заказ."
+      },
+      {
+        "type": "h3",
+        "text": "Bolt Delivery"
+      },
+      {
+        "type": "p",
+        "text": "Bolt Delivery работает по будням с 11:00 до 22:00. Схема такая:"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "Выберите в форме Bolt Delivery и отправьте заказ.",
+          "Мы подтвердим заказ в WhatsApp, а когда торт будет готов к передаче, напишем вам снова.",
+          "Курьера Bolt на наш адрес вы вызываете сами — мы его не заказываем. Ссылка на наш адрес в Google Maps есть прямо в форме заказа."
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "Самовывоз"
+      },
+      {
+        "type": "p",
+        "text": "Забрать торт самостоятельно можно в час, выбранный при заказе. Адрес кондитерской и кнопки «Построить маршрут» для Google Maps и Waze — на странице [контактов Vanilla Cake](/elaqe/). Везите торт на ровной поверхности, а летом — в машине с кондиционером; другие практичные советы собраны в разделе [вопросов и ответов](/faq/)."
+      },
+      {
+        "type": "p",
+        "text": "Если торт получит не вы, отметьте в форме галочку «Получатель — другой человек» и впишите имя и телефон получателя. Как превратить такую доставку в сюрприз, рассказываем в статье о том, [как отправить торт в подарок](/blog/hediyye-tort/)."
+      },
+      {
+        "type": "h2",
+        "text": "Шаг 6. Отправьте заказ и дождитесь подтверждения"
+      },
+      {
+        "type": "p",
+        "text": "Когда всё выбрано, нажмите «Заказать этот торт». В открывшейся форме выберите способ получения, дату и время, а затем впишите имя и телефон. Обязательны только они, а при доставке курьером — ещё и адрес: по имени и телефону мы свяжемся с вами и согласуем детали. Кнопка «Отправить в WhatsApp» откроет чат с готовым сообщением: в нём уже будут размер, бисквит, начинка, надпись, дата, время, способ получения и ссылка на выбранный торт, а в заказе из конструктора — и ссылка на ваш дизайн. Ничего не нужно переписывать вручную — просто отправьте сообщение."
+      },
+      {
+        "type": "tip",
+        "text": "**Заказ считается принятым только после нашего подтверждения в WhatsApp.** Отправленное сообщение — это заявка: мы проверим детали и ответим. Пока подтверждения нет, дата за вами ещё не закреплена."
+      },
+      {
+        "type": "p",
+        "text": "Если удобнее обсудить всё в переписке, напишите нам напрямую в [WhatsApp](wa) на номер +994 55 215 63 43 или в Instagram — @vanilla_cake_az: пришлите картинку или идею, и мы вместе соберём заказ."
+      },
+      {
+        "type": "cta",
+        "target": "wa",
+        "title": "Готовы заказать торт?",
+        "text": "Напишите нам в WhatsApp — поможем выбрать дизайн, размер и начинку, а потом подтвердим заказ к нужной дате."
+      },
+      {
+        "type": "h2",
+        "text": "Частые вопросы о заказе торта"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "q": "Можно ли заказать торт на завтра?",
+            "a": "Завтрашний день в форме выбрать нельзя: ближайшая дата — через два дня, ведь каждый торт мы готовим специально к вашему дню. Перед праздниками лучше написать ещё раньше."
+          },
+          {
+            "q": "Вы работаете в воскресенье?",
+            "a": "Нет, воскресенье — выходной. В субботу торт можно получить с 11:00 до 14:00, в понедельник — с 17:00."
+          },
+          {
+            "q": "Как получить торт через Bolt?",
+            "a": "Выберите в форме Bolt Delivery. Когда торт будет готов к передаче, мы напишем в WhatsApp, а курьера Bolt на наш адрес вы вызываете сами. Bolt Delivery работает по будням с 11:00 до 22:00, в понедельник — с 17:00."
+          },
+          {
+            "q": "Когда заказ считается принятым?",
+            "a": "Только после нашего подтверждения в WhatsApp. Пока мы не ответили, заказ ещё не принят."
+          },
+          {
+            "q": "Можно ли заказать торт, если его получит другой человек?",
+            "a": "Да. Отметьте в форме «Получатель — другой человек» и впишите имя и телефон получателя, а при доставке курьером — и адрес. Ваши имя и телефон тоже нужны: детали заказа мы согласуем с вами."
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Заказать торт в Баку несложно: выберите дизайн, размер, начинку и надпись, забронируйте дату минимум за два дня и решите, как получить торт. Если остались вопросы, просто напишите нам, а торт мы приготовим точно к вашему дню."
+      }
+    ]
+  },
+  "az": {
+    "title": "Bakıda tort sifarişi: dizayndan çatdırılmayadək addım-addım",
+    "seo_title": "Bakıda tort sifarişi: tarix, çatdırılma, Bolt | Vanilla Cake",
+    "seo_desc": "Bakıda tort sifarişi addım-addım: dizayn, ölçü, içlik və yazı, ən azı 2 gün öncədən tarix, kuryerlə və ya Bolt ilə tort çatdırılması, gəlib götürmək, WhatsApp.",
+    "excerpt": "Addım-addım: dizaynı, ölçünü və içliyi necə seçməli, tarixi neçə gün əvvəldən ayırmalı, tortu necə almalı — kuryerlə, Bolt ilə, yoxsa gəlib götürərək — və sifariş nə vaxt qəbul olunur.",
+    "image_alt": "Bakıda tort sifarişi: ağ bento qutuda ağ-mavi keçidli və göy kremlə «Happy Birthday» yazılmış kiçik bento tort",
+    "body": [
+      {
+        "type": "p",
+        "text": "**Bakıda tort sifarişi** Vanilla Cake-də altı seçimdən ibarətdir: dizayn, ölçü, biskvit və içlik, yazı, tarix və saat, bir də tortu necə təhvil alacağınız. Hamısını tortun səhifəsində və ya konstruktorda bir formada seçirsiniz, sonra bütün məlumat WhatsApp-da bizə bir mesajla çatır. Ən yaxın tarix iki gün sonradır, sifariş isə biz təsdiqlədikdən sonra qəbul olunmuş sayılır. Aşağıda hər addımı ardıcıllıqla izah edir, iş qrafikimizdən, kuryerlə və Bolt ilə **tort çatdırılmasından**, həmçinin tortu gəlib götürməkdən danışırıq."
+      },
+      {
+        "type": "p",
+        "text": "Bento tortun sizə uyğun olub-olmadığına hələ qərar verməmisinizsə və əvvəlcə formatlar, çəki və qiymətlərlə tanış olmaq istəyirsinizsə, [bento tort nədir](/blog/bento-tort-nedir/) məqaləsindən başlayın. Burada isə yalnız praktiki məsələlərdən danışırıq: tortun vaxtında hazır olması üçün nəyi hansı ardıcıllıqla seçmək lazımdır. Formanı açmazdan əvvəl beş sualın cavabını bilmək faydalıdır:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Tort kim üçündür və hansı münasibətlə** — dizayn və yazı bundan asılıdır;",
+          "**Neçə qonaq olacaq** — ölçü buna görə seçilir;",
+          "**Təbrik etdiyiniz insan nəyi sevir** — biskvit və içliyi buna uyğun seçəcəksiniz;",
+          "**Tort nə vaxt lazımdır** — gün və rahat saat;",
+          "**Tortu harada təhvil alacaqsınız** — evdə, ofisdə və ya bizdə."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Addım 1. Dizaynı seçin"
+      },
+      {
+        "type": "p",
+        "text": "Dizaynı üç yolla seçmək olar — hamısı eyni sifariş formasına aparır."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Kataloqdan.** [Bento tortlar kataloqunda](/bolme/bento-tort/) ad günü, ildönümü və səbəbsiz hədiyyə üçün hazır dizaynlar toplanıb. Rəsmi təkrarlayırıq, yazını isə siz seçirsiniz — ad, yaş və ya istədiyiniz ifadə.",
+          "**Öz şəklinizə görə.** İstənilən tortun səhifəsində «Öz dizaynınızı göndərin» sahəsi var: bəyəndiyiniz tortun şəklini yükləyin (JPG, PNG və ya WebP, maksimum 8 MB) — biz onu təkrarlayacaq və ya uyğunlaşdıracağıq, şəklin linki isə mesaja əlavə olunacaq. Fotolu tort üçün çox böyüdülməmiş, iri kadr göndərin: onu yeməli boya ilə birbaşa kremin üzərinə çap edirik.",
+          "**Konstruktorda.** [Onlayn tort konstruktorunda](/konstruktor/) dizaynı bir neçə dəqiqəyə yığırsınız: 19 krem rəngindən biri, üç şəklə qədər (öz fotolarınız da daxil olmaqla), üç sətrə qədər mətn və kənar bəzəyi. Hazır tortu 3D-də fırladıb hər tərəfdən görmək olar, dizayn şəklinin linki isə sifarişə avtomatik əlavə olunur."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Kataloqdan bir neçə dizayn nümunəsi: bəzilərini olduğu kimi sifariş etmək olar, digərlərində isə adı, tarixi, fotonu və ya rəsmi sizin münasibətinizə uyğun dəyişirik."
+      },
+      {
+        "type": "products",
+        "slugs": [
+          "bento-tort-hbd",
+          "bento-tort-happy-birthday",
+          "bento-tort-pink-heart",
+          "bento-tort-brown-dog",
+          "bento-tort-foto-sekilli-hediyye",
+          "bento-tort-hbd-green"
+        ]
+      },
+      {
+        "type": "cta",
+        "target": "konstruktor",
+        "title": "Uyğun dizayn tapmadınız? Öz dizaynınızı yaradın",
+        "text": "Krem rəngi, şəkillər, yazı və kənar bəzəyi — tortu sifarişdən əvvəl ekranda görürsünüz, dizaynın linki isə mesajla birlikdə bizə çatır."
+      },
+      {
+        "type": "h2",
+        "text": "Addım 2. Ölçü, biskvit və içlik"
+      },
+      {
+        "type": "p",
+        "text": "Ölçünü qonaqların sayına görə seçin: 1–2 nəfərlik tortun çəkisi 300–350 q, qiyməti 25 ₼-dır; 3–4 nəfərlik — 750–800 q və 35 ₼; 7–8 nəfərlik — 1200–1500 q və 60 ₼. Qiymət yalnız ölçüdən asılıdır, rəsmin mürəkkəbliyindən yox, ona görə də yekun məbləği tortun səhifəsində dərhal görürsünüz. Bantikli bento tortların kiçik ölçüsü olmur: belə bəzək hündürlük tələb edir."
+      },
+      {
+        "type": "p",
+        "text": "Tortun içində krem-çizli biskvit və «1 biskvit + 1 içlik» qaydası ilə seçilən içlik olur. Biskvit üç cürdür: vanilli, şokoladlı və qırmızı məxmər (red velvet). Formada biskviti seçən kimi siyahıda yalnız ona uyğun içliklər qalır, yəni uğursuz birləşmə seçmək mümkün deyil. Bütün variantlar fotolarla [biskvit və içliklər səhifəsində](/terkibler/) toplanıb."
+      },
+      {
+        "type": "h2",
+        "text": "Addım 3. Tortun üzərindəki yazı"
+      },
+      {
+        "type": "p",
+        "text": "Tortun üzərindəki yazı pulsuzdur — Azərbaycan, rus və ya ingilis dilində. Tortun səhifəsində bunun üçün ayrıca «Yazı» sahəsi var: mətni kremin üzərində necə görünməlidirsə, elə də yazın, məsələn, «Ad günün mübarək, Aysel!». Konstruktorda üç sətrə qədər yazı əlavə edib rəngini seçmək olar. Uyğun söz tapa bilmirsinizsə, [tort üçün yazılar](/blog/tort-ucun-yazilar/) məqaləmizə baxın — orada müxtəlif münasibətlər üçün ideyalar var."
+      },
+      {
+        "type": "tip",
+        "text": "**Göndərməzdən əvvəl adı yoxlayın.** Adı tortda olacağı kimi yazın — latın və ya kiril hərfləri ilə, səhvsiz və lazımi formada: «Aysel», «Айсель» və «Ayselim» üç fərqli yazıdır."
+      },
+      {
+        "type": "h2",
+        "text": "Addım 4. Tarix və saat: tortu neçə gün əvvəl sifariş etməli"
+      },
+      {
+        "type": "p",
+        "text": "Yalnız öncədən sifarişlə işləyirik: vitrində hazır tortlarımız yoxdur, hər tortu müəyyən bir günə hazırlayırıq. Ona görə də formanın təqvimində ən yaxın tarix iki gün sonradır. Məsələn, çərşənbə axşamı yazmısınızsa, tortu cümə axşamı ala bilərsiniz. Sifarişi nə qədər tez versəniz, istədiyiniz günü tutmaq bir o qədər asan olar, xüsusən bayramqabağı. Ən yaxşısı tarix bəlli olan kimi onu ayırmaqdır."
+      },
+      {
+        "type": "p",
+        "text": "Gün və saat seçərkən nələri nəzərə almaq lazımdır:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Bazar günü istirahət günüdür.** Təqvimdə onu, eləcə də digər qeyri-iş günlərimizi seçmək olmur. Bayram bazar gününə düşürsə, tortu şənbəyə planlaşdırın.",
+          "**Bazar ertəsi — saat 17:00-dan tez olmayaraq.** Bazar günü işləmirik, ona görə də bazar ertəsi tortlarını səhərdən bişiririk. Cümə günü yazmısınızsa, ən yaxın variant elə bazar ertəsi, saat 17:00-dır.",
+          "**Şənbə qısa iş günüdür.** Tortu 11:00-dan 14:00-dək almaq olar.",
+          "**Vaxt bir saatlıq aralıqdır.** Məsələn, 15:00–16:00: yerində olacağınıza əmin olduğunuz saatı seçin."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Addım 5. Bakı üzrə tort çatdırılması və ya gəlib götürmək"
+      },
+      {
+        "type": "p",
+        "text": "Təhvil üsulunu elə həmin formada seçirsiniz: kuryerlə çatdırılma, Bolt Delivery və ya «Özün götür». Hər biri haqqında qısaca:"
+      },
+      {
+        "type": "table",
+        "head": [
+          "Üsul",
+          "Nə vaxt",
+          "Formada ünvan"
+        ],
+        "rows": [
+          [
+            "Kuryerlə çatdırılma",
+            "Bazar ertəsi–cümə, 11:00–20:00",
+            "Lazımdır: küçə, ev, mənzil; nöqtəni xəritədə qeyd etmək olar"
+          ],
+          [
+            "Bolt Delivery",
+            "Bazar ertəsi–cümə, 11:00–22:00",
+            "Lazım deyil: Bolt kuryerini bizim ünvana özünüz çağırırsınız"
+          ],
+          [
+            "Özün götür",
+            "Sifarişdə seçdiyiniz saatda",
+            "Lazım deyil: tortu gəlib bizdən götürürsünüz"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Ümumi qrafik belədir: şənbə günü tortu 11:00-dan 14:00-dək, bazar ertəsi 17:00-dan tez olmayaraq almaq olar; bazar günü istirahət günüdür."
+      },
+      {
+        "type": "h3",
+        "text": "Kuryer"
+      },
+      {
+        "type": "p",
+        "text": "Ünvanı yazın — küçə, ev və mənzil. Kuryer binanı axtarmasın deyə «Xəritədə seç» düyməsini basıb nöqtəni qeyd edin: onun linki mesaja əlavə olunacaq. Çatdırılma detallarını sifarişi təsdiqləyərkən WhatsApp-da dəqiqləşdiririk."
+      },
+      {
+        "type": "h3",
+        "text": "Bolt Delivery"
+      },
+      {
+        "type": "p",
+        "text": "Bolt Delivery ilə tortu iş günləri 11:00-dan 22:00-dək almaq olar. Qaydası belədir:"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "Formada Bolt Delivery seçin və sifarişi göndərin.",
+          "Sifarişi WhatsApp-da təsdiqləyəcəyik, tort təhvilə hazır olanda isə sizə yenidən yazacağıq.",
+          "Bolt kuryerini ünvanımıza özünüz çağırırsınız — biz kuryer sifariş etmirik. Ünvanımızın Google Maps linki elə sifariş formasındadır."
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "Gəlib götürmək"
+      },
+      {
+        "type": "p",
+        "text": "Tortu seçdiyiniz saatda gəlib özünüz götürə bilərsiniz. Ünvanımız, Google və Waze üçün «Marşrut qur» düymələri [Vanilla Cake-in əlaqə səhifəsində](/elaqe/) var. Tortu düz səthdə, yayda isə kondisionerli maşında daşıyın; digər faydalı məsləhətləri [suallar və cavablar](/faq/) bölməsində topladıq."
+      },
+      {
+        "type": "p",
+        "text": "Tortu başqa biri qəbul edəcəksə, formada «Qəbul edən başqa şəxsdir» xanasını işarələyin və həmin şəxsin adını, telefonunu yazın. Belə çatdırılmanı necə sürprizə çevirmək olar — bunu [tortu hədiyyə kimi necə göndərmək](/blog/hediyye-tort/) haqqında məqaləmizdə izah edirik."
+      },
+      {
+        "type": "h2",
+        "text": "Addım 6. Sifarişi göndərin və təsdiqi gözləyin"
+      },
+      {
+        "type": "p",
+        "text": "Hər şeyi seçəndən sonra «Bu tortu sifariş et» düyməsini basın. Açılan formada təhvil üsulunu, tarixi və saatı seçin, sonra adınızı və telefonunuzu yazın. Yalnız bu iki sahə mütləqdir, kuryerlə çatdırılmada isə ünvan da tələb olunur: ad və telefon vasitəsilə sizinlə əlaqə saxlayıb detalları razılaşdırırıq. «WhatsApp-a göndər» düyməsi hazır mesajı açacaq: orada artıq ölçü, biskvit, içlik, yazı, tarix, saat, təhvil üsulu və seçdiyiniz tortun linki, konstruktordan verilən sifarişdə isə həm də dizaynınızın linki olacaq. Heç nəyi əl ilə yenidən yazmağa ehtiyac yoxdur — sadəcə mesajı göndərin."
+      },
+      {
+        "type": "tip",
+        "text": "**Sifariş yalnız WhatsApp-da təsdiqimizdən sonra qəbul edilmiş sayılır.** Göndərdiyiniz mesaj sadəcə müraciətdir: detalları yoxlayıb sizə cavab verəcəyik. Təsdiq gələnə qədər tarix hələ sizin adınıza ayrılmayıb."
+      },
+      {
+        "type": "p",
+        "text": "Hər şeyi yazışmada müzakirə etmək sizə daha rahatdırsa, birbaşa [WhatsApp-da](wa) +994 55 215 63 43 nömrəsinə və ya Instagram-da @vanilla_cake_az səhifəsinə yazın: şəkil və ya ideyanızı göndərin, sifarişi birlikdə hazırlayaq."
+      },
+      {
+        "type": "cta",
+        "target": "wa",
+        "title": "Tort sifariş etməyə hazırsınız?",
+        "text": "WhatsApp-da bizə yazın — dizaynı, ölçünü və içliyi seçməyə kömək edək, sonra sifarişi istədiyiniz tarixə təsdiqləyək."
+      },
+      {
+        "type": "h2",
+        "text": "Tort sifarişi haqqında tez-tez verilən suallar"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "q": "Sabah üçün tort sifariş etmək olar?",
+            "a": "Formada sabahkı günü seçmək olmur: ən yaxın tarix iki gün sonradır, çünki hər tortu məhz sizin gününüzə hazırlayırıq. Bayramqabağı daha tez yazmağınız yaxşıdır."
+          },
+          {
+            "q": "Bazar günü işləyirsiniz?",
+            "a": "Xeyr, bazar günü istirahət günüdür. Şənbə günü tortu 11:00-dan 14:00-dək, bazar ertəsi isə 17:00-dan almaq olar."
+          },
+          {
+            "q": "Tortu Bolt ilə necə almaq olar?",
+            "a": "Formada Bolt Delivery seçin. Tort təhvilə hazır olanda sizə WhatsApp-da yazacağıq, Bolt kuryerini isə ünvanımıza özünüz çağırırsınız. Bolt Delivery iş günləri 11:00-dan 22:00-dək, bazar ertəsi isə 17:00-dan mümkündür."
+          },
+          {
+            "q": "Sifariş nə vaxt qəbul olunmuş sayılır?",
+            "a": "Yalnız WhatsApp-da təsdiqimizdən sonra. Biz cavab verməyənə qədər sifariş hələ qəbul olunmayıb."
+          },
+          {
+            "q": "Tortu başqa biri qəbul edəcəksə, sifariş vermək olar?",
+            "a": "Bəli. Formada «Qəbul edən başqa şəxsdir» xanasını işarələyin, həmin şəxsin adını və telefonunu, kuryerlə çatdırılmada isə ünvanını yazın. Sizin adınız və telefonunuz da lazımdır: sifarişin detallarını sizinlə dəqiqləşdiririk."
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Bakıda tort sifarişi çətin deyil: dizaynı, ölçünü, içliyi və yazını seçin, tarixi ən azı iki gün əvvəldən ayırın və tortu necə alacağınıza qərar verin. Sualınız qalıbsa, sadəcə bizə yazın — tortu məhz sizin gününüzə hazırlayacağıq."
+      }
+    ]
+  },
+  "en": {
+    "title": "How to order a cake in Baku: from design to delivery",
+    "seo_title": "Order a cake in Baku: dates, delivery, Bolt | Vanilla Cake",
+    "seo_desc": "How to order a cake in Baku step by step: design, size, filling and lettering, booking 2+ days ahead, cake delivery by courier or Bolt, pickup and WhatsApp.",
+    "excerpt": "A step-by-step guide: choosing the design, size and filling, how far ahead to book, how delivery in Baku, Bolt and pickup work, and when your order counts as accepted.",
+    "image_alt": "Ordering a cake in Baku: a small bento cake with a white-to-blue gradient and “Happy Birthday” piped in blue cream, in a white bento box",
+    "body": [
+      {
+        "type": "p",
+        "text": "To **order a cake in Baku** from Vanilla Cake, you only need to decide six things: the design, the size, the sponge and filling, the lettering, the date and time, and how you will receive the cake. You choose it all in one form, on the cake’s page or in the cake builder, and it reaches us on WhatsApp as a single message. The earliest date is two days ahead, and the order counts as accepted once we confirm it. Below we go through each step in turn, along with our schedule, **cake delivery in Baku** by courier or via Bolt, and collecting the cake yourself."
+      },
+      {
+        "type": "p",
+        "text": "If you are still deciding whether a bento is right for you and want to understand the formats, weights and prices first, start with our guide to [what a bento cake is](/blog/bento-tort-nedir/). This article is purely practical: what to choose, and in what order, so the cake is ready on time. Before you open the form, it helps to know the answers to five questions:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Who the cake is for and why** — this shapes the design and the lettering;",
+          "**How many guests there will be** — this decides the size;",
+          "**What the person you are celebrating likes** — this guides the sponge and filling;",
+          "**When you need the cake** — the day and a convenient hour;",
+          "**Where you will receive it** — at home, at the office or at our bakery."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Step 1. Choose the design"
+      },
+      {
+        "type": "p",
+        "text": "There are three ways to choose a design, and they all lead to the same order form."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**From the catalogue.** The [bento cake catalogue](/bolme/bento-tort/) has ready-made designs for birthdays, anniversaries and just-because gifts. We recreate the design and pipe your own lettering — a name, an age or any phrase you like.",
+          "**From your own picture.** Every cake page has a “Send your own design” field: attach a photo of a cake you like (JPG, PNG or WebP, up to 8 MB) and we will recreate or adapt it; a link to the photo is added to your message. For a photo cake, send a large image that isn’t heavily zoomed in: we print it in edible ink right onto the cream.",
+          "**In the cake builder.** In the [online cake builder](/konstruktor/) you can put a design together in a few minutes: one of 19 cream colours, up to three pictures (your own photos included), up to three lines of text and a border. You can spin the finished cake around in 3D, and a link to the design image is added to the order automatically."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A few designs from the catalogue: some can be ordered as they are, while in others we change the name, date, photo or drawing to suit your occasion."
+      },
+      {
+        "type": "products",
+        "slugs": [
+          "bento-tort-hbd",
+          "bento-tort-happy-birthday",
+          "bento-tort-pink-heart",
+          "bento-tort-brown-dog",
+          "bento-tort-foto-sekilli-hediyye",
+          "bento-tort-hbd-green"
+        ]
+      },
+      {
+        "type": "cta",
+        "target": "konstruktor",
+        "title": "Can’t find the right design? Build your own",
+        "text": "Cream colour, pictures, lettering and border — you see the cake on screen before you order, and a link to the design reaches us with your message."
+      },
+      {
+        "type": "h2",
+        "text": "Step 2. Size, sponge and filling"
+      },
+      {
+        "type": "p",
+        "text": "Choose the size by the number of guests: a cake for 1–2 people weighs 300–350 g and costs 25 ₼; for 3–4 people it is 750–800 g at 35 ₼; for 7–8 people, 1200–1500 g at 60 ₼. The price depends only on the size, not on how complex the design is, so you see the total on the cake’s page straight away. Bow bentos don’t come in the small size, as the decoration needs height."
+      },
+      {
+        "type": "p",
+        "text": "Inside is sponge with cream cheese and a filling, chosen by the rule “1 sponge + 1 filling”. There are three sponges: vanilla, chocolate and red velvet. Once you pick a sponge in the form, the list shows only the fillings that go with it, so you can’t end up with a combination that doesn’t work. Every option is shown with photos on the [sponges and fillings page](/terkibler/)."
+      },
+      {
+        "type": "h2",
+        "text": "Step 3. Lettering on the cake"
+      },
+      {
+        "type": "p",
+        "text": "Lettering is free — in English, Russian or Azerbaijani. The cake page has a separate “Lettering” field: type the text exactly as it should appear in cream, for example “Happy birthday, Aysel!” In the builder you can add up to three lines and choose the lettering colour. If the words won’t come, browse our [cake lettering ideas](/blog/tort-ucun-yazilar/) for different occasions."
+      },
+      {
+        "type": "tip",
+        "text": "**Check the name before you send the order.** Write it exactly as you want it on the cake — in Latin or Cyrillic letters, spelt correctly and in the right form: “Aysel”, “Айсель” and “Ayselim” would be three different inscriptions."
+      },
+      {
+        "type": "h2",
+        "text": "Step 4. Date and time: how far ahead to order a cake"
+      },
+      {
+        "type": "p",
+        "text": "We take pre-orders only: there is no counter of ready-made cakes, and every cake is made for a specific day. That is why the earliest date in the order form’s calendar is two days away. For example, if you message us on Tuesday, the cake can be yours on Thursday. The sooner you order, the easier it is to get the day you want, especially before holidays. The simplest approach is to book as soon as you know the date."
+      },
+      {
+        "type": "p",
+        "text": "What to keep in mind when choosing the day and time:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Sunday is our day off.** You can’t select it in the calendar, and the same goes for our other non-working days. If the celebration falls on a Sunday, plan the cake for Saturday.",
+          "**Monday — not before 17:00.** We don’t work on Sunday, so Monday’s cakes are baked in the morning. If you message us on Friday, the earliest option is the following Monday, from 17:00.",
+          "**Saturday is a short day.** You can receive the cake from 11:00 to 14:00.",
+          "**You choose a one-hour slot.** For example, 15:00–16:00: pick an hour when you are sure to be there."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Step 5. Cake delivery in Baku or pickup"
+      },
+      {
+        "type": "p",
+        "text": "You choose how to receive the cake in the same form: courier delivery, Bolt Delivery or pickup. A quick overview:"
+      },
+      {
+        "type": "table",
+        "head": [
+          "Option",
+          "When",
+          "Address in the form"
+        ],
+        "rows": [
+          [
+            "Courier delivery",
+            "Mon–Fri 11:00–20:00",
+            "Required: street, building, apartment; you can mark the spot on a map"
+          ],
+          [
+            "Bolt Delivery",
+            "Mon–Fri 11:00–22:00",
+            "Not needed: you book the Bolt courier to our address yourself"
+          ],
+          [
+            "Pickup",
+            "At the hour you chose when ordering",
+            "Not needed: you collect the cake from us"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The general schedule: on Saturday you can receive the cake from 11:00 to 14:00, on Monday not before 17:00, and Sunday is our day off."
+      },
+      {
+        "type": "h3",
+        "text": "Courier"
+      },
+      {
+        "type": "p",
+        "text": "Enter the address — street, building and apartment. To save the courier hunting for the right building, tap “Pick on map” and mark the spot: a link to it is added to the message. We sort out the delivery details on WhatsApp when we confirm your order."
+      },
+      {
+        "type": "h3",
+        "text": "Bolt Delivery"
+      },
+      {
+        "type": "p",
+        "text": "Bolt Delivery runs on weekdays from 11:00 to 22:00. Here is how it works:"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "Choose Bolt Delivery in the form and send the order.",
+          "We confirm the order on WhatsApp and message you again when the cake is ready for handover.",
+          "You book the Bolt courier to our address yourself — we don’t book it for you. A Google Maps link to our address is right there in the order form."
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "Pickup"
+      },
+      {
+        "type": "p",
+        "text": "You can collect the cake yourself at the hour you chose. The bakery’s address and the “Get directions” buttons for Google Maps and Waze are on the [Vanilla Cake contact page](/elaqe/). Keep the cake on a flat surface on the way, and in summer travel in an air-conditioned car; you will find more practical tips in our [questions and answers](/faq/)."
+      },
+      {
+        "type": "p",
+        "text": "If someone else will receive the cake, tick “The recipient is someone else” in the form and enter their name and phone number. To turn that delivery into a real surprise, see our article on [sending a cake as a gift](/blog/hediyye-tort/)."
+      },
+      {
+        "type": "h2",
+        "text": "Step 6. Send the order and wait for confirmation"
+      },
+      {
+        "type": "p",
+        "text": "Once everything is chosen, press “Order this cake”. In the form that opens, choose how you will receive the cake, the date and the time, then enter your name and phone number. Only these two fields are required, plus the address for courier delivery: we use your name and number to get in touch and agree the details. The “Send via WhatsApp” button opens a chat with a ready-made message that already contains the size, sponge, filling, lettering, date, time, delivery option and a link to the cake you chose — and, for a builder order, a link to your design too. There is nothing to retype: just send the message."
+      },
+      {
+        "type": "tip",
+        "text": "**Your order is considered accepted only after our confirmation on WhatsApp.** The message you send is a request: we check the details and reply. Until you have our confirmation, the date isn’t reserved for you yet."
+      },
+      {
+        "type": "p",
+        "text": "If you would rather talk it all through by message, write to us directly on [WhatsApp](wa) at +994 55 215 63 43 or on Instagram at @vanilla_cake_az: send a picture or an idea, and we will put the order together with you."
+      },
+      {
+        "type": "cta",
+        "target": "wa",
+        "title": "Ready to order your cake?",
+        "text": "Message us on WhatsApp — we will help you choose the design, size and filling, then confirm the order for your date."
+      },
+      {
+        "type": "h2",
+        "text": "Cake ordering FAQ"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "q": "Can I order a cake for tomorrow?",
+            "a": "Tomorrow can’t be selected in the order form: the earliest date is two days ahead, because we make every cake specially for your day. Before holidays, it’s best to get in touch even earlier."
+          },
+          {
+            "q": "Are you open on Sunday?",
+            "a": "No, Sunday is our day off. On Saturday you can receive the cake from 11:00 to 14:00, and on Monday from 17:00."
+          },
+          {
+            "q": "How do I get my cake via Bolt?",
+            "a": "Choose Bolt Delivery in the form. We will message you on WhatsApp when the cake is ready for handover, and you book the Bolt courier to our address yourself. Bolt Delivery runs on weekdays from 11:00 to 22:00, and on Mondays from 17:00."
+          },
+          {
+            "q": "When is my order accepted?",
+            "a": "Only once we confirm it on WhatsApp. Until we reply, the order isn’t accepted yet."
+          },
+          {
+            "q": "Can I order a cake for someone else to receive?",
+            "a": "Yes. Tick “The recipient is someone else” in the form, enter their name and phone number and, for courier delivery, their address. We need your name and phone number too, as we confirm the order details with you."
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Ordering a cake in Baku is simple: choose the design, size, filling and lettering, book your date at least two days ahead and decide how you will receive the cake. If you still have questions, just message us, and we’ll have your cake ready for the day."
+      }
+    ]
+  }
+}
