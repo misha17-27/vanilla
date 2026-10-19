@@ -132,8 +132,8 @@ function schema_add(array $node): void
 // Хлебные крошки: [[название, адрес], …] — «Главная» подставляется сама
 function schema_breadcrumbs(array $items): void
 {
-    global $t;
-    $list = [['@type' => 'ListItem', 'position' => 1, 'name' => $t['breadcrumb_home'], 'item' => CANON_HOST . '/']];
+    global $t, $lang;
+    $list = [['@type' => 'ListItem', 'position' => 1, 'name' => $t['breadcrumb_home'], 'item' => CANON_HOST . lang_path($lang, '/')]];
     foreach ($items as $i => [$name, $url]) {
         $node = ['@type' => 'ListItem', 'position' => $i + 2, 'name' => $name];
         if ($url) $node['item'] = CANON_HOST . $url;

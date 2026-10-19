@@ -20,6 +20,8 @@ RewriteRule ^fillings\.php$    /terkibler/         [R=301,L]
 RewriteRule ^konstruktor\.php$ /konstruktor/       [R=301,L]
 RewriteRule ^reviews\.php$     /reyler/            [R=301,L]
 RewriteRule ^sitemap\.php$     /sitemap.xml        [R=301,L]
+RewriteRule ^blog\.php$        /blog/              [R=301,L]
+RewriteRule ^blog-post\.php$   /blog/              [R=301,L]
 
 # Главная тоже идёт через router.php: иначе Apache отдаёт index.php сам
 # и ?lang=xx на ней не превращается в /az/ и /en/

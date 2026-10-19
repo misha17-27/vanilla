@@ -35,6 +35,14 @@ $entries = [
 foreach (own_categories() as $c) {
     $entries[] = [cat_path($c), $day($dataStamp)];
 }
+// Блог: у статьи дата последней правки и обложка
+require_once __DIR__ . '/includes/blog.php';
+$blogLast = '';
+foreach (blog_posts() as $bp) {
+    $blogLast = max($blogLast, blog_updated($bp));
+    $entries[] = [blog_path($bp), blog_updated($bp), asset((string)$bp['image'])];
+}
+$entries[] = ['/blog/', $blogLast !== '' ? max($blogLast, $pageStamp('blog.php')) : $pageStamp('blog.php')];
 // У товара своя дата: когда его правили, иначе когда добавили. Одинаковый
 // lastmod у всех страниц поиск быстро перестаёт учитывать.
 foreach ($PRODUCTS as $p) {

@@ -119,7 +119,12 @@ html.anim .reveal.in{opacity:1;transform:none}
 .lang-menu a{padding:8px 12px;border-radius:8px;font-size:11.5px;font-weight:700;letter-spacing:.05em;color:var(--text);transition:.15s}
 .lang-menu a:hover{background:var(--blue-soft);color:var(--navy)}
 .lang-menu a.active{background:var(--navy);color:#fff}
-.btn-nav{padding:13px 24px}
+.btn-nav{padding:13px 24px;white-space:nowrap}
+/* логотип не сжимаем; на узком десктопе пункты меню плотнее, а «Главную» прячем —
+   туда ведёт логотип. Иначе с «Блогом» при 1061–1180 px логотип сплющивался,
+   а кнопка «Заказать» переносилась */
+.nav>.logo{flex-shrink:0}
+@media (width > 1060px) and (width <= 1180px){.nav{gap:12px}.menu{gap:12px}.btn-nav{padding:13px 20px}.menu .nav-index{display:none}}
 .burger{display:none;background:none;border:none;cursor:pointer;padding:8px}
 .burger span{display:block;width:24px;height:2px;background:var(--navy);margin:5px 0;transition:.3s}
 /* ===== Hero (слайдер по категориям) ===== */
@@ -801,3 +806,62 @@ html.no-scroll{overflow:hidden}
 @media (max-width:1060px){.k-toast{position:fixed;left:16px;right:16px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:92}}
 @media (max-width:560px){.k-3d-rot{width:36px;height:36px;margin-top:-18px}.k-3d-rot.l{left:8px}.k-3d-rot.r{right:8px}.k-3d-hint{font-size:11.5px;top:10px}}
 @media (max-width:560px){.k-edge{padding:9px 10px;gap:10px}.k-edge-ico{width:34px;height:34px}.k-edge-txt small{font-size:11.5px}}
+/* ===== Блог ===== */
+.b-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.b-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:.3s}
+.b-card:hover{box-shadow:var(--shadow-s);transform:translateY(-3px)}
+.b-card-ph{display:block;aspect-ratio:4/3;overflow:hidden;background:var(--blue-soft)}
+.b-card-ph img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.b-card:hover .b-card-ph img{transform:scale(1.04)}
+.b-card-body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.b-card-body h2{font-family:var(--serif);font-size:25px;line-height:1.2;color:var(--navy)}
+.b-card-body h2 a:hover{color:var(--pink)}
+.b-card-body p{font-size:14px;line-height:1.65;margin:0}
+.b-more{margin-top:auto;padding-top:6px;font-size:13px;font-weight:700;color:var(--pink);letter-spacing:.02em}
+.b-meta{font-size:12.5px;color:var(--text);letter-spacing:.02em}
+.b-hero .b-meta{margin-top:14px}
+.b-empty{text-align:center;font-size:15px}
+.b-section{padding-top:56px}
+.b-article{max-width:780px;margin:0 auto}
+.b-cover{margin:0 0 34px;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/10;background:var(--blue-soft)}
+.b-cover img{width:100%;height:100%;object-fit:cover}
+.b-toc{background:var(--blue-soft);border-radius:16px;padding:22px 26px;margin:0 0 34px}
+.b-toc b{display:block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
+.b-toc ol{margin:0;padding-left:20px;display:grid;gap:6px}
+.b-toc a{color:var(--ink);font-size:14px;font-weight:500}
+.b-toc a:hover{color:var(--pink)}
+.b-body{font-size:16px;line-height:1.8;color:var(--ink)}
+.b-body p{margin:0 0 18px}
+.b-body h2{font-size:clamp(27px,3.2vw,34px);margin:44px 0 16px;scroll-margin-top:96px}
+.b-body h3{font-family:var(--serif);font-size:23px;color:var(--navy);margin:30px 0 12px;line-height:1.25}
+.b-body ul,.b-body ol{margin:0 0 20px;padding-left:22px;display:grid;gap:8px}
+.b-body ul{list-style:disc}
+.b-body li::marker{color:var(--pink)}
+.b-body a{color:var(--pink);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.b-body a.btn{text-decoration:none;color:#fff}
+.b-body strong{color:var(--navy)}
+.b-tip{background:var(--pink-mist);border-left:3px solid var(--pink);border-radius:0 14px 14px 0;padding:16px 20px;margin:0 0 22px;font-size:15px}
+.b-table{overflow-x:auto;margin:0 0 24px;border:1px solid var(--line);border-radius:14px}
+.b-table table{width:100%;border-collapse:collapse;font-size:14.5px}
+.b-table th{background:var(--blue-soft);color:var(--navy);font-weight:700;text-align:left;padding:12px 16px;white-space:nowrap}
+.b-table td{padding:12px 16px;border-top:1px solid var(--line)}
+.b-fig{margin:0 0 26px}
+.b-fig img{width:100%;height:auto;border-radius:16px}
+.b-fig figcaption{font-size:13px;color:var(--text);margin-top:8px;text-align:center}
+.b-products{grid-template-columns:repeat(3,1fr);gap:18px;margin:6px 0 28px}
+/* в карточках тортов — их собственное оформление, а не стили текста статьи */
+.b-body .pcard h3{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink);line-height:1.4;margin:0}
+.b-body .pcard a{text-decoration:none}
+.b-body .pcard a:not(.pcard-wa){color:inherit;font-weight:inherit}
+.b-body .pcard a:not(.pcard-wa):hover{color:var(--pink)}
+.b-cta{display:flex;align-items:center;justify-content:space-between;gap:22px;background:linear-gradient(165deg,var(--blue),var(--blue-soft));border-radius:var(--radius);padding:24px 28px;margin:8px 0 28px}
+.b-cta-txt{display:grid;gap:4px}
+.b-cta-txt b{font-family:var(--serif);font-size:24px;color:var(--navy);line-height:1.2}
+.b-cta-txt span{font-size:14.5px;color:var(--text);line-height:1.6}
+.b-cta .btn{flex:none}
+.b-faq{max-width:none;margin:0 0 24px}
+.b-more-wrap{max-width:1180px;margin:72px auto 0}
+.b-more-h{text-align:center;margin-bottom:30px}
+@media (max-width:1060px){.b-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.b-products{grid-template-columns:1fr 1fr;gap:12px}.b-cta{flex-direction:column;align-items:flex-start;padding:20px 22px}.b-body{font-size:15.5px}.b-section{padding-top:36px}}
+@media (max-width:560px){.b-grid{grid-template-columns:1fr;gap:20px}.b-card-body h2{font-size:23px}.b-toc{padding:18px 20px}}

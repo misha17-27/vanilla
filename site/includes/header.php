@@ -18,6 +18,7 @@ $nav = [
     'ctg'      => [u('/bolme/cake-to-go/'),   $t['nav_ctg']],
     'fillings' => [u('/terkibler/'),          $t['nav_fillings']],
     'konstr'   => [u('/konstruktor/'),        $t['nav_konstr']],
+    'blog'     => [u('/blog/'),               $t['nav_blog']],
     'contact'  => [u('/elaqe/'),              $t['nav_contact']],
 ];
 // «Отзывы», «О нас» и FAQ в верхнем меню не показываем — они в подвале
@@ -51,6 +52,10 @@ $OG_LOCALE = ['ru' => 'ru_RU', 'az' => 'az_AZ', 'en' => 'en_US'];
 <meta property="og:url" content="<?= e($canonical) ?>">
 <meta property="og:image" content="<?= e($og_image) ?>">
 <meta property="og:image:alt" content="<?= e($page_title) ?>">
+<?php if (!empty($og_article)): ?>
+<meta property="article:published_time" content="<?= e($og_article['published']) ?>">
+<meta property="article:modified_time" content="<?= e($og_article['modified']) ?>">
+<?php endif; ?>
 <?php if (!empty($og_price)): ?>
 <meta property="product:price:amount" content="<?= e((string)$og_price) ?>">
 <meta property="product:price:currency" content="AZN">
@@ -122,7 +127,7 @@ if (GA_ID !== '' && !in_array($gaHost, ['localhost', '127.0.0.1', '::1'], true))
         </li>
         <?php foreach ($nav as $slug => $item): ?>
         <?php [$href, $label] = $item; $sub = $item[2] ?? null; ?>
-        <li class="<?= $sub ? 'has-sub' : '' ?>">
+        <li class="nav-<?= e($slug) ?><?= $sub ? ' has-sub' : '' ?>">
           <a href="<?= $href ?>" class="<?= $slug === ($page ?? '') || ($sub && isset($sub[$page ?? ''])) ? 'active' : '' ?>">
             <?= e($label) ?>
             <?php if ($sub): ?><svg class="sub-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg><?php endif; ?>

@@ -27,6 +27,7 @@
           <li><a href="<?= e(u('/haqqimizda/')) ?>"><?= e($t['nav_about']) ?></a></li>
           <li><a href="<?= e(u('/reyler/')) ?>"><?= e($t['nav_reviews']) ?></a></li>
           <li><a href="<?= e(u('/faq/')) ?>"><?= e($t['nav_faq']) ?></a></li>
+          <li><a href="<?= e(u('/blog/')) ?>"><?= e($t['nav_blog']) ?></a></li>
           <li><a href="<?= e(u('/elaqe/')) ?>"><?= e($t['nav_contact']) ?></a></li>
         </ul>
       </div>
@@ -120,7 +121,7 @@ foreach ($SCHEMA as $node) $graph[] = $node;
 ?>
 <script type="application/ld+json"><?= json_encode(
     ['@context' => 'https://schema.org', '@graph' => $graph],
-    JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+    JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP
 ) ?></script>
 </body>
 </html>

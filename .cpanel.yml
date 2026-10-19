@@ -6,8 +6,9 @@ deployment:
     - /bin/mkdir -p $DEPLOYPATH/data/backups
     - /bin/mkdir -p $DEPLOYPATH/uploads/designs
     - /bin/mkdir -p $DEPLOYPATH/uploads/ratelimit
-    - /bin/cp -R $SRC/admin $SRC/assets $SRC/includes $SRC/lang $DEPLOYPATH/
-    - /bin/cp -f $SRC/about.php $SRC/bento.php $SRC/cake-to-go.php $SRC/category.php $DEPLOYPATH/
+    - /bin/rm -rf $DEPLOYPATH/content
+    - /bin/cp -R $SRC/admin $SRC/assets $SRC/content $SRC/includes $SRC/lang $DEPLOYPATH/
+    - /bin/cp -f $SRC/about.php $SRC/bento.php $SRC/blog.php $SRC/blog-post.php $SRC/cake-to-go.php $SRC/category.php $DEPLOYPATH/
     - /bin/cp -f $SRC/contact.php $SRC/faq.php $SRC/fillings.php $SRC/index.php $DEPLOYPATH/
     - /bin/cp -f $SRC/konstruktor.php $SRC/mehsul.php $SRC/order-save.php $DEPLOYPATH/
     - /bin/cp -f $SRC/reviews.php $SRC/router.php $SRC/sitemap.php $SRC/upload-design.php $DEPLOYPATH/

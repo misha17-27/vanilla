@@ -7,7 +7,7 @@ $uri  = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
 $reqPath = $uri;                     // как запросили, с приставкой языка и без правок
 
 // Служебные каталоги и скрытые файлы наружу не отдаём
-if (preg_match('#^/(uploads/ratelimit/|data/|includes/|lang/)#', $uri) || str_contains($uri, '/.')) {
+if (preg_match('#^/(uploads/ratelimit|data|includes|lang|content)[. ]*(/|$)#i', $uri) || str_contains($uri, '/.')) {
     http_response_code(404);
     exit;
 }
@@ -191,6 +191,20 @@ if (preg_match('#^/bolme/bento-tort/page/\d+/$#', $path)) {
 if (isset($routes[$path])) {
     require __DIR__ . '/' . $routes[$path];
     exit;
+}
+
+// Блог: список статей и сами статьи. Несуществующая статья — обычная 404
+if ($path === '/blog/') {
+    require __DIR__ . '/blog.php';
+    exit;
+}
+if (preg_match('#^/blog/([a-z0-9-]+)/$#', $path, $m)) {
+    require_once __DIR__ . '/includes/blog.php';
+    if (blog_post($m[1])) {
+        $ROUTE_SLUG = $m[1];
+        require __DIR__ . '/blog-post.php';
+        exit;
+    }
 }
 
 if (preg_match('#^/mehsul/([a-z0-9_-]+)/$#i', $path, $m)) {
