@@ -5,16 +5,11 @@ $rev   = json_decode((string)@file_get_contents(REVIEWS_FILE_ADM), true) ?: ['it
 $items = $rev['items'] ?? [];
 $withText = count(array_filter($items, fn($x) => trim((string)($x['text'] ?? '')) !== ''));
 ?>
-<div class="head">
-  <div>
-    <h1>Отзывы</h1>
-    <p class="muted">Скриншотов <?= count($items) ?>, с расшифровкой <?= $withText ?>. Текст показывается на странице отзывов и попадает в поиск — картинку Google не читает.</p>
-  </div>
-</div>
+<p class="muted" style="margin:0 0 16px">Скриншотов <?= count($items) ?>, с расшифровкой <?= $withText ?>. Текст показывается на странице отзывов и попадает в поиск — картинку Google не читает.</p>
 
 <form method="post" class="card pad">
   <input type="hidden" name="action" value="reviews_save">
-  <input type="hidden" name="csrf" value="<?= e(csrf()) ?>">
+  <input type="hidden" name="csrf" value="<?= e($_SESSION['csrf']) ?>">
 
   <div class="rev-adm">
     <?php foreach ($items as $i => $it): ?>

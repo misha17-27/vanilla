@@ -13,3 +13,4 @@ site/data/backups/
 site/data/orders.json
 site/data/users.json
 site/data/security.json
+site/data/blog/

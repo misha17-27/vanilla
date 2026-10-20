@@ -1,34 +1,78 @@
 <?php
-// Блог: каждая статья — отдельный файл content/blog/{slug}.json.
+// Блог: каждая статья — отдельный JSON-файл {slug}.json.
 // В нём общие поля (дата, фото) и тексты на трёх языках: ru / az / en.
 // Текст статьи — список блоков (абзац, подзаголовок, список, таблица, карточки
 // тортов, приглашение в конструктор…), см. blog_render().
+//
+// Статьи лежат в двух местах:
+//  content/blog/ — из репозитория, при деплое папка заменяется целиком;
+//  data/blog/    — созданные и изменённые в админке. Деплой data/ не трогает,
+//                  а файл с тем же slug перекрывает версию из репозитория.
 require_once __DIR__ . '/config.php';
 
-const BLOG_DIR = __DIR__ . '/../content/blog';
+const BLOG_DIR      = __DIR__ . '/../content/blog';
+const BLOG_DATA_DIR = __DIR__ . '/../data/blog';
+
+function blog_read(string $f): ?array
+{
+    $p = json_decode((string)@file_get_contents($f), true);
+    if (!is_array($p) || ($p['slug'] ?? '') !== basename($f, '.json')) return null;
+    if (!preg_match('/^[a-z0-9-]+$/', $p['slug'])) return null;
+    return $p;
+}
+
+// Все статьи, включая черновики. src: repo — из репозитория, override —
+// из репозитория, но изменена в админке, admin — создана в админке.
+function blog_all(): array
+{
+    static $all = null;
+    if ($all !== null) return $all;
+    $all = [];
+    foreach (glob(BLOG_DIR . '/*.json') ?: [] as $f) {
+        if ($p = blog_read($f)) $all[$p['slug']] = $p + ['_src' => 'repo'];
+    }
+    foreach (glob(BLOG_DATA_DIR . '/*.json') ?: [] as $f) {
+        if (!($p = blog_read($f))) continue;
+        $p['_src'] = isset($all[$p['slug']]) ? 'override' : 'admin';
+        // исходную статью в коде обновили уже после правки в админке
+        $repo = BLOG_DIR . '/' . $p['slug'] . '.json';
+        $p['_stale'] = $p['_src'] === 'override' && !empty($p['_base']) && is_file($repo) && sha1_file($repo) !== $p['_base'];
+        $all[$p['slug']] = $p;
+    }
+    uasort($all, fn($a, $b) => strcmp((string)($b['published'] ?? ''), (string)($a['published'] ?? '')) ?: strcmp($a['slug'], $b['slug']));
+    return $all;
+}
+
+// Языки, на которых статья не готова (нет заголовка или текста)
+function blog_missing_langs(array $p): array
+{
+    global $LANGS;
+    return array_values(array_filter($LANGS, fn($l) => trim((string)($p[$l]['title'] ?? '')) === '' || empty($p[$l]['body'])));
+}
+
+// Сегодня по бакинскому времени, а не по часовому поясу сервера
+function blog_today(): string
+{
+    return (new DateTime('now', new DateTimeZone('Asia/Baku')))->format('Y-m-d');
+}
+
+// Состояние статьи: live — на сайте, draft, scheduled (дата в будущем), incomplete
+function blog_state(array $p): string
+{
+    if (!empty($p['draft'])) return 'draft';
+    // Статья выходит, только когда готовы все три языка: иначе hreflang
+    // и переключатель языка вели бы на пустые страницы
+    if (blog_missing_langs($p)) return 'incomplete';
+    if ((string)($p['published'] ?? '9999') > blog_today()) return 'scheduled';
+    return 'live';
+}
 
 // Все опубликованные статьи, свежие первыми
 function blog_posts(): array
 {
-    global $LANGS;
     static $posts = null;
     if ($posts !== null) return $posts;
-    $posts = [];
-    // дата публикации — по бакинскому времени, а не по часовому поясу сервера
-    $today = (new DateTime('now', new DateTimeZone('Asia/Baku')))->format('Y-m-d');
-    foreach (glob(BLOG_DIR . '/*.json') ?: [] as $f) {
-        $p = json_decode((string)file_get_contents($f), true);
-        if (!is_array($p) || ($p['slug'] ?? '') !== basename($f, '.json')) continue;
-        if (!preg_match('/^[a-z0-9-]+$/', $p['slug'])) continue;
-        if (!empty($p['draft']) || ($p['published'] ?? '9999') > $today) continue;
-        // Статья выходит, только когда готовы все три языка: иначе hreflang
-        // и переключатель языка вели бы на пустые страницы
-        foreach ($LANGS as $l) {
-            if (trim((string)($p[$l]['title'] ?? '')) === '' || empty($p[$l]['body'])) continue 2;
-        }
-        $posts[$p['slug']] = $p;
-    }
-    uasort($posts, fn($a, $b) => strcmp($b['published'], $a['published']) ?: strcmp($a['slug'], $b['slug']));
+    $posts = array_filter(blog_all(), fn($p) => blog_state($p) === 'live');
     return $posts;
 }
 
@@ -230,4 +274,171 @@ function blog_card(array $p, bool $lazy = true): string
         . '<p>' . e(blog_text($p, 'excerpt')) . '</p>'
         . '<a class="b-more" href="' . e($url) . '">' . e($t['blog_read']) . ' →</a>'
         . '</div></article>';
+}
+
+
+// ===== Текст статьи в админке =====
+// В админке статью правят обычным текстом с простой разметкой, а хранится она
+// блоками. Эти две функции переводят одно в другое; разметка:
+//   ## Подзаголовок            ### Подзаголовок поменьше
+//   Абзац — строки до пустой строки (переносы внутри склеиваются)
+//   - пункт списка             1. пункт нумерованного списка
+//   > совет в рамке
+//   | Ячейка | Ячейка |       таблица: первая строка — шапка, строка |---| можно не писать
+//   [товары: slug, slug, slug]
+//   [кнопка: konstruktor | Заголовок | Текст | Надпись на кнопке]
+//   [фото: /assets/img/... | описание фото | подпись]
+//   ? Вопрос                   ответ — на следующих строках; подряд идущие вопросы
+//   Ответ                      собираются в один блок «Частые вопросы»
+// Внутри текста: **жирный** и [текст ссылки](/адрес/).
+
+function blog_to_text(array $blocks): string
+{
+    $out = [];
+    $faqOpen = false;
+    foreach ($blocks as $b) {
+        $type = (string)($b['type'] ?? '');
+        switch ($type) {
+            case 'p':
+                $out[] = (string)$b['text'];
+                break;
+            case 'h2':
+                $out[] = '## ' . $b['text'];
+                break;
+            case 'h3':
+                $out[] = '### ' . $b['text'];
+                break;
+            case 'ul':
+                $out[] = implode("\n", array_map(fn($i) => '- ' . $i, (array)$b['items']));
+                break;
+            case 'ol':
+                $n = 0;
+                $out[] = implode("\n", array_map(function ($i) use (&$n) { return (++$n) . '. ' . $i; }, (array)$b['items']));
+                break;
+            case 'tip':
+                $out[] = '> ' . $b['text'];
+                break;
+            case 'table':
+                $rows = ['| ' . implode(' | ', (array)$b['head']) . ' |', '|' . str_repeat('---|', count((array)$b['head']))];
+                foreach ((array)$b['rows'] as $r) $rows[] = '| ' . implode(' | ', (array)$r) . ' |';
+                $out[] = implode("\n", $rows);
+                break;
+            case 'img':
+                $out[] = '[фото: ' . $b['src'] . ' | ' . ($b['alt'] ?? '') . ' | ' . ($b['caption'] ?? '') . ']';
+                break;
+            case 'products':
+                $out[] = '[товары: ' . implode(', ', (array)$b['slugs']) . ']';
+                break;
+            case 'cta':
+                $out[] = '[кнопка: ' . ($b['target'] ?? 'konstruktor') . ' | ' . ($b['title'] ?? '') . ' | ' . ($b['text'] ?? '') . ' | ' . ($b['button'] ?? '') . ']';
+                break;
+            case 'faq':
+                $qa = [];
+                foreach ((array)$b['items'] as $it) $qa[] = '? ' . $it['q'] . "\n" . $it['a'];
+                $out[] = implode("\n\n", $qa);
+                break;
+        }
+    }
+    return implode("\n\n", $out) . "\n";
+}
+
+// Обратно: текст из админки в блоки. Неизвестная разметка остаётся обычным абзацем.
+function blog_from_text(string $txt): array
+{
+    $lines = preg_split('/\r\n|\r|\n/', str_replace("\t", ' ', $txt));
+    $blocks = [];
+    $n = count($lines);
+    $i = 0;
+    $isSpecial = fn(string $s): bool => (bool)preg_match('/^(#{2,3} |- |\d+\. |> |\||\? |\[(товары|кнопка|фото):)/u', $s);
+    while ($i < $n) {
+        $line = trim($lines[$i]);
+        if ($line === '') { $i++; continue; }
+
+        if (preg_match('/^(#{2,3}) (.+)$/u', $line, $m)) {
+            $blocks[] = ['type' => strlen($m[1]) === 2 ? 'h2' : 'h3', 'text' => trim($m[2])];
+            $i++;
+            continue;
+        }
+        if (preg_match('/^\[(товары|кнопка|фото):\s*(.*)\]$/u', $line, $m)) {
+            $parts = array_map('trim', explode('|', $m[2]));
+            if ($m[1] === 'товары') {
+                $slugs = array_values(array_filter(array_map('trim', explode(',', $m[2])), fn($s) => $s !== ''));
+                $blocks[] = ['type' => 'products', 'slugs' => $slugs];
+            } elseif ($m[1] === 'кнопка') {
+                $b = ['type' => 'cta', 'target' => $parts[0] !== '' ? $parts[0] : 'konstruktor'];
+                if (($parts[1] ?? '') !== '') $b['title'] = $parts[1];
+                if (($parts[2] ?? '') !== '') $b['text'] = $parts[2];
+                if (($parts[3] ?? '') !== '') $b['button'] = $parts[3];
+                $blocks[] = $b;
+            } else {
+                $b = ['type' => 'img', 'src' => $parts[0], 'alt' => $parts[1] ?? ''];
+                if (($parts[2] ?? '') !== '') $b['caption'] = $parts[2];
+                $blocks[] = $b;
+            }
+            $i++;
+            continue;
+        }
+        if (str_starts_with($line, '- ') || preg_match('/^\d+\. /', $line)) {
+            $ordered = !str_starts_with($line, '- ');
+            $items = [];
+            while ($i < $n) {
+                $l = trim($lines[$i]);
+                if ($ordered && preg_match('/^\d+\. (.*)$/u', $l, $m)) $items[] = trim($m[1]);
+                elseif (!$ordered && str_starts_with($l, '- ')) $items[] = trim(substr($l, 2));
+                else break;
+                $i++;
+            }
+            $blocks[] = ['type' => $ordered ? 'ol' : 'ul', 'items' => $items];
+            continue;
+        }
+        if (str_starts_with($line, '> ')) {
+            $parts = [];
+            while ($i < $n && str_starts_with(trim($lines[$i]), '> ')) { $parts[] = trim(substr(trim($lines[$i]), 2)); $i++; }
+            $blocks[] = ['type' => 'tip', 'text' => implode(' ', $parts)];
+            continue;
+        }
+        if (str_starts_with($line, '|')) {
+            $rows = [];
+            while ($i < $n && str_starts_with(trim($lines[$i]), '|')) {
+                $l = trim($lines[$i]);
+                $i++;
+                if (preg_match('/^\|[\s:|-]+\|?$/', $l) && str_contains($l, '-')) continue;   // |---|---|
+                $cells = array_map('trim', explode('|', trim($l, '|')));
+                $rows[] = $cells;
+            }
+            if ($rows) $blocks[] = ['type' => 'table', 'head' => array_shift($rows), 'rows' => $rows];
+            continue;
+        }
+        if (str_starts_with($line, '? ')) {
+            $items = [];
+            while ($i < $n) {
+                $l = trim($lines[$i]);
+                if ($l === '') {
+                    // пустая строка: вопросы продолжаются, если дальше снова «? »
+                    $j = $i;
+                    while ($j < $n && trim($lines[$j]) === '') $j++;
+                    if ($j < $n && str_starts_with(trim($lines[$j]), '? ')) { $i = $j; continue; }
+                    break;
+                }
+                if (!str_starts_with($l, '? ')) break;
+                $q = trim(substr($l, 2));
+                $i++;
+                $ans = [];
+                while ($i < $n && trim($lines[$i]) !== '' && !str_starts_with(trim($lines[$i]), '? ')) { $ans[] = trim($lines[$i]); $i++; }
+                $items[] = ['q' => $q, 'a' => implode(' ', $ans)];
+            }
+            $blocks[] = ['type' => 'faq', 'items' => $items];
+            continue;
+        }
+        // абзац: до пустой строки или до строки с разметкой
+        $parts = [];
+        while ($i < $n) {
+            $l = trim($lines[$i]);
+            if ($l === '' || ($parts && $isSpecial($l))) break;
+            $parts[] = $l;
+            $i++;
+        }
+        $blocks[] = ['type' => 'p', 'text' => implode(' ', $parts)];
+    }
+    return $blocks;
 }

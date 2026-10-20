@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/blog.php';
 $LANG_BASE = '';   // адреса тут всегда без языковой приставки
 header('Content-Type: application/xml; charset=UTF-8');
 
@@ -20,55 +21,62 @@ $pageStamp = function (string $file) use ($textStamp): string {
     return date('Y-m-d', $ts ?: time());
 };
 
-// Список страниц: адрес без языка + дата изменения
-$entries = [
-    ['/',                   $pageStamp('index.php')],
-    ['/bolme/bento-tort/',  $day(max($dataStamp, (int)@filemtime(__DIR__ . '/bento.php')))],
-    ['/bolme/cake-to-go/',  $day(max($dataStamp, (int)@filemtime(__DIR__ . '/cake-to-go.php')))],
-    ['/terkibler/',         $pageStamp('fillings.php')],
-    ['/reyler/',            $pageStamp('reviews.php')],
-    ['/konstruktor/',       $pageStamp('konstruktor.php')],
-    ['/haqqimizda/',        $pageStamp('about.php')],
-    ['/faq/',               $pageStamp('faq.php')],
-    ['/elaqe/',             $pageStamp('contact.php')],
-];
+// Запись карты: адрес без языка, дата изменения, как часто меняется, важность
+// и фото (по нему приходят из Google Картинок). Порядок — как у argflex.co.uk:
+// страницы, разделы, товары, статьи.
+$entries = [];
+$add = function (string $path, string $mod, string $freq, string $prio, string $img = '') use (&$entries) {
+    $entries[] = compact('path', 'mod', 'freq', 'prio', 'img');
+};
+
+$add('/',                  $pageStamp('index.php'),                                      'daily',   '1.0');
+$add('/bolme/bento-tort/', $day(max($dataStamp, (int)@filemtime(__DIR__ . '/bento.php'))), 'weekly',  '0.9');
+$add('/bolme/cake-to-go/', $day(max($dataStamp, (int)@filemtime(__DIR__ . '/cake-to-go.php'))), 'weekly', '0.9');
 foreach (own_categories() as $c) {
-    $entries[] = [cat_path($c), $day($dataStamp)];
+    $add(cat_path($c), $day($dataStamp), 'weekly', '0.9');
 }
-// Блог: у статьи дата последней правки и обложка
-require_once __DIR__ . '/includes/blog.php';
+$add('/konstruktor/',      $pageStamp('konstruktor.php'), 'monthly', '0.8');
+$add('/terkibler/',        $pageStamp('fillings.php'),    'monthly', '0.7');
+$add('/reyler/',           $pageStamp('reviews.php'),     'weekly',  '0.6');
+$add('/faq/',              $pageStamp('faq.php'),         'monthly', '0.5');
+$add('/haqqimizda/',       $pageStamp('about.php'),       'monthly', '0.5');
+$add('/elaqe/',            $pageStamp('contact.php'),     'monthly', '0.5');
+
+// Блог: список статей меняется с каждой новой статьёй
+$posts = blog_posts();
 $blogLast = '';
-foreach (blog_posts() as $bp) {
-    $blogLast = max($blogLast, blog_updated($bp));
-    $entries[] = [blog_path($bp), blog_updated($bp), asset((string)$bp['image'])];
-}
-$entries[] = ['/blog/', $blogLast !== '' ? max($blogLast, $pageStamp('blog.php')) : $pageStamp('blog.php')];
+foreach ($posts as $bp) $blogLast = max($blogLast, blog_updated($bp));
+$add('/blog/', $blogLast !== '' ? max($blogLast, $pageStamp('blog.php')) : $pageStamp('blog.php'), 'weekly', '0.7');
+
 // У товара своя дата: когда его правили, иначе когда добавили. Одинаковый
 // lastmod у всех страниц поиск быстро перестаёт учитывать.
 foreach ($PRODUCTS as $p) {
     $ts = (int)($p['updated'] ?? 0) ?: (int)($p['created'] ?? 0);
-    // третьим элементом — фотография торта: по ней приходят из Google Картинок
-    $entries[] = ['/mehsul/' . $p['slug'] . '/', $ts ? $day($ts) : $day($dataStamp), $p['img'] ?? ''];
+    $add('/mehsul/' . $p['slug'] . '/', $ts ? $day($ts) : $day($dataStamp), 'weekly', '0.8', (string)($p['img'] ?? ''));
+}
+// Статьи: дата последней правки и обложка
+foreach ($posts as $bp) {
+    $add(blog_path($bp), blog_updated($bp), 'monthly', '0.6', asset((string)$bp['image']));
 }
 
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"'
    . ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">' . "\n";
-foreach ($entries as $entry) {
-    [$path, $mod] = $entry;
-    $img = $entry[2] ?? '';
+foreach ($entries as $en) {
     // Каждая языковая версия — отдельная запись со полным набором альтернатив,
     // как требует справка Google по hreflang в карте сайта.
     foreach ($LANGS as $cur) {
         echo '  <url>' . "\n";
-        echo '    <loc>' . e(CANON_HOST . lang_path($cur, $path)) . '</loc>' . "\n";
-        echo '    <lastmod>' . $mod . '</lastmod>' . "\n";
+        echo '    <loc>' . e(CANON_HOST . lang_path($cur, $en['path'])) . '</loc>' . "\n";
+        echo '    <lastmod>' . $en['mod'] . '</lastmod>' . "\n";
+        echo '    <changefreq>' . $en['freq'] . '</changefreq>' . "\n";
+        echo '    <priority>' . $en['prio'] . '</priority>' . "\n";
         foreach ($LANGS as $l) {
-            echo '    <xhtml:link rel="alternate" hreflang="' . e($l) . '" href="' . e(CANON_HOST . lang_path($l, $path)) . '"/>' . "\n";
+            echo '    <xhtml:link rel="alternate" hreflang="' . e($l) . '" href="' . e(CANON_HOST . lang_path($l, $en['path'])) . '"/>' . "\n";
         }
-        echo '    <xhtml:link rel="alternate" hreflang="x-default" href="' . e(CANON_HOST . lang_path('ru', $path)) . '"/>' . "\n";
-        if ($img !== '') {
-            echo '    <image:image><image:loc>' . e(CANON_HOST . asset($img)) . '</image:loc></image:image>' . "\n";
+        echo '    <xhtml:link rel="alternate" hreflang="x-default" href="' . e(CANON_HOST . lang_path('ru', $en['path'])) . '"/>' . "\n";
+        if ($en['img'] !== '') {
+            echo '    <image:image><image:loc>' . e(CANON_HOST . asset($en['img'])) . '</image:loc></image:image>' . "\n";
         }
         echo '  </url>' . "\n";
     }

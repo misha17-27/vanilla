@@ -349,4 +349,9 @@ return [
   'blog_cta_cat' => 'See the cakes',
   'blog_cta_more' => 'Learn more',
   'blog_months' => ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  // Отзыв в Google
+  'g_rev_t' => 'Enjoyed your cake? Leave us a Google review',
+  'g_rev_d' => 'A few words about your cake help others choose and help us get better. It takes a minute.',
+  'g_rev_btn' => 'Leave a Google review',
+  'g_rev_link' => 'Google review',
 ];

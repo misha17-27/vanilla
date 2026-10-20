@@ -51,6 +51,21 @@
       </div>
     </div>
 
+    <h3>Отзывы в Google</h3>
+    <div class="pair">
+      <div>
+        <label for="review_url">Ссылка для отзыва</label>
+        <input type="text" id="review_url" name="review_url" value="<?= e($SETTINGS['review_url']) ?>" placeholder="https://g.page/r/…/review">
+        <p class="hint">Откройте Google Бизнес-профиль → «Попросить оставить отзыв» и скопируйте ссылку. По ней сразу открывается окно отзыва. Пока поле пустое, кнопка «Оставить отзыв в Google» ведёт на вашу карточку на Google Картах.</p>
+        <p class="hint"><a href="<?= e(REVIEW_URL) ?>" target="_blank" rel="noopener">Проверить, куда ведёт кнопка ↗</a></p>
+      </div>
+      <div>
+        <label for="ga_id">Google Analytics (ID)</label>
+        <input type="text" id="ga_id" name="ga_id" value="<?= e($SETTINGS['ga_id']) ?>" placeholder="G-XXXXXXXXXX">
+        <p class="hint">Счётчик посещений. Пусто — счётчик на сайте отключён.</p>
+      </div>
+    </div>
+
     <div class="form-foot"><button>Сохранить</button></div>
   </form>
 </div>

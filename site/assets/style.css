@@ -865,3 +865,12 @@ html.no-scroll{overflow:hidden}
 @media (max-width:1060px){.b-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:760px){.b-products{grid-template-columns:1fr 1fr;gap:12px}.b-cta{flex-direction:column;align-items:flex-start;padding:20px 22px}.b-body{font-size:15.5px}.b-section{padding-top:36px}}
 @media (max-width:560px){.b-grid{grid-template-columns:1fr;gap:20px}.b-card-body h2{font-size:23px}.b-toc{padding:18px 20px}}
+/* ===== Отзыв в Google ===== */
+.g-review{display:flex;align-items:center;gap:22px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-s);padding:24px 28px;margin:0 0 44px}
+.g-ico{flex:none;width:52px;height:52px}
+.g-review-txt{flex:1;min-width:0}
+.g-review-txt h2{font-size:clamp(23px,2.6vw,30px);margin:0 0 6px}
+.g-review-txt p{margin:0;font-size:14.5px;line-height:1.6}
+.g-review .btn{flex:none}
+.f-greview{font-weight:600}
+@media (max-width:760px){.g-review{flex-direction:column;align-items:flex-start;padding:20px 22px;gap:14px}.g-ico{width:44px;height:44px}}

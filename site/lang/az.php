@@ -349,4 +349,9 @@ return [
   'blog_cta_cat' => 'Tortlara bax',
   'blog_cta_more' => 'Ətraflı',
   'blog_months' => ['yanvar', 'fevral', 'mart', 'aprel', 'may', 'iyun', 'iyul', 'avqust', 'sentyabr', 'oktyabr', 'noyabr', 'dekabr'],
+  // Отзыв в Google
+  'g_rev_t' => 'Tortu bəyəndiniz? Google-da rəy yazın',
+  'g_rev_d' => 'Tort haqqında bir neçə söz başqalarına seçim etməyə, bizə isə daha yaxşı olmağa kömək edir. Cəmi bir dəqiqə çəkir.',
+  'g_rev_btn' => 'Google-da rəy yazın',
+  'g_rev_link' => 'Google-da rəy',
 ];

@@ -38,6 +38,7 @@
           <li><a href="mailto:<?= EMAIL ?>"><?= EMAIL ?></a></li>
           <li><a href="<?= IG_URL ?>" target="_blank" rel="noopener"><?= IG_HANDLE ?></a></li>
           <li><span><?= e($t['hours']) ?></span></li>
+          <li><a class="f-greview" href="<?= e(REVIEW_URL) ?>" target="_blank" rel="noopener">★ <?= e($t['g_rev_link']) ?></a></li>
         </ul>
       </div>
     </div>

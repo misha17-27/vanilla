@@ -219,7 +219,8 @@ function save_catalog(array $catalog): void {
 
 function make_slug(string $title, array $products): string {
     $map = ['а'=>'a','б'=>'b','в'=>'v','г'=>'g','д'=>'d','е'=>'e','ё'=>'yo','ж'=>'zh','з'=>'z','и'=>'i','й'=>'y','к'=>'k','л'=>'l','м'=>'m','н'=>'n','о'=>'o','п'=>'p','р'=>'r','с'=>'s','т'=>'t','у'=>'u','ф'=>'f','х'=>'h','ц'=>'ts','ч'=>'ch','ш'=>'sh','щ'=>'sch','ъ'=>'','ы'=>'y','ь'=>'','э'=>'e','ю'=>'yu','я'=>'ya','ə'=>'e','ğ'=>'g','ı'=>'i','ö'=>'o','ü'=>'u','ç'=>'c','ş'=>'s'];
-    $s = strtr(mb_strtolower(trim($title)), $map);
+    // «İ» в нижнем регистре — «i» с точкой сверху (U+0307): без неё вышло бы «i-lk»
+    $s = strtr(preg_replace('/\p{Mn}+/u', '', mb_strtolower(trim($title))), $map);
     $s = trim(preg_replace('/-+/', '-', preg_replace('/[^a-z0-9]+/', '-', $s)), '-') ?: 'tort';
     $slugs = array_column($products, 'slug');
     $base = $s; $i = 2;
@@ -297,6 +298,82 @@ function build_customers(array $orders): array
     }
     uasort($out, fn($a, $b) => $b['last'] <=> $a['last']);
     return $out;
+}
+
+require_once __DIR__ . '/../includes/blog.php';
+
+// ===== Блог =====
+// Статьи из админки пишутся в data/blog/{slug}.json: деплой папку data/ не трогает,
+// а файл с тем же адресом перекрывает версию статьи из репозитория (content/blog/).
+function blog_save_file(array $post): bool
+{
+    @mkdir(BLOG_DATA_DIR, 0775, true);
+    $file = BLOG_DATA_DIR . '/' . $post['slug'] . '.json';
+    $json = json_encode($post, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    if ($json === false) return false;
+    $json .= "\n";
+    blog_backup($file);
+    // Пишем во временный файл и подменяем им старый: сайт никогда не прочитает
+    // недописанную статью, а при нехватке места старая версия останется целой
+    $tmp = $file . '.tmp-' . bin2hex(random_bytes(4));
+    if (file_put_contents($tmp, $json, LOCK_EX) !== strlen($json) || !rename($tmp, $file)) {
+        @unlink($tmp);
+        return false;
+    }
+    return true;
+}
+
+// Версия статьи, которую открыли в форме: если к сохранению она изменилась
+// (сохранили в другой вкладке или другой администратор), не затираем чужие правки
+function blog_version(string $slug): string
+{
+    foreach ([BLOG_DATA_DIR, BLOG_DIR] as $dir) {
+        $f = $dir . '/' . $slug . '.json';
+        if (is_file($f)) return sha1_file($f);
+    }
+    return '';
+}
+
+// Копия перед перезаписью или удалением: по 15 последних на каждую статью
+function blog_backup(string $file): void
+{
+    if (!is_file($file)) return;
+    @mkdir(BACKUP_DIR, 0775, true);
+    $slug = basename($file, '.json');
+    @copy($file, BACKUP_DIR . '/blog-' . $slug . '-' . date('Ymd-His') . '-' . bin2hex(random_bytes(2)) . '.json');
+    $re  = '/^blog-' . preg_quote($slug, '/') . '-\d{8}-\d{6}-[0-9a-f]{4}\.json$/';
+    $old = array_values(array_filter(glob(BACKUP_DIR . '/blog-' . $slug . '-*.json') ?: [], fn($f) => preg_match($re, basename($f)) === 1));
+    if (count($old) > 15) {
+        usort($old, fn($a, $b) => filemtime($a) <=> filemtime($b));
+        foreach (array_slice($old, 0, count($old) - 15) as $f) @unlink($f);
+    }
+}
+
+// Ошибка при сохранении: возвращаемся к форме, не теряя набранного текста
+function blog_fail(string $msg, string $back, array $form): never
+{
+    $_SESSION['blog_form'] = $form;
+    flash($msg, 'bad');
+    go($back);
+}
+
+// Что стоит проверить в статье после сохранения
+function blog_warnings(array $post): array
+{
+    global $PRODUCTS_BY_SLUG, $LANGS;
+    $w = [];
+    if ($miss = blog_missing_langs($post)) $w[] = 'нет текста на ' . strtoupper(implode(', ', $miss)) . ' — статья не появится на сайте, пока не заполнены все три языка';
+    foreach ($LANGS as $l) {
+        $st = mb_strlen((string)($post[$l]['seo_title'] ?? ''));
+        $sd = mb_strlen((string)($post[$l]['seo_desc'] ?? ''));
+        if ($st > 60) $w[] = strtoupper($l) . ': SEO-заголовок ' . $st . ' символов (лучше до 60)';
+        if ($sd && ($sd < 120 || $sd > 160)) $w[] = strtoupper($l) . ': описание ' . $sd . ' символов (лучше 120–160)';
+        foreach ((array)($post[$l]['body'] ?? []) as $b) {
+            if (($b['type'] ?? '') !== 'products') continue;
+            foreach ((array)$b['slugs'] as $s) if (!isset($PRODUCTS_BY_SLUG[$s])) $w[] = strtoupper($l) . ': нет торта «' . $s . '»';
+        }
+    }
+    return array_values(array_unique($w));
 }
 
 // Иконки для кнопок в таблицах: на узком экране остаётся только иконка
@@ -492,15 +569,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             go('/admin/security');
         }
 
-        if ($action === 'settings') {
-            $data = [];
-            foreach (SETTING_KEYS as $k) $data[$k] = trim((string)($_POST[$k] ?? ''));
+        if ($action === 'settings' && can('settings')) {
+            // поля, которых нет в форме (открыта до обновления сайта), остаются как были
+            $data = json_decode((string)@file_get_contents(SETTINGS_FILE), true) ?: [];
+            foreach (SETTING_KEYS as $k) if (array_key_exists($k, $_POST)) $data[$k] = trim((string)$_POST[$k]);
             file_put_contents(SETTINGS_FILE, json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
             flash('Настройки сохранены.');
             go('/admin/settings');
         }
 
-        if ($action === 'seo') {
+        if ($action === 'seo' && can('seo')) {
             $in  = (array)($_POST['seo'] ?? []);
             $out = [];
             foreach (seo_keys() as $k) {
@@ -553,7 +631,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             go('/admin/orders');
         }
 
-        if ($action === 'page_save') {
+        if ($action === 'page_save' && can('pages')) {
             $pk = (string)($_POST['page'] ?? '');
             $l  = (string)($_POST['l'] ?? 'ru');
             if (!isset($PAGEMAP[$pk]) || !in_array($l, ['ru', 'az', 'en'], true)) go('/admin/pages');
@@ -589,7 +667,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             go('/admin/pages?edit=' . urlencode($pk) . '&l=' . $l);
         }
 
-        if ($action === 'page_reset') {
+        if ($action === 'page_reset' && can('pages')) {
             $pk = (string)($_POST['page'] ?? '');
             $l  = (string)($_POST['l'] ?? 'ru');
             if (isset($PAGEMAP[$pk]) && in_array($l, ['ru', 'az', 'en'], true)) {
@@ -602,7 +680,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             go('/admin/pages?edit=' . urlencode($pk) . '&l=' . $l);
         }
 
-        if ($action === 'reviews_save') {
+        if ($action === 'reviews_save' && can('reviews')) {
             $rev = json_decode((string)@file_get_contents(REVIEWS_FILE_ADM), true) ?: ['items' => []];
             $texts   = (array)($_POST['text'] ?? []);
             $authors = (array)($_POST['author'] ?? []);
@@ -617,6 +695,100 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             file_put_contents(REVIEWS_FILE_ADM, json_encode($rev, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
             flash('Отзывы сохранены.');
             go('/admin/reviews');
+        }
+
+        if ($action === 'blog_save' && can('blog')) {
+            $all  = blog_all();
+            $orig = (string)($_POST['orig'] ?? '');            // адрес статьи, которую правим; пусто — новая
+            $prev = $all[$orig] ?? [];
+            $back = '/admin/blog?' . ($orig !== '' ? 'edit=' . urlencode($orig) : 'add=1');
+            $f = (array)($_POST['l'] ?? []);
+            // всё, что прислала форма, — чтобы вернуть её заполненной при ошибке
+            $form = [
+                'orig' => $orig, 'slug' => (string)($_POST['slug'] ?? ''), 'published' => (string)($_POST['published'] ?? ''),
+                'image' => (string)($_POST['image'] ?? ''), 'draft' => !empty($_POST['draft']), 'l' => $f,
+            ];
+            if ($orig !== '' && !isset($all[$orig])) {
+                $form['orig'] = '';
+                $form['slug'] = preg_match('/^[a-z0-9-]+$/', $orig) ? $orig : '';
+                blog_fail('Статью удалили, пока вы её редактировали. Ваш текст перенесён в форму новой статьи — проверьте обложку и сохраните.', '/admin/blog?add=1', $form);
+            }
+            if ($orig !== '') {
+                $slug = $orig;                                 // адрес опубликованной статьи не меняем: он уже в поиске
+                if ((string)($_POST['ver'] ?? '') !== blog_version($orig)) {
+                    blog_fail('Пока вы редактировали, статью сохранили в другой вкладке или это сделал другой администратор. Ваш текст остался в форме — сверьте его и сохраните ещё раз.', $back, $form);
+                }
+            } else {
+                $slug = strtolower(trim((string)($_POST['slug'] ?? '')));
+                if ($slug === '') {
+                    $base = trim((string)($f['az']['title'] ?? '')) ?: trim((string)($f['ru']['title'] ?? ''));
+                    $slug = make_slug($base, array_map(fn($p) => ['slug' => $p['slug']], array_values($all)));
+                    if (strlen($slug) > 80) {
+                        $cut  = substr($slug, 0, 80);
+                        $slug = rtrim(strrpos($cut, '-') > 40 ? substr($cut, 0, strrpos($cut, '-')) : $cut, '-');
+                        $slug = make_slug($slug, array_map(fn($p) => ['slug' => $p['slug']], array_values($all)));
+                    }
+                }
+                if (!preg_match('/^[a-z0-9]+(-[a-z0-9]+)*$/', $slug) || strlen($slug) > 80) {
+                    blog_fail('Адрес статьи: только латинские буквы, цифры и дефис.', $back, $form);
+                }
+                if (isset($all[$slug])) {
+                    blog_fail('Статья с адресом /blog/' . $slug . '/ уже есть — выберите другой адрес.', $back, $form);
+                }
+            }
+            $pub = (string)($_POST['published'] ?? '');
+            if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $pub) || !checkdate((int)substr($pub, 5, 2), (int)substr($pub, 8, 2), (int)substr($pub, 0, 4))) {
+                $pub = $prev['published'] ?? blog_today();
+            }
+            $image = trim((string)($_POST['image'] ?? ''));
+            if (!empty($_FILES['cover']['name'])) {
+                $ph = save_photo($_FILES['cover'], 'blog-' . $slug);
+                if (!$ph) blog_fail('Обложка не загрузилась: нужен JPG, PNG или WebP до 10 МБ. Текст статьи сохранён в форме.', $back, $form);
+                $image = $form['image'] = $ph;
+            }
+            if (!preg_match('#^/assets/img/[a-z0-9/_.-]+\.(jpe?g|png|webp)$#i', $image) || str_contains($image, '..') || !is_file(__DIR__ . '/..' . $image)) {
+                blog_fail('Выберите обложку: фото одного из тортов или загрузите своё. Текст статьи сохранён в форме.', $back, $form);
+            }
+            $post = ['slug' => $slug, 'published' => $pub, 'updated' => max(blog_today(), $pub), 'image' => $image];
+            if (!empty($_POST['draft'])) $post['draft'] = true;
+            // от какой версии статьи из репозитория сделана правка: если ту потом
+            // обновят в коде, админка подскажет, что правку стоит сверить
+            if (is_file(BLOG_DIR . '/' . $slug . '.json')) $post['_base'] = sha1_file(BLOG_DIR . '/' . $slug . '.json');
+            foreach ($LANGS as $l) {
+                $lf = (array)($f[$l] ?? []);
+                $cut = fn(string $k, int $max) => mb_substr(trim(preg_replace('/\s+/u', ' ', (string)($lf[$k] ?? ''))), 0, $max);
+                $post[$l] = [
+                    'title'     => $cut('title', 160),
+                    'seo_title' => $cut('seo_title', 120),
+                    'seo_desc'  => $cut('seo_desc', 320),
+                    'excerpt'   => $cut('excerpt', 400),
+                    'image_alt' => $cut('image_alt', 200),
+                    'body'      => blog_from_text(mb_substr((string)($lf['body'] ?? ''), 0, 80000)),
+                ];
+            }
+            if (!blog_save_file($post)) blog_fail('Не удалось записать файл статьи: проверьте права на папку data и свободное место. Текст сохранён в форме.', $back, $form);
+            $_SESSION['blog_saved'] = $slug;   // форма очистит черновик из браузера
+            if ($orig === '') $_SESSION['blog_created'] = true;   // и черновик новой статьи — только если её создали
+            $warn = blog_warnings($post);
+            flash(($orig === '' ? 'Статья создана.' : 'Статья сохранена.') . ($warn ? ' Обратите внимание: ' . implode('; ', $warn) . '.' : ''), $warn ? 'warn' : 'ok');
+            go('/admin/blog?edit=' . urlencode($slug));
+        }
+
+        // Удалить можно только статью, созданную в админке. Правки статьи из
+        // репозитория сбрасываются — на сайте снова её исходная версия.
+        if (($action === 'blog_delete' || $action === 'blog_reset') && can('blog')) {
+            $slug = (string)($_POST['slug'] ?? '');
+            $p    = blog_all()[$slug] ?? null;
+            $file = BLOG_DATA_DIR . '/' . $slug . '.json';
+            $want = $action === 'blog_delete' ? 'admin' : 'override';
+            if (!$p || ($p['_src'] ?? '') !== $want || !preg_match('/^[a-z0-9-]+$/', $slug) || !is_file($file)) {
+                flash('Эту статью так изменить нельзя.', 'bad');
+                go('/admin/blog');
+            }
+            blog_backup($file);
+            @unlink($file);
+            flash($action === 'blog_delete' ? 'Статья удалена.' : 'Правки сброшены: на сайте исходная версия статьи.');
+            go($action === 'blog_delete' ? '/admin/blog' : '/admin/blog?edit=' . urlencode($slug));
         }
 
         if ($action === 'cat_save') {
@@ -770,12 +942,17 @@ $customers = build_customers($orders);
 $newOrders = count(array_filter($orders, fn($o) => ($o['status'] ?? 'new') === 'new'));
 
 $users = load_users();
-$titles = ['dashboard' => 'Обзор', 'orders' => 'Заказы', 'customers' => 'Клиенты', 'schedule' => 'Календарь', 'pages' => 'Страницы', 'products' => 'Товары', 'categories' => 'Категории', 'reviews' => 'Отзывы', 'designs' => 'Дизайны клиентов', 'seo' => 'SEO страниц', 'settings' => 'Контакты и карта', 'security' => 'Безопасность', 'users' => 'Пользователи', 'account' => 'Мой профиль'];
+$titles = ['dashboard' => 'Обзор', 'orders' => 'Заказы', 'customers' => 'Клиенты', 'schedule' => 'Календарь', 'pages' => 'Страницы', 'blog' => 'Блог', 'products' => 'Товары', 'categories' => 'Категории', 'reviews' => 'Отзывы', 'designs' => 'Дизайны клиентов', 'seo' => 'SEO страниц', 'settings' => 'Контакты и карта', 'security' => 'Безопасность', 'users' => 'Пользователи', 'account' => 'Мой профиль'];
 $title  = $titles[$view] ?? 'Админ';
 if (!array_key_exists($view, $titles)) { $view = 'dashboard'; $title = $titles['dashboard']; }
 if (admin_logged() && !can($view)) {
     flash('Этот раздел доступен только администратору.', 'bad');
     go('/admin/');
+}
+
+if ($view === 'blog' && isset($_GET['preview']) && admin_logged()) {
+    require __DIR__ . '/views/blog-preview.php';
+    exit;
 }
 
 require __DIR__ . '/views/layout.php';
