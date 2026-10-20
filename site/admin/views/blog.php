@@ -37,8 +37,13 @@ foreach ($products as $p) {
 <?php
 $st   = $edit ? blog_state($edit) : 'draft';
 $cur  = $edit ?: ['slug' => '', 'published' => blog_today(), 'image' => '', 'draft' => true];
-$bodyText = [];
-foreach ($LANG_NAMES as $l => $_) $bodyText[$l] = blog_to_text((array)($cur[$l]['body'] ?? []));
+$bodyText = $bodyHtml = $bodyMode = [];
+foreach ($LANG_NAMES as $l => $_) {
+    $blocks = (array)($cur[$l]['body'] ?? []);
+    $bodyText[$l] = blog_to_text($blocks);
+    $bodyHtml[$l] = blog_to_html($blocks);
+    $bodyMode[$l] = 'html';
+}
 // Сохранение не прошло (нет обложки, адрес занят…) — показываем набранное, а не сохранённое
 $refill = $_SESSION['blog_form'] ?? null;
 unset($_SESSION['blog_form']);
@@ -52,7 +57,11 @@ if ($refill) {
     foreach ($LANG_NAMES as $l => $_) {
         $rl = (array)($refill['l'][$l] ?? []);
         foreach (['title', 'seo_title', 'seo_desc', 'excerpt', 'image_alt'] as $k) $cur[$l][$k] = (string)($rl[$k] ?? '');
-        $bodyText[$l] = (string)($rl['body'] ?? '');
+        // набранное возвращаем через блоки: в редактор попадает только то, что мы сами строим
+        $blocks = blog_body_from_form($rl);
+        $bodyMode[$l] = ($rl['mode'] ?? '') === 'text' ? 'text' : 'html';
+        $bodyText[$l] = $bodyMode[$l] === 'text' ? (string)($rl['body'] ?? '') : blog_to_text($blocks);
+        $bodyHtml[$l] = blog_to_html($blocks);
     }
 }
 // только что сохранили — черновик из браузера больше не нужен
@@ -155,11 +164,42 @@ unset($_SESSION['blog_saved'], $_SESSION['blog_created']);
       </div>
 
       <div class="b-editor">
-        <div>
+        <div class="rt" data-rt="<?= $l ?>">
           <label>Текст статьи · <?= $ln ?></label>
-          <textarea name="l[<?= $l ?>][body]" rows="30" class="b-code" spellcheck="true"><?= e($bodyText[$l]) ?></textarea>
+          <div class="rt-bar">
+            <button type="button" data-cmd="bold" title="Жирный"><b>B</b></button>
+            <button type="button" data-cmd="italic" title="Курсив"><i>I</i></button>
+            <button type="button" data-cmd="block:H2" title="Подзаголовок">H2</button>
+            <button type="button" data-cmd="block:H3" title="Подзаголовок поменьше">H3</button>
+            <button type="button" data-cmd="block:P" title="Обычный абзац">¶</button>
+            <button type="button" data-cmd="insertUnorderedList" title="Список">• список</button>
+            <button type="button" data-cmd="insertOrderedList" title="Нумерованный список">1. список</button>
+            <button type="button" data-cmd="block:BLOCKQUOTE" title="Совет в розовой рамке">❝ совет</button>
+            <button type="button" data-cmd="link" title="Ссылка">🔗</button>
+            <button type="button" data-cmd="unlink" title="Убрать ссылку">убрать ссылку</button>
+            <button type="button" data-cmd="clear" title="Убрать оформление">очистить</button>
+            <span class="rt-sep"></span>
+            <button type="button" data-add="products" class="rt-add">+ торты</button>
+            <button type="button" data-add="cta" class="rt-add">+ кнопка</button>
+            <button type="button" data-add="table" class="rt-add">+ таблица</button>
+            <button type="button" data-add="img" class="rt-add">+ фото</button>
+            <button type="button" data-add="faq" class="rt-add">+ вопросы</button>
+          </div>
+          <div class="rt-area" contenteditable="true" spellcheck="true"><?= $bodyHtml[$l] ?></div>
+          <textarea name="l[<?= $l ?>][body_html]" class="rt-html" hidden><?= e($bodyHtml[$l]) ?></textarea>
+          <textarea name="l[<?= $l ?>][body]" rows="30" class="b-code rt-text" spellcheck="true" hidden><?= e($bodyText[$l]) ?></textarea>
+          <input type="hidden" name="l[<?= $l ?>][mode]" class="rt-mode" value="<?= e($bodyMode[$l]) ?>">
+          <button type="button" class="btn ghost sm rt-toggle">Редактировать разметкой</button>
         </div>
-        <aside class="b-cheat">
+        <aside class="b-cheat rt-help-html">
+          <b>Как пользоваться</b>
+          <span>Выделите слова и нажмите кнопку: <b>B</b> — жирный, <i>I</i> — курсив, H2 и H3 — подзаголовки, ¶ — обычный абзац.</span>
+          <span><b>❝ совет</b> — розовая рамка для подсказки читателю. Нажмите ещё раз, чтобы убрать.</span>
+          <span><b>🔗</b> — ссылка. Адрес страницы сайта пишите без /az/ и /en/, например <code>/bolme/bento-tort/</code>, язык добавится сам. <code>wa</code> — ссылка в WhatsApp.</span>
+          <span>Кнопки <b>«+»</b> вставляют туда, где стоит курсор, карточки тортов, кнопку-приглашение, таблицу, фото или вопросы-ответы. У каждого такого блока есть ✎, ↑ ↓ и ✕.</span>
+          <span>Текст из Word и Google Docs можно вставлять: лишнее оформление уберётся само.</span>
+        </aside>
+        <aside class="b-cheat rt-help-text" hidden>
           <b>Разметка</b>
           <code>## Подзаголовок</code>
           <code>### Подзаголовок поменьше</code>
@@ -191,6 +231,24 @@ unset($_SESSION['blog_saved'], $_SESSION['blog_created']);
       <a class="btn ghost" href="/admin/blog">Отмена</a>
     </div>
   </form>
+  <dialog class="bw-dlg" id="bw-dlg">
+    <div class="bw-dlg-in">
+      <h3 id="bw-dlg-h"></h3>
+      <div id="bw-dlg-body"></div>
+      <div class="form-foot"><button type="button" id="bw-ok">Готово</button><button type="button" class="btn ghost" id="bw-cancel">Отмена</button></div>
+    </div>
+  </dialog>
+  <datalist id="bw-prods">
+    <?php foreach ($products as $p): ?><option value="<?= e($p['slug']) ?>"><?= e($p['title']) ?></option><?php endforeach; ?>
+  </datalist>
+  <?php
+  $prodMap = [];
+  foreach ($products as $p) $prodMap[$p['slug']] = [$p['title'], thumb_url(asset((string)$p['img']))];
+  $catList = [];
+  foreach (categories() as $ck => $cc) $catList[] = [$ck, (string)($cc['name'] ?? $ck)];
+  ?>
+  <script type="application/json" id="bw-data"><?= json_encode(['products' => $prodMap, 'cats' => $catList], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
+  <script src="/admin/assets/blog-editor.js?v=<?= @filemtime(__DIR__ . '/../assets/blog-editor.js') ?>"></script>
   <?php if ($edit && in_array($edit['_src'], ['override', 'admin'], true)): ?>
   <form method="post" class="pad hintline">
     <input type="hidden" name="action" value="<?= $edit['_src'] === 'admin' ? 'blog_delete' : 'blog_reset' ?>">
@@ -288,6 +346,7 @@ unset($_SESSION['blog_saved'], $_SESSION['blog_created']);
       alert(big ? 'Фото обложки больше 10 МБ — уменьшите его или выберите другое.' : 'Выберите обложку: фото торта из списка или загрузите своё.');
       return;
     }
+    if (window.BlogRT) BlogRT.syncAll();
     saveDraft();
     dirty = false;
   });
@@ -327,6 +386,16 @@ unset($_SESSION['blog_saved'], $_SESSION['blog_created']);
             el.dispatchEvent(new Event('input', { bubbles: true }));
           });
           img.dispatchEvent(new Event('change'));
+          // черновик из прежней версии админки — только разметка, без HTML редактора
+          var names = draft.f.map(function (p) { return p[0]; });
+          names.forEach(function (nm) {
+            var m = /^l\[(\w+)\]\[body\]$/.exec(nm);
+            if (m && names.indexOf('l[' + m[1] + '][body_html]') < 0) {
+              var md = form.querySelector('[name="l[' + m[1] + '][mode]"]');
+              if (md) md.value = 'text';
+            }
+          });
+          if (window.BlogRT) BlogRT.reloadAll();
         } else {
           store(key, null);
         }

@@ -357,6 +357,16 @@ function blog_fail(string $msg, string $back, array $form): never
     go($back);
 }
 
+// Текст статьи из формы: из визуального редактора (HTML) или из режима разметки.
+// Форма, открытая до обновления админки, присылает только разметку — её и берём.
+function blog_body_from_form(array $lf): array
+{
+    $mode = (string)($lf['mode'] ?? (isset($lf['body_html']) ? 'html' : 'text'));
+    return $mode === 'text'
+        ? blog_from_text(mb_substr((string)($lf['body'] ?? ''), 0, 80000))
+        : blog_from_html(mb_substr((string)($lf['body_html'] ?? ''), 0, 200000));
+}
+
 // Что стоит проверить в статье после сохранения
 function blog_warnings(array $post): array
 {
@@ -697,6 +707,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             go('/admin/reviews');
         }
 
+        // Переключение редактора «визуально ↔ разметка»: перевод на лету
+        if ($action === 'blog_convert' && can('blog')) {
+            $src = (string)($_POST['src'] ?? '');
+            $out = ($_POST['to'] ?? '') === 'text'
+                ? blog_to_text(blog_from_html(mb_substr($src, 0, 200000)))
+                : blog_to_html(blog_from_text(mb_substr($src, 0, 80000)));
+            header('Content-Type: application/json; charset=UTF-8');
+            echo json_encode(['ok' => true, 'out' => $out], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            exit;
+        }
+
         if ($action === 'blog_save' && can('blog')) {
             $all  = blog_all();
             $orig = (string)($_POST['orig'] ?? '');            // адрес статьи, которую правим; пусто — новая
@@ -763,7 +784,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'seo_desc'  => $cut('seo_desc', 320),
                     'excerpt'   => $cut('excerpt', 400),
                     'image_alt' => $cut('image_alt', 200),
-                    'body'      => blog_from_text(mb_substr((string)($lf['body'] ?? ''), 0, 80000)),
+                    'body'      => blog_body_from_form($lf),
                 ];
             }
             if (!blog_save_file($post)) blog_fail('Не удалось записать файл статьи: проверьте права на папку data и свободное место. Текст сохранён в форме.', $back, $form);

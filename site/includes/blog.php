@@ -133,12 +133,13 @@ function blog_minutes(array $p): int
     return max(1, (int)round(blog_words($p) / 180));
 }
 
-// Строка текста: экранируем, затем **жирный** и [ссылка](/адрес/).
+// Строка текста: экранируем, затем **жирный**, *курсив* и [ссылка](/адрес/).
 // Внутренние адреса получают приставку языка; «wa» — ссылка в WhatsApp.
 function blog_inline(string $s): string
 {
     $h = e($s);
     $h = preg_replace('/\*\*(.+?)\*\*/u', '<strong>$1</strong>', $h);
+    $h = preg_replace('/(?<![*\w])\*(?![\s*])(.+?)(?<![\s*])\*(?![*\w])/u', '<em>$1</em>', $h);
     return preg_replace_callback('/\[([^\]]+)\]\(([^)\s]+)\)/u', function ($m) {
         $href = html_entity_decode($m[2], ENT_QUOTES, 'UTF-8');
         if ($href === 'wa') {
@@ -441,4 +442,271 @@ function blog_from_text(string $txt): array
         $blocks[] = ['type' => 'p', 'text' => implode(' ', $parts)];
     }
     return $blocks;
+}
+
+
+// ===== Визуальный редактор статьи =====
+// В админке текст правят как в Word: абзацы, подзаголовки, списки, жирный,
+// курсив, ссылки и «совет» (blockquote) — обычный HTML в contenteditable.
+// Особые блоки (таблица, торты, кнопка, фото, вопросы) живут в редакторе
+// плашками <div class="bw" data-block="{json}">, их правят в окне.
+const BLOG_WIDGETS = ['table', 'products', 'cta', 'img', 'faq'];
+
+// Строка с разметкой (**жирный**, *курсив*, [текст](/адрес/)) → HTML редактора
+function blog_inline_html(string $s): string
+{
+    $h = e($s);
+    $h = preg_replace('/\*\*(.+?)\*\*/u', '<strong>$1</strong>', $h);
+    $h = preg_replace('/(?<![*\w])\*(?![\s*])(.+?)(?<![\s*])\*(?![*\w])/u', '<em>$1</em>', $h);
+    return preg_replace('/\[([^\]]+)\]\(([^)\s]+)\)/u', '<a href="$2">$1</a>', $h);
+}
+
+function blog_to_html(array $blocks): string
+{
+    $out = '';
+    foreach ($blocks as $b) {
+        $type = (string)($b['type'] ?? '');
+        if (in_array($type, BLOG_WIDGETS, true)) {
+            $out .= '<div class="bw" contenteditable="false" data-block="' . e(json_encode($b, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)) . '"></div>';
+            continue;
+        }
+        switch ($type) {
+            case 'p':   $out .= '<p>' . blog_inline_html((string)$b['text']) . '</p>'; break;
+            case 'h2':  $out .= '<h2>' . e((string)$b['text']) . '</h2>'; break;
+            case 'h3':  $out .= '<h3>' . e((string)$b['text']) . '</h3>'; break;
+            case 'tip': $out .= '<blockquote>' . blog_inline_html((string)$b['text']) . '</blockquote>'; break;
+            case 'ul':
+            case 'ol':
+                $out .= '<' . $type . '>';
+                foreach ((array)$b['items'] as $it) $out .= '<li>' . blog_inline_html((string)$it) . '</li>';
+                $out .= '</' . $type . '>';
+                break;
+        }
+    }
+    return $out;
+}
+
+// Пробелы и переносы схлопываем; неразрывный пробел внутри текста («25 ₼»)
+// оставляем, а по краям убираем — строка из одного такого пробела пустая
+function blog_ws(string $s): string
+{
+    return preg_replace('/^[\s\x{00A0}]+|[\s\x{00A0}]+$/u', '', preg_replace('/[ \t\r\n]+/', ' ', $s));
+}
+
+// Теги-блоки: внутри строки (в ячейке, пункте списка, совете) их текст
+// отделяем пробелами, иначе «<p>а</p><p>б</p>» слиплось бы в «аб»
+const BLOG_HTML_BLOCK = ['p', 'div', 'li', 'ul', 'ol', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'table', 'tr', 'td', 'th', 'dt', 'dd', 'section', 'article', 'figure'];
+
+// Простой текст элемента: <br> и границы блоков — пробелы (для подзаголовков)
+function blog_html_plain(DOMNode $n): string
+{
+    if ($n instanceof DOMText) return $n->data;
+    if (!($n instanceof DOMElement)) return '';
+    $tag = strtolower($n->tagName);
+    if ($tag === 'br') return ' ';
+    $out = '';
+    foreach ($n->childNodes as $c) $out .= blog_html_plain($c);
+    return in_array($tag, BLOG_HTML_BLOCK, true) ? ' ' . $out . ' ' : $out;
+}
+
+// Есть ли внутри строчного тега блоки — так Google Docs заворачивает весь текст в <b>
+function blog_html_has_blocks(DOMElement $n): bool
+{
+    foreach ($n->getElementsByTagName('*') as $d) {
+        if (in_array(strtolower($d->tagName), BLOG_HTML_BLOCK, true)) return true;
+    }
+    return false;
+}
+
+// Адрес ссылки из редактора: страница сайта (без /az/, /en/ и домена), https или wa
+function blog_norm_href(string $href): string
+{
+    $href = trim($href);
+    if ($href === 'wa' || preg_match('#^https://wa\.me/#i', $href)) return 'wa';
+    $href = preg_replace('#^https?://(www\.)?vanilla\.az#i', '', $href);
+    $href = preg_replace('#^' . preg_quote(CANON_HOST, '#') . '#i', '', $href);
+    if (preg_match('#^/(az|en)(/.*)$#', $href, $m)) $href = $m[2];
+    if (preg_match('#^/(?!/)[a-z0-9/_-]*$#i', $href)) return $href;
+    if (preg_match('#^https://[^\s()\[\]]+$#i', $href)) return $href;
+    return '';
+}
+
+// Содержимое элемента → строка с разметкой
+function blog_html_inline(DOMNode $n): string
+{
+    if ($n instanceof DOMText) return $n->data;
+    if (!($n instanceof DOMElement)) return '';
+    $tag = strtolower($n->tagName);
+    if ($tag === 'br') return ' ';
+    $inner = '';
+    foreach ($n->childNodes as $c) $inner .= blog_html_inline($c);
+    // пробел у края выделения выносим наружу: «<b>слово </b>дальше» → «**слово** дальше»
+    $edges = function (string $core) use ($inner): string {
+        return (preg_match('/^[\s\x{00A0}]/u', $inner) ? ' ' : '') . $core . (preg_match('/[\s\x{00A0}]$/u', $inner) ? ' ' : '');
+    };
+    $wrap = function (string $mark) use ($inner, $edges): string {
+        $core = blog_ws($inner);
+        return $core === '' ? $inner : $edges($mark . $core . $mark);
+    };
+    // Google Docs ставит жирный и курсив стилем у span, а не тегом
+    $style = strtolower((string)$n->getAttribute('style'));
+    $notBold = preg_match('/font-weight\s*:\s*(normal|[1-5]00)\b/', $style);
+    $notItal = preg_match('/font-style\s*:\s*normal/', $style);
+    $boldStyle = $tag === 'span' && preg_match('/font-weight\s*:\s*(bold|[6-9]00)/', $style);
+    $italStyle = $tag === 'span' && preg_match('/font-style\s*:\s*italic/', $style);
+    if (!$notBold && (in_array($tag, ['strong', 'b'], true) || $boldStyle)) return $wrap('**');
+    if (!$notItal && (in_array($tag, ['em', 'i'], true) || $italStyle)) return $wrap('*');
+    if ($tag === 'a') {
+        $href = blog_norm_href((string)$n->getAttribute('href'));
+        $text = blog_ws(str_replace(['[', ']'], ['(', ')'], $inner));
+        // пробел, захваченный в ссылку двойным щелчком, оставляем рядом со ссылкой
+        return ($href !== '' && $text !== '') ? $edges('[' . $text . '](' . $href . ')') : $inner;
+    }
+    return in_array($tag, BLOG_HTML_BLOCK, true) ? ' ' . $inner . ' ' : $inner;
+}
+
+// Особый блок из data-block: проверяем тип и поля, лишнее отбрасываем
+function blog_clean_widget($b): ?array
+{
+    if (!is_array($b)) return null;
+    $str = fn($v) => blog_ws((string)$v);
+    switch ($b['type'] ?? '') {
+        case 'table':
+            $head = array_map($str, (array)($b['head'] ?? []));
+            $rows = array_values(array_filter(array_map(fn($r) => array_map($str, (array)$r), (array)($b['rows'] ?? [])), fn($r) => implode('', $r) !== ''));
+            return $head && (implode('', $head) !== '' || $rows) ? ['type' => 'table', 'head' => $head, 'rows' => $rows] : null;
+        case 'products':
+            $slugs = array_values(array_unique(array_filter(array_map($str, (array)($b['slugs'] ?? [])), fn($s) => preg_match('/^[a-z0-9-]+$/', $s))));
+            return $slugs ? ['type' => 'products', 'slugs' => $slugs] : null;
+        case 'cta':
+            $t = $str($b['target'] ?? '');
+            if (!preg_match('#^(konstruktor|wa|cat:[a-z0-9_-]+|/(?!/)[a-z0-9/_-]*)$#i', $t)) $t = 'konstruktor';
+            $o = ['type' => 'cta', 'target' => $t];
+            foreach (['title', 'text', 'button'] as $k) if ($str($b[$k] ?? '') !== '') $o[$k] = $str($b[$k]);
+            return $o;
+        case 'img':
+            $src = $str($b['src'] ?? '');
+            if (str_starts_with($src, 'assets/')) $src = '/' . $src;   // так его тоже показывает сайт
+            if (!preg_match('#^/assets/img/[a-z0-9/_.-]+\.(jpe?g|png|webp)$#i', $src) || str_contains($src, '..')) return null;
+            $o = ['type' => 'img', 'src' => $src, 'alt' => $str($b['alt'] ?? '')];
+            if ($str($b['caption'] ?? '') !== '') $o['caption'] = $str($b['caption']);
+            return $o;
+        case 'faq':
+            $items = [];
+            foreach ((array)($b['items'] ?? []) as $it) {
+                $q = $str($it['q'] ?? ''); $a = $str($it['a'] ?? '');
+                if ($q !== '' && $a !== '') $items[] = ['q' => $q, 'a' => $a];
+            }
+            return $items ? ['type' => 'faq', 'items' => $items] : null;
+    }
+    return null;
+}
+
+// HTML из редактора → блоки. Вставленное из Word или Google Docs тоже
+// разбирается: лишние теги и стили отбрасываются, остаётся текст и структура.
+function blog_from_html(string $html): array
+{
+    $doc = new DOMDocument();
+    $prev = libxml_use_internal_errors(true);
+    $doc->loadHTML('<?xml encoding="UTF-8"><html><body><div id="blog-root">' . $html . '</div></body></html>', LIBXML_NONET);
+    libxml_clear_errors();
+    libxml_use_internal_errors($prev);
+    $root = $doc->getElementById('blog-root');
+    $blocks = [];
+    if ($root) blog_html_blocks($root, $blocks);
+    return $blocks;
+}
+
+function blog_html_blocks(DOMNode $parent, array &$blocks): void
+{
+    $buf = '';
+    $flush = function () use (&$buf, &$blocks) {
+        $t = blog_ws($buf);
+        if ($t !== '') $blocks[] = ['type' => 'p', 'text' => $t];
+        $buf = '';
+    };
+    foreach ($parent->childNodes as $n) {
+        if ($n instanceof DOMText) { $buf .= $n->data; continue; }
+        if (!($n instanceof DOMElement)) continue;
+        $tag = strtolower($n->tagName);
+        if (in_array($tag, ['b', 'strong', 'i', 'em', 'a', 'span', 'br', 'u', 'font', 'sup', 'sub', 'code', 'small', 'mark', 's'], true)) {
+            if (!blog_html_has_blocks($n)) {
+                $buf .= blog_html_inline($n);
+                continue;
+            }
+            $flush();
+            blog_html_blocks($n, $blocks);
+            continue;
+        }
+        $flush();
+        switch ($tag) {
+            case 'h1':
+            case 'h2':
+                if (($t = blog_ws(blog_html_plain($n))) !== '') $blocks[] = ['type' => 'h2', 'text' => $t];
+                break;
+            case 'h3':
+            case 'h4':
+            case 'h5':
+            case 'h6':
+                if (($t = blog_ws(blog_html_plain($n))) !== '') $blocks[] = ['type' => 'h3', 'text' => $t];
+                break;
+            case 'ul':
+            case 'ol':
+                $items = [];
+                blog_html_items($n, $items);
+                if ($items) $blocks[] = ['type' => $tag, 'items' => $items];
+                break;
+            case 'blockquote':
+                if (($t = blog_ws(blog_html_inline($n))) !== '') $blocks[] = ['type' => 'tip', 'text' => $t];
+                break;
+            case 'table':
+                $rows = [];
+                foreach ($n->getElementsByTagName('tr') as $tr) {
+                    $cells = [];
+                    foreach ($tr->childNodes as $td) {
+                        if ($td instanceof DOMElement && in_array(strtolower($td->tagName), ['td', 'th'], true)) $cells[] = blog_ws(blog_html_inline($td));
+                    }
+                    if ($cells) $rows[] = $cells;
+                }
+                // через ту же проверку, что и таблица из окна: первое и второе сохранение дают одно и то же
+                if ($rows && ($w = blog_clean_widget(['type' => 'table', 'head' => array_shift($rows), 'rows' => $rows]))) $blocks[] = $w;
+                break;
+            case 'div':
+            case 'section':
+            case 'article':
+            case 'figure':
+                if ($n->hasAttribute('data-block')) {
+                    $w = blog_clean_widget(json_decode($n->getAttribute('data-block'), true));
+                    if ($w) $blocks[] = $w;
+                } else {
+                    blog_html_blocks($n, $blocks);   // обёртка из вставленного текста
+                }
+                break;
+            case 'hr':
+            case 'img':
+            case 'script':
+            case 'style':
+                break;
+            default:   // p и всё остальное — абзац
+                if (($t = blog_ws(blog_html_inline($n))) !== '') $blocks[] = ['type' => 'p', 'text' => $t];
+        }
+    }
+    $flush();
+}
+
+// Пункты списка; вложенные списки становятся отдельными пунктами
+function blog_html_items(DOMElement $list, array &$items): void
+{
+    foreach ($list->childNodes as $li) {
+        if (!($li instanceof DOMElement)) continue;
+        if (in_array(strtolower($li->tagName), ['ul', 'ol'], true)) { blog_html_items($li, $items); continue; }
+        $text = '';
+        $nested = [];
+        foreach ($li->childNodes as $c) {
+            if ($c instanceof DOMElement && in_array(strtolower($c->tagName), ['ul', 'ol'], true)) $nested[] = $c;
+            else $text .= blog_html_inline($c);
+        }
+        if (($t = blog_ws($text)) !== '') $items[] = $t;
+        foreach ($nested as $nl) blog_html_items($nl, $items);
+    }
 }

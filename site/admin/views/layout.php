@@ -54,7 +54,7 @@ $isOn = function (string $href) use ($here): bool {
 <meta name="robots" content="noindex, nofollow">
 <title><?= e($title) ?> — Vanilla Cake</title>
 <link rel="icon" href="/favicon.ico" sizes="32x32">
-<link rel="stylesheet" href="/admin/assets/admin.css?v=13">
+<link rel="stylesheet" href="/admin/assets/admin.css?v=14">
 </head>
 <body class="<?= $bare ? 'bare' : '' ?>">
 
