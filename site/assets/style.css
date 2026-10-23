@@ -376,6 +376,7 @@ a.contact-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .prod-opts{display:grid;gap:12px;margin-top:24px;max-width:440px}
 .opt-row{display:grid;grid-template-columns:92px 1fr;align-items:center;gap:12px}
 .opt-row label{font-size:13px;font-weight:700;color:var(--navy)}
+.modal .opt-row{grid-template-columns:100px 1fr}  /* «Дата * · Время» в одну строку */
 .opt-row select{width:100%;padding:13px 40px 13px 15px;border:1px solid var(--line);border-radius:12px;font-family:var(--sans);font-size:14px;color:var(--ink);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316527F' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 13px center/15px;-webkit-appearance:none;appearance:none;cursor:pointer;transition:.2s}
 .opt-row select:hover{border-color:rgba(22,82,127,.4)}
 .opt-row select:focus{outline:none;border-color:var(--pink);box-shadow:0 0 0 3px rgba(253,70,128,.12)}
@@ -449,6 +450,8 @@ html.no-scroll{overflow:hidden}
 .date-wrap{position:relative}
 .date-btn{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:#fff;font-family:var(--sans);font-size:14px;color:var(--text);cursor:pointer;text-align:left;transition:.2s}
 .date-btn:hover{border-color:rgba(22,82,127,.4)}
+.date-btn.err{border-color:#E0526B;background:#FFF7F8}
+.date-btn.err:focus-visible{box-shadow:0 0 0 3px rgba(224,82,107,.15);outline:none}
 .date-btn svg{flex:none;width:17px;height:17px;color:var(--navy)}
 #date-val.has{color:var(--ink);font-weight:600}
 .cal{position:absolute;z-index:40;top:calc(100% + 8px);left:0;width:296px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:16px}

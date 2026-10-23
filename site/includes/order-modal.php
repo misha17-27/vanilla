@@ -25,7 +25,7 @@
         <span><?= e($t['dl_bolt_note']) ?> <a href="<?= MAP_URL ?>" target="_blank" rel="noopener"><?= e($t['dl_bolt_addr']) ?></a></span>
       </div>
       <div class="opt-row">
-        <label><?= e($t['opt_date']) ?> · <?= e($t['opt_time']) ?></label>
+        <label><?= e($t['opt_date']) ?> <i class="req" title="<?= e($t['req_mark']) ?>">*</i> · <?= e($t['opt_time']) ?></label>
         <div class="duo">
           <div class="date-wrap">
             <button type="button" class="date-btn" id="opt-date">

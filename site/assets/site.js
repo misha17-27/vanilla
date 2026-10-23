@@ -229,27 +229,33 @@ if (langBoxes.length) {
     modal.hidden = true;
     document.documentElement.classList.remove('no-scroll');
   }
-  // Проверка обязательных полей: имя, телефон и адрес при доставке курьером
+  // Проверка обязательных полей: дата, имя, телефон и адрес при доставке курьером
   var errBox = document.getElementById('modal-err');
+  var fDate = document.getElementById('opt-date');
   function digits(s) { return (s.match(/\d/g) || []).length; }
   function validate() {
     var bad = [];
+    if (fDate && !selDate) bad.push(fDate);   // дата — первой: в форме она выше остальных
     if (!fName.value.trim()) bad.push(fName);
     if (digits(fPhone.value) < 7) bad.push(fPhone);
     if (dlSel.value === 'courier' && !fAddress.value.trim()) bad.push(fAddress);
-    [fName, fPhone, fAddress].forEach(function (inp) {
-      inp.classList.toggle('err', bad.indexOf(inp) > -1);
+    [fDate, fName, fPhone, fAddress].forEach(function (inp) {
+      if (inp) inp.classList.toggle('err', bad.indexOf(inp) > -1);
     });
     if (!bad.length) {
       if (errBox) errBox.hidden = true;
       return true;
     }
     if (errBox) {
-      var onlyPhone = bad.length === 1 && bad[0] === fPhone && fPhone.value.trim();
-      errBox.textContent = onlyPhone ? cfg.valPhone : cfg.valFill;
+      var one = bad.length === 1;
+      var onlyPhone = one && bad[0] === fPhone && fPhone.value.trim();
+      errBox.textContent = one && bad[0] === fDate ? (cfg.valDate || cfg.valFill) : onlyPhone ? cfg.valPhone : cfg.valFill;
       errBox.hidden = false;
     }
     bad[0].focus();
+    // не выбрана дата — сразу открываем календарь. После текущего нажатия: иначе
+    // его тут же закроет обработчик «нажали мимо календаря»
+    if (bad[0] === fDate) setTimeout(function () { if (cal && cal.hidden) fDate.click(); }, 0);
     return false;
   }
   // Сохраняем заказ у себя, потом уже открываем WhatsApp
@@ -296,7 +302,7 @@ if (langBoxes.length) {
   [fName, fPhone, fAddress].forEach(function (inp) {
     inp.addEventListener('input', function () {
       if (inp.classList.contains('err')) inp.classList.remove('err');
-      if (errBox && !document.querySelector('.modal .txt.err')) errBox.hidden = true;
+      if (errBox && !document.querySelector('.modal .err')) errBox.hidden = true;
     });
   });
   // ---- Выбор точки доставки на карте (Leaflet + OpenStreetMap) ----
@@ -436,6 +442,8 @@ if (langBoxes.length) {
       dateVal.textContent = fmtDate(selDate);
       dateVal.classList.add('has');
       cal.hidden = true;
+      dateBtn.classList.remove('err');
+      if (errBox && !document.querySelector('.modal .err')) errBox.hidden = true;
       refreshSlots();
       update();
     });

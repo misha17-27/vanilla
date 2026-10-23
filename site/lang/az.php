@@ -234,6 +234,7 @@ return [
   'ord_confirm' => 'Sifariş yalnız WhatsApp-da təsdiqimizdən sonra qəbul edilmiş sayılır.',
   'val_fill' => 'Zəhmət olmasa, məcburi xanaları doldurun',
   'val_phone' => 'Telefon nömrəsini yoxlayın',
+  'val_date' => 'Tortun lazım olduğu tarixi seçin',
   'req_mark' => 'məcburi',
   'map_btn' => 'Xəritədə seç',
   'map_t' => 'Çatdırılma nöqtəsi',

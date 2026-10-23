@@ -234,6 +234,7 @@ return [
   'ord_confirm' => 'Your order is considered accepted only after our confirmation on WhatsApp.',
   'val_fill' => 'Please fill in the required fields',
   'val_phone' => 'Please check the phone number',
+  'val_date' => 'Please pick the date you need the cake',
   'req_mark' => 'required',
   'map_btn' => 'Pick on map',
   'map_t' => 'Delivery point',
