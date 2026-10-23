@@ -392,15 +392,16 @@ export function createCake3D(canvas, opts = {}) {
   }
 
   // ---- Камера и кадр ----
-  let elev = 0.62;    // наклон камеры, рад: сверху видно рисунок, сбоку — края
+  const ELEV = 0.62;  // наклон камеры, рад: сверху видно рисунок, сбоку — края
+  let elev = ELEV;
   const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function placeCamera() {
-    const w = canvas.clientWidth || 1, h = canvas.clientHeight || 1;
-    camera.aspect = w / h;
+  // aspect и room — для снимка в заказ: кадр квадратный, а торту оставляем поля
+  function placeCamera(aspect, room = 1) {
+    camera.aspect = aspect || (canvas.clientWidth || 1) / (canvas.clientHeight || 1);
     const vfov = THREE.MathUtils.degToRad(camera.fov);
     const hfov = 2 * Math.atan(Math.tan(vfov / 2) * camera.aspect);
-    const dist = fit / Math.sin(Math.min(vfov, hfov) / 2);
+    const dist = fit * room / Math.sin(Math.min(vfov, hfov) / 2);
     camera.position.set(0, target.y + Math.sin(elev) * dist, Math.cos(elev) * dist);
     camera.lookAt(target);
     camera.updateProjectionMatrix();
@@ -544,6 +545,37 @@ export function createCake3D(canvas, opts = {}) {
       group.rotation.y = -0.85;
       anim = { from: -0.85, to: 0, t0: performance.now(), dur: 1100 };
       request();
+    },
+    // Снимок для заказа: торт спереди под обычным наклоном, size×size, фон прозрачный.
+    // Рисуем в тот же холст с другим размером, копируем и сразу возвращаем как было —
+    // всё в одном задании, поэтому покупатель промежуточного кадра не увидит.
+    async snapshot(size) {
+      if (document.fonts && opts.boardText) {
+        // надпись на подложке — тем шрифтом, что и на сайте, даже если он ещё грузится
+        try { await document.fonts.load('italic 700 64px "Cormorant Garamond"'); } catch (e) { /* останется запасной */ }
+        board.draw();
+        boardTex.needsUpdate = true;
+      }
+      if (disposed || lost) return null;
+      const was = renderer.getSize(new THREE.Vector2()), pr = renderer.getPixelRatio();
+      const rot = group.rotation.y, el = elev;
+      const out = document.createElement('canvas');
+      out.width = out.height = size;
+      try {
+        group.rotation.y = 0;
+        elev = ELEV;
+        renderer.setDrawingBufferSize(size, size, 1);
+        placeCamera(1, 1.08);
+        renderer.render(scene, camera);
+        out.getContext('2d').drawImage(canvas, 0, 0);
+      } finally {
+        group.rotation.y = rot;
+        elev = el;
+        renderer.setDrawingBufferSize(was.x, was.y, pr);
+        placeCamera();
+        renderer.render(scene, camera);
+      }
+      return out;
     },
     render: request,
     dispose() {

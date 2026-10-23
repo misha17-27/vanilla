@@ -9,7 +9,7 @@ header('X-Content-Type-Options: nosniff');
 
 const MAX_BYTES   = 8 * 1024 * 1024; // 8 MB
 const MAX_SIDE    = 1600;            // px после пересжатия
-const RATE_LIMIT  = 10;              // загрузок в час с одного IP
+const RATE_LIMIT  = 20;              // загрузок в час с одного IP: на заказ из конструктора — два макета и до трёх фото
 
 function fail(string $code, int $http = 400): void
 {

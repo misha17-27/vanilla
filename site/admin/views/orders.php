@@ -54,7 +54,7 @@ $fields = [
         <?php if (!empty($one['point'])): ?>
         <div><span>Точка на карте</span><b><a href="https://maps.google.com/?q=<?= e($one['point']) ?>" target="_blank" rel="noopener"><?= e($one['point']) ?> ↗</a></b></div>
         <?php endif; ?>
-        <?php if (!empty($one['url'])): ?>
+        <?php if (!empty($one['url']) && preg_match('~^https?://~i', (string)$one['url'])): ?>
         <div><span>Страница</span><b><a href="<?= e($one['url']) ?>" target="_blank" rel="noopener">Открыть ↗</a></b></div>
         <?php endif; ?>
         <?php foreach (($one['extras'] ?? []) as $x): ?>
@@ -64,7 +64,7 @@ $fields = [
 
       <?php if (!empty($one['photos'])): ?>
       <div class="gal" style="margin-top:18px">
-        <?php foreach ($one['photos'] as $ph): ?>
+        <?php foreach ($one['photos'] as $ph): if (!preg_match('~^https?://~i', (string)$ph)) continue; // старые заказы: только обычные ссылки ?>
         <a class="gal-item" href="<?= e($ph) ?>" target="_blank" rel="noopener"><img loading="lazy" src="<?= e($ph) ?>" alt=""><small>макет / фото клиента</small></a>
         <?php endforeach; ?>
       </div>

@@ -146,10 +146,12 @@ if (langBoxes.length) {
     }).join('');
   }
   var designUrl = '';
+  var design3dUrl = '';   // объёмный вид торта из конструктора
   var extraLines = [];
   var selDate = null;
   var pickedPoint = null; // выбранная на карте точка доставки
   window.__setDesign = function (u) { designUrl = u; update(); };
+  window.__setDesign3d = function (u) { design3dUrl = u; update(); };
   window.__setExtras = function (arr) { extraLines = arr || []; update(); };
   var dlSel = document.getElementById('opt-dl');
   var timeSel = document.getElementById('opt-time');
@@ -214,6 +216,7 @@ if (langBoxes.length) {
     }
     lines.push(cfg.linkLbl + ': ' + cfg.purl);
     if (designUrl) lines.push(cfg.design + ': ' + designUrl);
+    if (design3dUrl && cfg.design3d) lines.push(cfg.design3d + ': ' + design3dUrl);
     modalSend.href = cfg.wa + encodeURIComponent(lines.join('\n'));
     modalSum.textContent = size[0] + ' · ' + size[1] + ' ₼';
   }
@@ -271,7 +274,7 @@ if (langBoxes.length) {
       phone: fPhone.value.trim(),
       recipient: fOther.checked ? [fRname.value.trim(), fRphone.value.trim()].filter(Boolean).join(', ') : '',
       extras: extraLines.slice(),
-      photos: designUrl ? [designUrl] : []
+      photos: [designUrl, design3dUrl].filter(Boolean)
     };
     if (window.__orderPhotos) payload.photos = payload.photos.concat(window.__orderPhotos());
     var cf = modal.querySelector('[name="cf-turnstile-response"]');

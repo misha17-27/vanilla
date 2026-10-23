@@ -211,6 +211,7 @@ window.PROD_CFG = <?= json_encode([
     'closed'  => load_schedule()['closed'],
     'weekly'  => load_schedule()['weekly'],
     'design'  => $t['wa_design'],
+    'design3d' => $t['wa_design3d'],
     'errors'  => [
         'type'    => $t['up_e_type'],
         'size'    => $t['up_e_size'],
@@ -727,27 +728,108 @@ window.PROD_CFG = <?= json_encode([
       im.src = src;
     });
   }
+  function toJpeg(cv) {
+    return new Promise(function (r) { cv.toBlob(r, 'image/jpeg', 0.9); });
+  }
+  function uploadShot(blob, name) {
+    var fd = new FormData();
+    fd.append('photo', new File([blob], name, { type: 'image/jpeg' }));
+    fd.append('csrf', PROD_CFG.csrf);
+    return fetch(PROD_CFG.upload, { method: 'POST', body: fd, credentials: 'same-origin' })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        return res && res.ok && res.url ? (res.url.indexOf('http') === 0 ? res.url : location.origin + res.url) : null;
+      });
+  }
+  // Вид сверху — как в плоском превью, с краем
+  function shotTop(imgs) {
+    var S = 900;
+    var cv = document.createElement('canvas');
+    cv.width = cv.height = S;
+    drawTop(cv.getContext('2d'), S, 400, function (src) { return imgs[src] || null; }, { flat: false, ring: true });
+    return toJpeg(cv);
+  }
+  // Объёмный вид — торт спереди, на том же фоне, что и превью. Если 3D ещё не
+  // открывали, сцена создаётся незаметно: на странице она не появится.
+  // key — торт на момент нажатия. Пока грузится 3D, торт могут поменять: тогда
+  // снимок был бы уже другого торта, а сохранился бы под прежним ключом.
+  async function shotVol(imgs, key) {
+    if (k3.failed || !dynImport || !hasGL2()) return null;
+    await ensure3d();
+    if (!k3.api || !k3.api.snapshot || designKey(true) !== key) return null;
+    applyScene(function (src) { return imgs[src] || null; });
+    var S = 1000;
+    var pic = await k3.api.snapshot(S);
+    if (!pic || designKey(true) !== key) return null;
+    var cv = document.createElement('canvas');
+    cv.width = cv.height = S;
+    var g = cv.getContext('2d');
+    // linear-gradient(165deg, #F8F5F0, #ECE7E0) у .k-3d: линия под 165° через центр,
+    // длиной с проекцию квадрата на неё — углы получают крайние цвета, как в CSS
+    var a = 165 * Math.PI / 180, dx = Math.sin(a), dy = -Math.cos(a);
+    var half = S * (Math.abs(dx) + Math.abs(dy)) / 2;
+    var bg = g.createLinearGradient(S / 2 - dx * half, S / 2 - dy * half, S / 2 + dx * half, S / 2 + dy * half);
+    bg.addColorStop(0, '#F8F5F0');
+    bg.addColorStop(1, '#ECE7E0');
+    g.fillStyle = bg;
+    g.fillRect(0, 0, S, S);
+    g.drawImage(pic, 0, 0);
+    return toJpeg(cv);
+  }
+
+  // Что уже загружено. Нажали «Заказать» ещё раз, ничего не поменяв, — берём прежние
+  // ссылки: у загрузок лимит в час с одного адреса, а мобильные операторы дают
+  // один адрес многим покупателям.
+  var shots = { top: { key: '', url: '' }, vol: { key: '', url: '' } };
+  function designKey(vol) {
+    var k = [state.cream, state.edge, state.ecolor, state.items.map(function (it) {
+      return [it.type, it.src, it.text, it.color, Math.round(it.x * 1000), Math.round(it.y * 1000), Math.round(it.size * 1000)];
+    })];
+    if (vol) k.push(smallCake());   // 1–2 персоны — в бенто-боксе, это видно только в объёме
+    return JSON.stringify(k);
+  }
+  function setShot(kind, url) {
+    var fn = kind === 'top' ? window.__setDesign : window.__setDesign3d;
+    if (fn) fn(url);
+  }
+  function makeShot(kind, make) {
+    var s = shots[kind], key = designKey(kind === 'vol');
+    if (s.key === key && s.url) { setShot(kind, s.url); return Promise.resolve(); }
+    setShot(kind, '');   // прежняя ссылка показывала бы торт до правок
+    return Promise.resolve().then(function () { return make(key); }).then(function (blob) {
+      return blob ? uploadShot(blob, 'cake-' + kind + '.jpg') : null;
+    }).then(function (url) {
+      if (!url) return;
+      s.key = key;
+      s.url = url;
+      // пока грузили, торт могли поменять — тогда ссылка уже не про него
+      if (designKey(kind === 'vol') === key) setShot(kind, url);
+    }).catch(function () { /* макет не критичен — заказ уйдёт без ссылки */ });
+  }
+  // Объём на телефоне может грузиться дольше: кнопку отправки ждать не заставляем.
+  // Догрузится позже — ссылка всё равно встанет в сообщение.
+  var VOL_WAIT = 8000;
   async function renderAndUpload() {
+    var imgs = {};
     try {
       await document.fonts.load('800 80px Montserrat');
-      var imgs = {};
       for (var k = 0; k < state.items.length; k++) {
         var it = state.items[k];
         if (it.type === 'img' && !imgs[it.src]) imgs[it.src] = await loadImg(it.src);
       }
-      var S = 900;
-      var cv = document.createElement('canvas');
-      cv.width = S; cv.height = S;
-      drawTop(cv.getContext('2d'), S, 400, function (src) { return imgs[src] || null; }, { flat: false, ring: true });
-      var blob = await new Promise(function (r) { cv.toBlob(r, 'image/jpeg', 0.9); });
-      var fd = new FormData();
-      fd.append('photo', new File([blob], 'cake-design.jpg', { type: 'image/jpeg' }));
-      fd.append('csrf', PROD_CFG.csrf);
-      var res = await fetch(PROD_CFG.upload, { method: 'POST', body: fd, credentials: 'same-origin' }).then(function (r) { return r.json(); });
-      if (res && res.ok && res.url && window.__setDesign) {
-        window.__setDesign(res.url.indexOf('http') === 0 ? res.url : location.origin + res.url);
-      }
-    } catch (e) { /* макет не критичен — заказ уйдёт без ссылки */ }
+    } catch (e) {
+      // без картинок макет вышел бы неверным — заказ уйдёт без него, но и не с прежним тортом
+      setShot('top', '');
+      setShot('vol', '');
+      return;
+    }
+    await Promise.all([
+      makeShot('top', function () { return shotTop(imgs); }),
+      Promise.race([
+        makeShot('vol', function (key) { return shotVol(imgs, key); }),
+        new Promise(function (r) { setTimeout(r, VOL_WAIT); })
+      ])
+    ]);
   }
 
   // ---- 3D-вид ----
@@ -756,7 +838,7 @@ window.PROD_CFG = <?= json_encode([
   // перетаскивать элементы можно только там.
   // На компьютере 3D накрывает превью слева (оно прилипает к экрану), на телефоне
   // превью далеко вверху, поэтому сцена переезжает прямо в блок «Края торта».
-  var k3 = { host: 'none', api: null, mod: null, ready: null, failed: false, raf: 0, tries: 0, vis: true, dirty: false };
+  var k3 = { host: 'none', api: null, mod: null, ready: null, failed: false, raf: 0, tries: 0, vis: true, dirty: false, intro: false };
   var stage = document.getElementById('k-3d');
   var stageCv = stage.querySelector('canvas');
   var stageLoad = document.getElementById('k-3d-load');
@@ -848,15 +930,18 @@ window.PROD_CFG = <?= json_encode([
     }).observe(stage);
   }
 
-  function sync3d() {
-    k3.raf = 0;
-    k3.dirty = false;
-    if (!k3.api || k3.host === 'none') return;
-    drawTop(topCv.getContext('2d'), 1024, 512, cachedImg, { flat: true, ring: false });
+  function applyScene(getImg) {
+    drawTop(topCv.getContext('2d'), 1024, 512, getImg, { flat: true, ring: false });
     k3.api.setCream(state.cream);
     k3.api.setBox(smallCake());   // 1–2 персоны — в бенто-боксе
     k3.api.setEdge(state.edge, state.ecolor, !smallCake());
     k3.api.topChanged();
+  }
+  function sync3d() {
+    k3.raf = 0;
+    k3.dirty = false;
+    if (!k3.api || k3.host === 'none') return;
+    applyScene(cachedImg);
   }
   // render() срабатывает и до этого блока (первая надпись), тогда k3 ещё нет
   function schedule3d() {
@@ -890,7 +975,8 @@ window.PROD_CFG = <?= json_encode([
         stageLoad.hidden = true;
         document.fonts.load('800 80px Montserrat').then(schedule3d).catch(function () {});
         sync3d();
-        k3.api.intro();
+        k3.intro = k3.host === 'none';
+        if (!k3.intro) k3.api.intro();
       });
       k3.ready.catch(fail3d);
     }
@@ -934,6 +1020,8 @@ window.PROD_CFG = <?= json_encode([
       if (k3.host === 'none') return;
       k3.api.resize();
       sync3d();
+      // сцену создали скрытой для снимка в заказ — доворот покажем сейчас
+      if (k3.intro) { k3.intro = false; k3.api.intro(); }
     }).catch(function () {});
   }
 
@@ -995,12 +1083,18 @@ window.PROD_CFG = <?= json_encode([
     return itemsOf('img').filter(function (it) { return it.own && it.url; }).map(function (it) { return it.url; });
   };
 
+  // Кнопку отправки включает только последнее нажатие «Заказать»: закрыли окно,
+  // поправили торт и открыли снова — прежнее нажатие не должно включить её раньше,
+  // чем загрузятся новые макеты.
+  var orderGen = 0;
   document.getElementById('prod-order').addEventListener('click', function () {
+    var gen = ++orderGen;
     buildExtras();
     var send = document.getElementById('modal-send');
     send.classList.add('busy');
     var pending = itemsOf('img').filter(function (it) { return it.own && it.uploading; }).map(function (it) { return it.uploading; });
     Promise.all(pending.concat([renderAndUpload()])).then(function () {
+      if (gen !== orderGen) return;
       buildExtras();
       send.classList.remove('busy');
     });

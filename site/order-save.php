@@ -48,6 +48,21 @@ function cleanList($v, int $max = 200, int $limit = 5): array {
     return $out;
 }
 
+// Фото заказа — только наши загрузки (/uploads/designs/design-…jpg на нашем домене):
+// в админке они становятся ссылками и картинками, чужой адрес туда не пускаем
+function cleanPhotos($v): array {
+    $hosts = array_filter([
+        strtolower((string)parse_url(CANON_HOST, PHP_URL_HOST)),
+        strtolower(preg_replace('/:\d+$/', '', (string)($_SERVER['HTTP_HOST'] ?? ''))),
+    ]);
+    $out = [];
+    foreach (cleanList($v, 300, 5) as $u) {
+        if (!preg_match('~^https?://([a-z0-9.-]+)(?::\d+)?/uploads/designs/design-\d{8}-[0-9a-f]{16}\.jpg$~i', $u, $m)) continue;
+        if (in_array(strtolower($m[1]), $hosts, true)) $out[] = $u;
+    }
+    return $out;
+}
+
 $order = [
     'id'        => date('ymd') . '-' . strtoupper(bin2hex(random_bytes(2))),
     'created'   => time(),
@@ -70,7 +85,7 @@ $order = [
     'phone'     => clean($in['phone'] ?? '', 40),
     'recipient' => clean($in['recipient'] ?? '', 120),
     'extras'    => cleanList($in['extras'] ?? [], 200, 8),
-    'photos'    => cleanList($in['photos'] ?? [], 300, 5),
+    'photos'    => cleanPhotos($in['photos'] ?? []),
 ];
 if ($order['name'] === '' || $order['phone'] === '') bad('fields');
 
