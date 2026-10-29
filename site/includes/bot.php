@@ -181,7 +181,13 @@ final class OrderBot
     private function applies(array $s): bool
     {
         if (in_array($this->channel, $s['skip_channels'] ?? [], true)) return false;
-        foreach ($s['if'] ?? [] as $k => $want) {
+        return $this->matches($s['if'] ?? []);
+    }
+
+    // Условие if шага или варианта: {"type": "bento"} — только если раньше выбрали этот ответ
+    private function matches(array $if): bool
+    {
+        foreach ($if as $k => $want) {
             if (!in_array($this->st['answers'][$k] ?? null, (array)$want, true)) return false;
         }
         return true;
@@ -604,7 +610,7 @@ final class OrderBot
     {
         $o = $s['options'] ?? [];
         if (isset($s['options_by'])) $o = $o[$this->st['answers'][$s['options_by']] ?? ''] ?? [];
-        return array_values($o);
+        return array_values(array_filter($o, fn($x) => $this->matches($x['if'] ?? [])));
     }
 
     private function find(array $opts, $id): ?array

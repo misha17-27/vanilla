@@ -1,5 +1,5 @@
 {
-    "_about": "Сценарий чат-бота: одни и те же вопросы на сайте, в WhatsApp и Instagram. Шаги задаются по порядку; if — шаг задаётся, только если раньше выбрали этот вариант; options_by — список вариантов зависит от ответа на другой шаг; title — подпись шага в сводке заказа и в админке.",
+    "_about": "Сценарий чат-бота: одни и те же вопросы на сайте, в WhatsApp и Instagram. Шаги задаются по порядку; if — шаг задаётся (или вариант показывается), только если раньше выбрали этот вариант; options_by — список вариантов зависит от ответа на другой шаг; title — подпись шага в сводке заказа и в админке.",
     "texts": {
         "hello": {
             "ru": "Здравствуйте! Я помогу оформить заказ за пару минут — просто отвечайте на вопросы. Если захотите поговорить с человеком, напишите «оператор».",
@@ -238,6 +238,7 @@
                 { "id": "text", "label": { "ru": "Опишу словами", "az": "Sözlə təsvir edəcəm", "en": "I'll describe it" }, "full": { "ru": "По описанию", "az": "Təsvirə görə", "en": "From a description" } },
                 {
                     "id": "konstruktor",
+                    "if": { "type": "bento" },
                     "store": false,
                     "link": "/konstruktor/",
                     "label": { "ru": "Соберу в конструкторе", "az": "Konstruktorda yığacam", "en": "Use the cake builder" },
@@ -247,8 +248,7 @@
                         "en": "In the cake builder on our website you can pick the cream colour, picture and lettering and see the cake right away. You can send the order from there too. To carry on here instead, pick another option above."
                     },
                     "link_label": { "ru": "Открыть конструктор", "az": "Konstruktoru aç", "en": "Open the builder" }
-                },
-                { "id": "free", "label": { "ru": "На ваш вкус", "az": "Sizin zövqünüzə", "en": "Up to you" } }
+                }
             ]
         },
         {
