@@ -11,6 +11,7 @@ site/uploads/ratelimit/*
 site/data/admin.pass
 site/data/backups/
 site/data/orders.json
+site/data/bot/
 site/data/users.json
 site/data/security.json
 site/data/blog/

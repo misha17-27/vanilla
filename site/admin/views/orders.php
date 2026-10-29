@@ -19,11 +19,20 @@ foreach ($orders as $o) { $st = $o['status'] ?? 'new'; if (isset($counts[$st])) 
 
 function order_sum(array $o): string { return trim((string)($o['price'] ?? '')); }
 function order_when(int $ts): string { return date('d.m.Y H:i', $ts); }
+// Откуда пришёл заказ: форма на странице товара, конструктор или чат-бот
+function order_source(array $o): string
+{
+    $map = ['product' => 'Страница товара', 'constructor' => 'Конструктор', 'chat-web' => 'Чат на сайте',
+            'chat-whatsapp' => 'Бот в WhatsApp', 'chat-instagram' => 'Бот в Instagram'];
+    $s = (string)($o['source'] ?? '');
+    return $map[$s] ?? $s;
+}
 ?>
 
 <?php if ($one): ?>
 <?php
 $fields = [
+    'Источник'  => order_source($one),
     'Товар'     => $one['product'],
     'Размер'    => $one['size'],
     'Бисквит'   => $one['sponge'],
@@ -127,7 +136,7 @@ $fields = [
       <tr>
         <td>
           <a href="/admin/orders?id=<?= e($o['id']) ?>"><b><?= e($o['id']) ?></b></a>
-          <small><?= order_when($o['created']) ?></small>
+          <small><?= order_when($o['created']) ?><?= str_starts_with((string)($o['source'] ?? ''), 'chat-') ? ' · ' . e(order_source($o)) : '' ?></small>
         </td>
         <td>
           <b><?= e($o['name']) ?></b>

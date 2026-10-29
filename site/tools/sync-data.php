@@ -120,7 +120,8 @@ foreach (['seo.json', 'texts.json'] as $file) {
 }
 
 // ---------- витринные данные, которые ведём только в репозитории ----------
-foreach (['reviews.json', 'instagram.json'] as $file) {
+// bot-scenario.json — вопросы чат-бота: правятся в репозитории, на сервере — копия
+foreach (['reviews.json', 'instagram.json', 'bot-scenario.json'] as $file) {
     if (is_file("$src/$file")) {
         copy("$src/$file", "$dst/$file");
         $log[] = "$file: обновлён";

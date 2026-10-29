@@ -1,0 +1,355 @@
+{
+    "_about": "Сценарий чат-бота: одни и те же вопросы на сайте, в WhatsApp и Instagram. Шаги задаются по порядку; if — шаг задаётся, только если раньше выбрали этот вариант; options_by — список вариантов зависит от ответа на другой шаг; title — подпись шага в сводке заказа и в админке.",
+    "texts": {
+        "hello": {
+            "ru": "Здравствуйте! Я помогу оформить заказ за пару минут — просто отвечайте на вопросы. Если захотите поговорить с человеком, напишите «оператор».",
+            "az": "Salam! Sifarişi bir neçə dəqiqəyə rəsmiləşdirməyə kömək edəcəyəm — sadəcə suallara cavab verin. İnsanla danışmaq istəsəniz, «operator» yazın.",
+            "en": "Hello! I'll help you place an order in a couple of minutes — just answer the questions. If you'd like to talk to a person, type “operator”."
+        },
+        "pick_option": {
+            "ru": "Не совсем понял. Выберите, пожалуйста, один из вариантов.",
+            "az": "Tam başa düşmədim. Zəhmət olmasa, variantlardan birini seçin.",
+            "en": "Sorry, I didn't catch that. Please choose one of the options."
+        },
+        "too_short": {
+            "ru": "Слишком коротко — напишите, пожалуйста, подробнее.",
+            "az": "Çox qısadır — zəhmət olmasa, bir az ətraflı yazın.",
+            "en": "That's a bit short — please write a little more."
+        },
+        "too_long": {
+            "ru": "Слишком длинно — уложитесь, пожалуйста, в {max} символов.",
+            "az": "Çox uzundur — zəhmət olmasa, {max} simvola sığdırın.",
+            "en": "That's too long — please keep it under {max} characters."
+        },
+        "bad_phone": {
+            "ru": "Похоже, в номере ошибка. Напишите его в виде +994 55 123 45 67.",
+            "az": "Deyəsən, nömrədə səhv var. Onu +994 55 123 45 67 şəklində yazın.",
+            "en": "That number doesn't look right. Please write it like +994 55 123 45 67."
+        },
+        "bad_date": {
+            "ru": "Не получилось разобрать дату. Напишите её так: 31.10 — или выберите из списка.",
+            "az": "Tarixi başa düşə bilmədim. Belə yazın: 31.10 — və ya siyahıdan seçin.",
+            "en": "I couldn't read that date. Write it like 31.10 — or pick one from the list."
+        },
+        "date_soon": {
+            "ru": "Нам нужен хотя бы один полный день на подготовку. Ближайшая свободная дата — {date}.",
+            "az": "Hazırlıq üçün ən azı bir tam gün lazımdır. Ən yaxın boş tarix — {date}.",
+            "en": "We need at least one full day to prepare. The earliest available date is {date}."
+        },
+        "date_far": {
+            "ru": "Так далеко вперёд мы пока не принимаем заказы — выберите дату в ближайшие два месяца.",
+            "az": "Bu qədər irəliyə hələ sifariş qəbul etmirik — yaxın iki ay ərzində tarix seçin.",
+            "en": "We don't take orders that far ahead yet — please choose a date within the next two months."
+        },
+        "date_closed": {
+            "ru": "{date} у нас выходной. Выберите, пожалуйста, другой день.",
+            "az": "{date} istirahət günümüzdür. Zəhmət olmasa, başqa gün seçin.",
+            "en": "We're closed on {date}. Please choose another day."
+        },
+        "monday_note": {
+            "ru": "В понедельник самая ранняя выдача — 17:00: в воскресенье выходной, торты печём с утра.",
+            "az": "Bazar ertəsi ən erkən təhvil vaxtı 17:00-dır: bazar günü istirahətdir, tortları səhərdən bişiririk.",
+            "en": "On Monday the earliest handover is 17:00 — Sunday is our day off and we bake in the morning."
+        },
+        "summary": {
+            "ru": "Проверьте, пожалуйста, заказ:",
+            "az": "Zəhmət olmasa, sifarişi yoxlayın:",
+            "en": "Please check your order:"
+        },
+        "price": {
+            "ru": "Стоимость",
+            "az": "Qiymət",
+            "en": "Price"
+        },
+        "confirm_note": {
+            "ru": "Заказ считается принятым только после нашего подтверждения.",
+            "az": "Sifariş yalnız bizim təsdiqimizdən sonra qəbul edilmiş sayılır.",
+            "en": "Your order is considered accepted only after our confirmation."
+        },
+        "edit_ask": {
+            "ru": "Что хотите изменить?",
+            "az": "Nəyi dəyişmək istəyirsiniz?",
+            "en": "What would you like to change?"
+        },
+        "done": {
+            "ru": "Спасибо! Заказ № {id} у нас. Скоро напишем, чтобы подтвердить его.",
+            "az": "Təşəkkür edirik! {id} nömrəli sifariş bizdədir. Təsdiq üçün tezliklə yazacağıq.",
+            "en": "Thank you! We've got order No. {id}. We'll message you shortly to confirm it."
+        },
+        "done_web": {
+            "ru": "Спасибо! Заказ № {id} сохранён. Сейчас откроется WhatsApp с готовым сообщением — отправьте его, и мы подтвердим заказ.",
+            "az": "Təşəkkür edirik! {id} nömrəli sifariş yadda saxlanıldı. İndi WhatsApp hazır mesajla açılacaq — onu göndərin, sifarişi təsdiq edək.",
+            "en": "Thank you! Order No. {id} is saved. WhatsApp will now open with the message ready — send it and we'll confirm your order."
+        },
+        "send_wa": {
+            "ru": "Отправить в WhatsApp",
+            "az": "WhatsApp-a göndər",
+            "en": "Send on WhatsApp"
+        },
+        "after_done": {
+            "ru": "Ваш заказ № {id} уже у нас. Хотите оформить ещё один?",
+            "az": "{id} nömrəli sifarişiniz artıq bizdədir. Daha birini rəsmiləşdirmək istəyirsiniz?",
+            "en": "We already have your order No. {id}. Would you like to place another one?"
+        },
+        "new_order": {
+            "ru": "Новый заказ",
+            "az": "Yeni sifariş",
+            "en": "New order"
+        },
+        "human": {
+            "ru": "Хорошо, передаю разговор человеку — ответим в рабочее время: Пн–Пт 11:00–20:00, Сб 11:00–14:00. Чтобы вернуться к заказу через бота, напишите «заново».",
+            "az": "Yaxşı, söhbəti insana ötürürəm — iş saatlarında cavab verəcəyik: B.e–Cü 11:00–20:00, Şənbə 11:00–14:00. Bot ilə sifarişə qayıtmaq üçün «yenidən» yazın.",
+            "en": "Okay, I'm passing the chat to a person — we reply during working hours: Mon–Fri 11:00–20:00, Sat 11:00–14:00. To go back to ordering with the bot, type “restart”."
+        },
+        "human_web": {
+            "ru": "Открываем WhatsApp — там вам ответит человек. Всё, что вы уже выбрали, уже есть в сообщении.",
+            "az": "WhatsApp açılır — orada sizə insan cavab verəcək. Artıq seçdikləriniz mesajda var.",
+            "en": "Opening WhatsApp — a person will answer you there. Everything you've chosen so far is already in the message."
+        },
+        "wa_intro": {
+            "ru": "Здравствуйте! Хочу заказать торт.",
+            "az": "Salam! Tort sifariş etmək istəyirəm.",
+            "en": "Hello! I would like to order a cake."
+        },
+        "wa_order": {
+            "ru": "Заказ",
+            "az": "Sifariş",
+            "en": "Order"
+        },
+        "photo_hint": {
+            "ru": "Пришлите, пожалуйста, фото или ссылку на картинку — или нажмите «Пришлю позже».",
+            "az": "Zəhmət olmasa, şəkil və ya şəklin linkini göndərin — ya da «Sonra atacam» düyməsini basın.",
+            "en": "Please send a photo or a link to a picture — or tap “I'll send it later”."
+        },
+        "photo_attached": {
+            "ru": "прикреплено ✓",
+            "az": "əlavə olunub ✓",
+            "en": "attached ✓"
+        },
+        "write_wa": {
+            "ru": "Написать в WhatsApp",
+            "az": "WhatsApp-da yaz",
+            "en": "Message on WhatsApp"
+        },
+        "order_failed": {
+            "ru": "Не получилось сохранить заказ. Попробуйте ещё раз через минуту или напишите нам в WhatsApp.",
+            "az": "Sifarişi yadda saxlamaq alınmadı. Bir dəqiqədən sonra yenidən cəhd edin və ya bizə WhatsApp-da yazın.",
+            "en": "We couldn't save the order. Please try again in a minute or message us on WhatsApp."
+        }
+    },
+    "commands": {
+        "restart": ["заново", "начать", "начать заново", "меню", "restart", "start", "/start", "menu", "yenidən", "yenidən başla"],
+        "human": ["оператор", "человек", "менеджер", "operator", "human", "manager", "insan", "menecer"]
+    },
+    "weekdays": {
+        "ru": ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+        "az": ["B.", "B.e.", "Ç.a.", "Ç.", "C.a.", "C.", "Ş."],
+        "en": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    },
+    "steps": [
+        {
+            "id": "lang",
+            "type": "choice",
+            "ask": "Выберите язык · Dili seçin · Choose a language",
+            "options": [
+                { "id": "ru", "label": "Русский" },
+                { "id": "az", "label": "Azərbaycanca" },
+                { "id": "en", "label": "English" }
+            ]
+        },
+        {
+            "id": "type",
+            "type": "choice",
+            "title": { "ru": "Что заказываете", "az": "Nə sifariş edirsiniz", "en": "What you're ordering" },
+            "ask": { "ru": "Что будем заказывать?", "az": "Nə sifariş edək?", "en": "What would you like to order?" },
+            "options": [
+                { "id": "bento", "label": { "ru": "Бенто-торт", "az": "Bento tort", "en": "Bento cake" } },
+                { "id": "ctg", "label": "Cake to go" }
+            ]
+        },
+        {
+            "id": "size",
+            "type": "choice",
+            "title": { "ru": "Размер", "az": "Ölçü", "en": "Size" },
+            "ask": { "ru": "Какой размер?", "az": "Hansı ölçü?", "en": "Which size?" },
+            "options_by": "type",
+            "options": {
+                "bento": [
+                    { "id": "b1", "price": 25, "label": { "ru": "1–2 перс. · 25 ₼", "az": "1–2 nəfər · 25 ₼", "en": "1–2 people · 25 ₼" }, "full": { "ru": "1–2 персоны · 300–350 г", "az": "1–2 nəfərlik · 300–350 q", "en": "1–2 people · 300–350 g" } },
+                    { "id": "b2", "price": 35, "label": { "ru": "3–4 перс. · 35 ₼", "az": "3–4 nəfər · 35 ₼", "en": "3–4 people · 35 ₼" }, "full": { "ru": "3–4 персоны · 750–800 г", "az": "3–4 nəfərlik · 750–800 q", "en": "3–4 people · 750–800 g" } },
+                    { "id": "b3", "price": 60, "label": { "ru": "7–8 перс. · 60 ₼", "az": "7–8 nəfər · 60 ₼", "en": "7–8 people · 60 ₼" }, "full": { "ru": "7–8 персон · 1200–1500 г", "az": "7–8 nəfərlik · 1200–1500 q", "en": "7–8 people · 1200–1500 g" } }
+                ],
+                "ctg": [
+                    { "id": "c1", "price": 25, "label": { "ru": "2 × 170–190 г · 25 ₼", "az": "2 × 170–190 q · 25 ₼", "en": "2 × 170–190 g · 25 ₼" }, "full": { "ru": "2 шт × 170–190 г", "az": "2 ədəd × 170–190 q", "en": "2 pcs × 170–190 g" } },
+                    { "id": "c2", "price": 30, "label": { "ru": "2 × 270–290 г · 30 ₼", "az": "2 × 270–290 q · 30 ₼", "en": "2 × 270–290 g · 30 ₼" }, "full": { "ru": "2 шт × 270–290 г", "az": "2 ədəd × 270–290 q", "en": "2 pcs × 270–290 g" } }
+                ]
+            }
+        },
+        {
+            "id": "sponge",
+            "type": "choice",
+            "title": { "ru": "Бисквит", "az": "Biskvit", "en": "Sponge" },
+            "ask": { "ru": "Какой бисквит? Ко всем идёт крем-чиз.", "az": "Hansı biskvit? Hamısına krem-çiz əlavə olunur.", "en": "Which sponge? All come with cream cheese." },
+            "options": [
+                { "id": "vanilla", "label": { "ru": "Ванильный", "az": "Vanilli", "en": "Vanilla" } },
+                { "id": "choco", "label": { "ru": "Шоколадный", "az": "Şokoladlı", "en": "Chocolate" } },
+                { "id": "velvet", "label": { "ru": "Красный бархат", "az": "Qırmızı məxmər", "en": "Red velvet" } }
+            ]
+        },
+        {
+            "id": "filling",
+            "type": "choice",
+            "title": { "ru": "Начинка", "az": "İçlik", "en": "Filling" },
+            "ask": { "ru": "Какую начинку?", "az": "Hansı içlik?", "en": "Which filling?" },
+            "options_by": "sponge",
+            "options": {
+                "vanilla": [
+                    { "id": "banana", "label": { "ru": "Банан", "az": "Banan", "en": "Banana" } },
+                    { "id": "strawberry", "label": { "ru": "Клубника", "az": "Çiyələk", "en": "Strawberry" } },
+                    { "id": "cherry", "label": { "ru": "Вишня", "az": "Vişnə", "en": "Cherry" } },
+                    { "id": "raspberry", "label": { "ru": "Малина", "az": "Malina", "en": "Raspberry" } },
+                    { "id": "caramel", "label": { "ru": "Карамель", "az": "Karamel", "en": "Caramel" } },
+                    { "id": "caramel-banana", "label": { "ru": "Карамель + банан", "az": "Karamel + banan", "en": "Caramel + banana" } },
+                    { "id": "vanilla-cream", "label": { "ru": "Ванильный крем", "az": "Vanil krem", "en": "Vanilla cream" } }
+                ],
+                "choco": [
+                    { "id": "strawberry", "label": { "ru": "Клубника", "az": "Çiyələk", "en": "Strawberry" } },
+                    { "id": "raspberry", "label": { "ru": "Малина", "az": "Malina", "en": "Raspberry" } },
+                    { "id": "cherry", "label": { "ru": "Вишня", "az": "Vişnə", "en": "Cherry" } },
+                    { "id": "banana", "label": { "ru": "Банан", "az": "Banan", "en": "Banana" } },
+                    { "id": "caramel", "label": { "ru": "Карамель", "az": "Karamel", "en": "Caramel" } },
+                    { "id": "snickers", "label": { "ru": "Сникерс", "az": "Snikers", "en": "Snickers" }, "full": { "ru": "Арахис + карамель (сникерс)", "az": "Fıstıq + karamel (snikers)", "en": "Peanut + caramel (Snickers)" } },
+                    { "id": "plain-cream", "label": { "ru": "Просто крем", "az": "Sadə krem", "en": "Plain cream" } }
+                ],
+                "velvet": [
+                    { "id": "strawberry", "label": { "ru": "Клубника", "az": "Çiyələk", "en": "Strawberry" } },
+                    { "id": "cherry", "label": { "ru": "Вишня", "az": "Vişnə", "en": "Cherry" } },
+                    { "id": "raspberry", "label": { "ru": "Малина", "az": "Malina", "en": "Raspberry" } }
+                ]
+            }
+        },
+        {
+            "id": "design",
+            "type": "choice",
+            "title": { "ru": "Дизайн", "az": "Dizayn", "en": "Design" },
+            "ask": { "ru": "Какой дизайн хотите?", "az": "Hansı dizaynı istəyirsiniz?", "en": "What design would you like?" },
+            "options": [
+                { "id": "photo", "label": { "ru": "Пришлю фото-пример", "az": "Nümunə şəkli atacam", "en": "I'll send a photo" }, "full": { "ru": "По фото-примеру", "az": "Nümunə şəkli üzrə", "en": "From a reference photo" } },
+                { "id": "text", "label": { "ru": "Опишу словами", "az": "Sözlə təsvir edəcəm", "en": "I'll describe it" }, "full": { "ru": "По описанию", "az": "Təsvirə görə", "en": "From a description" } },
+                {
+                    "id": "konstruktor",
+                    "store": false,
+                    "link": "/konstruktor/",
+                    "label": { "ru": "Соберу в конструкторе", "az": "Konstruktorda yığacam", "en": "Use the cake builder" },
+                    "say": {
+                        "ru": "В конструкторе на сайте можно выбрать цвет крема, картинку и надпись и сразу увидеть торт. Там же можно отправить заказ. Если удобнее продолжить здесь, выберите другой вариант выше.",
+                        "az": "Saytdakı konstruktorda kremin rəngini, şəkli və yazını seçib tortu dərhal görə bilərsiniz. Sifarişi də oradan göndərmək olar. Burada davam etmək istəsəniz, yuxarıda başqa variant seçin.",
+                        "en": "In the cake builder on our website you can pick the cream colour, picture and lettering and see the cake right away. You can send the order from there too. To carry on here instead, pick another option above."
+                    },
+                    "link_label": { "ru": "Открыть конструктор", "az": "Konstruktoru aç", "en": "Open the builder" }
+                },
+                { "id": "free", "label": { "ru": "На ваш вкус", "az": "Sizin zövqünüzə", "en": "Up to you" } }
+            ]
+        },
+        {
+            "id": "design_photo",
+            "type": "photo",
+            "if": { "design": "photo" },
+            "title": { "ru": "Фото-пример", "az": "Nümunə şəkli", "en": "Reference photo" },
+            "ask": { "ru": "Пришлите фото торта, который нравится.", "az": "Xoşunuza gələn tortun şəklini göndərin.", "en": "Send a photo of a cake you like." },
+            "skip": { "id": "later", "label": { "ru": "Пришлю позже", "az": "Sonra atacam", "en": "I'll send it later" } }
+        },
+        {
+            "id": "design_text",
+            "type": "text",
+            "if": { "design": "text" },
+            "min": 3,
+            "max": 400,
+            "title": { "ru": "Пожелания к дизайну", "az": "Dizayn istəkləri", "en": "Design wishes" },
+            "ask": { "ru": "Опишите, каким должен быть торт: цвет крема, картинка, украшения.", "az": "Tortun necə olmasını təsvir edin: kremin rəngi, şəkil, bəzəklər.", "en": "Describe the cake: cream colour, picture, decorations." },
+            "placeholder": { "ru": "Например: нежно-розовый, с бантиком", "az": "Məsələn: açıq çəhrayı, bantla", "en": "e.g. pale pink with a bow" }
+        },
+        {
+            "id": "lettering",
+            "type": "text",
+            "max": 60,
+            "title": { "ru": "Надпись", "az": "Yazı", "en": "Lettering" },
+            "ask": { "ru": "Какую надпись сделать на торте?", "az": "Tortun üzərində hansı yazı olsun?", "en": "What should the cake say?" },
+            "placeholder": { "ru": "Например: С днём рождения, Айсель!", "az": "Məsələn: Ad günün mübarək, Aysel!", "en": "e.g. Happy birthday, Aysel!" },
+            "skip": { "id": "none", "label": { "ru": "Без надписи", "az": "Yazısız", "en": "No lettering" } }
+        },
+        {
+            "id": "date",
+            "type": "date",
+            "title": { "ru": "Дата", "az": "Tarix", "en": "Date" },
+            "ask": { "ru": "На какую дату нужен торт? Выберите день или напишите дату, например 31.10.", "az": "Tort hansı tarixə lazımdır? Gün seçin və ya tarixi yazın, məsələn 31.10.", "en": "What date do you need the cake for? Pick a day or type a date, e.g. 31.10." }
+        },
+        {
+            "id": "time",
+            "type": "time",
+            "title": { "ru": "Время", "az": "Vaxt", "en": "Time" },
+            "ask": { "ru": "В какое время?", "az": "Saat neçədə?", "en": "What time?" }
+        },
+        {
+            "id": "delivery",
+            "type": "choice",
+            "title": { "ru": "Получение", "az": "Təhvil", "en": "Handover" },
+            "ask": { "ru": "Как получите торт?", "az": "Tortu necə götürəcəksiniz?", "en": "How will you get the cake?" },
+            "options": [
+                { "id": "courier", "label": { "ru": "Курьер", "az": "Kuryer", "en": "Courier" }, "full": { "ru": "Доставка курьером", "az": "Kuryerlə çatdırılma", "en": "Courier delivery" } },
+                {
+                    "id": "bolt",
+                    "label": "Bolt Delivery",
+                    "say": {
+                        "ru": "Bolt-курьера вы вызываете сами на наш адрес (мы курьера не заказываем). Сообщим, когда торт будет готов к передаче.",
+                        "az": "Bolt kuryerini bizim ünvana siz özünüz çağırırsınız (kuryeri biz sifariş etmirik). Tort təhvilə hazır olanda xəbər verəcəyik.",
+                        "en": "You order the Bolt courier to our address yourself (we don't book the courier). We'll let you know when the cake is ready for handover."
+                    }
+                },
+                { "id": "pickup", "label": { "ru": "Самовывоз", "az": "Özüm götürəcəm", "en": "Pickup" } }
+            ]
+        },
+        {
+            "id": "address",
+            "type": "text",
+            "if": { "delivery": "courier" },
+            "min": 5,
+            "max": 200,
+            "title": { "ru": "Адрес", "az": "Ünvan", "en": "Address" },
+            "ask": { "ru": "Напишите адрес доставки: улица, дом, квартира.", "az": "Çatdırılma ünvanını yazın: küçə, ev, mənzil.", "en": "Type the delivery address: street, building, apartment." },
+            "placeholder": { "ru": "Улица, дом, квартира", "az": "Küçə, ev, mənzil", "en": "Street, building, apartment" }
+        },
+        {
+            "id": "name",
+            "type": "text",
+            "min": 2,
+            "max": 60,
+            "title": { "ru": "Имя", "az": "Ad", "en": "Name" },
+            "ask": { "ru": "Как вас зовут?", "az": "Adınız nədir?", "en": "What's your name?" },
+            "placeholder": { "ru": "Ваше имя", "az": "Adınız", "en": "Your name" }
+        },
+        {
+            "id": "phone",
+            "type": "phone",
+            "skip_channels": ["whatsapp"],
+            "title": { "ru": "Телефон", "az": "Telefon", "en": "Phone" },
+            "ask": { "ru": "Ваш номер телефона для связи?", "az": "Əlaqə üçün telefon nömrəniz?", "en": "Your phone number?" },
+            "placeholder": { "ru": "+994 __ ___ __ __", "az": "+994 __ ___ __ __", "en": "+994 __ ___ __ __" }
+        },
+        {
+            "id": "summary",
+            "type": "summary",
+            "confirm": { "ru": "Всё верно", "az": "Hər şey düzdür", "en": "All correct" },
+            "edit": { "ru": "Изменить", "az": "Dəyişmək", "en": "Change" },
+            "edit_groups": [
+                { "id": "e-cake", "steps": ["type", "size"], "label": { "ru": "Торт и размер", "az": "Tort və ölçü", "en": "Cake and size" } },
+                { "id": "e-taste", "steps": ["sponge", "filling"], "label": { "ru": "Бисквит и начинка", "az": "Biskvit və içlik", "en": "Sponge and filling" } },
+                { "id": "e-design", "steps": ["design", "design_photo", "design_text"], "label": { "ru": "Дизайн", "az": "Dizayn", "en": "Design" } },
+                { "id": "e-letter", "steps": ["lettering"], "label": { "ru": "Надпись", "az": "Yazı", "en": "Lettering" } },
+                { "id": "e-when", "steps": ["date", "time"], "label": { "ru": "Дата и время", "az": "Tarix və vaxt", "en": "Date and time" } },
+                { "id": "e-get", "steps": ["delivery", "address"], "label": { "ru": "Получение", "az": "Təhvil", "en": "Handover" } },
+                { "id": "e-contact", "steps": ["name", "phone"], "label": { "ru": "Имя и телефон", "az": "Ad və telefon", "en": "Name and phone" } }
+            ]
+        }
+    ]
+}

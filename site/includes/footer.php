@@ -65,6 +65,16 @@
 
 <script src="/assets/site.js?v=<?= @filemtime(__DIR__ . '/../assets/site.js') ?>" defer></script>
 
+<?php // Чат-бот заказа: окно рисует assets/chat.js, отвечает bot-web.php по сценарию data/bot-scenario.json ?>
+<script>window.VCHAT = <?= json_encode([
+    'csrf'    => $_SESSION['csrf'],
+    'lang'    => $lang,
+    'captcha' => turnstile_on() ? load_security()['turnstile_site'] : '',
+    't'       => array_filter($t, fn($k) => str_starts_with((string)$k, 'bot_'), ARRAY_FILTER_USE_KEY),
+], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP) ?>;</script>
+<link rel="stylesheet" href="/assets/chat.css?v=<?= @filemtime(__DIR__ . '/../assets/chat.css') ?>">
+<script src="/assets/chat.js?v=<?= @filemtime(__DIR__ . '/../assets/chat.js') ?>" defer></script>
+
 <?php
 // ===== Разметка schema.org: организация, сайт, страница + узлы конкретной страницы =====
 $orgId  = CANON_HOST . '/#organization';

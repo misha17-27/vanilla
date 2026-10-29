@@ -356,4 +356,17 @@ return [
   'g_rev_d' => 'A few words about your cake help others choose and help us get better. It takes a minute.',
   'g_rev_btn' => 'Leave a Google review',
   'g_rev_link' => 'Google review',
+  // Чат-бот заказа (вопросы — в data/bot-scenario.json)
+  'bot_btn' => 'Order in chat',
+  'bot_title' => 'Vanilla Cake',
+  'bot_sub' => "Let's place your order in a couple of minutes",
+  'bot_ph' => 'Type a message…',
+  'bot_send' => 'Send',
+  'bot_attach' => 'Attach photo',
+  'bot_restart' => 'Start over',
+  'bot_human' => 'Talk to a person',
+  'bot_close' => 'Close',
+  'bot_err' => 'Connection problem. Please try again.',
+  'bot_upload_err' => "Couldn't upload the photo. JPG, PNG or WebP up to 8 MB.",
+  'bot_captcha' => "Please confirm you're not a robot and tap again.",
 ];

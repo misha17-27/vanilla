@@ -3,10 +3,10 @@
 // чтобы в админке была история заказов и клиентов.
 declare(strict_types=1);
 require_once __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/orders.php';
 header('Content-Type: application/json; charset=UTF-8');
 header('X-Content-Type-Options: nosniff');
 
-const ORDERS_FILE = __DIR__ . '/data/orders.json';
 const ORDER_RATE  = 20; // заказов в час с одного IP
 
 function bad(string $code, int $http = 400): never {
@@ -48,25 +48,11 @@ function cleanList($v, int $max = 200, int $limit = 5): array {
     return $out;
 }
 
-// Фото заказа — только наши загрузки (/uploads/designs/design-…jpg на нашем домене):
-// в админке они становятся ссылками и картинками, чужой адрес туда не пускаем
 function cleanPhotos($v): array {
-    $hosts = array_filter([
-        strtolower((string)parse_url(CANON_HOST, PHP_URL_HOST)),
-        strtolower(preg_replace('/:\d+$/', '', (string)($_SERVER['HTTP_HOST'] ?? ''))),
-    ]);
-    $out = [];
-    foreach (cleanList($v, 300, 5) as $u) {
-        if (!preg_match('~^https?://([a-z0-9.-]+)(?::\d+)?/uploads/designs/design-\d{8}-[0-9a-f]{16}\.jpg$~i', $u, $m)) continue;
-        if (in_array(strtolower($m[1]), $hosts, true)) $out[] = $u;
-    }
-    return $out;
+    return array_values(array_filter(cleanList($v, 300, 5), 'own_photo_url'));
 }
 
 $order = [
-    'id'        => date('ymd') . '-' . strtoupper(bin2hex(random_bytes(2))),
-    'created'   => time(),
-    'status'    => 'new',
     'lang'      => $lang,
     'source'    => clean($in['source'] ?? '', 40),          // product | builder
     'product'   => clean($in['product'] ?? '', 120),
@@ -89,22 +75,10 @@ $order = [
 ];
 if ($order['name'] === '' || $order['phone'] === '') bad('fields');
 
-// пишем с блокировкой — заказы могут прийти одновременно
-@mkdir(dirname(ORDERS_FILE), 0775, true);
-$fh = fopen(ORDERS_FILE, 'c+');
-if (!$fh) bad('io', 500);
-flock($fh, LOCK_EX);
-$data = json_decode((string)stream_get_contents($fh), true) ?: ['orders' => []];
-array_unshift($data['orders'], $order);
-$data['orders'] = array_slice($data['orders'], 0, 2000);
-$data['updated'] = date('Y-m-d H:i');
-ftruncate($fh, 0);
-rewind($fh);
-fwrite($fh, json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
-flock($fh, LOCK_UN);
-fclose($fh);
+$id = order_add($order);
+if ($id === null) bad('io', 500);
 
 $rl['n']++;
 @file_put_contents($rlFile, json_encode($rl));
 
-echo json_encode(['ok' => true, 'id' => $order['id']]);
+echo json_encode(['ok' => true, 'id' => $id]);

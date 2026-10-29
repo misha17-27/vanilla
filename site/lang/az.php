@@ -356,4 +356,17 @@ return [
   'g_rev_d' => 'Tort haqqında bir neçə söz başqalarına seçim etməyə, bizə isə daha yaxşı olmağa kömək edir. Cəmi bir dəqiqə çəkir.',
   'g_rev_btn' => 'Google-da rəy yazın',
   'g_rev_link' => 'Google-da rəy',
+  // Чат-бот заказа (вопросы — в data/bot-scenario.json)
+  'bot_btn' => 'Çatda sifariş et',
+  'bot_title' => 'Vanilla Cake',
+  'bot_sub' => 'Sifarişi bir neçə dəqiqəyə rəsmiləşdirək',
+  'bot_ph' => 'Mesaj yazın…',
+  'bot_send' => 'Göndər',
+  'bot_attach' => 'Şəkil əlavə et',
+  'bot_restart' => 'Yenidən başla',
+  'bot_human' => 'İnsanla əlaqə',
+  'bot_close' => 'Bağla',
+  'bot_err' => 'Əlaqə yoxdur. Yenidən cəhd edin.',
+  'bot_upload_err' => 'Şəkli yükləmək alınmadı. 8 MB-a qədər JPG, PNG və ya WebP uyğundur.',
+  'bot_captcha' => 'Robot olmadığınızı təsdiqləyin və yenidən basın.',
 ];
