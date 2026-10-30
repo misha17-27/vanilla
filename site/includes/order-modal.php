@@ -1,9 +1,11 @@
 <?php
 // Попап оформления заказа. Ожидает: $modalName (строка), $modalImg (путь или '').
+require_once __DIR__ . '/g-review.php';
 ?>
 <div class="modal-ov" id="order-modal" hidden>
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <button type="button" class="modal-x" id="modal-close" aria-label="Close">×</button>
+    <div id="modal-form">
     <h3 class="modal-t" id="modal-title"><?= e($t['ord_t']) ?></h3>
     <div class="modal-sum">
       <?php if (!empty($modalImg)): ?>
@@ -89,6 +91,19 @@
       <?= e($t['ord_send']) ?>
     </a>
     <p class="modal-note"><b><?= e($t['ord_confirm']) ?></b><?= e($t['pd_note']) ?></p>
+    </div>
+    <?php // после отправки: заказ ушёл в WhatsApp — благодарим и предлагаем отзыв ?>
+    <div class="modal-done" id="modal-done" hidden>
+      <div class="md-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+      <h3 class="modal-t"><?= e($t['done_t']) ?></h3>
+      <p class="md-d"><?= e($t['done_d']) ?></p>
+      <a class="md-again" id="modal-again" href="#" target="_blank" rel="noopener"><?= e($t['done_again']) ?></a>
+      <div class="md-rev">
+        <?= g_logo('md-g') ?>
+        <div class="md-rev-txt"><b><?= e($t['done_rev_t']) ?></b><span><?= e($t['done_rev_d']) ?></span></div>
+        <a class="btn btn-primary" href="<?= e(REVIEW_URL) ?>" target="_blank" rel="noopener"><?= e($t['rv_btn']) ?></a>
+      </div>
+    </div>
   </div>
 </div>
 

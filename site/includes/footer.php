@@ -59,6 +59,19 @@
   </span>
 </a>
 
+<?php // Через день после даты торта покупатель, оформивший заказ на сайте, видит просьбу об отзыве (assets/site.js) ?>
+<?php require_once __DIR__ . '/g-review.php'; ?>
+<div class="rv-ask" id="rv-ask" role="dialog" aria-labelledby="rv-ask-t" hidden>
+  <button type="button" class="rv-ask-x" data-rv-close aria-label="Close">×</button>
+  <?= g_logo('rv-ask-g') ?>
+  <b id="rv-ask-t"><?= e($t['rv_ask_t']) ?></b>
+  <p><?= e($t['g_rev_d']) ?></p>
+  <div class="rv-ask-btns">
+    <a class="btn btn-primary" id="rv-ask-go" href="<?= e(REVIEW_URL) ?>" target="_blank" rel="noopener" data-rv-close><?= e($t['g_rev_btn']) ?></a>
+    <button type="button" class="rv-ask-later" data-rv-close><?= e($t['rv_later']) ?></button>
+  </div>
+</div>
+
 <div class="mob-cta">
   <a class="btn btn-wa" href="<?= e(wa_link()) ?>" target="_blank" rel="noopener"><?= e($t['btn_wa']) ?></a>
 </div>

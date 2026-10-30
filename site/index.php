@@ -349,6 +349,14 @@ $heroSlides = [
   </div>
 </section>
 
+<!-- Отзыв в Google -->
+<?php require_once __DIR__ . '/includes/g-review.php'; ?>
+<section class="g-review-sec">
+  <div class="container">
+    <?php g_review_card(); ?>
+  </div>
+</section>
+
 <!-- Instagram feed -->
 <?php $ig = json_decode((string)@file_get_contents(__DIR__ . '/data/instagram.json'), true); ?>
 <?php if (!empty($ig['posts'])): ?>

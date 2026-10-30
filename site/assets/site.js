@@ -221,7 +221,24 @@ if (langBoxes.length) {
     modalSum.textContent = size[0] + ' · ' + size[1] + ' ₼';
   }
   // Попап оформления заказа
+  // после отправки окно показывает «Спасибо»; при новом открытии — снова форма
+  var modalForm = document.getElementById('modal-form');
+  var modalDone = document.getElementById('modal-done');
+  var modalAgain = document.getElementById('modal-again');
+  function showDone() {
+    if (!modalForm || !modalDone) return;
+    if (modalAgain) modalAgain.href = modalSend.href;   // если WhatsApp не открылся
+    modalForm.hidden = true;
+    modalDone.hidden = false;
+    modal.querySelector('.modal').scrollTop = 0;
+  }
+  // Запоминаем дату торта: через день после неё попросим отзыв (см. ниже «Просьба об отзыве»)
+  function rememberOrder() {
+    if (!selDate || !window.vcRememberCake) return;
+    window.vcRememberCake(selDate.getFullYear() + '-' + pad2(selDate.getMonth() + 1) + '-' + pad2(selDate.getDate()));
+  }
   function openModal() {
+    if (modalForm && modalDone) { modalForm.hidden = false; modalDone.hidden = true; }
     modal.hidden = false;
     document.documentElement.classList.add('no-scroll');
   }
@@ -298,6 +315,9 @@ if (langBoxes.length) {
   modalSend.addEventListener('click', function (e) {
     if (!validate()) { e.preventDefault(); return; }
     saveOrder();
+    rememberOrder();
+    // после перехода в WhatsApp: ссылка должна сработать до того, как кнопка скроется
+    setTimeout(showDone, 0);
   });
   [fName, fPhone, fAddress].forEach(function (inp) {
     inp.addEventListener('input', function () {
@@ -564,3 +584,56 @@ if ('IntersectionObserver' in window) {
   }, { threshold: .12 });
   document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
 }
+
+// Просьба об отзыве в Google: покупатель оформил заказ на сайте (дата торта в
+// localStorage 'vc-rev'), и на следующий день после торта зашёл снова — один раз
+// показываем небольшое окно. Новым посетителям ничего не всплывает.
+(function () {
+  var KEY = 'vc-rev';
+  // дату торта записывают форма заказа (выше) и чат-бот (assets/chat.js)
+  window.vcRememberCake = function (d) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(d))) return;
+    try {
+      var old = JSON.parse(localStorage.getItem(KEY) || 'null');
+      // ещё не спрошенный более ранний торт — спросим о нём, он раньше
+      if (old && !old.s && old.d && old.d < d) return;
+      localStorage.setItem(KEY, JSON.stringify({ d: d, s: 0 }));
+    } catch (err) { /* без хранилища просто не напомним */ }
+  };
+  var box = document.getElementById('rv-ask');
+  if (!box) return;
+  var rec = null;
+  try { rec = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return; }
+  if (!rec || rec.s || !/^\d{4}-\d{2}-\d{2}$/.test(String(rec.d))) return;
+  var p = rec.d.split('-');
+  var due = new Date(+p[0], +p[1] - 1, +p[2] + 1);   // следующий день после торта
+  var now = new Date();
+  if (now < due) return;
+  function done() {
+    rec.s = 1;
+    try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch (e) {}
+  }
+  if (now - due > 45 * 864e5) { done(); return; }   // спустя полтора месяца уже не спрашиваем
+  var html = document.documentElement;
+  function close() {
+    box.hidden = true;
+    html.classList.remove('rv-open');
+  }
+  function show() {
+    // не поверх оформления заказа, меню или чата — подождём
+    if (document.querySelector('.modal-ov:not([hidden])') || /\b(vchat-open|menu-open)\b/.test(html.className)) {
+      setTimeout(show, 4000);
+      return;
+    }
+    done();   // показываем один раз, даже если окно просто закроют
+    box.hidden = false;
+    html.classList.add('rv-open');
+  }
+  box.addEventListener('click', function (e) {
+    if (e.target.closest('[data-rv-close]')) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !box.hidden) close();
+  });
+  setTimeout(show, 2500);
+})();

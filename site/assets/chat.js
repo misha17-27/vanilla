@@ -108,6 +108,9 @@
       }
       if (r.history) { log.innerHTML = ''; r.history.forEach(addMsg); } else { r.messages.forEach(addMsg); }
       unfreeze();
+      // заказ оформлен: запоминаем дату торта до перехода в WhatsApp (на телефоне — в этой же вкладке)
+      var cake = r.messages.filter(function (m) { return m.cake; })[0];
+      if (cake && window.vcRememberCake) window.vcRememberCake(cake.cake);
       var go = r.messages.filter(function (m) { return m.open; })[0];
       if (go) openNow(go.open);
     });

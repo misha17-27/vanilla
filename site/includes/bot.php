@@ -393,6 +393,9 @@ final class OrderBot
             $wa = $this->waLink(true);
             $this->say(str_replace('{id}', $id, $this->tx('done_web')), [['id' => 'wa', 'label' => $this->tx('send_wa'), 'url' => $wa]]);
             $this->openNow($wa);
+            // дата торта — сайт через день после неё попросит отзыв в Google (assets/site.js)
+            $cake = $this->ymd((string)($this->st['answers']['date'] ?? ''));
+            if ($cake) $this->out[array_key_last($this->out)]['cake'] = $cake->format('Y-m-d');
         } else {
             $this->say(str_replace('{id}', $id, $this->tx('done')));
         }
