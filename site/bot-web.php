@@ -90,7 +90,7 @@ $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' :
 $bot = new OrderBot('web', [
     'site'     => $scheme . '://' . ($_SERVER['HTTP_HOST'] ?? parse_url(CANON_HOST, PHP_URL_HOST)),
     'wa'       => WA_NUMBER,
-    'map'      => MAP_URL,
+    'map'      => MAP_SHORT,
     'schedule' => load_schedule(),
     'order'    => fn(array $order): ?string => rate_hit('ord', ORDER_RATE) ? order_add($order) : null,
 ]);

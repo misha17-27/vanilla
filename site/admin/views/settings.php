@@ -48,6 +48,9 @@
         <label for="map_url">Ссылка на Google Maps</label>
         <textarea id="map_url" name="map_url" rows="3"><?= e($SETTINGS['map_url']) ?></textarea>
         <p class="hint"><a href="<?= e($SETTINGS['map_url']) ?>" target="_blank" rel="noopener">Проверить ссылку ↗</a></p>
+        <label for="map_short">Короткая ссылка на карту — для сообщений WhatsApp</label>
+        <input type="text" id="map_short" name="map_short" value="<?= e($SETTINGS['map_short']) ?>" placeholder="https://maps.app.goo.gl/…">
+        <p class="hint">Уходит в сообщение заказа при самовывозе и Bolt. В Google Maps: «Поделиться» → «Копировать ссылку». Пусто — отправляется длинная ссылка выше. <a href="<?= e(MAP_SHORT) ?>" target="_blank" rel="noopener">Проверить ↗</a></p>
       </div>
     </div>
 

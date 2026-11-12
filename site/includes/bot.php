@@ -64,7 +64,7 @@ final class OrderBot
      * $channel — web | whatsapp | instagram.
      * $env: site — адрес сайта для ссылок, wa — номер WhatsApp, schedule — выходные (load_schedule()),
      *       order — function (array $order): ?string — сохраняет заказ и возвращает его номер,
- *       map — наш адрес на карте: при самовывозе уходит в сообщение WhatsApp.
+ *       map — наш адрес на карте: при самовывозе и Bolt уходит в сообщение WhatsApp.
      */
     public function __construct(private string $channel, private array $env)
     {
@@ -524,9 +524,10 @@ final class OrderBot
         $lines = [$this->tx('wa_intro')];
         if ($withOrder) $lines[] = $this->tx('wa_order') . ' № ' . $this->st['order'];
         foreach ($this->lines(null, true) as $l) $lines[] = $l;
-        // самовывоз — сразу с нашим адресом на карте, как в форме заказа (site.js)
-        if (($this->st['answers']['delivery'] ?? '') === 'pickup' && !empty($this->env['map'])) {
-            $lines[] = $this->tx('pickup_map') . ': ' . $this->env['map'];
+        // самовывоз и Bolt — сразу с нашим адресом на карте, как в форме заказа (site.js)
+        $dl = $this->st['answers']['delivery'] ?? '';
+        if (in_array($dl, ['pickup', 'bolt'], true) && !empty($this->env['map'])) {
+            $lines[] = $this->tx($dl === 'bolt' ? 'bolt_map' : 'pickup_map') . ': ' . $this->env['map'];
         }
         if ($p = $this->price()) $lines[] = $this->tx('price') . ': ' . $p . ' ₼';
         return 'https://wa.me/' . $this->env['wa'] . '?text=' . rawurlencode(implode("\n", $lines));

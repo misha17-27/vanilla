@@ -127,7 +127,7 @@ return [
             'Подвал'        => ['footer_desc', 'footer_menu', 'footer_pages', 'footer_contact', 'footer_rights', 'bantik_h', 'sets_h'],
             'Кнопка Instagram' => ['ig_fab_t', 'ig_fab_d'],
             'Названия товаров' => ['p_bento', 'p_bantik', 'p_set', 'pcs'],
-            'Сообщения в WhatsApp' => ['wa_msg', 'wa_msg_p', 'wa_link_lbl', 'wa_design', 'wa_design3d', 'wa_photo', 'wa_point', 'wa_pickup'],
+            'Сообщения в WhatsApp' => ['wa_msg', 'wa_msg_p', 'wa_link_lbl', 'wa_design', 'wa_design3d', 'wa_photo', 'wa_point', 'wa_pickup', 'wa_bolt'],
             'Форма заказа'  => ['ord_t', 'opt_size', 'opt_sponge', 'opt_fill', 'opt_date', 'opt_time', 'opt_dl', 'dl_courier', 'dl_bolt', 'dl_pickup', 'dl_bolt_note', 'dl_bolt_addr', 'date_ph', 'date_note', 'time_ph', 'f_address', 'f_address_ph', 'f_name', 'f_name_ph', 'f_phone', 'f_phone_ph', 'f_other', 'f_recipient', 'f_rname_ph', 'f_rphone_ph', 'req_mark', 'ord_send', 'ord_confirm', 'pd_note'],
             'После отправки заказа' => ['done_t', 'done_d', 'done_again', 'done_rev_t', 'done_rev_d', 'rv_btn'],
             'Отзыв в Google' => ['g_rev_t', 'g_rev_d', 'g_rev_btn', 'g_rev_link', 'rv_ask_t', 'rv_later'],

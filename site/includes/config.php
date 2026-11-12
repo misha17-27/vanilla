@@ -33,7 +33,7 @@ if (empty($_SESSION['csrf'])) {
 // ===== Contacts =====
 // Значения по умолчанию; то, что задано через админку (data/settings.json), их перекрывает.
 const SETTINGS_FILE = __DIR__ . '/../data/settings.json';
-const SETTING_KEYS  = ['phone_display', 'phone_tel', 'wa_number', 'email', 'ig_url', 'ig_handle', 'fb_url', 'map_url', 'map_lat', 'map_lng', 'canon_host', 'review_url', 'ga_id'];
+const SETTING_KEYS  = ['phone_display', 'phone_tel', 'wa_number', 'email', 'ig_url', 'ig_handle', 'fb_url', 'map_url', 'map_short', 'map_lat', 'map_lng', 'canon_host', 'review_url', 'ga_id'];
 $SETTINGS = (json_decode((string)@file_get_contents(SETTINGS_FILE), true) ?: []) + [
     'phone_display' => '+994 55 215 63 43',
     'phone_tel'     => '+994552156343',
@@ -43,6 +43,7 @@ $SETTINGS = (json_decode((string)@file_get_contents(SETTINGS_FILE), true) ?: [])
     'ig_handle'     => '@vanilla_cake_az',
     'fb_url'        => 'https://www.facebook.com/vanillacakeaz',
     'map_url'       => 'https://www.google.com/maps/place/Vanilla/@40.4196217,49.8047583,17z/data=!3m1!4b1!4m6!3m5!1s0x40308751a035afbd:0xb1a83ee0808b7a8d!8m2!3d40.4196217!4d49.8073332!16s%2Fg%2F11rnpg56rn',
+    'map_short'     => 'https://maps.app.goo.gl/Nw5EFN6rwUWLDRvB9',
     'map_lat'       => '40.4196217',
     'map_lng'       => '49.8073332',
     'canon_host'    => 'https://vanilla.az',
@@ -57,6 +58,9 @@ define('IG_URL',        $SETTINGS['ig_url']);
 define('IG_HANDLE',     $SETTINGS['ig_handle']);
 define('FB_URL',        $SETTINGS['fb_url']);
 define('MAP_URL',       $SETTINGS['map_url']);
+// Короткая ссылка на ту же карточку — для сообщений WhatsApp (самовывоз, Bolt):
+// длинная занимает в сообщении три строки. Пусто или не https — берём длинную.
+define('MAP_SHORT',     preg_match('#^https://#i', trim($SETTINGS['map_short'])) ? trim($SETTINGS['map_short']) : MAP_URL);
 define('MAP_LAT',       $SETTINGS['map_lat']);
 define('MAP_LNG',       $SETTINGS['map_lng']);
 define('CANON_HOST',    rtrim($SETTINGS['canon_host'], '/')); // production domain for canonical/sitemap

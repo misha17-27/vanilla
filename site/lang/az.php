@@ -244,6 +244,7 @@ return [
   'map_searching' => 'Ünvan müəyyən edilir…',
   'wa_point' => 'Xəritədə nöqtə',
   'wa_pickup' => 'Götürmə ünvanı',
+  'wa_bolt' => 'Bolt kuryeri üçün ünvan',
   'sizes_opt_bento' => [['1–2 nəfərlik · 300–350 q', 25], ['3–4 nəfərlik · 750–800 q', 35], ['7–8 nəfərlik · 1200–1500 q', 60]],
   'sizes_opt_bantik' => [['3–4 nəfərlik · 750–800 q', 35], ['7–8 nəfərlik · 1200–1500 q', 60]],
   'sizes_opt_set' => [['3 mini bentodan ibarət set', 75], ['4 mini bentodan ibarət set', 100]],

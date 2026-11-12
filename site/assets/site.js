@@ -205,8 +205,9 @@ if (langBoxes.length) {
     if (selDate) lines.push(cfg.labels.date + ': ' + fmtDate(selDate));
     if (timeSel.value) lines.push(cfg.labels.time + ': ' + timeSel.value);
     lines.push(cfg.labels.dl + ': ' + dlSel.options[dlSel.selectedIndex].textContent);
-    // самовывоз — сразу с нашим адресом на карте: клиенту не придётся его искать
-    if (dlSel.value === 'pickup' && cfg.pickupMap) lines.push(cfg.pickupLbl + ': ' + cfg.pickupMap);
+    // самовывоз и Bolt — сразу с нашим адресом на карте: клиенту не придётся его искать
+    if (cfg.pickupMap && dlSel.value === 'pickup') lines.push(cfg.pickupLbl + ': ' + cfg.pickupMap);
+    if (cfg.pickupMap && dlSel.value === 'bolt') lines.push(cfg.boltLbl + ': ' + cfg.pickupMap);
     if (dlSel.value === 'courier' && fAddress.value.trim()) lines.push(cfg.labels.address + ': ' + fAddress.value.trim());
     if (dlSel.value === 'courier' && pickedPoint) {
       lines.push(cfg.pointLbl + ': https://maps.google.com/?q=' + pickedPoint.lat + ',' + pickedPoint.lng);
