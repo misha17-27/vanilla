@@ -245,6 +245,8 @@ window.PROD_CFG = <?= json_encode([
     'valDate'  => $t['val_date'],
     'mapSearching' => $t['map_searching'],
     'pointLbl' => $t['wa_point'],
+    'pickupLbl' => $t['wa_pickup'],
+    'pickupMap' => MAP_URL,   // самовывоз: наш адрес на карте уходит в сообщение
     'valPhone' => $t['val_phone'],
     'locale'  => $lang,
     'sizes'   => $sizeOpts,

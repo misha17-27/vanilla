@@ -116,6 +116,11 @@
             "az": "Sifariş",
             "en": "Order"
         },
+        "pickup_map": {
+            "ru": "Адрес самовывоза",
+            "az": "Götürmə ünvanı",
+            "en": "Pickup address"
+        },
         "photo_hint": {
             "ru": "Пришлите, пожалуйста, фото или ссылку на картинку — или нажмите «Пришлю позже».",
             "az": "Zəhmət olmasa, şəkil və ya şəklin linkini göndərin — ya da «Sonra atacam» düyməsini basın.",

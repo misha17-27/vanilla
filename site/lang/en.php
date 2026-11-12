@@ -243,6 +243,7 @@ return [
   'map_apply' => 'Done',
   'map_searching' => 'Detecting address…',
   'wa_point' => 'Map point',
+  'wa_pickup' => 'Pickup address',
   'sizes_opt_bento' => [['1–2 people · 300–350 g', 25], ['3–4 people · 750–800 g', 35], ['7–8 people · 1200–1500 g', 60]],
   'sizes_opt_bantik' => [['3–4 people · 750–800 g', 35], ['7–8 people · 1200–1500 g', 60]],
   'sizes_opt_set' => [['Set of 3 mini bentos', 75], ['Set of 4 mini bentos', 100]],
