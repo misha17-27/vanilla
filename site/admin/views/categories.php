@@ -62,6 +62,10 @@ $urlOf = fn(array $c) => ($c['page'] ?? '') === 'own' ? cat_url($c) : ($pageUrl[
         <?php endif; ?>
         <?php endif; ?>
 
+        <label for="c-cover">Обложка в меню и на главной</label>
+        <input type="text" name="cover" id="c-cover" value="<?= e($edit['cover'] ?? '') ?>" placeholder="/assets/img/products/…jpg">
+        <p class="hint">Адрес фото торта — скопируйте его на странице торта (правой кнопкой по фото → «Копировать адрес»). Пусто — берётся первый торт раздела.</p>
+
         <label for="c-desc">Описание под заголовком</label>
         <textarea name="desc" id="c-desc" rows="4"><?= e($edit['desc'] ?? '') ?></textarea>
         <p class="hint">Необязательно. Для базовых категорий текст берётся из переводов сайта.</p>

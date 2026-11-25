@@ -3,10 +3,7 @@
 require_once __DIR__ . '/config.php';
 // Подменю «Бенто-торты»: свои категории со своей страницей + бантики и сеты,
 // у каждой — фото первого торта категории
-$firstImg = function (string $type): string {
-    $items = products_of($type);
-    return $items ? asset($items[0]['img']) : '';
-};
+$firstImg = fn(string $type): string => cat_cover($type);   // обложка раздела или первый торт
 $bentoSub = ['bento' => [u('/bolme/bento-tort/'), $t['nav_bento'], $firstImg('bento')]];
 foreach (own_categories() as $c) {
     $bentoSub['cat-' . $c['key']] = [cat_url($c), cat_name($c['key']), $firstImg($c['key'])];
@@ -22,6 +19,9 @@ $nav = [
     'contact'  => [u('/elaqe/'),              $t['nav_contact']],
 ];
 // «Отзывы», «О нас» и FAQ в верхнем меню не показываем — они в подвале
+// Новогоднее оформление (вкл/выкл в админке): гирлянда, снег, ссылка в верхней строке
+$NY_DECOR = ny_on('ny_decor');
+$nyLink = $NY_DECOR && isset(categories()['yeniil']) ? cat_url(categories()['yeniil']) : '';
 $canonical = canonical_url();
 $og_image  = $og_image ?? (CANON_HOST . '/assets/og-cover.jpg');
 $og_type   = $og_type ?? 'website';
@@ -76,6 +76,9 @@ $OG_LOCALE = ['ru' => 'ru_RU', 'az' => 'az_AZ', 'en' => 'en_US'];
 <link rel="preconnect" href="https://vanilla.az">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css?v=<?= @filemtime(__DIR__ . '/../assets/style.css') ?>">
+<?php if ($NY_DECOR): ?>
+<link rel="stylesheet" href="/assets/ny.css?v=<?= @filemtime(__DIR__ . '/../assets/ny.css') ?>">
+<?php endif; ?>
 <?php
 // Google Analytics — только на боевом домене: локальные заходы статистику не портят
 $gaHost = strtok((string)($_SERVER['HTTP_HOST'] ?? ''), ':');
@@ -90,11 +93,14 @@ if (GA_ID !== '' && !in_array($gaHost, ['localhost', '127.0.0.1', '::1'], true))
 </script>
 <?php endif; ?>
 </head>
-<body>
+<body<?= $NY_DECOR ? ' class="ny"' . (($page ?? '') === 'konstr' ? ' data-ny-snow="0"' : '') : '' ?>>
 
 <div class="topbar">
   <div class="container">
     <span><?= e($t['preorder_note']) ?> · <?= e($t['hours']) ?></span>
+    <?php if ($nyLink !== ''): ?>
+    <a class="ny-bar hide-m" href="<?= e($nyLink) ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7M9 3.5l3 2.5 3-2.5M9 20.5l3-2.5 3 2.5M4.6 10.2l3.7-.6-1.3-3.5M19.4 13.8l-3.7.6 1.3 3.5M4.6 13.8l3.7.6-1.3 3.5M19.4 10.2l-3.7-.6 1.3-3.5"/></svg><?= e($t['ny_bar']) ?></a>
+    <?php endif; ?>
     <a class="hide-m" href="tel:<?= PHONE_TEL ?>"><?= PHONE_DISPLAY ?></a>
   </div>
 </div>
@@ -181,4 +187,5 @@ if (GA_ID !== '' && !in_array($gaHost, ['localhost', '127.0.0.1', '::1'], true))
       </button>
     </div>
   </div>
+  <?php if ($NY_DECOR): ?><div class="ny-garland" aria-hidden="true"><?= str_repeat('<i></i>', 64) ?></div><?php endif; ?>
 </header>

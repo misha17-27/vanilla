@@ -1,10 +1,7 @@
 <?php
 // Навигация по категориям бенто-тортов — карточки с фото.
 // $catNavActive — ключ текущего раздела: bento | bantik | sets | cat-{key}
-$catNavImg = function (string $type): string {
-    $items = products_of($type);
-    return $items ? asset($items[0]['img']) : '';
-};
+$catNavImg = fn(string $type): string => cat_cover($type);   // обложка раздела или первый торт
 // $catNavFilter — на странице «Бенто-торты» плитки фильтруют общую сетку
 $catNavFilter = $catNavFilter ?? false;
 $catNav = [];

@@ -1,0 +1,29 @@
+/* Новогоднее оформление: гирлянда под шапкой, снег и ссылка в верхней строке.
+   Подключается, только когда оно включено в админке («Контакты и карта» → «Новый год»). */
+
+/* Гирлянда: провод — повторяющийся узор с шагом 56px, лампочка — в нижней точке каждого провиса */
+.ny-garland{position:absolute;left:0;right:0;top:100%;height:28px;display:flex;overflow:hidden;pointer-events:none;z-index:2;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28' viewBox='0 0 56 28'%3E%3Cpath d='M0 2 Q28 20 56 2' fill='none' stroke='%2364788b' stroke-width='1.3'/%3E%3C/svg%3E") repeat-x 0 0/56px 28px}
+.ny-garland i{flex:none;position:relative;width:9px;height:13px;margin:12px 0 0 47px;border-radius:50% 50% 46% 46%/58% 58% 42% 42%;
+  background:var(--b);box-shadow:0 0 7px 1px var(--b);animation:ny-tw 2.6s ease-in-out infinite}
+.ny-garland i:first-child{margin-left:23.5px}
+.ny-garland i::before{content:"";position:absolute;left:2px;top:-3px;width:5px;height:4px;border-radius:1px;background:#4a5a6a}
+.ny-garland i:nth-child(5n+1){--b:#FD4680}
+.ny-garland i:nth-child(5n+2){--b:#F2B84B;animation-delay:-.6s}
+.ny-garland i:nth-child(5n+3){--b:#34C08A;animation-delay:-1.3s}
+.ny-garland i:nth-child(5n+4){--b:#4BA3E3;animation-delay:-1.9s}
+.ny-garland i:nth-child(5n+5){--b:#FFB0C8;animation-delay:-.3s}
+.ny-garland i:nth-child(3n){animation-duration:3.1s}
+.ny-garland i:nth-child(4n){animation-duration:2.2s}
+@keyframes ny-tw{0%,100%{opacity:1;filter:none}50%{opacity:.45;filter:saturate(.7)}}
+html.menu-open .ny-garland{display:none}
+
+/* Снег рисует assets/ny.js; холст под шапкой (у неё z-index 80) и под окнами */
+.ny-snow{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:79}
+
+/* Ссылка на новогодний раздел в верхней розовой строке */
+.ny-bar{display:inline-flex;align-items:center;gap:7px}
+.ny-bar svg{width:14px;height:14px;flex:none}
+
+@media (prefers-reduced-motion: reduce){.ny-garland i{animation:none}}
+@media print{.ny-garland,.ny-snow{display:none}}

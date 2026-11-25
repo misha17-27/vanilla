@@ -33,7 +33,7 @@ if (empty($_SESSION['csrf'])) {
 // ===== Contacts =====
 // Значения по умолчанию; то, что задано через админку (data/settings.json), их перекрывает.
 const SETTINGS_FILE = __DIR__ . '/../data/settings.json';
-const SETTING_KEYS  = ['phone_display', 'phone_tel', 'wa_number', 'email', 'ig_url', 'ig_handle', 'fb_url', 'map_url', 'map_short', 'map_lat', 'map_lng', 'canon_host', 'review_url', 'ga_id'];
+const SETTING_KEYS  = ['phone_display', 'phone_tel', 'wa_number', 'email', 'ig_url', 'ig_handle', 'fb_url', 'map_url', 'map_short', 'map_lat', 'map_lng', 'canon_host', 'review_url', 'ga_id', 'ny_decor', 'ny_slides'];
 $SETTINGS = (json_decode((string)@file_get_contents(SETTINGS_FILE), true) ?: []) + [
     'phone_display' => '+994 55 215 63 43',
     'phone_tel'     => '+994552156343',
@@ -49,6 +49,8 @@ $SETTINGS = (json_decode((string)@file_get_contents(SETTINGS_FILE), true) ?: [])
     'canon_host'    => 'https://vanilla.az',
     'review_url'    => '',
     'ga_id'         => 'G-JN004CMVNS',
+    'ny_decor'      => 'auto',   // новогоднее оформление: auto | on | off
+    'ny_slides'     => 'auto',   // новогодние слайды на главной: auto | on | off
 ];
 define('PHONE_DISPLAY', $SETTINGS['phone_display']);
 define('PHONE_TEL',     $SETTINGS['phone_tel']);
@@ -67,6 +69,17 @@ define('CANON_HOST',    rtrim($SETTINGS['canon_host'], '/')); // production doma
 // Отзыв в Google: ссылка «Попросить отзыв» из Бизнес-профиля. Пока её нет —
 // карточка на Google Картах, там тоже есть кнопка «Написать отзыв»
 define('REVIEW_URL',    preg_match('#^https://#i', trim($SETTINGS['review_url'])) ? trim($SETTINGS['review_url']) : MAP_URL);
+// Новый год: «auto» — с 15 ноября по 10 января по времени Баку, «on»/«off» — вручную
+// в админке («Контакты и карта» → «Новый год»). $key — ny_decor или ny_slides.
+function ny_on(string $key): bool
+{
+    global $SETTINGS;
+    $v = (string)($SETTINGS[$key] ?? 'auto');
+    if ($v === 'on') return true;
+    if ($v === 'off') return false;
+    $md = (new DateTime('now', new DateTimeZone('Asia/Baku')))->format('md');
+    return $md >= '1115' || $md <= '0110';
+}
 // Google Analytics: пусто — счётчик не выводится
 define('GA_ID', (string)($SETTINGS['ga_id'] ?? ''));
 
@@ -309,6 +322,17 @@ function categories(): array
         }
     }
     return $cats;
+}
+
+// Обложка раздела в меню, списке разделов и плитках на главной: поле cover
+// (адрес фото, задаётся в админке), иначе фото первого торта раздела
+function cat_cover(string $key): string
+{
+    $c = categories()[$key] ?? [];
+    $cover = trim((string)($c['cover'] ?? ''));
+    if ($cover !== '' && is_file(__DIR__ . '/..' . '/' . ltrim($cover, '/'))) return asset($cover);
+    $items = products_of($key);
+    return $items ? asset($items[0]['img']) : '';
 }
 
 // Название категории на текущем языке

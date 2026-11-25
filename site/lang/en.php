@@ -60,6 +60,8 @@ return [
   'ny3_t' => 'Your New Year cake — <em>order early</em>',
   'ny3_d' => 'We work by pre-order only, and dates fill up fast before New Year. Write to us early to book the day you need.',
   'ny_btn' => 'See New Year cakes',
+  'ny_bar' => 'New Year bento cakes are in the catalogue',
+  'cat_tiles_aria' => 'Catalogue sections',
 
   'u1t' => 'Natural ingredients',
   'u1d' => 'Every sponge and cream is made from scratch with fresh products.',

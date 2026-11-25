@@ -831,6 +831,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cats[$key]['name_az'] = trim((string)($_POST['name_az'] ?? ''));
             $cats[$key]['name_en'] = trim((string)($_POST['name_en'] ?? ''));
             $cats[$key]['desc']    = mb_substr(trim((string)($_POST['desc'] ?? '')), 0, 300);
+            // обложка: только адрес фото с нашего сайта (полный адрес сокращаем до пути)
+            if (array_key_exists('cover', $_POST)) {
+                $cv = trim((string)$_POST['cover']);
+                $cv = (string)preg_replace('#^https?://[^/]+#i', '', $cv);
+                if ($cv !== '' && preg_match('#^/assets/img/[a-z0-9/_.-]+\.(jpe?g|png|webp)$#i', $cv) && is_file(__DIR__ . '/..' . $cv)) $cats[$key]['cover'] = $cv;
+                else unset($cats[$key]['cover']);
+            }
             // Текст под каталогом: по абзацам, на трёх языках
             foreach (['text', 'text_az', 'text_en'] as $tk) {
                 $v = mb_substr(trim((string)($_POST[$tk] ?? '')), 0, 3000);

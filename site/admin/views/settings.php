@@ -69,6 +69,25 @@
       </div>
     </div>
 
+    <h3>Новый год</h3>
+    <div class="pair">
+      <?php $nyOpts = ['auto' => 'Автоматически — с 15 ноября по 10 января', 'on' => 'Включено', 'off' => 'Выключено']; ?>
+      <div>
+        <label for="ny_decor">Новогоднее оформление сайта</label>
+        <select id="ny_decor" name="ny_decor">
+          <?php foreach ($nyOpts as $v => $l): ?><option value="<?= $v ?>"<?= ($SETTINGS['ny_decor'] ?? 'auto') === $v ? ' selected' : '' ?>><?= e($l) ?></option><?php endforeach; ?>
+        </select>
+        <p class="hint">Гирлянда под шапкой, лёгкий снег и ссылка на новогодние торты в верхней строке. Сейчас: <b><?= ny_on('ny_decor') ? 'показывается' : 'не показывается' ?></b>.</p>
+      </div>
+      <div>
+        <label for="ny_slides">Новогодние слайды на главной</label>
+        <select id="ny_slides" name="ny_slides">
+          <?php foreach ($nyOpts as $v => $l): ?><option value="<?= $v ?>"<?= ($SETTINGS['ny_slides'] ?? 'auto') === $v ? ' selected' : '' ?>><?= e($l) ?></option><?php endforeach; ?>
+        </select>
+        <p class="hint">Три слайда первыми, перед обычными. Тексты — в «Страницы» → «Общие». Сейчас: <b><?= ny_on('ny_slides') ? 'показываются' : 'не показываются' ?></b>.</p>
+      </div>
+    </div>
+
     <div class="form-foot"><button>Сохранить</button></div>
   </form>
 </div>

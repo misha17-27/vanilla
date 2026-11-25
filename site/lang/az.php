@@ -60,6 +60,8 @@ return [
   'ny3_t' => 'Yeni il tortunu <em>əvvəlcədən sifariş edin</em>',
   'ny3_d' => 'Yalnız ön sifarişlə işləyirik, Yeni il ərəfəsində isə tarixlər tez dolur. Lazım olan günü tutmaq üçün bizə əvvəlcədən yazın.',
   'ny_btn' => 'Yeni il tortlarına baxın',
+  'ny_bar' => 'Yeni il bento tortları artıq kataloqda',
+  'cat_tiles_aria' => 'Kataloq bölmələri',
 
   'u1t' => 'Təbii inqrediyentlər',
   'u1d' => 'Hər biskvit və krem sıfırdan, təzə məhsullarla hazırlanır.',

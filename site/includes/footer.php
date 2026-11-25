@@ -77,6 +77,9 @@
 </div>
 
 <script src="/assets/site.js?v=<?= @filemtime(__DIR__ . '/../assets/site.js') ?>" defer></script>
+<?php if (!empty($NY_DECOR)): ?>
+<script src="/assets/ny.js?v=<?= @filemtime(__DIR__ . '/../assets/ny.js') ?>" defer></script>
+<?php endif; ?>
 
 <?php // Чат-бот заказа: окно рисует assets/chat.js, отвечает bot-web.php по сценарию data/bot-scenario.json ?>
 <script>window.VCHAT = <?= json_encode([

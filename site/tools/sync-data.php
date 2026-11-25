@@ -79,7 +79,13 @@ if ($a && $b) {
     foreach ($a['categories'] ?? [] as $c) $byRepo[$c['key']] = $c;
     $upd = 0;
     foreach ($b['categories'] as &$c) {
-        if (!empty($c['edited']) || !isset($byRepo[$c['key']])) continue;
+        if (!isset($byRepo[$c['key']])) continue;
+        if (!empty($c['edited'])) {
+            // правили в админке: свои поля не трогаем, но новые поля (например, cover) добавляем
+            $missing = array_diff_key($byRepo[$c['key']], $c);
+            if ($missing) { $c += $missing; $upd++; }
+            continue;
+        }
         if (json_encode($c) !== json_encode($byRepo[$c['key']])) { $c = $byRepo[$c['key']]; $upd++; }
     }
     unset($c);

@@ -160,6 +160,24 @@ html.anim .reveal.in{opacity:1;transform:none}
 .hero-deco.d1{width:340px;height:340px;border:1px dashed rgba(253,70,128,.35);top:-90px;right:-110px}
 .hero-deco.d2{width:200px;height:200px;background:radial-gradient(circle,rgba(253,70,128,.12),transparent 65%);bottom:-40px;left:-60px}
 /* ===== USP ===== */
+/* Разделы каталога под слайдером: на компьютере все в ряд, на телефоне — лента с прокруткой */
+.hcats{padding:30px 0 34px;border-bottom:1px solid var(--line)}
+.hcats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:14px}
+.hcat{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:10px 6px 12px;border-radius:18px;transition:.2s}
+.hcat:hover{background:var(--blue-soft)}
+.hcat-ph{width:92px;height:92px;border-radius:22px;overflow:hidden;background:var(--cream);box-shadow:0 0 0 1px var(--line),var(--shadow-s);transition:.25s}
+.hcat-ph img{width:100%;height:100%;object-fit:cover}
+.hcat:hover .hcat-ph{transform:translateY(-3px)}
+.hcat-t{font-size:13px;font-weight:600;line-height:1.3;color:var(--ink)}
+.hcat:hover .hcat-t{color:var(--navy)}
+@media (max-width:760px){
+  .hcats{padding:20px 0 22px}
+  .hcats-row{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -20px;padding:0 14px}
+  .hcats-row::-webkit-scrollbar{display:none}
+  .hcat{flex:0 0 96px;scroll-snap-align:start;padding:6px 2px 8px}
+  .hcat-ph{width:76px;height:76px;border-radius:18px}
+  .hcat-t{font-size:12px}
+}
 .usp{border-bottom:1px solid var(--line)}
 .usp .container{display:grid;grid-template-columns:repeat(4,1fr);gap:38px;padding-top:58px;padding-bottom:58px}
 .usp-item{display:flex;gap:16px}

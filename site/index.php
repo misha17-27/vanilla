@@ -19,11 +19,10 @@ $heroSlides = [
     ['eye' => $t['sets_h'],       'title' => $t['hs3_t'],   'lead' => $t['hs3_d'],     'url' => cat_url(categories()['set']),   'btn' => $t['btn_all_bento'], 'img' => '/assets/img/set-white.jpg'],
     ['eye' => $t['sec_ctg_t'],    'title' => $t['hs4_t'],   'lead' => $t['hs4_d'],     'url' => '/bolme/cake-to-go/',        'btn' => $t['btn_all_ctg'],   'img' => '/assets/img/ctg-minimal.jpg'],
 ];
-// Новогодние слайды — первыми, с 15 ноября по 10 января (время Баку). Потом сами пропадают;
-// главный слайд с h1 остаётся на месте, просто показывается после них.
-$md = (new DateTime('now', new DateTimeZone('Asia/Baku')))->format('md');
+// Новогодние слайды — первыми. Когда: переключатель в админке (по умолчанию с 15 ноября
+// по 10 января). Главный слайд с h1 остаётся на месте, просто показывается после них.
 $nyCat = categories()['yeniil'] ?? null;
-if ($nyCat && ($md >= '1115' || $md <= '0110')) {
+if ($nyCat && ny_on('ny_slides')) {
     $nyUrl = cat_url($nyCat);
     array_unshift($heroSlides,
         ['eye' => $t['ny_eye'], 'title' => $t['ny1_t'], 'lead' => $t['ny1_d'], 'url' => $nyUrl, 'btn' => $t['ny_btn'], 'img' => '/assets/img/products/bento-tort-yeni-il-happy-new-year-celeng.jpg'],
@@ -86,6 +85,25 @@ if ($nyCat && ($md >= '1115' || $md <= '0110')) {
     <?php endforeach; ?>
   </div>
 </section>
+
+<!-- Разделы каталога: сразу под слайдером, как в меню «Бенто-торты» + Cake to go -->
+<?php
+$catTiles = [];
+foreach ($bentoSub as [$cHref, $cLabel, $cImg]) $catTiles[] = [$cHref, $cLabel, $cImg];
+$catTiles[] = [u('/bolme/cake-to-go/'), $t['nav_ctg'], cat_cover('ctg')];
+?>
+<nav class="hcats" aria-label="<?= e($t['cat_tiles_aria']) ?>">
+  <div class="container">
+    <div class="hcats-row">
+      <?php foreach ($catTiles as [$cHref, $cLabel, $cImg]): ?>
+      <a class="hcat" href="<?= e($cHref) ?>">
+        <span class="hcat-ph"><?php if ($cImg): ?><img loading="lazy" decoding="async" src="<?= e(thumb_url($cImg)) ?>" alt="" width="120" height="120"><?php endif; ?></span>
+        <span class="hcat-t"><?= e($cLabel) ?></span>
+      </a>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</nav>
 
 <!-- USP -->
 <section class="usp">
