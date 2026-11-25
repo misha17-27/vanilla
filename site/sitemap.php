@@ -60,21 +60,19 @@ foreach ($posts as $bp) {
 }
 
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"'
+// Языковые версии (hreflang) здесь не перечисляем: они уже есть в <head> каждой
+// страницы, а Google достаточно одного способа. К тому же из-за пространства
+// имён XHTML браузеры показывали карту сплошным текстом, а не деревом XML.
+echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
    . ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">' . "\n";
 foreach ($entries as $en) {
-    // Каждая языковая версия — отдельная запись со полным набором альтернатив,
-    // как требует справка Google по hreflang в карте сайта.
+    // каждая языковая версия — отдельная запись
     foreach ($LANGS as $cur) {
         echo '  <url>' . "\n";
         echo '    <loc>' . e(CANON_HOST . lang_path($cur, $en['path'])) . '</loc>' . "\n";
         echo '    <lastmod>' . $en['mod'] . '</lastmod>' . "\n";
         echo '    <changefreq>' . $en['freq'] . '</changefreq>' . "\n";
         echo '    <priority>' . $en['prio'] . '</priority>' . "\n";
-        foreach ($LANGS as $l) {
-            echo '    <xhtml:link rel="alternate" hreflang="' . e($l) . '" href="' . e(CANON_HOST . lang_path($l, $en['path'])) . '"/>' . "\n";
-        }
-        echo '    <xhtml:link rel="alternate" hreflang="x-default" href="' . e(CANON_HOST . lang_path('ru', $en['path'])) . '"/>' . "\n";
         if ($en['img'] !== '') {
             echo '    <image:image><image:loc>' . e(CANON_HOST . asset($en['img'])) . '</image:loc></image:image>' . "\n";
         }
