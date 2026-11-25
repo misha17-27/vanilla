@@ -586,7 +586,10 @@
             "kind": "ctg",
             "desc": "Шесть стаканчиков, у каждого свой рисунок: пояс Санты, ёлка со звездой, красная снежинка, мордочка оленя, гирлянда и венок с золотыми цифрами «2024». Набор на компанию; год на венке меняем на наступающий.",
             "desc_az": "Altı stəkan, hər birinin öz rəsmi var: Şaxta Babanın kəməri, ulduzlu yolka, qırmızı qar dənəsi, maral sifəti, rəngli işıq zənciri və qızılı «2024» rəqəmli çələng. Böyük şirkət üçün dəst; çələngdəki ili yeni ilə dəyişirik.",
-            "desc_en": "Six cups, each with its own design: Santa’s belt, a tree with a star, a red snowflake, a reindeer face, string lights and a wreath with “2024” in gold. A set for a group; we update the year on the wreath."
+            "desc_en": "Six cups, each with its own design: Santa’s belt, a tree with a star, a red snowflake, a reindeer face, string lights and a wreath with “2024” in gold. A set for a group; we update the year on the wreath.",
+            "also": [
+                "ctg"
+            ]
         },
         {
             "slug": "bento-tort-8-mart-i-love-you",
@@ -4767,7 +4770,10 @@
             "desc": "Два стаканчика: на красном — венок из зелёного крема с посыпкой и два бокала шампанского, на белом — ёлка с золотой звездой и бусинами. Новогодний набор для двоих или подарок коллеге.",
             "desc_az": "İki stəkan: qırmızısında səpgili yaşıl krem çələng və iki şampan qədəhi, ağında qızılı ulduzlu və muncuqlu yolka. İki nəfərlik Yeni il dəsti və ya həmkara hədiyyə.",
             "desc_en": "Two cups: a red one with a green piped wreath, sprinkles and two clinking champagne glasses, and a white one with a tree, a gold star and gold beads. A New Year set for two or a gift for a colleague.",
-            "kind": "ctg"
+            "kind": "ctg",
+            "also": [
+                "ctg"
+            ]
         },
         {
             "slug": "cake-to-go-congratulations",

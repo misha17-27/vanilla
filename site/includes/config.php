@@ -283,10 +283,13 @@ foreach ($PRODUCTS as $pp) {
     $PRODUCTS_BY_SLUG[$pp['slug']] = $pp;
 }
 
+// Товары раздела: свой type плюс те, кому этот раздел добавлен в also.
+// Так новогодние Cake to go стоят и в «Новогодних», и в Cake to go; страница
+// товара и хлебные крошки остаются по type.
 function products_of(string $type): array
 {
     global $PRODUCTS;
-    return array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === $type));
+    return array_values(array_filter($PRODUCTS, fn($p) => $p['type'] === $type || in_array($type, (array)($p['also'] ?? []), true)));
 }
 
 // ===== Категории каталога =====

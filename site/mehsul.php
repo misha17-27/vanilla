@@ -188,7 +188,7 @@ require __DIR__ . '/includes/header.php';
           <li><span><?= e($o[0]) ?></span><b><?= e($o[1]) ?> ₼</b></li>
           <?php endforeach; ?>
         </ul>
-        <?php if ($prod['type'] === 'ctg'): ?>
+        <?php if (($prod['kind'] ?? $prod['type']) === 'ctg'): ?>
         <p class="tp-strong" style="margin-top:14px"><?= e($t['sizes_ctg_note']) ?></p>
         <?php endif; ?>
       </section>
