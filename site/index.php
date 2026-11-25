@@ -19,6 +19,18 @@ $heroSlides = [
     ['eye' => $t['sets_h'],       'title' => $t['hs3_t'],   'lead' => $t['hs3_d'],     'url' => cat_url(categories()['set']),   'btn' => $t['btn_all_bento'], 'img' => '/assets/img/set-white.jpg'],
     ['eye' => $t['sec_ctg_t'],    'title' => $t['hs4_t'],   'lead' => $t['hs4_d'],     'url' => '/bolme/cake-to-go/',        'btn' => $t['btn_all_ctg'],   'img' => '/assets/img/ctg-minimal.jpg'],
 ];
+// Новогодние слайды — первыми, с 15 ноября по 10 января (время Баку). Потом сами пропадают;
+// главный слайд с h1 остаётся на месте, просто показывается после них.
+$md = (new DateTime('now', new DateTimeZone('Asia/Baku')))->format('md');
+$nyCat = categories()['yeniil'] ?? null;
+if ($nyCat && ($md >= '1115' || $md <= '0110')) {
+    $nyUrl = cat_url($nyCat);
+    array_unshift($heroSlides,
+        ['eye' => $t['ny_eye'], 'title' => $t['ny1_t'], 'lead' => $t['ny1_d'], 'url' => $nyUrl, 'btn' => $t['ny_btn'], 'img' => '/assets/img/products/bento-tort-yeni-il-happy-new-year-celeng.jpg'],
+        ['eye' => $t['ny_eye'], 'title' => $t['ny2_t'], 'lead' => $t['ny2_d'], 'url' => $nyUrl, 'btn' => $t['ny_btn'], 'img' => '/assets/img/products/cake-to-go-new-year.jpg'],
+        ['eye' => $t['ny_eye'], 'title' => $t['ny3_t'], 'lead' => $t['ny3_d'], 'url' => $nyUrl, 'btn' => $t['ny_btn'], 'img' => '/assets/img/products/bento-tort-yeni-il-saxta-baba.jpg']
+    );
+}
 ?>
 <section class="hero">
   <div class="hero-track" id="hero-track">
@@ -126,7 +138,7 @@ $heroSlides = [
         <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9.5c0 6-8 11-8 11Z"/></svg></span>
         <span><?= e($t['occ5']) ?></span>
       </a>
-      <a class="occ" href="<?= IG_URL ?>" target="_blank" rel="noopener">
+      <a class="occ" href="<?= e(cat_url(categories()['yeniil'])) ?>">
         <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 3.5 4.5H13l3.5 4.5H14l3.5 4.5h-11L10 12H7.5L11 7.5H8.5L12 3ZM12 16.5V21"/></svg></span>
         <span><?= e($t['occ6']) ?></span>
       </a>

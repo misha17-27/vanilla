@@ -10,6 +10,7 @@ return [
         'groups' => [
             'Первый экран'        => ['hero_eyebrow', 'hero_h', 'hero_lead', 'hero_cta2', 'hero_trust', 'hero_badge_t', 'hero_badge_d'],
             'Слайды первого экрана' => ['hs2_t', 'hs2_d', 'hs3_t', 'hs3_d', 'hs4_t', 'hs4_d'],
+            'Новогодние слайды (15 ноября — 10 января)' => ['ny_eye', 'ny1_t', 'ny1_d', 'ny2_t', 'ny2_d', 'ny3_t', 'ny3_d', 'ny_btn'],
             'Почему мы'           => ['u1t', 'u1d', 'u2t', 'u2d', 'u3t', 'u3d', 'u4t', 'u4d'],
             'Поводы'              => ['occ_t', 'occ_d', 'occ1', 'occ2', 'occ3', 'occ4', 'occ5', 'occ6', 'occ7', 'occ8'],
             'Блоки каталога'      => ['sec_bento_t', 'sec_bento_d', 'btn_all_bento', 'bantik_d', 'sets_d', 'sec_ctg_t', 'sec_ctg_d', 'btn_all_ctg'],

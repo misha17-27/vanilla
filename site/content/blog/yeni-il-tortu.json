@@ -1,7 +1,7 @@
 {
   "slug": "yeni-il-tortu",
   "published": "2026-10-19",
-  "updated": "2026-10-19",
+  "updated": "2026-11-25",
   "image": "/assets/img/products/cake-to-go-new-year.jpg",
   "ru": {
     "title": "Новогодний торт в Баку: идеи бенто и Cake to go",
@@ -119,13 +119,19 @@
       {
         "type": "products",
         "slugs": [
+          "bento-tort-yeni-il-happy-new-year-celeng",
+          "bento-tort-yeni-il-saxta-baba",
+          "bento-tort-yeni-il-let-it-snow",
+          "bento-tort-yeni-il-qutb-ayisi",
           "cake-to-go-new-year",
-          "bento-tort-qirlanda-10-months",
-          "bento-tort-milad-8-months",
-          "bento-tort-qis-1-month",
-          "bento-tort-maral-6-months",
-          "bento-tort-milad-1-month"
+          "cake-to-go-yeni-il-bayram-stekanlari"
         ]
+      },
+      {
+        "type": "cta",
+        "target": "cat:yeniil",
+        "title": "Все новогодние бенто-торты",
+        "text": "Ёлки, венки, снеговики, олени и Дед Мороз — выберите дизайн, а надпись напишем вашу."
       },
       {
         "type": "h2",
@@ -363,13 +369,19 @@
       {
         "type": "products",
         "slugs": [
+          "bento-tort-yeni-il-happy-new-year-celeng",
+          "bento-tort-yeni-il-saxta-baba",
+          "bento-tort-yeni-il-let-it-snow",
+          "bento-tort-yeni-il-qutb-ayisi",
           "cake-to-go-new-year",
-          "bento-tort-qirlanda-10-months",
-          "bento-tort-milad-8-months",
-          "bento-tort-qis-1-month",
-          "bento-tort-maral-6-months",
-          "bento-tort-milad-1-month"
+          "cake-to-go-yeni-il-bayram-stekanlari"
         ]
+      },
+      {
+        "type": "cta",
+        "target": "cat:yeniil",
+        "title": "Bütün Yeni il bento tortları",
+        "text": "Yolka, çələng, qar adamları, marallar və Şaxta Baba — dizaynı seçin, yazını isə sizin istədiyiniz kimi edək."
       },
       {
         "type": "h2",
@@ -607,13 +619,19 @@
       {
         "type": "products",
         "slugs": [
+          "bento-tort-yeni-il-happy-new-year-celeng",
+          "bento-tort-yeni-il-saxta-baba",
+          "bento-tort-yeni-il-let-it-snow",
+          "bento-tort-yeni-il-qutb-ayisi",
           "cake-to-go-new-year",
-          "bento-tort-qirlanda-10-months",
-          "bento-tort-milad-8-months",
-          "bento-tort-qis-1-month",
-          "bento-tort-maral-6-months",
-          "bento-tort-milad-1-month"
+          "cake-to-go-yeni-il-bayram-stekanlari"
         ]
+      },
+      {
+        "type": "cta",
+        "target": "cat:yeniil",
+        "title": "All New Year bento cakes",
+        "text": "Fir trees, wreaths, snowmen, reindeer and Santa — pick a design and we’ll pipe your own message."
       },
       {
         "type": "h2",
